@@ -1,0 +1,44 @@
+{
+  "name": "trava-station-core",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@nomiclabs/hardhat-ethers": "^2.0.6",
+    "@nomiclabs/hardhat-waffle": "^2.0.6",
+    "chai": "^4.3.7",
+    "ethereum-waffle": "^3.4.4",
+    "hardhat": "^2.9.6"
+  },
+  "dependencies": {
+    "@chainlink/contracts": "^0.4.1",
+    "@curvefi/api": "^1.25.0",
+    "@defisaver/sdk": "^1.0.23",
+    "@ethersproject/abstract-provider": "^5.7.0",
+    "@ethersproject/abstract-signer": "^5.7.0",
+    "@ethersproject/bytes": "^5.7.0",
+    "@ethersproject/transactions": "^5.7.0",
+    "@openzeppelin/contract-loader": "^0.6.3",
+    "@openzeppelin/contracts": "^4.6.0",
+    "@openzeppelin/contracts-upgradeable": "^4.7.3",
+    "@openzeppelin/hardhat-upgrades": "^1.28.0",
+    "@truffle/hdwallet-provider": "^2.0.14",
+    "@zennomi/tokens": "^1.0.1",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.0.1",
+    "dotenv-safe": "^8.2.0",
+    "ethers": "^5.6.8",
+    "fs-extra": "^11.1.1",
+    "hardhat-interface-generator": "^0.0.6",
+    "i": "^0.3.7",
+    "mocha": "^10.2.0",
+    "npm": "^9.7.1",
+    "readline-sync": "^1.4.10"
+  }
+}
