@@ -106,11 +106,11 @@ async function main() {
   //        ||                               Trava NFT Contract                                   ||
   //        ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
   //    */
-  const travaNFTTransfer = await redeploy(
-    "TravaNFTTransfer",
-    process.env.DFS_REGISTRY_ADDRESS
-  );
-  writeToEnvFile("TRAVA_NFT_TRANSFER_ADDRESS", travaNFTTransfer.address);
+  // const travaNFTTransfer = await redeploy(
+  //   "TravaNFTTransfer",
+  //   process.env.DFS_REGISTRY_ADDRESS
+  // );
+  // writeToEnvFile("TRAVA_NFT_TRANSFER_ADDRESS", travaNFTTransfer.address);
 
   //        ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
   //        ||                               Trava NFT  Marketplace Contract                                   ||
@@ -128,6 +128,13 @@ async function main() {
   //   process.env.DFS_REGISTRY_ADDRESS
   // );
   // writeToEnvFile("TRAVA_NFT_CREATE_SALE_ADDRESS", travaNFTCreateSale.address);
+
+  const travaNFTCancelSale = await redeploy(
+    "TravaNFTCancelSale",
+    process.env.DFS_REGISTRY_ADDRESS
+  );
+  writeToEnvFile("TRAVA_NFT_CANCLE_SALE_ADDRESS", travaNFTCancelSale.address);
+
 
   //        ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
   //        ||                               Trava NFT  Manager Contrac                       ||
