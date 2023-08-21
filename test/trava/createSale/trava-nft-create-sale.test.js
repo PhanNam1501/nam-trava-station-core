@@ -16,6 +16,7 @@ const { Action } = require("../../teststrategy/Action");
 const { getProxy } = require("../../utils");
 const { keccak256 } = require("web3-utils");
 const abiCoder = new hre.ethers.utils.AbiCoder();
+const { actions, Recipe } = require("trava-station-sdk");
 // Account Owner support 2 token
 // Account A swap
 
@@ -205,8 +206,8 @@ describe("Test Pancakeswap", async function () {
   it("Test proxy buy nft", async () => {
     // console.log("Balance trava of accA::", await trava.balanceOf(accA.address));
     // const proxyA = await getProxy(accA.address);
-    // //
-    // const tokenID = "5433";
+    // // 0x59 : 5344 , 5531  ,
+    // const tokenID = "5344";
     // const makeOrder = new Action(
     //   "MakeOrder",
     //   process.env.TRAVA_NFT_BUY_ADDRESS,
@@ -226,6 +227,29 @@ describe("Test Pancakeswap", async function () {
     // // tx = await tx.wait();
     // console.log("tx :", tx);
   });
+
+  it("Test sdk buy nft", async () => {
+    const data = new actions.trava.TravaNFTBuy(
+      "5531",
+      accA.address,
+      accA.address
+    );
+
+    const recipe = new Recipe("TravaNFTBuy", [data]);
+    console.log("recipe::", recipe);
+
+    const encode = recipe.encodeForDsProxyCall();
+    console.log("encode::", encode);
+
+    const proxyA = await getProxy(accA.address);
+
+    const tx = await proxyA
+      .connect(accA)
+      .execute(encode[0], encode[1], { gasLimit: 1e7 });
+
+    console.log("tx::", tx);
+  });
+
   it("Test create sale nft ", async () => {
     // const tokenID = "4330";
     // const createSaleAction = new Action(
@@ -248,106 +272,93 @@ describe("Test Pancakeswap", async function () {
     // console.log("tx::", tx);
   });
   it("Test buy nft , after sell it", async () => {
-    let triggerCallData = [];
-    let actionsCallData = [];
-    let subData = [];
-    let actionIds = [];
-
-    const tokenID = "4129";
-
-    const makeOrderAction = new Action(
-      "MakeOrder",
-      process.env.TRAVA_NFT_BUY_ADDRESS,
-      ["uint256", "address", "address"],
-      [tokenID, accA.address, accA.address]
-    );
-
-    const createSaleAction = new Action(
-      "NFT Transfer",
-      process.env.TRAVA_NFT_CREATE_SALE_ADDRESS,
-      ["uint256", "uint256", "address"],
-      [tokenID, ethers.utils.parseEther("10"), accA.address]
-    );
-
-    const callDataMakeOrder = makeOrderAction.encodeForRecipe()[0];
-    const callDataCreateSale = createSaleAction.encodeForRecipe()[0];
-
-    actionsCallData.push(callDataMakeOrder);
-    actionsCallData.push(callDataCreateSale);
-
-    const paramMapping = [
-      [128, 129, 130],
-      [131, 132, 133],
-    ];
-    const subdataMakeOrderTokenID = abiCoder.encode(["uint256"], [tokenID]);
-    const subdataMakeOrderFrom = abiCoder.encode(["address"], [accA.address]);
-    const subdataMakeOrderRecipient = abiCoder.encode(
-      ["address"],
-      [accA.address]
-    );
-
-    const subdataCreateSaleTokenID = abiCoder.encode(["uint256"], [tokenID]);
-    const subdataCreateSaleAmount = abiCoder.encode(
-      ["uint256"],
-      [ethers.utils.parseEther("10")]
-    );
-    const subdataCreateSaleFrom = abiCoder.encode(["address"], [accA.address]);
-
-    actionIds = [
-      keccak256("TravaNFTBuy").substr(0, 10),
-      keccak256("TravaNFTCreateSale").substr(0, 10),
-    ];
-
-    subData = [
-      subdataMakeOrderTokenID,
-      subdataCreateSaleFrom,
-      subdataMakeOrderRecipient,
-      subdataCreateSaleTokenID,
-      subdataCreateSaleAmount,
-      subdataCreateSaleFrom,
-    ];
-
-    // await trava
-    //   .connect(accA)
-    //   .approve(proxyA.address, ethers.utils.parseEther("50"));
-
-    const NFTCore = await hre.ethers.getContractAt(
-      "INFTCore",
-      process.env.TRAVA_NFT_CORE
-    );
-    // // not have approve
-    // await NFTCore.connect(accA).setApprovalForAll(proxyA.address, true);
-    // console.log(
-    //   "Balance token A of proxyA::",
-    //   ethers.utils.formatEther(await tokenA.balanceOf(proxyA.address))
+    // let triggerCallData = [];
+    // let actionsCallData = [];
+    // let subData = [];
+    // let actionIds = [];
+    // const tokenID = "4129";
+    // const makeOrderAction = new Action(
+    //   "MakeOrder",
+    //   process.env.TRAVA_NFT_BUY_ADDRESS,
+    //   ["uint256", "address", "address"],
+    //   [tokenID, accA.address, accA.address]
     // );
-
-    await NFTCore.connect(accA).approve(proxyA.address, tokenID);
-
-    const RecipeExecutorContract = await hre.ethers.getContractAt(
-      "RecipeExecutor",
-      process.env.RECIPE_EXECUTOR_ADDRESS
-    );
-    const calldata = RecipeExecutorContract.interface.encodeFunctionData(
-      "executeRecipe",
-      [
-        {
-          name: "TravaCreateSellRecipe",
-          callData: actionsCallData,
-          subData: subData,
-          actionIds: actionIds,
-          paramMapping: paramMapping,
-        },
-      ]
-    );
-    // console.log("calldata::", calldata);
-    const tx = await proxyA
-      .connect(accA)
-      .execute(process.env.RECIPE_EXECUTOR_ADDRESS, calldata, {
-        gasLimit: 1e7,
-      });
-    await tx.wait();
-    console.log("tx::", tx);
-    // check amount of token A of proxyA
+    // const createSaleAction = new Action(
+    //   "NFT Transfer",
+    //   process.env.TRAVA_NFT_CREATE_SALE_ADDRESS,
+    //   ["uint256", "uint256", "address"],
+    //   [tokenID, ethers.utils.parseEther("10"), accA.address]
+    // );
+    // const callDataMakeOrder = makeOrderAction.encodeForRecipe()[0];
+    // const callDataCreateSale = createSaleAction.encodeForRecipe()[0];
+    // actionsCallData.push(callDataMakeOrder);
+    // actionsCallData.push(callDataCreateSale);
+    // const paramMapping = [
+    //   [128, 129, 130],
+    //   [131, 132, 133],
+    // ];
+    // const subdataMakeOrderTokenID = abiCoder.encode(["uint256"], [tokenID]);
+    // const subdataMakeOrderFrom = abiCoder.encode(["address"], [accA.address]);
+    // const subdataMakeOrderRecipient = abiCoder.encode(
+    //   ["address"],
+    //   [accA.address]
+    // );
+    // const subdataCreateSaleTokenID = abiCoder.encode(["uint256"], [tokenID]);
+    // const subdataCreateSaleAmount = abiCoder.encode(
+    //   ["uint256"],
+    //   [ethers.utils.parseEther("10")]
+    // );
+    // const subdataCreateSaleFrom = abiCoder.encode(["address"], [accA.address]);
+    // actionIds = [
+    //   keccak256("TravaNFTBuy").substr(0, 10),
+    //   keccak256("TravaNFTCreateSale").substr(0, 10),
+    // ];
+    // subData = [
+    //   subdataMakeOrderTokenID,
+    //   subdataCreateSaleFrom,
+    //   subdataMakeOrderRecipient,
+    //   subdataCreateSaleTokenID,
+    //   subdataCreateSaleAmount,
+    //   subdataCreateSaleFrom,
+    // ];
+    // // await trava
+    // //   .connect(accA)
+    // //   .approve(proxyA.address, ethers.utils.parseEther("50"));
+    // const NFTCore = await hre.ethers.getContractAt(
+    //   "INFTCore",
+    //   process.env.TRAVA_NFT_CORE
+    // );
+    // // // not have approve
+    // // await NFTCore.connect(accA).setApprovalForAll(proxyA.address, true);
+    // // console.log(
+    // //   "Balance token A of proxyA::",
+    // //   ethers.utils.formatEther(await tokenA.balanceOf(proxyA.address))
+    // // );
+    // await NFTCore.connect(accA).approve(proxyA.address, tokenID);
+    // const RecipeExecutorContract = await hre.ethers.getContractAt(
+    //   "RecipeExecutor",
+    //   process.env.RECIPE_EXECUTOR_ADDRESS
+    // );
+    // const calldata = RecipeExecutorContract.interface.encodeFunctionData(
+    //   "executeRecipe",
+    //   [
+    //     {
+    //       name: "TravaCreateSellRecipe",
+    //       callData: actionsCallData,
+    //       subData: subData,
+    //       actionIds: actionIds,
+    //       paramMapping: paramMapping,
+    //     },
+    //   ]
+    // );
+    // // console.log("calldata::", calldata);
+    // const tx = await proxyA
+    //   .connect(accA)
+    //   .execute(process.env.RECIPE_EXECUTOR_ADDRESS, calldata, {
+    //     gasLimit: 1e7,
+    //   });
+    // await tx.wait();
+    // console.log("tx::", tx);
+    // // check amount of token A of proxyA
   });
 });

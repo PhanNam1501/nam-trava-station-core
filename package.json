@@ -39,6 +39,7 @@
     "i": "^0.3.7",
     "mocha": "^10.2.0",
     "npm": "^9.7.1",
-    "readline-sync": "^1.4.10"
+    "readline-sync": "^1.4.10",
+    "trava-station-sdk": "^1.0.6"
   }
 }
