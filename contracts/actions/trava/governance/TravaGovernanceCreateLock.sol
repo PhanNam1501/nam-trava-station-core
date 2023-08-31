@@ -91,6 +91,9 @@ contract TravaGovernanceCreateLock is ActionBase, TravaGovernanceHelper {
         uint lock_duration,
         address to
     ) internal returns (uint, bytes memory) {
+        if (to == address(0)) {
+            to == address(this);
+        }
         if (value == type(uint256).max) {
             value = token.getBalance(to);
         }

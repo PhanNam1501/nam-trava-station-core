@@ -7,21 +7,20 @@ import "../../ActionBase.sol";
 import "./helpers/TravaHelper.sol";
 
 /// @title Claim Rewards a token from an Trava market based on market
-contract TravaClaimRewards is ActionBase, TravaHelper {
+contract TravaConvertRewards is ActionBase, TravaHelper {
     using TokenUtils for address;
 
     /**
    * @dev Claims reward for an user, on all the assets of the lending pool, accumulating the pending rewards
    * @param amount Amount of rewards to claim
    * @param to Address that will be receiving the rewards
-//    * @param from DSProxy's user
+   * @param from DSProxy's user
    * @return Rewards claimed
    **/
     struct Params {
-        address[] assets;
-        uint256 amount;
+        address from;
         address to;
-        // address from;
+        uint256 amount;
     }
 
     /// @inheritdoc ActionBase
@@ -33,42 +32,32 @@ contract TravaClaimRewards is ActionBase, TravaHelper {
     ) public payable virtual override returns (bytes32) {
         Params memory params = parseInputs(_callData);
 
-        uint256 nAsset = params.assets.length;
-        for(uint256 i = 0; i < nAsset; i++) {
-                params.assets[i] = _parseParamAddr(
-                    params.assets[i],
-                    _paramMapping[i],
-                    _subData,
-                    _returnValues
-                );
-        }
-        params.amount = _parseParamUint(
-            params.amount,
-            _paramMapping[nAsset],
+        params.from = _parseParamAddr(
+            params.from,
+            _paramMapping[0],
             _subData,
             _returnValues
         );
         params.to = _parseParamAddr(
             params.to,
-            _paramMapping[nAsset + 1],
+            _paramMapping[1],
             _subData,
             _returnValues
         );
-        // params.from = _parseParamAddr(
-        //     params.from,
-        //     _paramMapping[nAsset + 2],
-        //     _subData,
-        //     _returnValues
-        // );
-
-
-        (uint256 amount, bytes memory logData) = _claimRewards(
-            params.assets,
+        params.amount = _parseParamUint(
             params.amount,
-            params.to
-            // params.from
+            _paramMapping[2],
+            _subData,
+            _returnValues
         );
-        emit ActionEvent("TravaClaimRewards", logData);
+
+
+        (uint256 amount, bytes memory logData) = _convertRewards(
+            params.from,
+            params.to,
+            params.amount
+        );
+        emit ActionEvent("TravaConvertRewards", logData);
         return bytes32(amount);
     }
 
@@ -77,13 +66,12 @@ contract TravaClaimRewards is ActionBase, TravaHelper {
         bytes memory _callData
     ) public payable override {
         Params memory params = parseInputs(_callData);
-        (, bytes memory logData) = _claimRewards(
-            params.assets,
-            params.amount,
-            params.to
-            // params.from
+        (, bytes memory logData) = _convertRewards(
+            params.from,
+            params.to,
+            params.amount
         );
-        logger.logActionDirectEvent("TravaClaimRewards", logData);
+        logger.logActionDirectEvent("TravaConvertRewards", logData);
     }
 
     /// @inheritdoc ActionBase
@@ -92,28 +80,39 @@ contract TravaClaimRewards is ActionBase, TravaHelper {
     }
 
     //////////////////////////// ACTION LOGIC ////////////////////////////
-    function _claimRewards(
-        address[] memory _asset,
-        uint256 _amount,
-        address _to
-        // address _from
+    function _convertRewards(
+        address _from,
+        address _to,
+        uint256 _amount
     ) internal returns (uint256, bytes memory) {
-        ITravaIncentivesController controller = ITravaIncentivesController(INCENTIVES_ADDRESS);
-        
-        // if(_from == address(0)) {
-        //     _from = address(this);
-        // }
+        IStakedToken stakedToken = IStakedToken(STAKED_TRAVA_TOKEN_ADDRESS);
+        if(_from == address(0)) {
+            _from == address(this);
+        }
+
+
+
+        address _rToken = stakedToken.REWARD_TOKEN();
+        _rToken.pullTokensIfNeeded(_from, _amount);
 
         // withdraw underlying tokens from Trava and send _to address
-        uint256 amount = controller.claimRewards(_asset, _amount, _to);
+        stakedToken.redeem(_to, _amount);
+
+        if (_to != address(this)) {
+            // if amount is set to max, take the whole _from balance
+            address stakedTokenAddress = stakedToken.STAKED_TOKEN();
+            if (_amount == type(uint256).max) {
+                _amount = stakedTokenAddress.getBalance(address(this));
+            }
+            IBEP20(stakedTokenAddress).transfer(_to, _amount);
+        }
 
         bytes memory logData = abi.encode(
-            _asset,
-            _amount,
-            _to
-            // _from
+            _from,
+            _to,
+            _amount
         );
-        return (amount, logData);
+        return (_amount, logData);
     }
 
     function parseInputs(

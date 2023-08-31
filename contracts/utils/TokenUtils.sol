@@ -3,10 +3,10 @@
 pragma solidity 0.8.4;
 
 import "../interfaces/IWBNB.sol";
-import "./SafeERC20.sol";
+import "./SafeBEP20.sol";
 
 library TokenUtils {
-    using SafeERC20 for IERC20;
+    using SafeBEP20 for IBEP20;
 
     address public constant WSTBNB_ADDR =
         0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0;
@@ -28,8 +28,8 @@ library TokenUtils {
     ) internal {
         if (_tokenAddr == BNB_ADDR) return;
 
-        if (IERC20(_tokenAddr).allowance(address(this), _to) < _amount) {
-            IERC20(_tokenAddr).safeApprove(_to, _amount);
+        if (IBEP20(_tokenAddr).allowance(address(this), _to) < _amount) {
+            IBEP20(_tokenAddr).safeApprove(_to, _amount);
         }
     }
 
@@ -49,7 +49,7 @@ library TokenUtils {
             _token != BNB_ADDR &&
             _amount != 0
         ) {
-            IERC20(_token).safeTransferFrom(_from, address(this), _amount);
+            IBEP20(_token).safeTransferFrom(_from, address(this), _amount);
         }
 
         return _amount;
@@ -66,7 +66,7 @@ library TokenUtils {
 
         if (_to != address(0) && _to != address(this) && _amount != 0) {
             if (_token != BNB_ADDR) {
-                IERC20(_token).safeTransfer(_to, _amount);
+                IBEP20(_token).safeTransfer(_to, _amount);
             } else {
                 (bool success, ) = _to.call{value: _amount}("");
                 require(success, "Eth send fail");
@@ -91,13 +91,13 @@ library TokenUtils {
         if (_tokenAddr == BNB_ADDR) {
             return _acc.balance;
         } else {
-            return IERC20(_tokenAddr).balanceOf(_acc);
+            return IBEP20(_tokenAddr).balanceOf(_acc);
         }
     }
 
     function getTokenDecimals(address _token) internal view returns (uint256) {
         if (_token == BNB_ADDR) return 18;
 
-        return IERC20(_token).decimals();
+        return IBEP20(_token).decimals();
     }
 }

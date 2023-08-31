@@ -2,7 +2,6 @@
 
 pragma solidity 0.8.4;
 
-import "../../../interfaces/IWBNB.sol";
 import "../../../utils/TokenUtils.sol";
 import "../../ActionBase.sol";
 import "./helpers/TravaHelper.sol";
@@ -82,6 +81,7 @@ contract TravaRepay is ActionBase, TravaHelper {
         if (_onBehalf == address(0)) {
             _onBehalf = address(this);
         }
+
         ILendingPool lendingPool = ILendingPool(_market);
         uint256 maxDebt = getWholeDebt(_market, _tokenAddr, _onBehalf);
         _amount = _amount > maxDebt ? maxDebt : _amount;

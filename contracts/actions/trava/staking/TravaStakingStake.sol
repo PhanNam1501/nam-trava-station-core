@@ -5,11 +5,10 @@ pragma solidity 0.8.4;
 import "../../../utils/TokenUtils.sol";
 import "../../ActionBase.sol";
 import "./helpers/TravaStakingHelper.sol";
-import "../../../utils/SafeBEP20.sol";
 
 /// @title Supply a token to an Trava market
 contract TravaStakingStake is ActionBase, TravaStakingHelper {
-    using SafeBEP20 for IBEP20;
+    using TokenUtils for address;
 
     struct Params {
         address stakingPool;
@@ -92,7 +91,7 @@ contract TravaStakingStake is ActionBase, TravaStakingHelper {
         }
 
         // pull stakedTokens to proxy so we can stake
-        pullTokensIfNeeded(_stakedToken, _onBehalfOf, _amount);
+        _stakedToken.pullTokensIfNeeded(_onBehalfOf, _amount);
 
         // approve trava pool to pull stakedTokens
         IBEP20(_stakedToken).approve(_stakingPool, _amount);
@@ -116,27 +115,6 @@ contract TravaStakingStake is ActionBase, TravaStakingHelper {
         bytes memory _callData
     ) public pure returns (Params memory params) {
         params = abi.decode(_callData, (Params));
-    }
-
-    function pullTokensIfNeeded(
-        address _token,
-        address _from,
-        uint256 _amount
-    ) internal returns (uint256) {
-        // handle max uint amount
-        if (_amount == type(uint256).max) {
-            _amount = IBEP20(_token).balanceOf(_from);
-        }
-
-        if (
-            _from != address(0) &&
-            _from != address(this) &&
-            _amount != 0
-        ) {
-            IBEP20(_token).safeTransfer(address(this), _amount);
-        }
-
-        return _amount;
     }
 
 }

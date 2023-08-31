@@ -2,15 +2,11 @@
 
 pragma solidity 0.8.4;
 
-import "../../../utils/TokenUtils.sol";
 import "../../ActionBase.sol";
 import "./helpers/TravaStakingHelper.sol";
-import "../../../utils/SafeBEP20.sol";
 
 /// @title Supply a token to an Trava market
 contract TravaStakingRedeem is ActionBase, TravaStakingHelper {
-    // using TokenUtils for address;
-    using SafeBEP20 for IBEP20;
 
     struct Params {
         address stakingPool;
@@ -83,10 +79,10 @@ contract TravaStakingRedeem is ActionBase, TravaStakingHelper {
         uint256 _amount
     ) internal returns (uint256, bytes memory) {
 
-        // default to onBehalf of proxy
-        if (_to == address(0)) {
-            _to = address(this);
-        }
+        // // default to onBehalf of proxy
+        // if (_to == address(0)) {
+        //     _to = address(this);
+        // }
 
         // deposit in behalf of the proxy
         IStakedToken(_stakingPool).redeem(
@@ -94,14 +90,14 @@ contract TravaStakingRedeem is ActionBase, TravaStakingHelper {
             _amount
         );
 
-        address stakedToken = IStakedToken(_stakingPool).STAKED_TOKEN();
+        // address stakedToken = IStakedToken(_stakingPool).STAKED_TOKEN();
 
-        if (_to == address(this)) {
-            if (_amount == type(uint256).max) {
-                _amount = IBEP20(stakedToken).balanceOf(address(this));
-            }
-            IBEP20(stakedToken).safeTransfer(_to, _amount);
-        }
+        // if (_to != address(this)) {
+        //     if (_amount == type(uint256).max) {
+        //         _amount = IBEP20(stakedToken).balanceOf(address(this));
+        //     }
+        //     IBEP20(stakedToken).safeTransfer(_to, _amount);
+        // }
 
         bytes memory logData = abi.encode(
             _to,
