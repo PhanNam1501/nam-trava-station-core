@@ -173,7 +173,7 @@ module.exports = {
       url: "https://bsc-testnet.public.blastapi.io",
       chainId: 97,
       gasPrice: 20e9,
-      gas: 2e6,
+      gas: 2e7,
       // gas: 1e7,
       accounts: [`0x${PRIVATE_KEY}`, `0x${PRIVATE_KEY2}`],
     },
