@@ -79,25 +79,12 @@ contract TravaStakingRedeem is ActionBase, TravaStakingHelper {
         uint256 _amount
     ) internal returns (uint256, bytes memory) {
 
-        // // default to onBehalf of proxy
-        // if (_to == address(0)) {
-        //     _to = address(this);
-        // }
 
         // deposit in behalf of the proxy
         IStakedToken(_stakingPool).redeem(
             _to,
             _amount
         );
-
-        // address stakedToken = IStakedToken(_stakingPool).STAKED_TOKEN();
-
-        // if (_to != address(this)) {
-        //     if (_amount == type(uint256).max) {
-        //         _amount = IBEP20(stakedToken).balanceOf(address(this));
-        //     }
-        //     IBEP20(stakedToken).safeTransfer(_to, _amount);
-        // }
 
         bytes memory logData = abi.encode(
             _to,
