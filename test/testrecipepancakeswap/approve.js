@@ -143,35 +143,35 @@ describe("Test Pancakeswap", async function() {
   it("Test inscrease liquidity", async() => {
     let pancakeRouterContract;
     pancakeRouterContract = await hre.ethers.getContractAt("IPancakeRouter02", pancakeRouter);
+    console.log("pancakeFactory", pancakeRouterContract.interface.fragments[1]);
+    // let tokenContract_j;
+    // let balance_j;
+    // let tokenContract_i;
+    // let balance_i;
+    // let tx;
+    // for(let j = 0; j < 1; j++) {
+    //     tokenContract_j = await hre.ethers.getContractAt("IBEP20", listToken[j].address);
+    //     balance_j = await tokenContract_j.balanceOf(ownerAcc.address);
+    //     // console.log(balance_j, (balance_j/1000).toString())
+    //     for(let i = 4; i < listToken.length; i++) {
 
-    let tokenContract_j;
-    let balance_j;
-    let tokenContract_i;
-    let balance_i;
-    let tx;
-    for(let j = 0; j < 1; j++) {
-        tokenContract_j = await hre.ethers.getContractAt("IBEP20", listToken[j].address);
-        balance_j = await tokenContract_j.balanceOf(ownerAcc.address);
-        // console.log(balance_j, (balance_j/1000).toString())
-        for(let i = 4; i < listToken.length; i++) {
+    //         tokenContract_i = await hre.ethers.getContractAt("IBEP20", listToken[i].address);
+    //         balance_i = await tokenContract_i.balanceOf(ownerAcc.address);
+    //         tx = await pancakeRouterContract.addLiquidity(
+    //             listToken[j].address,
+    //             listToken[i].address,
+    //             BigInt(balance_j / 1000),
+    //             BigInt(balance_i / 100000),
+    //             0,
+    //             0,
+    //             ownerAcc.address,
+    //             100 * 365 * 24 * 60 * 60 * 1000
 
-            tokenContract_i = await hre.ethers.getContractAt("IBEP20", listToken[i].address);
-            balance_i = await tokenContract_i.balanceOf(ownerAcc.address);
-            tx = await pancakeRouterContract.addLiquidity(
-                listToken[j].address,
-                listToken[i].address,
-                BigInt(balance_j / 1000),
-                BigInt(balance_i / 100000),
-                0,
-                0,
-                ownerAcc.address,
-                100 * 365 * 24 * 60 * 60 * 1000
-
-            )
-            await tx.wait();
-            console.log("tx", tx)
-        }
-    }
+    //         )
+    //         await tx.wait();
+    //         console.log("tx", tx)
+    //     }
+    // }
 
   }).timeout(1000000);
 
