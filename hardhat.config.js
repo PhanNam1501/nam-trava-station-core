@@ -166,11 +166,11 @@ module.exports = {
           balance: "100000000000000000000000000000",
         },
       ],
-      gasPrice: 5000000000,
+      // gasPrice: 5000000000,
       // gas: 25e6,
     },
     bscTestnet: {
-      url: "https://bsc-testnet.public.blastapi.io",
+      url: "https://data-seed-prebsc-1-s1.bnbchain.org:8545",
       chainId: 97,
       gasPrice: 20e9,
       gas: 2e7,
