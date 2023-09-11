@@ -25,7 +25,6 @@ contract TravaBorrow is ActionBase, TravaHelper {
         bytes32[] memory _returnValues
     ) public payable virtual override returns (bytes32) {
         Params memory params = parseInputs(_callData);
-
         params.market = _parseParamAddr(
             params.market,
             _paramMapping[0],

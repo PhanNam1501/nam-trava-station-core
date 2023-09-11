@@ -10,6 +10,7 @@ contract TravaNFTBuy is ActionBase, TravaNFTHelper {
 
     struct Params {
         uint256 tokenId;
+        uint256 price;
         address from;
         address to;
     }
@@ -29,21 +30,30 @@ contract TravaNFTBuy is ActionBase, TravaNFTHelper {
             _subData,
             _returnValues
         );
+
+        params.price = _parseParamUint(
+            params.price,
+            _paramMapping[1],
+            _subData,
+            _returnValues
+        );
+
         params.from = _parseParamAddr(
             params.from,
-            _paramMapping[1],
+            _paramMapping[2],
             _subData,
             _returnValues
         );
         params.to = _parseParamAddr(
             params.to,
-            _paramMapping[1],
+            _paramMapping[3],
             _subData,
             _returnValues
         );
 
         (uint256 tokenId, bytes memory logData) = _makeOrder(
             params.tokenId,
+            params.price,
             params.from,
             params.to
         );
@@ -58,6 +68,7 @@ contract TravaNFTBuy is ActionBase, TravaNFTHelper {
         Params memory params = parseInputs(_callData);
         (, bytes memory logData) = _makeOrder(
             params.tokenId,
+            params.price,
             params.from,
             params.to
         );
@@ -73,6 +84,7 @@ contract TravaNFTBuy is ActionBase, TravaNFTHelper {
 
     function _makeOrder(
         uint256 _tokenId,
+        uint256 _price,
         address _from,
         address _to
     ) internal returns (uint256, bytes memory) {
@@ -83,19 +95,21 @@ contract TravaNFTBuy is ActionBase, TravaNFTHelper {
         IMarketplace marketPlace = IMarketplace(NFT_MARKETPLACE);
 
         require(
-            marketPlace.getTokenOrder(_tokenId).nftSeller != _from &&
+            // marketPlace.getTokenOrder(_tokenId).nftSeller != _from &&
                 marketPlace.getTokenOrder(_tokenId).nftSeller != address(this),
             "Seller or proxy's seller can't execute action to buy own NFT"
         );
 
-        address travaToken = TRAVA_TOKEN;
-
-        travaToken.pullTokensIfNeeded(
-            _from,
-            marketPlace.getTokenOrder(_tokenId).price
+        require(
+            _price == marketPlace.getTokenOrder(_tokenId).price,
+            "Invalid price"
         );
 
-        marketPlace.makeOrder(_tokenId);
+        address travaToken = TRAVA_TOKEN;
+
+        travaToken.pullTokensIfNeeded(_from, _price);
+
+        marketPlace.makeOrder(_tokenId, _price);
 
         if (_to != address(this)) {
             INFTCore(NFT_CORE).transferFrom(address(this), _to, _tokenId);

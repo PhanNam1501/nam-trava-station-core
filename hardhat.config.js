@@ -175,7 +175,10 @@ module.exports = {
       gasPrice: 20e9,
       gas: 2e7,
       // gas: 1e7,
-      accounts: [`0x${PRIVATE_KEY}`, `0x${PRIVATE_KEY2}`],
+      accounts: [
+        "50288b9df245087d6daa359f7924b5270900985bf131864539ad34c84719cf4a",
+        `0x${PRIVATE_KEY}`,
+        `0x${PRIVATE_KEY2}`],
     },
     goerli: {
       url: GOERLI,

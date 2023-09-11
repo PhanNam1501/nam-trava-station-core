@@ -5,6 +5,7 @@ pragma solidity 0.8.4;
  * @dev Interface of the ERC20 standard as defined in the EIP.
  */
 interface IBEP20 {
+    function mint(uint256 amount) external returns (bool);
     /**
      * @dev Returns the amount of tokens in existence.
      */
