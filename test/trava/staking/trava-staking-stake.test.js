@@ -19,7 +19,7 @@ const abiCoder = new hre.ethers.utils.AbiCoder();
 // Account Owner support 2 token
 // Account A swap
 
-describe("Test Pancakeswap", async function () {
+describe("Test Staking Stake", async function () {
   let ownerAcc;
   let accA;
   let proxy;
@@ -49,12 +49,7 @@ describe("Test Pancakeswap", async function () {
     );
 
     travaStakeTokenAddress = process.env.TRAVA_TOKEN_IN_STAKING;
-    // Mint cho Owner 1000 token A
-    // const tokenAInstance = await ethers.getContractFactory('ERC20Mock');
-    // const tokenA = await tokenAInstance.deploy("Token A", "TKA");
-    // await tokenA.deployed();
-    // console.log("Address ERC20Mock token A::", tokenA.address);
-    // console.log("Balance of Owner::", await tokenA.balanceOf(ownerAcc.address));
+
     tokenA = (await hre.ethers.getContractFactory("ERC20Mock")).attach(
       process.env.TOKEN_CC2
     );
