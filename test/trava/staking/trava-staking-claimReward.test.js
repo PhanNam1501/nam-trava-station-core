@@ -19,7 +19,7 @@ const abiCoder = new hre.ethers.utils.AbiCoder();
 // Account Owner support 2 token
 // Account A swap
 
-describe("Test Staking Stake", async function () {
+describe("Test Staking Claim Reward", async function () {
   let ownerAcc;
   let accA;
   let proxy;
@@ -199,7 +199,7 @@ describe("Test Staking Stake", async function () {
     // );
   });
 
-  it("Test staking trava", async () => {
+  it("Test claim staking reward trava", async () => {
     // transfer 50 token A to proxy
     // const trava = (await hre.ethers.getContractFactory("ERC20Mock")).attach(
     //   process.env.TRAVA_TOKEN_IN_STAKING
@@ -221,28 +221,26 @@ describe("Test Staking Stake", async function () {
       stakedTokenAddress
     );
 
-    // console.log("owner", ownerAcc.address);
-
-    await stakeTokenContract.approve(
-      proxy.address,
-      ethers.utils.parseEther("10")
-    );
+    // await stakeTokenContract.approve(
+    //   proxy.address,
+    //   ethers.utils.parseEther("10")
+    // );
 
     const stakingAction = new Action(
-      "TravaStakingStake",
-      process.env.TRAVA_STAKING_STAKE_ADDRESS,
+      "TravaStakingClaimRewards",
+      process.env.TRAVA_STAKING_CLAIM_REWARDS_ADDRESS,
       ["address", "address", "uint256"],
       [
         process.env.TRAVA_STAKING_POOL,
         proxy.address,
-        ethers.utils.parseEther("10"),
+        ethers.utils.parseEther("0.001"),
       ]
     );
 
     const calldataStaking = stakingAction.encodeForDsProxyCall()[1];
 
     const tx = await proxy.execute(
-      process.env.TRAVA_STAKING_STAKE_ADDRESS,
+      process.env.TRAVA_STAKING_CLAIM_REWARDS_ADDRESS,
       calldataStaking,
       {
         gasLimit: 2e7,
