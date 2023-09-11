@@ -4,7 +4,7 @@ pragma solidity 0.8.4;
 import "../../../../interfaces/trava/market/ILendingPool.sol";
 import "../../../../interfaces/trava/market/ITravaIncentivesController.sol";
 import "../../../../interfaces/trava/market/IFactoryRegistry.sol";
-import "../../../../interfaces/trava/market/IStakedToken.sol";
+import "../../../../interfaces/trava/staking/IStakedToken.sol";
 import "./MainnetTravaAddresses.sol";
 
 /// @title Utility functions and data used in trava actions

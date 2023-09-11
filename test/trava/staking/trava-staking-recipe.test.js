@@ -205,146 +205,172 @@ describe("Test Pancakeswap", async function () {
   });
 
   it("Test staking trava", async () => {
-    // // transfer 50 token A to proxy
+    // transfer 50 token A to proxy
     // const trava = (await hre.ethers.getContractFactory("ERC20Mock")).attach(
     //   process.env.TRAVA_TOKEN_IN_STAKING
     // );
-    // const stakingAction = new Action(
-    //   "TravaStaking",
-    //   process.env.TRAVA_STAKING_STAKE_ADDRESS,
-    //   ["address", "address", "uint256"],
-    //   [travaStakeTokenAddress, proxy.address, ethers.utils.parseEther("10")]
-    // );
-    // const calldataStaking = stakingAction.encodeForDsProxyCall()[1];
-    // await trava.approve(proxy.address, ethers.utils.parseEther("50"));
-    // // await trava.transfer(proxy.address, ethers.utils.parseEther("50"));
-    // const tx = await proxy.execute(
-    //   process.env.TRAVA_STAKING_STAKE_ADDRESS,
-    //   calldataStaking,
-    //   {
-    //     gasLimit: 1e7,
-    //   }
-    // );
-    // console.log("tx::", tx);
-  });
 
-  it("Test swap to staking trava", async () => {
-    let triggerCallData = [];
-    let actionsCallData = [];
-    let subData = [];
-    let actionIds = [];
-    const tokenIn = tokenA.address;
-    const tokenOut = trava.address;
-    const recipient = proxyA.address;
-    const amountIn = ethers.utils.parseEther("10");
-    const amountOutMinimum = 0;
-    const from = accA.address;
-    const fee = 2500;
-    const sqrtPriceLimitX96 = 0;
-    const swapAction = new Action(
-      "PancakeSwapV3",
-      process.env.PANCAKE_SWAP_V3_ADDRESS,
-      [
-        "address",
-        "address",
-        "uint24",
-        "address",
-        "uint256",
-        "uint256",
-        "uint160",
-        "address",
-      ],
-      [
-        tokenIn,
-        tokenOut,
-        fee,
-        recipient,
-        amountIn,
-        amountOutMinimum,
-        sqrtPriceLimitX96,
-        from,
-      ]
+    // get staked contract
+    const stakedTokenContract = await ethers.getContractAt(
+      "IStakedToken",
+      process.env.TRAVA_STAKING_POOL
     );
+    const stakedTokenAddress = await stakedTokenContract.STAKED_TOKEN();
+    console.log("staked token address :", stakedTokenAddress);
+
+    const rewardTokenAddress = await stakedTokenContract.REWARD_TOKEN();
+    console.log("reward token address :", stakedTokenAddress);
+
+    const stakeTokenContract = await ethers.getContractAt(
+      "ERC20Mock",
+      stakedTokenAddress
+    );
+
+    await stakeTokenContract.approve(
+      proxy.address,
+      ethers.utils.parseEther("10")
+    );
+
     const stakingAction = new Action(
-      "TravaStaking",
+      "TravaStakingStake",
       process.env.TRAVA_STAKING_STAKE_ADDRESS,
       ["address", "address", "uint256"],
-      [travaStakeTokenAddress, proxy.address, ethers.utils.parseEther("5")]
-    );
-    const callDataSwap = swapAction.encodeForRecipe()[0];
-    const callDataStaking = stakingAction.encodeForRecipe()[0];
-    actionsCallData.push(callDataSwap);
-    actionsCallData.push(callDataStaking);
-    const paramMapping = [
-      [128, 129, 130, 131, 132, 133, 134, 135],
-      [136, 137, 138],
-    ];
-    const subdataSwapTokenIn = abiCoder.encode(["address"], [tokenIn]);
-    const subdataSwapTokenOut = abiCoder.encode(["address"], [tokenOut]);
-    const subdataSwapAmountIn = abiCoder.encode(["uint256"], [amountIn]);
-    const subdataSwapAmountOutMinimum = abiCoder.encode(["uint256"], [0]);
-    const subdataSwapFrom = abiCoder.encode(["address"], [from]);
-    const subdataSwapFee = abiCoder.encode(["uint24"], [fee]);
-    const subdataSwapRecipient = abiCoder.encode(["address"], [recipient]);
-    const subdataSwapSqrtPriceLimitX96 = abiCoder.encode(
-      ["uint160"],
-      [sqrtPriceLimitX96]
-    );
-    const subdataStakeTokenAddress = abiCoder.encode(
-      ["address"],
-      [travaStakeTokenAddress]
-    );
-    const subdataStakeOnBehalfOf = abiCoder.encode(
-      ["address"],
-      [proxy.address]
-    );
-    const subdataStakeAmount = abiCoder.encode(
-      ["uint256"],
-      [ethers.utils.parseEther("5")]
-    );
-    actionIds = [
-      keccak256("PancakeSwapV3").substr(0, 10),
-      keccak256("TravaStakingStake").substr(0, 10),
-    ];
-    subData = [
-      subdataSwapTokenIn,
-      subdataSwapTokenOut,
-      subdataSwapFee,
-      subdataSwapRecipient,
-      subdataSwapAmountIn,
-      subdataSwapAmountOutMinimum,
-      subdataSwapSqrtPriceLimitX96,
-      subdataSwapFrom,
-      subdataStakeTokenAddress,
-      subdataStakeOnBehalfOf,
-      subdataStakeAmount,
-    ];
-    const RecipeExecutorContract = await hre.ethers.getContractAt(
-      "RecipeExecutor",
-      process.env.RECIPE_EXECUTOR_ADDRESS
-    );
-    const calldata = RecipeExecutorContract.interface.encodeFunctionData(
-      "executeRecipe",
       [
-        {
-          name: "TravaSwapBuyNftRecipe",
-          callData: actionsCallData,
-          subData: subData,
-          actionIds: actionIds,
-          paramMapping: paramMapping,
-        },
+        process.env.TRAVA_STAKING_POOL,
+        proxy.address,
+        ethers.utils.parseEther("10"),
       ]
     );
-    // console.log("calldata::", calldata);
+
+    const calldataStaking = stakingAction.encodeForDsProxyCall()[1];
+
     const tx = await proxy.execute(
-      process.env.RECIPE_EXECUTOR_ADDRESS,
-      calldata,
+      process.env.TRAVA_STAKING_STAKE_ADDRESS,
+      calldataStaking,
       {
         gasLimit: 2e7,
       }
     );
-    await tx.wait();
     console.log("tx::", tx);
-    // check amount of token A of proxyA
   });
+
+  // it("Test swap to staking trava", async () => {
+  //   let triggerCallData = [];
+  //   let actionsCallData = [];
+  //   let subData = [];
+  //   let actionIds = [];
+  //   const tokenIn = tokenA.address;
+  //   const tokenOut = trava.address;
+  //   const recipient = proxyA.address;
+  //   const amountIn = ethers.utils.parseEther("10");
+  //   const amountOutMinimum = 0;
+  //   const from = accA.address;
+  //   const fee = 2500;
+  //   const sqrtPriceLimitX96 = 0;
+  //   const swapAction = new Action(
+  //     "PancakeSwapV3",
+  //     process.env.PANCAKE_SWAP_V3_ADDRESS,
+  //     [
+  //       "address",
+  //       "address",
+  //       "uint24",
+  //       "address",
+  //       "uint256",
+  //       "uint256",
+  //       "uint160",
+  //       "address",
+  //     ],
+  //     [
+  //       tokenIn,
+  //       tokenOut,
+  //       fee,
+  //       recipient,
+  //       amountIn,
+  //       amountOutMinimum,
+  //       sqrtPriceLimitX96,
+  //       from,
+  //     ]
+  //   );
+  //   const stakingAction = new Action(
+  //     "TravaStaking",
+  //     process.env.TRAVA_STAKING_STAKE_ADDRESS,
+  //     ["address", "address", "uint256"],
+  //     [travaStakeTokenAddress, proxy.address, ethers.utils.parseEther("5")]
+  //   );
+  //   const callDataSwap = swapAction.encodeForRecipe()[0];
+  //   const callDataStaking = stakingAction.encodeForRecipe()[0];
+  //   actionsCallData.push(callDataSwap);
+  //   actionsCallData.push(callDataStaking);
+  //   const paramMapping = [
+  //     [128, 129, 130, 131, 132, 133, 134, 135],
+  //     [136, 137, 138],
+  //   ];
+  //   const subdataSwapTokenIn = abiCoder.encode(["address"], [tokenIn]);
+  //   const subdataSwapTokenOut = abiCoder.encode(["address"], [tokenOut]);
+  //   const subdataSwapAmountIn = abiCoder.encode(["uint256"], [amountIn]);
+  //   const subdataSwapAmountOutMinimum = abiCoder.encode(["uint256"], [0]);
+  //   const subdataSwapFrom = abiCoder.encode(["address"], [from]);
+  //   const subdataSwapFee = abiCoder.encode(["uint24"], [fee]);
+  //   const subdataSwapRecipient = abiCoder.encode(["address"], [recipient]);
+  //   const subdataSwapSqrtPriceLimitX96 = abiCoder.encode(
+  //     ["uint160"],
+  //     [sqrtPriceLimitX96]
+  //   );
+  //   const subdataStakeTokenAddress = abiCoder.encode(
+  //     ["address"],
+  //     [travaStakeTokenAddress]
+  //   );
+  //   const subdataStakeOnBehalfOf = abiCoder.encode(
+  //     ["address"],
+  //     [proxy.address]
+  //   );
+  //   const subdataStakeAmount = abiCoder.encode(
+  //     ["uint256"],
+  //     [ethers.utils.parseEther("5")]
+  //   );
+  //   actionIds = [
+  //     keccak256("PancakeSwapV3").substr(0, 10),
+  //     keccak256("TravaStakingStake").substr(0, 10),
+  //   ];
+  //   subData = [
+  //     subdataSwapTokenIn,
+  //     subdataSwapTokenOut,
+  //     subdataSwapFee,
+  //     subdataSwapRecipient,
+  //     subdataSwapAmountIn,
+  //     subdataSwapAmountOutMinimum,
+  //     subdataSwapSqrtPriceLimitX96,
+  //     subdataSwapFrom,
+  //     subdataStakeTokenAddress,
+  //     subdataStakeOnBehalfOf,
+  //     subdataStakeAmount,
+  //   ];
+  //   const RecipeExecutorContract = await hre.ethers.getContractAt(
+  //     "RecipeExecutor",
+  //     process.env.RECIPE_EXECUTOR_ADDRESS
+  //   );
+  //   const calldata = RecipeExecutorContract.interface.encodeFunctionData(
+  //     "executeRecipe",
+  //     [
+  //       {
+  //         name: "TravaSwapBuyNftRecipe",
+  //         callData: actionsCallData,
+  //         subData: subData,
+  //         actionIds: actionIds,
+  //         paramMapping: paramMapping,
+  //       },
+  //     ]
+  //   );
+  //   // console.log("calldata::", calldata);
+  //   const tx = await proxy.execute(
+  //     process.env.RECIPE_EXECUTOR_ADDRESS,
+  //     calldata,
+  //     {
+  //       gasLimit: 2e7,
+  //     }
+  //   );
+  //   await tx.wait();
+  //   console.log("tx::", tx);
+  //   // check amount of token A of proxyA
+  // });
 });
