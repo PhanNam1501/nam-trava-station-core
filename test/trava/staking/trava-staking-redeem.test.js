@@ -19,7 +19,7 @@ const abiCoder = new hre.ethers.utils.AbiCoder();
 // Account Owner support 2 token
 // Account A swap
 
-describe("Test Pancakeswap", async function () {
+describe("Test Staking Redeem", async function () {
   let ownerAcc;
   let accA;
   let proxy;
@@ -204,36 +204,19 @@ describe("Test Pancakeswap", async function () {
     // );
   });
 
-  it("Test staking trava", async () => {
-    // transfer 50 token A to proxy
-    // const trava = (await hre.ethers.getContractFactory("ERC20Mock")).attach(
-    //   process.env.TRAVA_TOKEN_IN_STAKING
-    // );
-
+  it("Test redeem staked trava", async () => {
     // get staked contract
     const stakedTokenContract = await ethers.getContractAt(
       "IStakedToken",
       process.env.TRAVA_STAKING_POOL
     );
     const stakedTokenAddress = await stakedTokenContract.STAKED_TOKEN();
-    console.log("staked token address :", stakedTokenAddress);
 
     const rewardTokenAddress = await stakedTokenContract.REWARD_TOKEN();
-    console.log("reward token address :", stakedTokenAddress);
 
-    const stakeTokenContract = await ethers.getContractAt(
-      "ERC20Mock",
-      stakedTokenAddress
-    );
-
-    await stakeTokenContract.approve(
-      proxy.address,
-      ethers.utils.parseEther("10")
-    );
-
-    const stakingAction = new Action(
-      "TravaStakingStake",
-      process.env.TRAVA_STAKING_STAKE_ADDRESS,
+    const stakingRedeemAction = new Action(
+      "TravaStakingRedeem",
+      process.env.TRAVA_STAKING_REDEEM_ADDRESS,
       ["address", "address", "uint256"],
       [
         process.env.TRAVA_STAKING_POOL,
@@ -242,11 +225,11 @@ describe("Test Pancakeswap", async function () {
       ]
     );
 
-    const calldataStaking = stakingAction.encodeForDsProxyCall()[1];
+    const calldataStakingRedeem = stakingRedeemAction.encodeForDsProxyCall()[1];
 
     const tx = await proxy.execute(
-      process.env.TRAVA_STAKING_STAKE_ADDRESS,
-      calldataStaking,
+      process.env.TRAVA_STAKING_REDEEM_ADDRESS,
+      calldataStakingRedeem,
       {
         gasLimit: 2e7,
       }
