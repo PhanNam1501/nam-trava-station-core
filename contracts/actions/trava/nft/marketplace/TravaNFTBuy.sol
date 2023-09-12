@@ -109,6 +109,9 @@ contract TravaNFTBuy is ActionBase, TravaNFTHelper {
 
         travaToken.pullTokensIfNeeded(_from, _price);
 
+        // approve trava to buy nft
+        travaToken.approveToken(address(marketPlace), _price);
+
         marketPlace.makeOrder(_tokenId, _price);
 
         if (_to != address(this)) {

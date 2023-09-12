@@ -129,17 +129,17 @@ async function main() {
   );
   writeToEnvFile("TRAVA_NFT_BUY_ADDRESS", travaNFTBuy.address);
 
-  const travaNFTCreateSale = await redeploy(
-    "TravaNFTCreateSale",
-    process.env.DFS_REGISTRY_ADDRESS
-  );
-  writeToEnvFile("TRAVA_NFT_CREATE_SALE_ADDRESS", travaNFTCreateSale.address);
+  // const travaNFTCreateSale = await redeploy(
+  //   "TravaNFTCreateSale",
+  //   process.env.DFS_REGISTRY_ADDRESS
+  // );
+  // writeToEnvFile("TRAVA_NFT_CREATE_SALE_ADDRESS", travaNFTCreateSale.address);
 
-  const travaNFTCancelSale = await redeploy(
-    "TravaNFTCancelSale",
-    process.env.DFS_REGISTRY_ADDRESS
-  );
-  writeToEnvFile("TRAVA_NFT_CANCLE_SALE_ADDRESS", travaNFTCancelSale.address);
+  // const travaNFTCancelSale = await redeploy(
+  //   "TravaNFTCancelSale",
+  //   process.env.DFS_REGISTRY_ADDRESS
+  // );
+  // writeToEnvFile("TRAVA_NFT_CANCLE_SALE_ADDRESS", travaNFTCancelSale.address);
 
 
   //        ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
