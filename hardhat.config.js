@@ -141,6 +141,10 @@ module.exports = {
   defaultNetwork: "bscTestnet",
   networks: {
     hardhat: {
+      forking: {
+        url: "https://data-seed-prebsc-1-s1.bnbchain.org:8545",
+        blockNumber: 14390000
+      },
       allowUnlimitedContractSize: true,
       // forking: {
       //   url: "https://hardcore-mayer:untrue-puppet-yearly-early-widow-spud@nd-723-346-173.p2pify.com",
@@ -178,7 +182,6 @@ module.exports = {
       accounts: [
         `0x${PRIVATE_KEY}`,
         `0x${PRIVATE_KEY2}`,
-        "50288b9df245087d6daa359f7924b5270900985bf131864539ad34c84719cf4a",
       ],
     },
     goerli: {

@@ -2,17 +2,17 @@ const hre = require("hardhat");
 const abiCoder = new hre.ethers.utils.AbiCoder();
 require("dotenv").config();
 
-const { Action } = require("../teststrategy/Action");
+const { Action } = require("../../teststrategy/Action");
 const { expect } = require("chai");
-const { getProxy } = require("../utils");
+const { getProxy } = require("../../utils");
 
 describe("Trava-Borrow", function () {
   this.timeout(150000);
 
   it("Test trava borrow", async () => {
-    const market = "0x6df52f798740504c24ccd374cf7ce81b28ce8330";
-    const tokenAddress = process.env.WBNB_BSCTESTNET;
-    const amount = 1e6;
+    const market = "0x50794d89dbdb2d3aba83820bc3557ff076ca481b";
+    const tokenAddress = process.env.TRAVA_TOKEN_IN_MARKET;
+    const amount = 1e1;
     const to = process.env.PUBLIC_KEY;
     const proxy = await getProxy(process.env.PUBLIC_KEY);
     const onBehalf = proxy.address;

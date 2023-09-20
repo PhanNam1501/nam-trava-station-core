@@ -10,7 +10,6 @@ const { changeConstantInFiles } = require("../utils/utils");
 const { redeploy } = require("../../test/utils");
 const { owner } = require("../sdk/rdOwner");
 const { writeToEnvFile } = require("../utils/helper");
-
 // const { topUp } = require('../utils/fork');
 
 async function main() {
@@ -29,6 +28,14 @@ async function main() {
   //         ||                              Utils Contract                                   ||
   //         ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
   //     */
+
+  await changeConstantInFiles(
+    './contracts',
+    ['TokenUtils'],
+    'WBNB_ADDR',
+    process.env.WBNB_BSCTESTNET,
+  );
+  run('compile');
   //     const wrapBnb = await redeploy('WrapBnb', process.env.DFS_REGISTRY_ADDRESS);
   //     writeToEnvFile("WRAP_BNB_ADDRESS", wrapBnb.address)
 
@@ -51,6 +58,22 @@ async function main() {
   //        ||                               Trava Market Contract                                   ||
   //        ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
   //    */
+  await changeConstantInFiles(
+    './contracts',
+    ['MainnetTravaAddresses'],
+    'STAKED_TRAVA_TOKEN_ADDRESS',
+    process.env.STAKED_TRAVA_TOKEN_ADDRESS,
+  );
+  run('compile');
+
+  await changeConstantInFiles(
+    './contracts',
+    ['MainnetTravaAddresses'],
+    'INCENTIVES_ADDRESS',
+    process.env.INCENTIVES_ADDRESS,
+  );
+  run('compile');
+
   // const travaBorrow = await redeploy(
   //   "TravaBorrow",
   //   process.env.DFS_REGISTRY_ADDRESS
@@ -80,6 +103,14 @@ async function main() {
   //        ||                               Trava Governance Contract                                   ||
   //        ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
   //    */
+  await changeConstantInFiles(
+    './contracts',
+    ['MainnetTravaGovernanceAddresses'],
+    'VE_TRAVA',
+    process.env.VE_TRAVA,
+  );
+  run('compile');
+
   // const travaGovernanceCreateLock = await redeploy(
   //   "TravaGovernanceCreateLock",
   //   process.env.DFS_REGISTRY_ADDRESS
@@ -90,6 +121,7 @@ async function main() {
   //        ||                               Trava Staking Contract                                   ||
   //        ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
   // //    */
+
   // const travaStakingStake = await redeploy(
   //   "TravaStakingStake",
   //   process.env.DFS_REGISTRY_ADDRESS
@@ -112,6 +144,30 @@ async function main() {
   //        ||                               Trava NFT Contract                                   ||
   //        ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
   //    */
+  await changeConstantInFiles(
+    './contracts',
+    ['MainnetTravaNFTAddresses'],
+    'TRAVA_TOKEN',
+    process.env.TRAVA_TOKEN_IN_MARKET,
+  );
+  run('compile');
+
+  await changeConstantInFiles(
+    './contracts',
+    ['MainnetTravaNFTAddresses'],
+    'NFT_CORE',
+    process.env.NFT_CORE,
+  );
+  run('compile');
+
+  await changeConstantInFiles(
+    './contracts',
+    ['MainnetTravaNFTAddresses'],
+    'NFT_MARKETPLACE',
+    process.env.TRAVA_NFT_MARKETPLACE,
+  );
+  run('compile');
+
   // const travaNFTTransfer = await redeploy(
   //   "TravaNFTTransfer",
   //   process.env.DFS_REGISTRY_ADDRESS
@@ -123,11 +179,11 @@ async function main() {
   //        ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
   //    */
 
-  const travaNFTBuy = await redeploy(
-    "TravaNFTBuy",
-    process.env.DFS_REGISTRY_ADDRESS
-  );
-  writeToEnvFile("TRAVA_NFT_BUY_ADDRESS", travaNFTBuy.address);
+  // const travaNFTBuy = await redeploy(
+  //   "TravaNFTBuy",
+  //   process.env.DFS_REGISTRY_ADDRESS
+  // );
+  // writeToEnvFile("TRAVA_NFT_BUY_ADDRESS", travaNFTBuy.address);
 
   // const travaNFTCreateSale = await redeploy(
   //   "TravaNFTCreateSale",
@@ -202,6 +258,14 @@ async function main() {
        ||                               PancakeV2 Contract                               ||
        ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
    */
+  await changeConstantInFiles(
+    './contracts',
+    ['MainnetPancakeV2Addresses'],
+    'PANCAKE_ROUTER',
+    process.env.PANCAKE_ROUTER_ADDRESS,
+  );
+  run('compile');
+
   // const pancakeAddLiquidityV2 = await redeploy(
   //   "PancakeAddLiquidityV2",
   //   process.env.DFS_REGISTRY_ADDRESS
@@ -231,6 +295,21 @@ async function main() {
        ||                               PancakeV3 Contract                               ||
        ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
    */
+  await changeConstantInFiles(
+    './contracts',
+    ['MainnetPancakeV3Addresses'],
+    'SMART_ROUTER',
+    process.env.SMART_ROUTER_ADDRESS,
+  );
+  run('compile');
+
+  await changeConstantInFiles(
+    './contracts',
+    ['MainnetPancakeV3Addresses'],
+    'NON_FUNGIBLE_POSITION_MANAGER',
+    process.env.NON_FUNGIBLE_POSITION_MANAGER_ADDRESS,
+  );
+  run('compile');
 
   // const pancakeCreatePoolV3 = await redeploy('PancakeCreatePoolV3', process.env.DFS_REGISTRY_ADDRESS);
   // writeToEnvFile("PANCAKE_CREATE_POOL_V3_ADDRESS", pancakeCreatePoolV3.address)
