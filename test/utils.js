@@ -523,9 +523,9 @@ const redeploy = async (name, regAddr = addrs[getNetwork()].REGISTRY_ADDR, saveO
     console.log(name, id);
 
     if (!(await registry.isRegistered(id))) {
-        await registry.addNewContract(id, c.address, 0, { gasLimit: 2000000 });
+        await (await registry.addNewContract(id, c.address, 0)).wait();
     } else {
-        await registry.startContractChange(id, c.address, { gasLimit: 2000000 });
+        await (await registry.startContractChange(id, c.address)).wait();
 
         const entryData = await registry.entries(id);
 
@@ -533,13 +533,14 @@ const redeploy = async (name, regAddr = addrs[getNetwork()].REGISTRY_ADDR, saveO
             await timeTravel(parseInt(entryData.waitPeriod, 10) + 10);
         }
 
-        await registry.approveContractChange(id, { gasLimit: 2000000 });
+        await (await registry.approveContractChange(id)).wait();
     }
 
     // for strategy deployment set open to public for easier testing
     if (name === 'StrategyStorage' || name === 'BundleStorage') {
         const storageContract = c.connect(signer);
-        await storageContract.changeEditPermission(true);
+        let txtx = await storageContract.changeEditPermission(true);
+        await txtx.wait();
     }
 
     // if (hre.network.config.type !== 'tenderly') {

@@ -3,7 +3,7 @@
 pragma solidity ^0.8.4;
 
 contract MainnetTravaNFTAddresses {
-    address internal constant NFT_MARKETPLACE = 0x6C5844D1681C346c0f95669B1efe394ef12F1B93;
-    address internal constant NFT_CORE = 0xd2Eca5a421db7c2e2aC88Da684214B52915A66b3;
-    address internal constant TRAVA_TOKEN = 0xE1F005623934D3D8C724EC68Cc9bFD95498D4435; 
+    address internal constant NFT_MARKETPLACE = 0x39728bB898f6e44D0c0EC9d7934976e5ceA4DcAf;
+    address internal constant NFT_CORE = 0xAcBfD38C52Ae0344D47A7335D072DE5e3BC49f91;
+    address internal constant TRAVA_TOKEN = 0x0391bE54E72F7e001f6BBc331777710b4f2999Ef;
 }

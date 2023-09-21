@@ -28,9 +28,6 @@ require("dotenv").config();
  */
 const GOERLI = "https://goerli.infura.io/v3/ba63b223746842d89619ef053b179319";
 const PRIVATE_KEY = process.env.PRIVATE_KEY;
-const PRIVATE_KEY2 = process.env.PRIVATE_KEY2;
-const PRIVATE_KEY3 = process.env.PRIVATE_KEY3;
-const BOT_KEY = process.env.BOT_KEY;
 
 module.exports = {
   saveOnTenderly: false,
@@ -176,12 +173,21 @@ module.exports = {
     bscTestnet: {
       url: "https://data-seed-prebsc-1-s1.bnbchain.org:8545",
       chainId: 97,
-      gasPrice: 20e9,
-      gas: 2e7,
+      // gasPrice: 20e9,
+      // gas: 2e7,
       // gas: 1e7,
       accounts: [
         `0x${PRIVATE_KEY}`,
-        `0x${PRIVATE_KEY2}`,
+      ],
+    },
+    mainnet: {
+      url: "https://bsc.publicnode.com",
+      chainId: 56,
+      gasPrice: 5e9,
+      // gas: 2e7,
+      // gas: 1e7,
+      accounts: [
+        `0x${PRIVATE_KEY}`,
       ],
     },
     goerli: {

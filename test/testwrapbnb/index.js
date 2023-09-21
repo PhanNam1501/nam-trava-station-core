@@ -48,8 +48,8 @@ describe("TestWrapBNB", async function() {
     }
     
     // Đã tạo XStrategy vào id = 0 nên k cần tạo lại nữa
-    // strategyId = await createStrategy(...strategyData, true);
-    // console.log(strategyId);
+    strategyId = await createStrategy(...strategyData, true);
+    console.log(strategyId);
     const storageAddr = await getAddrFromRegistry('StrategyStorage');
     const storage = await hre.ethers.getContractAt('StrategyStorage', storageAddr);
     const strategyCheck = await storage.getStrategy(strategyId);

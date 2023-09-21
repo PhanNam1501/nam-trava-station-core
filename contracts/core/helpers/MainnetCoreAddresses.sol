@@ -3,14 +3,11 @@
 pragma solidity 0.8.4;
 
 contract MainnetCoreAddresses {
-    // address internal constant REGISTRY_ADDR = 0x8640518CBcaf24c933f55f53de422729f28f8033;
-    // address internal constant PROXY_AUTH_ADDR = 0x5892a95b11cb50373A7B58AD0f6287FF7fE3B025;
-    // address internal constant DEFISAVER_LOGGER = 0x02e7A7044d18BB23C0d62767f2E7919F6C5391a8;
-    address internal constant REGISTRY_ADDR = 0x8640518CBcaf24c933f55f53de422729f28f8033;
-    address internal constant PROXY_AUTH_ADDR = 0x5892a95b11cb50373A7B58AD0f6287FF7fE3B025;
-    address internal constant DEFISAVER_LOGGER = 0x02e7A7044d18BB23C0d62767f2E7919F6C5391a8;
-    address internal constant SUB_STORAGE_ADDR = 0xDcd41A255415c96b532Bc52e85850770D64A936e;
-    address internal constant BUNDLE_STORAGE_ADDR = 0x2fCA045B9a49F74B1A86beA874541370A65C3627;
-    address internal constant STRATEGY_STORAGE_ADDR = 0xEBca6813637C24749F710183E15df74E13691AF4;
-    address constant internal RECIPE_EXECUTOR_ADDR = 0x0968a439f806b1412C10ff714cddD336C2ed4Ede;
+    address internal constant REGISTRY_ADDR = 0x147f157cB4E328e9C0DB68dBa5305FB7C29e7328;
+    address internal constant PROXY_AUTH_ADDR = 0x5FbFaC8D8d17eA78a3016109d2B3e820b640C0FE;
+    address internal constant DEFISAVER_LOGGER = 0x37CfAC15ede74F29Fe164C460974BD61cC799eff;
+    address internal constant SUB_STORAGE_ADDR = 0x172B348D5a413bF3197BA7bAee5d8336cFBC80a3;
+    address internal constant BUNDLE_STORAGE_ADDR = 0x0cee541918641D233bbA7198D04e6620Cf1f923E;
+    address internal constant STRATEGY_STORAGE_ADDR = 0x76109b0f1F38bFcD49579BC24E02cb72492f328B;
+    address constant internal RECIPE_EXECUTOR_ADDR = 0x8185f9a9ecE74Fe4dC665F5aF64F11E65bD0259a;
 }

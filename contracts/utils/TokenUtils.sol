@@ -7,9 +7,9 @@ import "./SafeBEP20.sol";
 
 library TokenUtils {
     using SafeBEP20 for IBEP20;
-    // address public constant WBNB_ADDR = 0x910CB19698Eac48a6AB7Ccc9542B756f2Bdd67C6;
+    // address public constant WBNB_ADDR = 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c;
     // address public constant BNB_ADDR = 0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE;
-    address public constant WBNB_ADDR = 0x910CB19698Eac48a6AB7Ccc9542B756f2Bdd67C6;
+    address public constant WBNB_ADDR = 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c;
     address public constant BNB_ADDR = 0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE;
 
     function approveToken(

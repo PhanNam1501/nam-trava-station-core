@@ -9,11 +9,12 @@ const { write } = require('./writer');
 const DEPLOYMENT_GAS_LIMIT = 1e7;
 
 const getGasPrice = async (exGasPrice) => {
-    let defaultGasPrice = 20e9;
+    let defaultGasPrice = 0;
     let newGasPrice = defaultGasPrice;
 
     if (exGasPrice.gt('0')) {
-        newGasPrice = exGasPrice.add(exGasPrice.div('8'));
+        defaultGasPrice = ethers.BigNumber.from(hre.network.config.gasPrice);
+        newGasPrice = defaultGasPrice.gt('0') ? defaultGasPrice : await hre.ethers.provider.getGasPrice();
     } else if (hre.network.name === 'mainnet') {
         defaultGasPrice = ethers.BigNumber.from(hre.network.config.gasPrice);
         newGasPrice = defaultGasPrice.gt('0') ? defaultGasPrice : await hre.ethers.provider.getGasPrice();
@@ -32,11 +33,15 @@ const deploy = async (contractName, signer, action, gasPrice, nonce, ...args) =>
 
         const Contract = await hre.ethers.getContractFactory(contractName, signer);
 
-        let options = { gasPrice, nonce, gasLimit: DEPLOYMENT_GAS_LIMIT };
-        console
-        if (nonce === -1) {
-            options = { gasPrice, gasLimit: DEPLOYMENT_GAS_LIMIT };
-        }
+        let options = { 
+            // gasPrice, 
+            // nonce, 
+            // gasLimit: DEPLOYMENT_GAS_LIMIT 
+        };
+        
+        // if (nonce === -1) {
+        //     options = { gasPrice, gasLimit: DEPLOYMENT_GAS_LIMIT };
+        // }
 
         let contract;
         if (args.length === 0) {
@@ -142,7 +147,7 @@ const deployContractAndReturnGasUsed = async (contractName, ...args) => {
         contractName,
         signers[0],
         'Deploying',
-        1000000000000,
+        5e9,
         nonce,
         ...args,
     );

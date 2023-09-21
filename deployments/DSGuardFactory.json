@@ -7,30 +7,6 @@
 					"internalType": "address",
 					"name": "",
 					"type": "address"
-				},
-				{
-					"internalType": "uint256",
-					"name": "",
-					"type": "uint256"
-				}
-			],
-			"name": "created",
-			"outputs": [
-				{
-					"internalType": "address",
-					"name": "",
-					"type": "address"
-				}
-			],
-			"stateMutability": "view",
-			"type": "function"
-		},
-		{
-			"inputs": [
-				{
-					"internalType": "address",
-					"name": "",
-					"type": "address"
 				}
 			],
 			"name": "isGuard",
@@ -59,6 +35,9 @@
 		}
 	],
 	"networks": {
-		"bscTestnet": {}
+		"mainnet": {
+			"address": "0xA86522Cbb0F8519DC34F93c0eFe1f09f1b8E7f21",
+			"args": []
+		}
 	}
 }

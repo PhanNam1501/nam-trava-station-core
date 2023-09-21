@@ -17,7 +17,7 @@ contract TestEncode {
         Recipe memory _currRecipe,
         uint256 _index,
         bytes32[] memory _returnValues
-    ) public view returns (bytes memory ) {
+    ) public pure returns (bytes memory ) {
 
           return  abi.encodeWithSignature(
                 "executeAction(bytes,bytes32[],uint8[],bytes32[])",

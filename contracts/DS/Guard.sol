@@ -79,14 +79,14 @@ contract DSGuardFactory {
     mapping (address => bool)  public  isGuard;
 
     // only for test . when deploy to mainnet, remove it
-    mapping (address=>address[]) public created;
+    // mapping (address=>address[]) public created;
 
     function newGuard() public returns (DSGuard guard) {
         guard = new DSGuard();
         guard.setOwner(msg.sender);
         isGuard[address(guard)] = true;
 
-        // only for test . when deploy to mainnet, remove it
-        created[msg.sender].push(address(guard));
+        // // only for test . when deploy to mainnet, remove it
+        // created[msg.sender].push(address(guard));
     }
 }

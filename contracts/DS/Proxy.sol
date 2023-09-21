@@ -104,8 +104,8 @@ contract DSProxyFactory {
     mapping(address => bool) public isProxy;
     DSProxyCache public cache;
 
-    // for testing . When real project must be removed
-    mapping(address => address[]) public listProxy;
+    // // for testing . When real project must be removed
+    // mapping(address => address[]) public listProxy;
 
     constructor() {
         cache = new DSProxyCache();
@@ -127,8 +127,8 @@ contract DSProxyFactory {
         DSProxy(proxy).setOwner(owner);
         isProxy[proxy] = true;
 
-        // for testing . When real project must be removed
-        listProxy[owner].push(address(proxy));
+        // // for testing . When real project must be removed
+        // listProxy[owner].push(address(proxy));
     }
 }
 

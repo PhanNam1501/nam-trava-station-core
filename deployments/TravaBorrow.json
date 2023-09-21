@@ -152,29 +152,6 @@
 		{
 			"inputs": [
 				{
-					"internalType": "address",
-					"name": "_lendingPool",
-					"type": "address"
-				},
-				{
-					"internalType": "address",
-					"name": "_tokenAddr",
-					"type": "address"
-				},
-				{
-					"internalType": "bool",
-					"name": "_useAsCollateral",
-					"type": "bool"
-				}
-			],
-			"name": "enableAsCollateral",
-			"outputs": [],
-			"stateMutability": "nonpayable",
-			"type": "function"
-		},
-		{
-			"inputs": [
-				{
 					"internalType": "bytes",
 					"name": "_callData",
 					"type": "bytes"
@@ -323,6 +300,9 @@
 		}
 	],
 	"networks": {
-		"bscTestnet": {}
+		"mainnet": {
+			"address": "0x968df742DbE144010Db52924a16b4f82203CaF66",
+			"args": []
+		}
 	}
 }
