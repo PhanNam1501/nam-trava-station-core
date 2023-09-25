@@ -99,8 +99,8 @@ async function main() {
   // const travaClaimRewards = await redeploy('TravaClaimRewards', process.env.DFS_REGISTRY_ADDRESS);
   // writeToEnvFile("TRAVA_CLAIMS_REWARDS_ADDRESS", travaClaimRewards.address)
 
-  // const travaConvertRewards = await redeploy('TravaConvertRewards', process.env.DFS_REGISTRY_ADDRESS);
-  // writeToEnvFile("TRAVA_CONVERT_REWARDS_ADDRESS", travaConvertRewards.address)
+  const travaConvertRewards = await redeploy('TravaConvertRewards', process.env.DFS_REGISTRY_ADDRESS);
+  writeToEnvFile("TRAVA_CONVERT_REWARDS_ADDRESS", travaConvertRewards.address)
   //        ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
   //        ||                               Trava Governance Contract                                   ||
   //        ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
@@ -193,11 +193,11 @@ async function main() {
   // );
   // writeToEnvFile("TRAVA_NFT_CREATE_SALE_ADDRESS", travaNFTCreateSale.address);
 
-  const travaNFTCancelSale = await redeploy(
-    "TravaNFTCancelSale",
-    process.env.DFS_REGISTRY_ADDRESS
-  );
-  writeToEnvFile("TRAVA_NFT_CANCLE_SALE_ADDRESS", travaNFTCancelSale.address);
+  // const travaNFTCancelSale = await redeploy(
+  //   "TravaNFTCancelSale",
+  //   process.env.DFS_REGISTRY_ADDRESS
+  // );
+  // writeToEnvFile("TRAVA_NFT_CANCLE_SALE_ADDRESS", travaNFTCancelSale.address);
 
 
   //        ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
