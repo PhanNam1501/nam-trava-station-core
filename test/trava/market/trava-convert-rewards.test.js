@@ -5,13 +5,13 @@ require("dotenv").config();
 const { Action } = require("../../teststrategy/Action");
 const { expect } = require("chai");
 const { getProxy } = require("../../utils");
-const { ApplicationState, updateTravaLPInfo, getListTDTokenRewardsAddress, MAX_UINT256 } = require("trava-simulation-route")
+const { ApplicationState, updateTravaLPInfo, getListTDTokenRewardsAddress, MAX_UINT256, updateUserTokenBalance, updateSmartWalletTokenBalance } = require("trava-simulation-route")
 const { actions, Recipe } = require("trava-station-sdk");
 const { Contract } = require("ethers");
 const { getContractFactory } = require("@nomiclabs/hardhat-ethers/types");
 const { toChecksumAddress } = require('ethereumjs-util');
 
-describe("Trava-ClaimRewards", function () {
+describe("Trava-convertRewards", function () {
     this.timeout(150000);
 
     const convertHexStringToAddress = (hexString) => {
@@ -20,7 +20,7 @@ describe("Trava-ClaimRewards", function () {
         return toChecksumAddress(`0x${strippedHex}`);
     };
 
-    it("Test trava ClaimRewards", async () => {
+    it("Test trava convertRewards", async () => {
         const userAddress = process.env.PUBLIC_KEY;
         const proxy = await getProxy(process.env.PUBLIC_KEY);
         const provider = hre.ethers.provider;
@@ -33,25 +33,26 @@ describe("Trava-ClaimRewards", function () {
             chainId
         );
 
-        let oldState = await updateTravaLPInfo(
-            appState
+        let oldState = await updateSmartWalletTokenBalance(
+            appState,
+            "0x170772a06affc0d375ce90ef59c8ec04c7ebf5d2"
         )
 
-        // let listToken = getListTDTokenRewardsAddress(oldState);
-        let listToken = [
-            convertHexStringToAddress("0x456f85BA534311867678128c1278Be2484Adfb3d"),
-            convertHexStringToAddress("0x77035788b48fa508548d7985263c9ad094defa8f")
-        ]
+        oldState = await updateSmartWalletTokenBalance(
+            appState,
+            "0x0391bE54E72F7e001f6BBc331777710b4f2999Ef"
+        )
 
-        let claimRewardsAction = new actions.trava.TravaClaimRewards(
-            listToken,
-            MAX_UINT256,
+        console.log("trava balance: ", oldState.smartWalletState.tokenBalances)
+        let convertRewardsAction = new actions.trava.TravaConvertRewards(
             proxy.address,
-            process.env.TRAVA_CLAIMS_REWARDS_ADDRESS
+            proxy.address,
+            MAX_UINT256,
+            process.env.TRAVA_CONVERT_REWARDS_ADDRESS
         )
-        console.log("e", claimRewardsAction.encodeForRecipe())
-        let recipe = new Recipe("claimRewards", chainId, [
-            claimRewardsAction
+        console.log("e", convertRewardsAction.encodeForRecipe())
+        let recipe = new Recipe("convertRewards", chainId, [
+            convertRewardsAction
         ]);
 
         let encodeData = recipe.encodeForDsProxyCall();
@@ -63,7 +64,7 @@ describe("Trava-ClaimRewards", function () {
         //   value: amount + amount,
         // });
 
-        console.log("prepare execute data completed!")
+        console.log("prepare execute data completed!", encodeData)
 
         // let proxyContract = await hre.ethers.getContractFactory("DSProxy");
         // const rd = proxyContract.attach(proxy.address);

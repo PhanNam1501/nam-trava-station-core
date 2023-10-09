@@ -1,17 +1,16 @@
 // SPDX-License-Identifier: MIT
-
 pragma solidity 0.8.4;
 
-import "../../ActionBase.sol";
-import "./helpers/TravaStakingHelper.sol";
+import "../../../../../utils/TokenUtils.sol";
+import "../../../../ActionBase.sol";
+import "./helpers/TravaNFTAuctionHelper.sol";
 
-/// @title Supply a token to an Trava market
-contract TravaStakingRedeem is ActionBase, TravaStakingHelper {
+contract TravaNFTAuctionCancelAuction is ActionBase, TravaNFTAuctionHelper {
+    using TokenUtils for address;
 
     struct Params {
-        address stakingPool;
+        uint256 tokenId;
         address to;
-        uint256 amount;
     }
 
     /// @inheritdoc ActionBase
@@ -22,9 +21,9 @@ contract TravaStakingRedeem is ActionBase, TravaStakingHelper {
         bytes32[] memory _returnValues
     ) public payable virtual override returns (bytes32) {
         Params memory params = parseInputs(_callData);
-        
-        params.stakingPool = _parseParamAddr(
-            params.stakingPool,
+
+        params.tokenId = _parseParamUint(
+            params.tokenId,
             _paramMapping[0],
             _subData,
             _returnValues
@@ -37,20 +36,12 @@ contract TravaStakingRedeem is ActionBase, TravaStakingHelper {
             _returnValues
         );
 
-        params.amount = _parseParamUint(
-            params.amount,
-            _paramMapping[2],
-            _subData,
-            _returnValues
+        (uint256 tokenId, bytes memory logData) = _cancelAuction(
+            params.tokenId,
+            params.to
         );
-
-        (uint256 stakeAmount, bytes memory logData) = _redeem(
-            params.stakingPool,
-            params.to,
-            params.amount
-        );
-        emit ActionEvent("TravaStakingRedeem", logData);
-        return bytes32(stakeAmount);
+        emit ActionEvent("TravaNFTAuctionCancelAuction", logData);
+        return bytes32(tokenId);
     }
 
     /// @inheritdoc ActionBase
@@ -58,12 +49,11 @@ contract TravaStakingRedeem is ActionBase, TravaStakingHelper {
         bytes memory _callData
     ) public payable override {
         Params memory params = parseInputs(_callData);
-        (, bytes memory logData) = _redeem(
-            params.stakingPool,
-            params.to,
-            params.amount
+        (, bytes memory logData) = _cancelAuction(
+            params.tokenId,
+            params.to
         );
-        logger.logActionDirectEvent("TravaStakingRedeem", logData);
+        logger.logActionDirectEvent("TravaNFTAuctionCancelAuction", logData);
     }
 
     /// @inheritdoc ActionBase
@@ -73,27 +63,20 @@ contract TravaStakingRedeem is ActionBase, TravaStakingHelper {
 
     //////////////////////////// ACTION LOGIC ////////////////////////////
 
-    function _redeem(
-        address _stakingPool,
-        address _to,
-        uint256 _amount
+    function _cancelAuction(
+        uint256 _tokenId,
+        address _to
     ) internal returns (uint256, bytes memory) {
 
-        if (_to == address(0)) {
-            _to = address(this);
-        }
-        
-        // deposit in behalf of the proxy
-        IStakedToken(_stakingPool).redeem(
-            _to,
-            _amount
-        );
+        // this part is not working . then need approve for sell contract
+        INFTAuctionWithProposal(NFT_AUCTION).cancelAuction(_tokenId);
 
-        bytes memory logData = abi.encode(
-            _to,
-            _amount
-        );
-        return (_amount, logData);
+        if(_to != address(this)) {
+            INFTCore(NFT_COLLECTION).transferFrom(address(this), _to, _tokenId);
+        }
+        bytes memory logData = abi.encode(_tokenId, _to);
+
+        return (_tokenId, logData);
     }
 
     function parseInputs(
@@ -101,5 +84,4 @@ contract TravaStakingRedeem is ActionBase, TravaStakingHelper {
     ) public pure returns (Params memory params) {
         params = abi.decode(_callData, (Params));
     }
-
 }

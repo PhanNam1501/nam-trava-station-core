@@ -1,16 +1,18 @@
 // SPDX-License-Identifier: MIT
+
 pragma solidity 0.8.4;
 
-import "../../../ActionBase.sol";
-import "../helpers/TravaNFTHelper.sol";
-import "../../../../utils/TokenUtils.sol";
+import "../../../utils/TokenUtils.sol";
+import "../../ActionBase.sol";
+import "./helpers/TravaStakingHelper.sol";
 
-contract TravaNFTBuy is ActionBase, TravaNFTHelper {
+/// @title Supply a token to an Trava market
+contract TravaStakingBaseClaimRewards is ActionBase, TravaStakingHelper {
     using TokenUtils for address;
 
     struct Params {
-        uint256 tokenId;
-        uint256 price;
+        address stakingPool;
+        address underlyingToken;
         address from;
         address to;
     }
@@ -23,16 +25,16 @@ contract TravaNFTBuy is ActionBase, TravaNFTHelper {
         bytes32[] memory _returnValues
     ) public payable virtual override returns (bytes32) {
         Params memory params = parseInputs(_callData);
-
-        params.tokenId = _parseParamUint(
-            params.tokenId,
+        
+        params.stakingPool = _parseParamAddr(
+            params.stakingPool,
             _paramMapping[0],
             _subData,
             _returnValues
         );
 
-        params.price = _parseParamUint(
-            params.price,
+        params.underlyingToken = _parseParamAddr(
+            params.underlyingToken,
             _paramMapping[1],
             _subData,
             _returnValues
@@ -44,6 +46,8 @@ contract TravaNFTBuy is ActionBase, TravaNFTHelper {
             _subData,
             _returnValues
         );
+
+
         params.to = _parseParamAddr(
             params.to,
             _paramMapping[3],
@@ -51,14 +55,14 @@ contract TravaNFTBuy is ActionBase, TravaNFTHelper {
             _returnValues
         );
 
-        (uint256 tokenId, bytes memory logData) = _makeOrder(
-            params.tokenId,
-            params.price,
+        (uint256 stakeAmount, bytes memory logData) = _claimReward(
+            params.stakingPool,
+            params.underlyingToken,
             params.from,
             params.to
         );
-        emit ActionEvent("TravaNFTBuy", logData);
-        return bytes32(tokenId);
+        emit ActionEvent("TravaStakingBaseClaimRewards", logData);
+        return bytes32(stakeAmount);
     }
 
     /// @inheritdoc ActionBase
@@ -66,13 +70,13 @@ contract TravaNFTBuy is ActionBase, TravaNFTHelper {
         bytes memory _callData
     ) public payable override {
         Params memory params = parseInputs(_callData);
-        (, bytes memory logData) = _makeOrder(
-            params.tokenId,
-            params.price,
+        (, bytes memory logData) = _claimReward(
+            params.stakingPool,
+            params.underlyingToken,
             params.from,
             params.to
         );
-        logger.logActionDirectEvent("TravaNFTBuy", logData);
+        logger.logActionDirectEvent("TravaStakingBaseClaimRewards", logData);
     }
 
     /// @inheritdoc ActionBase
@@ -82,44 +86,38 @@ contract TravaNFTBuy is ActionBase, TravaNFTHelper {
 
     //////////////////////////// ACTION LOGIC ////////////////////////////
 
-    function _makeOrder(
-        uint256 _tokenId,
-        uint256 _price,
+    function _claimReward(
+        address _stakingPool,
+        address _underlyingToken,
         address _from,
         address _to
     ) internal returns (uint256, bytes memory) {
+
+        // // default to onBehalf of proxy
         if (_from == address(0)) {
-            _from == address(this);
+            _from = address(this);
         }
 
-        IMarketplace marketPlace = IMarketplace(NFT_MARKETPLACE);
+        address _tokenAddr = IVesting(_stakingPool).REWARD_TOKEN();
 
-        require(
-            // marketPlace.getTokenOrder(_tokenId).nftSeller != _from &&
-                marketPlace.getTokenOrder(_tokenId).nftSeller != address(this),
-            "Seller or proxy's seller can't execute action to buy own NFT"
+        uint256 tokenBefore = _tokenAddr.getBalance(address(this));
+
+        // deposit in behalf of the proxy
+        IVesting(_stakingPool).claimRewards(
+            _underlyingToken,
+            _from
         );
 
-        require(
-            _price == marketPlace.getTokenOrder(_tokenId).price,
-            "Invalid price"
+        uint256 _amount = _tokenAddr.getBalance(address(this)) - tokenBefore;
+
+        _tokenAddr.withdrawTokens(_to, _amount);
+
+        bytes memory logData = abi.encode(
+            _underlyingToken,
+            _from,
+            _to
         );
-
-        address travaToken = TRAVA_TOKEN;
-
-        travaToken.pullTokensIfNeeded(_from, _price);
-
-        // approve trava to buy nft
-        travaToken.approveToken(address(marketPlace), _price);
-
-        marketPlace.makeOrder(_tokenId, _price);
-
-        if (_to != address(this)) {
-            INFTCore(NFT_CORE).transferFrom(address(this), _to, _tokenId);
-        }
-
-        bytes memory logData = abi.encode(_tokenId, _from);
-        return (_tokenId, logData);
+        return (_amount, logData);
     }
 
     function parseInputs(
@@ -127,4 +125,5 @@ contract TravaNFTBuy is ActionBase, TravaNFTHelper {
     ) public pure returns (Params memory params) {
         params = abi.decode(_callData, (Params));
     }
+
 }

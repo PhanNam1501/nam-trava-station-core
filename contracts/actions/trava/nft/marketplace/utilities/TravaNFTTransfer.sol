@@ -1,16 +1,15 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.4;
 
-import "../../../../utils/TokenUtils.sol";
-import "../../../ActionBase.sol";
-import "./helpers/TravaNFTAuctionHelper.sol";
+import "../../../../ActionBase.sol";
+import "../../helpers/TravaNFTHelper.sol";
 
-contract TravaNFTAuctionCancelAuction is ActionBase, TravaNFTAuctionHelper {
-    using TokenUtils for address;
-
+contract TravaNFTTransfer is ActionBase, TravaNFTHelper {
     struct Params {
-        uint256 tokenId;
+        address from;
         address to;
+        uint256 tokenId;
+        address nftCore;
     }
 
     /// @inheritdoc ActionBase
@@ -22,25 +21,39 @@ contract TravaNFTAuctionCancelAuction is ActionBase, TravaNFTAuctionHelper {
     ) public payable virtual override returns (bytes32) {
         Params memory params = parseInputs(_callData);
 
-        params.tokenId = _parseParamUint(
-            params.tokenId,
+        params.from = _parseParamAddr(
+            params.from,
             _paramMapping[0],
             _subData,
             _returnValues
         );
-
         params.to = _parseParamAddr(
             params.to,
             _paramMapping[1],
             _subData,
             _returnValues
         );
-
-        (uint256 tokenId, bytes memory logData) = _cancelAuction(
+        params.tokenId = _parseParamUint(
             params.tokenId,
-            params.to
+            _paramMapping[2],
+            _subData,
+            _returnValues
         );
-        emit ActionEvent("TravaNFTAuctionCancelAuction", logData);
+
+        params.nftCore = _parseParamAddr(
+            params.nftCore,
+            _paramMapping[3],
+            _subData,
+            _returnValues
+        );
+
+        (uint256 tokenId, bytes memory logData) = _transfer(
+            params.from,
+            params.to,
+            params.tokenId,
+            params.nftCore
+        );
+        emit ActionEvent("TravaNFTTransfer", logData);
         return bytes32(tokenId);
     }
 
@@ -49,11 +62,13 @@ contract TravaNFTAuctionCancelAuction is ActionBase, TravaNFTAuctionHelper {
         bytes memory _callData
     ) public payable override {
         Params memory params = parseInputs(_callData);
-        (, bytes memory logData) = _cancelAuction(
+        (, bytes memory logData) = _transfer(
+            params.from,
+            params.to,
             params.tokenId,
-            params.to
+            params.nftCore
         );
-        logger.logActionDirectEvent("TravaNFTAuctionCancelAuction", logData);
+        logger.logActionDirectEvent("TravaNFTTransfer", logData);
     }
 
     /// @inheritdoc ActionBase
@@ -63,19 +78,24 @@ contract TravaNFTAuctionCancelAuction is ActionBase, TravaNFTAuctionHelper {
 
     //////////////////////////// ACTION LOGIC ////////////////////////////
 
-    function _cancelAuction(
+    function _transfer(
+        address _from,
+        address _to,
         uint256 _tokenId,
-        address _to
+        address _nftCore
     ) internal returns (uint256, bytes memory) {
-
-        // this part is not working . then need approve for sell contract
-        INFTAuctionWithProposal(NFT_AUCTION).cancelAuction(_tokenId);
-
-        if(_to != address(this)) {
-            INFTCore(NFT_COLLECTION).transferFrom(address(this), _to, _tokenId);
+        if (_from == address(0)) {
+            _from == address(this);
         }
-        bytes memory logData = abi.encode(_tokenId, _to);
 
+        require(
+            INFTCore(_nftCore).ownerOf(_tokenId) == _from,
+            "Owner does not possess token"
+        );
+
+        INFTCore(_nftCore).transferFrom(_from, _to, _tokenId);
+
+        bytes memory logData = abi.encode(_from, _to, _tokenId);
         return (_tokenId, logData);
     }
 

@@ -1,13 +1,14 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.4;
 
-import "../../../ActionBase.sol";
-import "../helpers/TravaNFTHelper.sol";
+import "../../../../ActionBase.sol";
+import "../../helpers/TravaNFTHelper.sol";
 
-contract TravaNFTCancelSale is ActionBase, TravaNFTHelper {
+contract TravaNFTCreateSale is ActionBase, TravaNFTHelper {
     struct Params {
         uint256 tokenId;
-        address to;
+        uint256 price;
+        address from;
     }
 
     /// @inheritdoc ActionBase
@@ -25,18 +26,25 @@ contract TravaNFTCancelSale is ActionBase, TravaNFTHelper {
             _subData,
             _returnValues
         );
-        params.to = _parseParamAddr(
-            params.to,
+        params.price = _parseParamUint(
+            params.price,
             _paramMapping[1],
             _subData,
             _returnValues
         );
-
-        (uint256 tokenId, bytes memory logData) = _cancelSale(
-            params.tokenId,
-            params.to
+        params.from = _parseParamAddr(
+            params.from,
+            _paramMapping[2],
+            _subData,
+            _returnValues
         );
-        emit ActionEvent("TravaNFTCancelSale", logData);
+
+        (uint256 tokenId, bytes memory logData) = _createSale(
+            params.tokenId,
+            params.price,
+            params.from
+        );
+        emit ActionEvent("TravaNFTCreateSale", logData);
         return bytes32(tokenId);
     }
 
@@ -45,11 +53,12 @@ contract TravaNFTCancelSale is ActionBase, TravaNFTHelper {
         bytes memory _callData
     ) public payable override {
         Params memory params = parseInputs(_callData);
-        (, bytes memory logData) = _cancelSale(
+        (, bytes memory logData) = _createSale(
             params.tokenId,
-            params.to
+            params.price,
+            params.from
         );
-        logger.logActionDirectEvent("TravaNFTCancelSale", logData);
+        logger.logActionDirectEvent("TravaNFTCreateSale", logData);
     }
 
     /// @inheritdoc ActionBase
@@ -59,24 +68,28 @@ contract TravaNFTCancelSale is ActionBase, TravaNFTHelper {
 
     //////////////////////////// ACTION LOGIC ////////////////////////////
 
-    function _cancelSale(
+    function _createSale(
         uint256 _tokenId,
-        address _to
+        uint256 _price,
+        address _from
     ) internal returns (uint256, bytes memory) {
-
+        if(_from == address(0)) {
+            _from = address(this);
+        }
         require(
-            IMarketplace(NFT_MARKETPLACE).getTokenOrder(_tokenId).nftSeller == address(this),
-            "Smart wallet proxy does not possess token"
+            INFTCore(NFT_CORE).ownerOf(_tokenId) == _from,
+            "Owner does not possess token"
         );
 
-        // this part is not working . then need approve for sell contract
-        IMarketplace(NFT_MARKETPLACE).cancelSale(_tokenId);
-
-        if (_to != address(this)) {
-            INFTCore(NFT_CORE).transferFrom(address(this), _to, _tokenId);
+        if (_from != address(this)) {
+            INFTCore(NFT_CORE).transferFrom(_from, address(this), _tokenId);
         }
 
-        bytes memory logData = abi.encode(_tokenId, _to);
+        INFTCore(NFT_CORE).approve(NFT_MARKETPLACE, _tokenId);
+        // this part is not working . then need approve for sell contract
+        IMarketplace(NFT_MARKETPLACE).createSale(_tokenId, _price);
+
+        bytes memory logData = abi.encode(_tokenId, _price, _from);
         return (_tokenId, logData);
     }
 

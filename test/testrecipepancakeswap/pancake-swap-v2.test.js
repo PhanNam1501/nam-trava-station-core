@@ -11,7 +11,7 @@ const { Contract } = require("ethers");
 const { getContractFactory } = require("@nomiclabs/hardhat-ethers/types");
 const { toChecksumAddress } = require('ethereumjs-util');
 
-describe("Trava-ClaimRewards", function () {
+describe("Pancake-Swap-V2", function () {
     this.timeout(150000);
 
     const convertHexStringToAddress = (hexString) => {
@@ -20,7 +20,7 @@ describe("Trava-ClaimRewards", function () {
         return toChecksumAddress(`0x${strippedHex}`);
     };
 
-    it("Test trava ClaimRewards", async () => {
+    it("Test trava PancakeSwapV2", async () => {
         const userAddress = process.env.PUBLIC_KEY;
         const proxy = await getProxy(process.env.PUBLIC_KEY);
         const provider = hre.ethers.provider;
@@ -43,15 +43,15 @@ describe("Trava-ClaimRewards", function () {
             convertHexStringToAddress("0x77035788b48fa508548d7985263c9ad094defa8f")
         ]
 
-        let claimRewardsAction = new actions.trava.TravaClaimRewards(
+        let PancakeSwapV2Action = new actions.trava.TravaPancakeSwapV2(
             listToken,
             MAX_UINT256,
             proxy.address,
             process.env.TRAVA_CLAIMS_REWARDS_ADDRESS
         )
-        console.log("e", claimRewardsAction.encodeForRecipe())
-        let recipe = new Recipe("claimRewards", chainId, [
-            claimRewardsAction
+        console.log("e", PancakeSwapV2Action.encodeForRecipe())
+        let recipe = new Recipe("PancakeSwapV2", chainId, [
+            PancakeSwapV2Action
         ]);
 
         let encodeData = recipe.encodeForDsProxyCall();

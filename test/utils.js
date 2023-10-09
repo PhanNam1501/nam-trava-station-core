@@ -460,9 +460,10 @@ const getProxyWithSigner = async (signer, addr) => {
 };
 
 const getProxy = async (acc) => {
-    const proxyRegistry = await
-    hre.ethers.getContractAt('IProxyRegistry', addrs[network].PROXY_REGISTRY);
+    const proxyRegistry = await hre.ethers.getContractAt('IProxyRegistry', addrs[network].PROXY_REGISTRY);
+    console.log("proxyRegistry", acc)
     let proxyAddr = await proxyRegistry.proxies(acc);
+    console.log("proxyAddr", proxyAddr)
 
     if (proxyAddr === nullAddress) {
         await proxyRegistry.build(acc);

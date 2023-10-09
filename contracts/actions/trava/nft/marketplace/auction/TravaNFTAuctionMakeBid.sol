@@ -1,13 +1,17 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.4;
 
-import "../../../ActionBase.sol";
+import "../../../../../utils/TokenUtils.sol";
+import "../../../../ActionBase.sol";
 import "./helpers/TravaNFTAuctionHelper.sol";
 
-contract TravaNFTAuctionEditAuctionPrice is ActionBase, TravaNFTAuctionHelper {
+contract TravaNFTAuctionMakeBid is ActionBase, TravaNFTAuctionHelper {
+    using TokenUtils for address;
+
     struct Params {
         uint256 tokenId;
-        uint256 newPrice;
+        uint256 bidPrice;
+        address from;
     }
 
     /// @inheritdoc ActionBase
@@ -25,18 +29,26 @@ contract TravaNFTAuctionEditAuctionPrice is ActionBase, TravaNFTAuctionHelper {
             _subData,
             _returnValues
         );
-        params.newPrice = _parseParamUint(
-            params.newPrice,
+        params.bidPrice = _parseParamUint(
+            params.bidPrice,
             _paramMapping[1],
             _subData,
             _returnValues
         );
 
-        (uint256 tokenId, bytes memory logData) = _editAuctionPrice(
-            params.tokenId,
-            params.newPrice
+        params.from = _parseParamAddr(
+            params.from,
+            _paramMapping[2],
+            _subData,
+            _returnValues
         );
-        emit ActionEvent("TravaNFTAuctionEditAuctionPrice", logData);
+
+        (uint256 tokenId, bytes memory logData) = _makeBid(
+            params.tokenId,
+            params.bidPrice,
+            params.from
+        );
+        emit ActionEvent("TravaNFTAuctionMakeBid", logData);
         return bytes32(tokenId);
     }
 
@@ -45,11 +57,12 @@ contract TravaNFTAuctionEditAuctionPrice is ActionBase, TravaNFTAuctionHelper {
         bytes memory _callData
     ) public payable override {
         Params memory params = parseInputs(_callData);
-        (, bytes memory logData) = _editAuctionPrice(
+        (, bytes memory logData) = _makeBid(
             params.tokenId,
-            params.newPrice
+            params.bidPrice,
+            params.from
         );
-        logger.logActionDirectEvent("TravaNFTAuctionEditAuctionPrice", logData);
+        logger.logActionDirectEvent("TravaNFTAuctionMakeBid", logData);
     }
 
     /// @inheritdoc ActionBase
@@ -59,20 +72,27 @@ contract TravaNFTAuctionEditAuctionPrice is ActionBase, TravaNFTAuctionHelper {
 
     //////////////////////////// ACTION LOGIC ////////////////////////////
 
-    function _editAuctionPrice(
+    function _makeBid(
         uint256 _tokenId,
-        uint256 _newPrice
+        uint256 _bidPrice,
+        address _from
     ) internal returns (uint256, bytes memory) {
-        // this part is not working . then need approve for sell contract
-        INFTAuctionWithProposal(NFT_AUCTION).editAuctionPrice(
-            _tokenId,
-            _newPrice
-        );
+        if (_from == address(0)) {
+            _from = address(this);
+        }
 
-        bytes memory logData = abi.encode(
-            _tokenId,
-            _newPrice
-        );
+        // if amount is set to max, take the whole _from balance
+        if (_bidPrice == type(uint256).max) {
+            _bidPrice = PAYMENT_GOVERNOR.getBalance(_from);
+        }
+
+        // pull tokens to proxy so we can supply
+        PAYMENT_GOVERNOR.pullTokensIfNeeded(_from, _bidPrice);
+
+        // this part is not working . then need approve for sell contract
+        INFTAuctionWithProposal(NFT_AUCTION).makeBid(_tokenId, _bidPrice);
+
+        bytes memory logData = abi.encode(_tokenId, _bidPrice, _from);
 
         return (_tokenId, logData);
     }

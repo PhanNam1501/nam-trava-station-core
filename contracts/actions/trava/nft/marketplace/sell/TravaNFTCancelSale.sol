@@ -1,17 +1,13 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.4;
 
-import "../../../../utils/TokenUtils.sol";
-import "../../../ActionBase.sol";
-import "./helpers/TravaNFTAuctionHelper.sol";
+import "../../../../ActionBase.sol";
+import "../../helpers/TravaNFTHelper.sol";
 
-contract TravaNFTAuctionMakeBid is ActionBase, TravaNFTAuctionHelper {
-    using TokenUtils for address;
-
+contract TravaNFTCancelSale is ActionBase, TravaNFTHelper {
     struct Params {
         uint256 tokenId;
-        uint256 bidPrice;
-        address from;
+        address to;
     }
 
     /// @inheritdoc ActionBase
@@ -29,26 +25,18 @@ contract TravaNFTAuctionMakeBid is ActionBase, TravaNFTAuctionHelper {
             _subData,
             _returnValues
         );
-        params.bidPrice = _parseParamUint(
-            params.bidPrice,
+        params.to = _parseParamAddr(
+            params.to,
             _paramMapping[1],
             _subData,
             _returnValues
         );
 
-        params.from = _parseParamAddr(
-            params.from,
-            _paramMapping[2],
-            _subData,
-            _returnValues
-        );
-
-        (uint256 tokenId, bytes memory logData) = _makeBid(
+        (uint256 tokenId, bytes memory logData) = _cancelSale(
             params.tokenId,
-            params.bidPrice,
-            params.from
+            params.to
         );
-        emit ActionEvent("TravaNFTAuctionMakeBid", logData);
+        emit ActionEvent("TravaNFTCancelSale", logData);
         return bytes32(tokenId);
     }
 
@@ -57,12 +45,11 @@ contract TravaNFTAuctionMakeBid is ActionBase, TravaNFTAuctionHelper {
         bytes memory _callData
     ) public payable override {
         Params memory params = parseInputs(_callData);
-        (, bytes memory logData) = _makeBid(
+        (, bytes memory logData) = _cancelSale(
             params.tokenId,
-            params.bidPrice,
-            params.from
+            params.to
         );
-        logger.logActionDirectEvent("TravaNFTAuctionMakeBid", logData);
+        logger.logActionDirectEvent("TravaNFTCancelSale", logData);
     }
 
     /// @inheritdoc ActionBase
@@ -72,28 +59,24 @@ contract TravaNFTAuctionMakeBid is ActionBase, TravaNFTAuctionHelper {
 
     //////////////////////////// ACTION LOGIC ////////////////////////////
 
-    function _makeBid(
+    function _cancelSale(
         uint256 _tokenId,
-        uint256 _bidPrice,
-        address _from
+        address _to
     ) internal returns (uint256, bytes memory) {
-        if (_from == address(0)) {
-            _from = address(this);
-        }
 
-        // if amount is set to max, take the whole _from balance
-        if (_bidPrice == type(uint256).max) {
-            _bidPrice = PAYMENT_GOVERNOR.getBalance(_from);
-        }
-
-        // pull tokens to proxy so we can supply
-        PAYMENT_GOVERNOR.pullTokensIfNeeded(_from, _bidPrice);
+        require(
+            IMarketplace(NFT_MARKETPLACE).getTokenOrder(_tokenId).nftSeller == address(this),
+            "Smart wallet proxy does not possess token"
+        );
 
         // this part is not working . then need approve for sell contract
-        INFTAuctionWithProposal(NFT_AUCTION).makeBid(_tokenId, _bidPrice);
+        IMarketplace(NFT_MARKETPLACE).cancelSale(_tokenId);
 
-        bytes memory logData = abi.encode(_tokenId, _bidPrice, _from);
+        if (_to != address(this)) {
+            INFTCore(NFT_CORE).transferFrom(address(this), _to, _tokenId);
+        }
 
+        bytes memory logData = abi.encode(_tokenId, _to);
         return (_tokenId, logData);
     }
 

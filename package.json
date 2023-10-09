@@ -14,7 +14,8 @@
     "@nomiclabs/hardhat-waffle": "^2.0.6",
     "chai": "^4.3.7",
     "ethereum-waffle": "^3.4.4",
-    "hardhat": "^2.9.6"
+    "hardhat": "^2.9.6",
+    "bignumber.js": "^9.1.1"
   },
   "dependencies": {
     "@chainlink/contracts": "^0.4.1",
@@ -40,7 +41,7 @@
     "mocha": "^10.2.0",
     "npm": "^9.7.1",
     "readline-sync": "^1.4.10",
-    "trava-simulation-route": "1.0.44",
-    "trava-station-sdk": "1.0.28"
+    "trava-simulation-route": "1.0.79",
+    "trava-station-sdk": "1.0.42"
   }
 }

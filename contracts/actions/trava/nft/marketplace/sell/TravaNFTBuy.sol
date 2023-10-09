@@ -1,14 +1,18 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.4;
 
-import "../../../ActionBase.sol";
-import "../helpers/TravaNFTHelper.sol";
+import "../../../../ActionBase.sol";
+import "../../helpers/TravaNFTHelper.sol";
+import "../../../../../utils/TokenUtils.sol";
 
-contract TravaNFTCreateSale is ActionBase, TravaNFTHelper {
+contract TravaNFTBuy is ActionBase, TravaNFTHelper {
+    using TokenUtils for address;
+
     struct Params {
         uint256 tokenId;
         uint256 price;
         address from;
+        address to;
     }
 
     /// @inheritdoc ActionBase
@@ -26,25 +30,34 @@ contract TravaNFTCreateSale is ActionBase, TravaNFTHelper {
             _subData,
             _returnValues
         );
+
         params.price = _parseParamUint(
             params.price,
             _paramMapping[1],
             _subData,
             _returnValues
         );
+
         params.from = _parseParamAddr(
             params.from,
             _paramMapping[2],
             _subData,
             _returnValues
         );
+        params.to = _parseParamAddr(
+            params.to,
+            _paramMapping[3],
+            _subData,
+            _returnValues
+        );
 
-        (uint256 tokenId, bytes memory logData) = _createSale(
+        (uint256 tokenId, bytes memory logData) = _makeOrder(
             params.tokenId,
             params.price,
-            params.from
+            params.from,
+            params.to
         );
-        emit ActionEvent("TravaNFTCreateSale", logData);
+        emit ActionEvent("TravaNFTBuy", logData);
         return bytes32(tokenId);
     }
 
@@ -53,12 +66,13 @@ contract TravaNFTCreateSale is ActionBase, TravaNFTHelper {
         bytes memory _callData
     ) public payable override {
         Params memory params = parseInputs(_callData);
-        (, bytes memory logData) = _createSale(
+        (, bytes memory logData) = _makeOrder(
             params.tokenId,
             params.price,
-            params.from
+            params.from,
+            params.to
         );
-        logger.logActionDirectEvent("TravaNFTCreateSale", logData);
+        logger.logActionDirectEvent("TravaNFTBuy", logData);
     }
 
     /// @inheritdoc ActionBase
@@ -68,28 +82,43 @@ contract TravaNFTCreateSale is ActionBase, TravaNFTHelper {
 
     //////////////////////////// ACTION LOGIC ////////////////////////////
 
-    function _createSale(
+    function _makeOrder(
         uint256 _tokenId,
         uint256 _price,
-        address _from
+        address _from,
+        address _to
     ) internal returns (uint256, bytes memory) {
-        if(_from == address(0)) {
-            _from = address(this);
+        if (_from == address(0)) {
+            _from == address(this);
         }
+
+        IMarketplace marketPlace = IMarketplace(NFT_MARKETPLACE);
+
         require(
-            INFTCore(NFT_CORE).ownerOf(_tokenId) == _from,
-            "Owner does not possess token"
+            // marketPlace.getTokenOrder(_tokenId).nftSeller != _from &&
+                marketPlace.getTokenOrder(_tokenId).nftSeller != address(this),
+            "Seller or proxy's seller can't execute action to buy own NFT"
         );
 
-        if (_from != address(this)) {
-            INFTCore(NFT_CORE).transferFrom(_from, address(this), _tokenId);
+        require(
+            _price == marketPlace.getTokenOrder(_tokenId).price,
+            "Invalid price"
+        );
+
+        address travaToken = TRAVA_TOKEN;
+
+        travaToken.pullTokensIfNeeded(_from, _price);
+
+        // approve trava to buy nft
+        travaToken.approveToken(address(marketPlace), _price);
+
+        marketPlace.makeOrder(_tokenId, _price);
+
+        if (_to != address(this)) {
+            INFTCore(NFT_CORE).transferFrom(address(this), _to, _tokenId);
         }
 
-        INFTCore(NFT_CORE).approve(NFT_MARKETPLACE, _tokenId);
-        // this part is not working . then need approve for sell contract
-        IMarketplace(NFT_MARKETPLACE).createSale(_tokenId, _price);
-
-        bytes memory logData = abi.encode(_tokenId, _price, _from);
+        bytes memory logData = abi.encode(_tokenId, _from);
         return (_tokenId, logData);
     }
 

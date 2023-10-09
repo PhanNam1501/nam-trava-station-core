@@ -99,8 +99,8 @@ async function main() {
   // const travaClaimRewards = await redeploy('TravaClaimRewards', process.env.DFS_REGISTRY_ADDRESS);
   // writeToEnvFile("TRAVA_CLAIMS_REWARDS_ADDRESS", travaClaimRewards.address)
 
-  const travaConvertRewards = await redeploy('TravaConvertRewards', process.env.DFS_REGISTRY_ADDRESS);
-  writeToEnvFile("TRAVA_CONVERT_REWARDS_ADDRESS", travaConvertRewards.address)
+  // const travaConvertRewards = await redeploy('TravaConvertRewards', process.env.DFS_REGISTRY_ADDRESS);
+  // writeToEnvFile("TRAVA_CONVERT_REWARDS_ADDRESS", travaConvertRewards.address)
   //        ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
   //        ||                               Trava Governance Contract                                   ||
   //        ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
@@ -136,11 +136,11 @@ async function main() {
   // );
   // writeToEnvFile("TRAVA_STAKING_CLAIM_REWARDS_ADDRESS", travaStakingClaimRewards.address);
 
-  // const travaStakingRedeem = await redeploy(
-  //   "TravaStakingRedeem",
-  //   process.env.DFS_REGISTRY_ADDRESS
-  // );
-  // writeToEnvFile("TRAVA_STAKING_REDEEM_ADDRESS", travaStakingRedeem.address);
+  const travaStakingRedeem = await redeploy(
+    "TravaStakingRedeem",
+    process.env.DFS_REGISTRY_ADDRESS
+  );
+  writeToEnvFile("TRAVA_STAKING_REDEEM_ADDRESS", travaStakingRedeem.address);
 
   //        ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
   //        ||                               Trava NFT Contract                                   ||

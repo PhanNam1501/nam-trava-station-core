@@ -3,6 +3,7 @@ pragma solidity 0.8.4;
 
 import "../../../../interfaces/trava/staking/IStakedToken.sol";
 import "../../../../interfaces/trava/staking/IStakedTrava.sol";
+import "../../../../interfaces/trava/staking/IVesting.sol";
 import "../../../../interfaces/IBEP20.sol";
 
 import "./MainnetTravaStakingAddresses.sol";

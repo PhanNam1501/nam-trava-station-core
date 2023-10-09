@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.4;
 
-import "../../../ActionBase.sol";
+import "../../../../ActionBase.sol";
 import "./helpers/TravaNFTAuctionHelper.sol";
 
 contract TravaNFTAuctionCreateAuction is ActionBase, TravaNFTAuctionHelper {
