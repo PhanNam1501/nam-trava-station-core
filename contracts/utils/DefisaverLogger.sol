@@ -3,10 +3,7 @@
 pragma solidity 0.8.4;
 
 contract DefisaverLogger {
-    event RecipeEvent(
-        address indexed caller,
-        string indexed logName
-    );
+    event RecipeEvent(address indexed caller, string indexed logName);
 
     event ActionDirectEvent(
         address indexed caller,

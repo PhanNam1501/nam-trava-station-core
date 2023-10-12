@@ -1,8 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.4;
 
-import "../../../../ActionBase.sol";
-import "../../helpers/TravaNFTHelper.sol";
+import "../../../ActionBase.sol";
+import "../helpers/TravaNFTHelper.sol";
 
 contract TravaNFTTransfer is ActionBase, TravaNFTHelper {
     struct Params {

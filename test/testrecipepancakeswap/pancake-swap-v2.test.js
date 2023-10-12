@@ -2,14 +2,15 @@ const hre = require("hardhat");
 const abiCoder = new hre.ethers.utils.AbiCoder();
 require("dotenv").config();
 
-const { Action } = require("../../teststrategy/Action");
+const { Action } = require("../teststrategy/Action");
 const { expect } = require("chai");
-const { getProxy } = require("../../utils");
+const { getProxy } = require("../utils");
 const { ApplicationState, updateTravaLPInfo, getListTDTokenRewardsAddress, MAX_UINT256 } = require("trava-simulation-route")
-const { actions, Recipe } = require("trava-station-sdk");
+const { actions, Recipe, SwapUtil } = require("trava-station-sdk");
 const { Contract } = require("ethers");
 const { getContractFactory } = require("@nomiclabs/hardhat-ethers/types");
 const { toChecksumAddress } = require('ethereumjs-util');
+const { default: BigNumber } = require("bignumber.js");
 
 describe("Pancake-Swap-V2", function () {
     this.timeout(150000);
@@ -26,28 +27,40 @@ describe("Pancake-Swap-V2", function () {
         const provider = hre.ethers.provider;
         const chainId = Number((await provider.getNetwork()).chainId)
         console.log("Start!", userAddress, proxy.address, chainId)
-        const appState = new ApplicationState(
-            userAddress,
-            proxy.address,
-            provider,
-            chainId
-        );
+        // const appState = new ApplicationState(
+        //     userAddress,
+        //     proxy.address,
+        //     provider,
+        //     chainId
+        // );
 
-        let oldState = await updateTravaLPInfo(
-            appState
-        )
+        // let oldState = await updateTravaLPInfo(
+        //     appState
+        // )
 
         // let listToken = getListTDTokenRewardsAddress(oldState);
         let listToken = [
-            convertHexStringToAddress("0x456f85BA534311867678128c1278Be2484Adfb3d"),
-            convertHexStringToAddress("0x77035788b48fa508548d7985263c9ad094defa8f")
+            convertHexStringToAddress("0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82"),
+            convertHexStringToAddress("0x0391bE54E72F7e001f6BBc331777710b4f2999Ef")
         ]
 
-        let PancakeSwapV2Action = new actions.trava.TravaPancakeSwapV2(
-            listToken,
-            MAX_UINT256,
+        let swapUtil = new SwapUtil("https://bsc.publicnode.com", 56);
+
+        let swapInfo = await swapUtil.getInformationFromInput(
+            listToken[0],
+            listToken[1],
+            1/100,
+            BigNumber(1e17).toFixed()
+        )
+
+        let PancakeSwapV2Action = new actions.pancake.PancakeSwapV2(
+            swapInfo.amountIn,
+            swapInfo.amountOut,
+            swapInfo.path,
             proxy.address,
-            process.env.TRAVA_CLAIMS_REWARDS_ADDRESS
+            "1797097461644",
+            userAddress,
+            process.env.PANCAKE_SWAP_V2_ADDRESS
         )
         console.log("e", PancakeSwapV2Action.encodeForRecipe())
         let recipe = new Recipe("PancakeSwapV2", chainId, [
@@ -64,7 +77,7 @@ describe("Pancake-Swap-V2", function () {
         // });
 
         console.log("prepare execute data completed!")
-
+        console.log(encodeData)
         // let proxyContract = await hre.ethers.getContractFactory("DSProxy");
         // const rd = proxyContract.attach(proxy.address);
         // const rdOwner = rd.connect(new hre.ethers.Wallet(process.env.PRIVATE_KEY, provider))
@@ -76,6 +89,7 @@ describe("Pancake-Swap-V2", function () {
         //         }
         // );
         // console.log("estimateGas", estimationGas)
+        console.log("start execute....")
         let tx = await proxy["execute(address,bytes)"](
           encodeData[0],
           encodeData[1],
