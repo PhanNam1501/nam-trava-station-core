@@ -83,11 +83,11 @@ contract TravaNFTAuctionMakeBid is ActionBase, TravaNFTAuctionHelper {
 
         // if amount is set to max, take the whole _from balance
         if (_bidPrice == type(uint256).max) {
-            _bidPrice = PAYMENT_GOVERNOR.getBalance(_from);
+            _bidPrice = TRAVA_TOKEN.getBalance(_from);
         }
 
         // pull tokens to proxy so we can supply
-        PAYMENT_GOVERNOR.pullTokensIfNeeded(_from, _bidPrice);
+        TRAVA_TOKEN.pullTokensIfNeeded(_from, _bidPrice);
 
         // this part is not working . then need approve for sell contract
         INFTAuctionWithProposal(NFT_AUCTION).makeBid(_tokenId, _bidPrice);
