@@ -49,10 +49,7 @@ contract TravaNFTAuctionFinalizeAuction is ActionBase, TravaNFTAuctionHelper {
         bytes memory _callData
     ) public payable override {
         Params memory params = parseInputs(_callData);
-        (, bytes memory logData) = _finalizeAuction(
-            params.tokenId,
-            params.to
-        );
+        (, bytes memory logData) = _finalizeAuction(params.tokenId, params.to);
         logger.logActionDirectEvent("TravaNFTAuctionFinalizeAuction", logData);
     }
 
@@ -67,12 +64,26 @@ contract TravaNFTAuctionFinalizeAuction is ActionBase, TravaNFTAuctionHelper {
         uint256 _tokenId,
         address _to
     ) internal returns (uint256, bytes memory) {
-      
+        uint256 tokenBefore = TRAVA_TOKEN.getBalance(_to);
+
+        INFTAuctionWithProposal.Auction
+            memory tokenAuction = INFTAuctionWithProposal(NFT_AUCTION)
+                .getTokenOrder(_tokenId);
+
         // this part is not working . then need approve for sell contract
         INFTAuctionWithProposal(NFT_AUCTION).finalizeAuction(_tokenId);
 
-        if(_to != address(this)) {
-            INFTCore(NFT_COLLECTION).transferFrom(address(this), _to, _tokenId);
+        if (_to != address(this)) {
+            if (address(this) == tokenAuction.nftSeller) {
+                uint256 amount = TRAVA_TOKEN.getBalance(_to) - tokenBefore;
+                TRAVA_TOKEN.withdrawTokens(_to, amount);
+            } else {
+                INFTCore(NFT_COLLECTION).transferFrom(
+                    address(this),
+                    _to,
+                    _tokenId
+                );
+            }
         }
         bytes memory logData = abi.encode(_tokenId, _to);
 

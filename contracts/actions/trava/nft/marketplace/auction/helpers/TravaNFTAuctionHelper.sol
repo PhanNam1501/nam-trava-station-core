@@ -9,4 +9,5 @@ import "../../../../../../interfaces/trava/nft/INFTCore.sol";
 
 /// @title Utility functions and data used in travaNFT actions
 contract TravaNFTAuctionHelper is MainnetTravaNFTAuctionAddresses {
+    uint256 public constant MINIMUM_BID_STEP_PERCENT = 500;
 }

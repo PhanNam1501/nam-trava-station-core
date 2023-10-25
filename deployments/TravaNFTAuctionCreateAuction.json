@@ -47,6 +47,19 @@
 		},
 		{
 			"inputs": [],
+			"name": "MINIMUM_BID_STEP_PERCENT",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [],
 			"name": "NO_PARAM_MAPPING",
 			"outputs": [
 				{
@@ -227,12 +240,12 @@
 						},
 						{
 							"internalType": "uint256",
-							"name": "cellingPrice",
+							"name": "duration",
 							"type": "uint256"
 						},
 						{
 							"internalType": "uint256",
-							"name": "endTime",
+							"name": "cellingPrice",
 							"type": "uint256"
 						},
 						{
@@ -292,6 +305,9 @@
 		}
 	],
 	"networks": {
-		"bscTestnet": {}
+		"mainnet": {
+			"address": "0x53E08293A48092C7715FFF75C4f7708A4043AEd7",
+			"args": []
+		}
 	}
 }

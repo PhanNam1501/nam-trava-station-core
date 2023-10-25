@@ -8,8 +8,8 @@ contract TravaNFTAuctionCreateAuction is ActionBase, TravaNFTAuctionHelper {
     struct Params {
         uint256 tokenId;
         uint256 startingBid;
+        uint256 duration;
         uint256 cellingPrice;
-        uint256 endTime;
         uint256 method;
         address from;
     }
@@ -36,15 +36,15 @@ contract TravaNFTAuctionCreateAuction is ActionBase, TravaNFTAuctionHelper {
             _returnValues
         );
 
-        params.cellingPrice = _parseParamUint(
-            params.cellingPrice,
+        params.duration = _parseParamUint(
+            params.duration,
             _paramMapping[2],
             _subData,
             _returnValues
         );
 
-        params.endTime = _parseParamUint(
-            params.endTime,
+        params.cellingPrice = _parseParamUint(
+            params.cellingPrice,
             _paramMapping[3],
             _subData,
             _returnValues
@@ -67,8 +67,8 @@ contract TravaNFTAuctionCreateAuction is ActionBase, TravaNFTAuctionHelper {
         (uint256 tokenId, bytes memory logData) = _createAuction(
             params.tokenId,
             params.startingBid,
+            params.duration,
             params.cellingPrice,
-            params.endTime,
             params.method,
             params.from
         );
@@ -84,8 +84,8 @@ contract TravaNFTAuctionCreateAuction is ActionBase, TravaNFTAuctionHelper {
         (, bytes memory logData) = _createAuction(
             params.tokenId,
             params.startingBid,
+            params.duration,
             params.cellingPrice,
-            params.endTime,
             params.method,
             params.from
         );
@@ -102,8 +102,8 @@ contract TravaNFTAuctionCreateAuction is ActionBase, TravaNFTAuctionHelper {
     function _createAuction(
         uint256 _tokenId,
         uint256 _startingBid,
+        uint256 _duration,
         uint256 _ceilingPrice,
-        uint256 _endTime,
         uint256 _method,
         address _from
     ) internal returns (uint256, bytes memory) {
@@ -116,8 +116,12 @@ contract TravaNFTAuctionCreateAuction is ActionBase, TravaNFTAuctionHelper {
             "Owner does not possess token"
         );
 
-        if(_from != address(this)) {
-            INFTCore(NFT_COLLECTION).transferFrom(_from, address(this), _tokenId);
+        if (_from != address(this)) {
+            INFTCore(NFT_COLLECTION).transferFrom(
+                _from,
+                address(this),
+                _tokenId
+            );
         }
 
         INFTCore(NFT_COLLECTION).approve(NFT_AUCTION, _tokenId);
@@ -125,8 +129,8 @@ contract TravaNFTAuctionCreateAuction is ActionBase, TravaNFTAuctionHelper {
         INFTAuctionWithProposal(NFT_AUCTION).createAuction(
             _tokenId,
             _startingBid,
+            _duration,
             _ceilingPrice,
-            _endTime,
             _method
         );
 
@@ -134,7 +138,7 @@ contract TravaNFTAuctionCreateAuction is ActionBase, TravaNFTAuctionHelper {
             _tokenId,
             _startingBid,
             _ceilingPrice,
-            _endTime,
+            _duration,
             _method,
             _from
         );

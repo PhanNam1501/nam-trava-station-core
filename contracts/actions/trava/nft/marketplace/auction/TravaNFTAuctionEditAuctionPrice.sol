@@ -69,10 +69,7 @@ contract TravaNFTAuctionEditAuctionPrice is ActionBase, TravaNFTAuctionHelper {
             _newPrice
         );
 
-        bytes memory logData = abi.encode(
-            _tokenId,
-            _newPrice
-        );
+        bytes memory logData = abi.encode(_tokenId, _newPrice);
 
         return (_tokenId, logData);
     }

@@ -49,10 +49,7 @@ contract TravaNFTAuctionCancelAuction is ActionBase, TravaNFTAuctionHelper {
         bytes memory _callData
     ) public payable override {
         Params memory params = parseInputs(_callData);
-        (, bytes memory logData) = _cancelAuction(
-            params.tokenId,
-            params.to
-        );
+        (, bytes memory logData) = _cancelAuction(params.tokenId, params.to);
         logger.logActionDirectEvent("TravaNFTAuctionCancelAuction", logData);
     }
 
@@ -67,11 +64,10 @@ contract TravaNFTAuctionCancelAuction is ActionBase, TravaNFTAuctionHelper {
         uint256 _tokenId,
         address _to
     ) internal returns (uint256, bytes memory) {
-
         // this part is not working . then need approve for sell contract
         INFTAuctionWithProposal(NFT_AUCTION).cancelAuction(_tokenId);
 
-        if(_to != address(this)) {
+        if (_to != address(this)) {
             INFTCore(NFT_COLLECTION).transferFrom(address(this), _to, _tokenId);
         }
         bytes memory logData = abi.encode(_tokenId, _to);

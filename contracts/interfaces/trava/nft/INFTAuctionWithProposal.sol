@@ -2,75 +2,87 @@
 pragma solidity 0.8.4;
 
 interface INFTAuctionWithProposal {
-  function cancelAuction(uint256 _tokenId) external;
+    struct Auction {
+        address nftSeller;
+        uint256 startingBid;
+        address currentBidder;
+        uint256 currentBid;
+        uint256 startTime;
+        uint256 endTime;
+        uint256 bidSteps;
+    }
 
-  function createAuction(
-    uint256 _tokenId,
-    uint256 _startingBid,
-    uint256 _duration,
-    uint256 _ceilingPrice,
-    uint256 _method
-  ) external;
+    function cancelAuction(uint256 _tokenId) external;
 
-  function editAuctionPrice(uint256 _tokenId, uint256 _newPrice) external;
+    function createAuction(
+        uint256 _tokenId,
+        uint256 _startingBid,
+        uint256 _duration,
+        uint256 _ceilingPrice,
+        uint256 _method
+    ) external;
 
-  function finalizeAuction(uint256 _tokenId) external;
+    function editAuctionPrice(uint256 _tokenId, uint256 _newPrice) external;
 
-  function getRemainingTime(uint256 _tokenId) external view returns (uint256);
+    function finalizeAuction(uint256 _tokenId) external;
 
-  function getTokenOfOwnerAtIndex(address _owner, uint256 _index)
-    external
-    view
-    returns (uint256);
+    function getRemainingTime(uint256 _tokenId) external view returns (uint256);
 
-  function getTokenOfOwnerBalance(address _owner)
-    external
-    view
-    returns (uint256);
+    function getTokenOfOwnerAtIndex(
+        address _owner,
+        uint256 _index
+    ) external view returns (uint256);
 
-  function getTokenOnAunctionAtIndex(uint256 _index)
-    external
-    view
-    returns (uint256);
+    function getTokenOfOwnerBalance(
+        address _owner
+    ) external view returns (uint256);
 
-  function getTokenOnAunctionCount() external view returns (uint256);
+    function getTokenOnAunctionAtIndex(
+        uint256 _index
+    ) external view returns (uint256);
 
-  function initialize(
-    address _travaNFTddress,
-    address _paymentToken,
-    address _recipient,
-    uint256 _percent,
-    uint256 _minimumBidPercent,
-    uint256 _minimumRemainingTime,
-    uint256 _minimumEndTime,
-    uint256 _maximumEndTime
-  ) external;
+    function getTokenOnAunctionCount() external view returns (uint256);
 
-  function isAuctionOngoing(uint256 _tokenId) external view returns (bool);
+    function initialize(
+        address _travaNFTddress,
+        address _paymentToken,
+        address _recipient,
+        uint256 _percent,
+        uint256 _minimumBidPercent,
+        uint256 _minimumRemainingTime,
+        uint256 _minimumEndTime,
+        uint256 _maximumEndTime
+    ) external;
 
-  function makeBid(uint256 _tokenId, uint256 _bidPrice) external;
+    function getTokenOrder(
+        uint256 _tokenId
+    ) external view returns (Auction memory);
 
-  function owner() external view returns (address);
+    function isAuctionOngoing(uint256 _tokenId) external view returns (bool);
 
-  function pauseContract() external;
+    function makeBid(uint256 _tokenId, uint256 _bidPrice) external;
 
-  function paused() external view returns (bool);
+    function owner() external view returns (address);
 
-  function renounceOwnership() external;
+    function pauseContract() external;
 
-  function setMaximumEndTime(uint256 _maximumEndTime) external;
+    function paused() external view returns (bool);
 
-  function setMinimumBidStepPercent(uint256 _minimumBidStepPercent) external;
+    function renounceOwnership() external;
 
-  function setMinimumEndTime(uint256 _minimumEndTime) external;
+    function setMaximumEndTime(uint256 _maximumEndTime) external;
 
-  function setMinimumPrice(uint256 _minimumPrice) external;
+    function setMinimumBidStepPercent(uint256 _minimumBidStepPercent) external;
 
-  function setMinimumRemainingTime(uint256 _minimumRemainingTime) external;
+    function setMinimumEndTime(uint256 _minimumEndTime) external;
 
-  function setReceiver(address _receiver) external;
+    function setMinimumPrice(uint256 _minimumPrice) external;
 
-  function transferOwnership(address newOwner) external;
+    function setMinimumRemainingTime(uint256 _minimumRemainingTime) external;
 
-  function unpauseContract() external;
+    function setReceiver(address _receiver) external;
+
+    function transferOwnership(address newOwner) external;
+
+    function unpauseContract() external;
 }

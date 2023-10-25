@@ -1,5 +1,5 @@
 {
-	"contractName": "TravaNFTAuctionMakeBid",
+	"contractName": "TravaNFTAuctionEditAuctionPrice",
 	"abi": [
 		{
 			"inputs": [],
@@ -235,16 +235,11 @@
 						},
 						{
 							"internalType": "uint256",
-							"name": "bidPrice",
+							"name": "newPrice",
 							"type": "uint256"
-						},
-						{
-							"internalType": "address",
-							"name": "from",
-							"type": "address"
 						}
 					],
-					"internalType": "struct TravaNFTAuctionMakeBid.Params",
+					"internalType": "struct TravaNFTAuctionEditAuctionPrice.Params",
 					"name": "params",
 					"type": "tuple"
 				}
@@ -291,7 +286,7 @@
 	],
 	"networks": {
 		"mainnet": {
-			"address": "0x1F3bE2e857333bf15c8A3b8C8eB1394b9e6F331E",
+			"address": "0x6B4e1833E64c10544f870c1c92Db70f66b4685d9",
 			"args": []
 		}
 	}
