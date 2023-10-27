@@ -173,7 +173,7 @@ module.exports = {
     bscTestnet: {
       url: "https://bsc-testnet.publicnode.com",
       chainId: 97,
-      // gasPrice: 20e9,
+      gasPrice: 20e9,
       // gas: 2e7,
       // gas: 1e7,
       accounts: [
