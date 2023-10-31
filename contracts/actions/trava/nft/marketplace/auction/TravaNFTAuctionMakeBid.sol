@@ -89,6 +89,8 @@ contract TravaNFTAuctionMakeBid is ActionBase, TravaNFTAuctionHelper {
         // pull tokens to proxy so we can supply
         TRAVA_TOKEN.pullTokensIfNeeded(_from, _bidPrice);
 
+        // approve trava pool to pull tokens
+        TRAVA_TOKEN.approveToken(address(NFT_AUCTION), _bidPrice);
         // this part is not working . then need approve for sell contract
         INFTAuctionWithProposal(NFT_AUCTION).makeBid(_tokenId, _bidPrice);
 
