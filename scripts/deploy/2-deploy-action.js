@@ -119,6 +119,12 @@ async function main() {
   // );
   // writeToEnvFile("TRAVA_GOVERNANCE_CREATE_LOCK_ADDRESS", travaGovernanceCreateLock.address);
 
+  const travaGovernanceIncreaseLock = await redeploy(
+    "TravaGovernanceIncreaseLock",
+    process.env.DFS_REGISTRY_ADDRESS
+  );
+  writeToEnvFile("TRAVA_GOVERNANCE_INCREASE_LOCK_ADDRESS", travaGovernanceIncreaseLock.address);
+
   //        ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
   //        ||                               Trava Staking Contract                                   ||
   //        ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
@@ -239,29 +245,29 @@ async function main() {
   //        ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
   //    */
 
-  await changeConstantInFiles(
-    './contracts',
-    ['MainnetTravaNFTAuctionAddresses'],
-    'NFT_AUCTION',
-    process.env.TRAVA_NFT_AUCTION,
-  );
-  run('compile');
+  // await changeConstantInFiles(
+  //   './contracts',
+  //   ['MainnetTravaNFTAuctionAddresses'],
+  //   'NFT_AUCTION',
+  //   process.env.TRAVA_NFT_AUCTION,
+  // );
+  // run('compile');
 
-  await changeConstantInFiles(
-    './contracts',
-    ['MainnetTravaNFTAuctionAddresses'],
-    'NFT_COLLECTION',
-    process.env.TRAVA_NFT_COLLECTION,
-  );
-  run('compile');
+  // await changeConstantInFiles(
+  //   './contracts',
+  //   ['MainnetTravaNFTAuctionAddresses'],
+  //   'NFT_COLLECTION',
+  //   process.env.TRAVA_NFT_COLLECTION,
+  // );
+  // run('compile');
 
-  await changeConstantInFiles(
-    './contracts',
-    ['MainnetTravaNFTAuctionAddresses'],
-    'TRAVA_TOKEN',
-    process.env.TRAVA_TOKEN_ADDRESS,
-  );
-  run('compile');
+  // await changeConstantInFiles(
+  //   './contracts',
+  //   ['MainnetTravaNFTAuctionAddresses'],
+  //   'TRAVA_TOKEN',
+  //   process.env.TRAVA_TOKEN_ADDRESS,
+  // );
+  // run('compile');
 
   // const travaNFTAuctionCreateAuction = await redeploy(
   //   "TravaNFTAuctionCreateAuction",
@@ -287,11 +293,12 @@ async function main() {
   // );
   // writeToEnvFile("TRAVA_NFT_AUCTION_CANCEL_AUCTION_ADDRESS", travaNFTAuctionCancelAuction.address);
 
-  const travaNFTAuctionFinalizeAuction = await redeploy(
-    "TravaNFTAuctionFinalizeAuction",
-    process.env.DFS_REGISTRY_ADDRESS
-  );
-  writeToEnvFile("TRAVA_NFT_AUCTION_FINALIZE_AUCTION_ADDRESS", travaNFTAuctionFinalizeAuction.address);
+  // const travaNFTAuctionFinalizeAuction = await redeploy(
+  //   "TravaNFTAuctionFinalizeAuction",
+  //   process.env.DFS_REGISTRY_ADDRESS
+  // );
+  // writeToEnvFile("TRAVA_NFT_AUCTION_FINALIZE_AUCTION_ADDRESS", travaNFTAuctionFinalizeAuction.address);
+
   //        ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
   //        ||                               Trava NFT  Expedition Contract                                   ||
   //        ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||

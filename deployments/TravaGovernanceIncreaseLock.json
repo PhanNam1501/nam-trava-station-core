@@ -1,5 +1,5 @@
 {
-	"contractName": "TravaGovernanceCreateLock",
+	"contractName": "TravaGovernanceIncreaseLock",
 	"abi": [
 		{
 			"inputs": [],
@@ -222,18 +222,13 @@
 						},
 						{
 							"internalType": "uint256",
-							"name": "value",
+							"name": "tokenId",
 							"type": "uint256"
 						},
 						{
 							"internalType": "uint256",
-							"name": "lock_duration",
+							"name": "value",
 							"type": "uint256"
-						},
-						{
-							"internalType": "address",
-							"name": "to",
-							"type": "address"
 						},
 						{
 							"internalType": "address",
@@ -241,7 +236,7 @@
 							"type": "address"
 						}
 					],
-					"internalType": "struct TravaGovernanceCreateLock.Params",
+					"internalType": "struct TravaGovernanceIncreaseLock.Params",
 					"name": "params",
 					"type": "tuple"
 				}
