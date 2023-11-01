@@ -119,11 +119,23 @@ async function main() {
   // );
   // writeToEnvFile("TRAVA_GOVERNANCE_CREATE_LOCK_ADDRESS", travaGovernanceCreateLock.address);
 
-  const travaGovernanceIncreaseLock = await redeploy(
-    "TravaGovernanceIncreaseLock",
+  // const travaGovernanceIncreaseLock = await redeploy(
+  //   "TravaGovernanceIncreaseLock",
+  //   process.env.DFS_REGISTRY_ADDRESS
+  // );
+  // writeToEnvFile("TRAVA_GOVERNANCE_INCREASE_LOCK_ADDRESS", travaGovernanceIncreaseLock.address);
+
+  // const travaGovernanceIncreaseUnlockTime = await redeploy(
+  //   "TravaGovernanceIncreaseUnlockTime",
+  //   process.env.DFS_REGISTRY_ADDRESS
+  // );
+  // writeToEnvFile("TRAVA_GOVERNANCE_INCREASE_UNLOCK_TIME_ADDRESS", travaGovernanceIncreaseUnlockTime.address);
+
+  const travaGovernanceMerge = await redeploy(
+    "TravaGovernanceMerge",
     process.env.DFS_REGISTRY_ADDRESS
   );
-  writeToEnvFile("TRAVA_GOVERNANCE_INCREASE_LOCK_ADDRESS", travaGovernanceIncreaseLock.address);
+  writeToEnvFile("TRAVA_GOVERNANCE_MERGE_ADDRESS", travaGovernanceMerge.address);
 
   //        ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
   //        ||                               Trava Staking Contract                                   ||

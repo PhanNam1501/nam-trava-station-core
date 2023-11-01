@@ -7,7 +7,7 @@ import "../../ActionBase.sol";
 import "./helpers/TravaGovernanceHelper.sol";
 
 
-/// @title Supply a token to an Trava market
+/// @title Increase amount to tokenId in trava governance
 contract TravaGovernanceIncreaseLock is ActionBase, TravaGovernanceHelper {
     using TokenUtils for address;
 

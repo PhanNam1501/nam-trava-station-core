@@ -6,17 +6,17 @@ import "../../../utils/TokenUtils.sol";
 import "../../ActionBase.sol";
 import "./helpers/TravaGovernanceHelper.sol";
 
+/// @title merge to 2 tokenid in trava governance
 
-/// @title Increase unlock time to tokenId in trava governance
-contract TravaGovernanceIncreaseUnlockTime is ActionBase, TravaGovernanceHelper {
+contract TravaGovernanceMerge is ActionBase, TravaGovernanceHelper {
     using TokenUtils for address;
 
-    struct Params{
-        uint tokenId;
-        uint lock_duration;
+    struct Params {
+        uint from;
+        uint to;
     }
 
-     /// @inheritdoc ActionBase
+    /// @inheritdoc ActionBase
     function executeAction(
         bytes memory _callData,
         bytes32[] memory _subData,
@@ -25,27 +25,26 @@ contract TravaGovernanceIncreaseUnlockTime is ActionBase, TravaGovernanceHelper 
     ) public payable virtual override returns (bytes32) {
         Params memory params = parseInputs(_callData);
 
-        params.tokenId = _parseParamUint(
-            params.tokenId,
+        params.from = _parseParamUint(
+            params.from,
             _paramMapping[0],
             _subData,
             _returnValues
         );
 
-        params.lock_duration = _parseParamUint(
-            params.lock_duration,
+        params.to = _parseParamUint(
+            params.to,
             _paramMapping[1],
             _subData,
             _returnValues
         );
-        
 
-        (uint tokenId, bytes memory logData) = _increaseUnlockTime(
-            params.tokenId,
-            params.lock_duration
+        (uint to, bytes memory logData) = _merge(
+           params.from,
+           params.to
         );
-        emit ActionEvent("TravaGovernanceIncreaseUnlockTime", logData);
-        return bytes32(tokenId);
+        emit ActionEvent("TravaGovernanceMerge", logData);
+        return bytes32(to);
     }
 
     /// @inheritdoc ActionBase
@@ -53,11 +52,11 @@ contract TravaGovernanceIncreaseUnlockTime is ActionBase, TravaGovernanceHelper 
         bytes memory _callData
     ) public payable override {
         Params memory params = parseInputs(_callData);
-        (, bytes memory logData) = _increaseUnlockTime(
-            params.tokenId,
-            params.lock_duration
+        (, bytes memory logData) = _merge(
+            params.from,
+            params.to
         );
-        logger.logActionDirectEvent("TravaGovernanceIncreaseUnlockTime", logData);
+        logger.logActionDirectEvent("TravaGovernanceMerge", logData);
     }
 
     /// @inheritdoc ActionBase
@@ -67,17 +66,17 @@ contract TravaGovernanceIncreaseUnlockTime is ActionBase, TravaGovernanceHelper 
 
     //////////////////////////// ACTION LOGIC ////////////////////////////
 
-    function _increaseUnlockTime(
-        uint tokenId,
-        uint lock_duration
+    function _merge(
+        uint from, 
+        uint to
     ) internal returns (uint, bytes memory) {
-        
         IVotingEscrow VotingEscrow = IVotingEscrow(VE_TRAVA);
 
-        VotingEscrow.increase_unlock_time(tokenId, lock_duration);
+        VotingEscrow.merge(from,to);
 
-        bytes memory logData = abi.encode(tokenId, lock_duration);
-        return (tokenId, logData);
+        bytes memory logData = abi.encode(from,to);
+
+        return (to, logData);
     }
 
     function parseInputs(
@@ -85,5 +84,4 @@ contract TravaGovernanceIncreaseUnlockTime is ActionBase, TravaGovernanceHelper 
     ) public pure returns (Params memory params) {
         params = abi.decode(_callData, (Params));
     }
-  
 }
