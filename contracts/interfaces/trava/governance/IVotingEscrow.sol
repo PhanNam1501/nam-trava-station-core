@@ -1,7 +1,26 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
+library DataTypes {
+    struct Point {
+        int128 bias;
+        int128 slope; // # -dweight / dt
+        uint ts;
+        uint blk; // block
+    }
+
+    struct LockedBalance {
+        int128 rewardAmount;
+        int128 amount;
+        uint end;
+        address token;
+        int128 baseAmount;
+    }
+}
+
 interface IVotingEscrow {
+    function approve(address _approved, uint _tokenId) external;
+    
     function attach(uint _tokenId) external;
 
     function detach(uint _tokenId) external;
@@ -67,16 +86,14 @@ interface IVotingEscrow {
         address _user
     ) external view returns (uint[] memory);
 
+    function locked(
+        uint tokenId
+    ) external view returns (DataTypes.LockedBalance memory);
+
+    function rewardToken() external view returns (address);
+
     function transferFrom(address _from, address _to, uint _tokenId) external;
 
-    function safeTransferFrom(
-        address _from,
-        address _to,
-        uint _tokenId
-    ) external;
-
-    function approve(address _approved, uint _tokenId) external;
-    function setApprovalForAll(address _operator, bool _approved) external;
-
     function ownerOf(uint _tokenId) external view returns (address);
+
 }

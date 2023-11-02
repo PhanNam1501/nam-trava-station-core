@@ -1,5 +1,5 @@
 {
-	"contractName": "TravaGovernanceCreateLock",
+	"contractName": "TravaGovernanceMerge",
 	"abi": [
 		{
 			"inputs": [],
@@ -216,32 +216,17 @@
 				{
 					"components": [
 						{
-							"internalType": "address",
-							"name": "token",
-							"type": "address"
-						},
-						{
 							"internalType": "uint256",
-							"name": "value",
-							"type": "uint256"
-						},
-						{
-							"internalType": "uint256",
-							"name": "lock_duration",
-							"type": "uint256"
-						},
-						{
-							"internalType": "address",
-							"name": "to",
-							"type": "address"
-						},
-						{
-							"internalType": "address",
 							"name": "from",
-							"type": "address"
+							"type": "uint256"
+						},
+						{
+							"internalType": "uint256",
+							"name": "to",
+							"type": "uint256"
 						}
 					],
-					"internalType": "struct TravaGovernanceCreateLock.Params",
+					"internalType": "struct TravaGovernanceMerge.Params",
 					"name": "params",
 					"type": "tuple"
 				}

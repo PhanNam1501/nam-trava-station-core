@@ -6,7 +6,7 @@ import "./helpers/TravaNFTVeTravaHelper.sol";
 
 contract TravaNFTVeTravaCreateSale is ActionBase, TravaNFTVeTravaHelper {
     struct Params {
-        uint256 tokenId;
+        uint tokenId;
         uint256 price;
         uint256 option;
         address from;
@@ -78,7 +78,7 @@ contract TravaNFTVeTravaCreateSale is ActionBase, TravaNFTVeTravaHelper {
     //////////////////////////// ACTION LOGIC ////////////////////////////
 
     function _createSale(
-        uint256 _tokenId,
+        uint _tokenId,
         uint256 _price,
         uint256 _option,
         address _from

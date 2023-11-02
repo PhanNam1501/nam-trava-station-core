@@ -15,6 +15,7 @@ contract TravaGovernanceCreateLock is ActionBase, TravaGovernanceHelper {
         uint value;
         uint lock_duration;
         address to;
+        address from;
     }
 
     /// @inheritdoc ActionBase
@@ -54,11 +55,19 @@ contract TravaGovernanceCreateLock is ActionBase, TravaGovernanceHelper {
             _returnValues
         );
 
+        params.from = _parseParamAddr(
+            params.from,
+            _paramMapping[4],
+            _subData,
+            _returnValues
+        );
+
         (uint tokenId, bytes memory logData) = _createLock(
             params.token,
             params.value,
             params.lock_duration,
-            params.to
+            params.to,
+            params.from
         );
         emit ActionEvent("TravaGovernanceCreateLock", logData);
         return bytes32(tokenId);
@@ -73,7 +82,8 @@ contract TravaGovernanceCreateLock is ActionBase, TravaGovernanceHelper {
             params.token,
             params.value,
             params.lock_duration,
-            params.to
+            params.to,
+            params.from
         );
         logger.logActionDirectEvent("TravaGovernanceCreateLock", logData);
     }
@@ -89,15 +99,25 @@ contract TravaGovernanceCreateLock is ActionBase, TravaGovernanceHelper {
         address token,
         uint value,
         uint lock_duration,
-        address to
+        address to,
+        address from
     ) internal returns (uint, bytes memory) {
+        IVotingEscrow VotingEscrow = IVotingEscrow(VE_TRAVA);
+
         if (to == address(0)) {
             to == address(this);
         }
         if (value == type(uint256).max) {
-            value = token.getBalance(to);
+            value = token.getBalance(from);
         }
-        uint tokenId = IVotingEscrow(VE_TRAVA).create_lock_for(
+
+        // pull tokens to proxy so we can create lock
+        token.pullTokensIfNeeded(from, value);
+
+        // approve veTrava to pull tokens
+        token.approveToken(address(VotingEscrow), value);
+
+        uint tokenId = VotingEscrow.create_lock_for(
             token,
             value,
             lock_duration,
