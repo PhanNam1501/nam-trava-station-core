@@ -133,11 +133,11 @@ async function main() {
   // );
   // writeToEnvFile("TRAVA_GOVERNANCE_CREATE_LOCK_ADDRESS", travaGovernanceCreateLock.address);
 
-  const travaGovernanceIncreaseAmount = await redeploy(
-    "TravaGovernanceIncreaseAmount",
-    process.env.DFS_REGISTRY_ADDRESS
-  );
-  writeToEnvFile("TRAVA_GOVERNANCE_INCREASE_AMOUNT_ADDRESS", travaGovernanceIncreaseAmount.address);
+  // const travaGovernanceIncreaseAmount = await redeploy(
+  //   "TravaGovernanceIncreaseAmount",
+  //   process.env.DFS_REGISTRY_ADDRESS
+  // );
+  // writeToEnvFile("TRAVA_GOVERNANCE_INCREASE_AMOUNT_ADDRESS", travaGovernanceIncreaseAmount.address);
 
   // const travaGovernanceIncreaseUnlockTime = await redeploy(
   //   "TravaGovernanceIncreaseUnlockTime",
@@ -145,11 +145,11 @@ async function main() {
   // );
   // writeToEnvFile("TRAVA_GOVERNANCE_INCREASE_UNLOCK_TIME_ADDRESS", travaGovernanceIncreaseUnlockTime.address);
 
-  // const travaGovernanceMerge = await redeploy(
-  //   "TravaGovernanceMerge",
-  //   process.env.DFS_REGISTRY_ADDRESS
-  // );
-  // writeToEnvFile("TRAVA_GOVERNANCE_MERGE_ADDRESS", travaGovernanceMerge.address);
+  const travaGovernanceMerge = await redeploy(
+    "TravaGovernanceMerge",
+    process.env.DFS_REGISTRY_ADDRESS
+  );
+  writeToEnvFile("TRAVA_GOVERNANCE_MERGE_ADDRESS", travaGovernanceMerge.address);
 
   // const travaGovernanceWithdraw = await redeploy(
   //   "TravaGovernanceWithdraw",

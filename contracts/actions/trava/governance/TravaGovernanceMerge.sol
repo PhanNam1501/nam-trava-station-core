@@ -12,8 +12,9 @@ contract TravaGovernanceMerge is ActionBase, TravaGovernanceHelper {
     using TokenUtils for address;
 
     struct Params {
-        uint from;
-        uint to;
+        uint tokenId1;
+        uint tokenId2;
+        address from;
     }
 
     /// @inheritdoc ActionBase
@@ -25,26 +26,34 @@ contract TravaGovernanceMerge is ActionBase, TravaGovernanceHelper {
     ) public payable virtual override returns (bytes32) {
         Params memory params = parseInputs(_callData);
 
-        params.from = _parseParamUint(
-            params.from,
+        params.tokenId1 = _parseParamUint(
+            params.tokenId1,
             _paramMapping[0],
             _subData,
             _returnValues
         );
 
-        params.to = _parseParamUint(
-            params.to,
+        params.tokenId2 = _parseParamUint(
+            params.tokenId2,
             _paramMapping[1],
             _subData,
             _returnValues
         );
 
-        (uint to, bytes memory logData) = _merge(
-           params.from,
-           params.to
+        params.from = _parseParamAddr(
+            params.from,
+            _paramMapping[2],
+            _subData,
+            _returnValues
+        );
+
+        (uint tokenId2, bytes memory logData) = _merge(
+            params.tokenId1,
+            params.tokenId2,
+            params.from
         );
         emit ActionEvent("TravaGovernanceMerge", logData);
-        return bytes32(to);
+        return bytes32(tokenId2);
     }
 
     /// @inheritdoc ActionBase
@@ -53,8 +62,9 @@ contract TravaGovernanceMerge is ActionBase, TravaGovernanceHelper {
     ) public payable override {
         Params memory params = parseInputs(_callData);
         (, bytes memory logData) = _merge(
-            params.from,
-            params.to
+            params.tokenId1,
+            params.tokenId2,
+            params.from
         );
         logger.logActionDirectEvent("TravaGovernanceMerge", logData);
     }
@@ -67,16 +77,26 @@ contract TravaGovernanceMerge is ActionBase, TravaGovernanceHelper {
     //////////////////////////// ACTION LOGIC ////////////////////////////
 
     function _merge(
-        uint from, 
-        uint to
+        uint tokenId1,
+        uint tokenId2,
+        address from
     ) internal returns (uint, bytes memory) {
         IVotingEscrow VotingEscrow = IVotingEscrow(VE_TRAVA);
 
-        VotingEscrow.merge(from,to);
+        if (from == address(0)) {
+            from == address(this);
+        }
 
-        bytes memory logData = abi.encode(from,to);
+        if (from != address(this)) {
+            VotingEscrow.transferFrom(from, address(this), tokenId1);
+            VotingEscrow.transferFrom(from, address(this), tokenId2);
+        }
 
-        return (to, logData);
+        VotingEscrow.merge(tokenId1, tokenId2);
+
+        bytes memory logData = abi.encode(tokenId1, tokenId2);
+
+        return (tokenId2, logData);
     }
 
     function parseInputs(

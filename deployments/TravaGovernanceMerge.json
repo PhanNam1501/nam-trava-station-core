@@ -217,13 +217,18 @@
 					"components": [
 						{
 							"internalType": "uint256",
-							"name": "from",
+							"name": "tokenId1",
 							"type": "uint256"
 						},
 						{
 							"internalType": "uint256",
-							"name": "to",
+							"name": "tokenId2",
 							"type": "uint256"
+						},
+						{
+							"internalType": "address",
+							"name": "from",
+							"type": "address"
 						}
 					],
 					"internalType": "struct TravaGovernanceMerge.Params",
