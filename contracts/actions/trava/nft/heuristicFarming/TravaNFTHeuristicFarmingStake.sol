@@ -99,19 +99,21 @@ contract TravaNFTHeuristicFarmingStake is
             _from = address(this);
         }
 
-        INFTCollection(NFT_COLLECTION).batchTransferFrom(
+        for (uint256 id = 0; id < _ids.length; id++) {
+            INFTCollection(NFT_COLLECTION).transferFrom(
             _from,
             address(this),
-            _ids
+            _ids[id]
         );
-        
+        }
+
         for (uint256 id = 0; id < _ids.length; id++) {
             require(
-                INFTCollection(NFT_COLLECTION).ownerOf(id) == _from,
+                INFTCollection(NFT_COLLECTION).ownerOf(_ids[id]) == address(this),
                 "Owner does not possess token"
             );
 
-            INFTCollection(NFT_COLLECTION).approve(_vault, id);
+            INFTCollection(NFT_COLLECTION).approve(_vault, _ids[id]);
         }
 
         IFarming(_vault).stake(_ids, _level);

@@ -105,21 +105,21 @@ async function main() {
   //        ||                               Trava Governance Contract                                   ||
   //        ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
   //    */
-  await changeConstantInFiles(
-    './contracts',
-    ['MainnetTravaGovernanceAddresses'],
-    'VE_TRAVA',
-    process.env.VE_TRAVA,
-  );
-  run('compile');
+  // await changeConstantInFiles(
+  //   './contracts',
+  //   ['MainnetTravaGovernanceAddresses'],
+  //   'VE_TRAVA',
+  //   process.env.VE_TRAVA,
+  // );
+  // run('compile');
 
-  await changeConstantInFiles(
-    './contracts',
-    ['MainnetTravaGovernanceAddresses'],
-    'INCENTIVE_VAULT',
-    process.env.INCENTIVE_VAULT_ADDRESS,
-  );
-  run('compile');
+  // await changeConstantInFiles(
+  //   './contracts',
+  //   ['MainnetTravaGovernanceAddresses'],
+  //   'INCENTIVE_VAULT',
+  //   process.env.INCENTIVE_VAULT_ADDRESS,
+  // );
+  // run('compile');
 
   // const travaGovernanceCompound = await redeploy(
   //   "TravaGovernanceCompound",
@@ -145,11 +145,11 @@ async function main() {
   // );
   // writeToEnvFile("TRAVA_GOVERNANCE_INCREASE_UNLOCK_TIME_ADDRESS", travaGovernanceIncreaseUnlockTime.address);
 
-  const travaGovernanceMerge = await redeploy(
-    "TravaGovernanceMerge",
-    process.env.DFS_REGISTRY_ADDRESS
-  );
-  writeToEnvFile("TRAVA_GOVERNANCE_MERGE_ADDRESS", travaGovernanceMerge.address);
+  // const travaGovernanceMerge = await redeploy(
+  //   "TravaGovernanceMerge",
+  //   process.env.DFS_REGISTRY_ADDRESS
+  // );
+  // writeToEnvFile("TRAVA_GOVERNANCE_MERGE_ADDRESS", travaGovernanceMerge.address);
 
   // const travaGovernanceWithdraw = await redeploy(
   //   "TravaGovernanceWithdraw",
@@ -248,6 +248,35 @@ async function main() {
   //   process.env.DFS_REGISTRY_ADDRESS
   // );
   // writeToEnvFile("TRAVA_NFT_MANAGER_MINT_ADDRESS", travaNFTManagerMint.address);
+
+  //        ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
+  //        ||                               Trava NFT Heuristic Farming Contract             ||
+  //        ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
+  //    */
+
+  // const travaNftHeuristicFarmingStake = await redeploy(
+  //   "TravaNFTHeuristicFarmingStake",
+  //   process.env.DFS_REGISTRY_ADDRESS
+  // );
+  // writeToEnvFile("TRAVA_NFT_HEURISTIC_FARMING_STAKE_ADDRESS", travaNftHeuristicFarmingStake.address);
+
+  const travaNftHeuristicFarmingWithdraw = await redeploy(
+    "TravaNFTHeuristicFarmingWithdraw",
+    process.env.DFS_REGISTRY_ADDRESS
+  );
+  writeToEnvFile("TRAVA_NFT_HEURISTIC_FARMING_WITHDRAW_ADDRESS", travaNftHeuristicFarmingWithdraw.address);
+
+  const travaNftHeuristicFarmingClaimReward = await redeploy(
+    "TravaNFTHeuristicFarmingClaimReward",
+    process.env.DFS_REGISTRY_ADDRESS
+  );
+  writeToEnvFile("TRAVA_NFT_HEURISTIC_FARMING_CLAIM_REWARD_ADDRESS", travaNftHeuristicFarmingClaimReward.address);
+
+  const travaNftHeuristicFarmingPolish = await redeploy(
+    "TravaNFTHeuristicFarmingPolish",
+    process.env.DFS_REGISTRY_ADDRESS
+  );
+  writeToEnvFile("TRAVA_NFT_HEURISTIC_FARMING_POLISH_ADDRESS", travaNftHeuristicFarmingPolish.address);
 
   //        ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
   //        ||                               Trava NFT farm Contract                          ||

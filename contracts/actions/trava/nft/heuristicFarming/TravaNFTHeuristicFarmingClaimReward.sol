@@ -84,7 +84,6 @@ contract TravaNFTHeuristicFarmingClaimReward is
         uint256[] memory _ids,
         uint128 _level
     ) internal returns (uint256, bytes memory) {
-
         
         IFarming(_vault).claimReward(_ids, _level);
 
