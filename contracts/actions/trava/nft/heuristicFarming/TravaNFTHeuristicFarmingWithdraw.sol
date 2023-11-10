@@ -105,11 +105,13 @@ contract TravaNFTHeuristicFarmingWithdraw is
         IFarming(_vault).redeemAndClaim(_ids, _level);
 
         if (_to != address(this)) {
-            INFTCollection(NFT_COLLECTION).batchTransferFrom(
-                address(this),
-                _to,
-                _ids
-            );
+            for (uint256 id = 0; id < _ids.length; id++) {
+                INFTCollection(NFT_COLLECTION).transferFrom(
+                    address(this),
+                    _to,
+                    _ids[id]
+                );
+            }
         }
 
         bytes memory logData = abi.encode(_vault, _ids, _level, _to);
