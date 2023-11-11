@@ -260,23 +260,23 @@ async function main() {
   // );
   // writeToEnvFile("TRAVA_NFT_HEURISTIC_FARMING_STAKE_ADDRESS", travaNftHeuristicFarmingStake.address);
 
-  const travaNftHeuristicFarmingWithdraw = await redeploy(
-    "TravaNFTHeuristicFarmingWithdraw",
-    process.env.DFS_REGISTRY_ADDRESS
-  );
-  writeToEnvFile("TRAVA_NFT_HEURISTIC_FARMING_WITHDRAW_ADDRESS", travaNftHeuristicFarmingWithdraw.address);
+  // const travaNftHeuristicFarmingWithdraw = await redeploy(
+  //   "TravaNFTHeuristicFarmingWithdraw",
+  //   process.env.DFS_REGISTRY_ADDRESS
+  // );
+  // writeToEnvFile("TRAVA_NFT_HEURISTIC_FARMING_WITHDRAW_ADDRESS", travaNftHeuristicFarmingWithdraw.address);
 
-  const travaNftHeuristicFarmingClaimReward = await redeploy(
-    "TravaNFTHeuristicFarmingClaimReward",
-    process.env.DFS_REGISTRY_ADDRESS
-  );
-  writeToEnvFile("TRAVA_NFT_HEURISTIC_FARMING_CLAIM_REWARD_ADDRESS", travaNftHeuristicFarmingClaimReward.address);
+  // const travaNftHeuristicFarmingClaimReward = await redeploy(
+  //   "TravaNFTHeuristicFarmingClaimReward",
+  //   process.env.DFS_REGISTRY_ADDRESS
+  // );
+  // writeToEnvFile("TRAVA_NFT_HEURISTIC_FARMING_CLAIM_REWARD_ADDRESS", travaNftHeuristicFarmingClaimReward.address);
 
-  const travaNftHeuristicFarmingPolish = await redeploy(
-    "TravaNFTHeuristicFarmingPolish",
-    process.env.DFS_REGISTRY_ADDRESS
-  );
-  writeToEnvFile("TRAVA_NFT_HEURISTIC_FARMING_POLISH_ADDRESS", travaNftHeuristicFarmingPolish.address);
+  // const travaNftHeuristicFarmingPolish = await redeploy(
+  //   "TravaNFTHeuristicFarmingPolish",
+  //   process.env.DFS_REGISTRY_ADDRESS
+  // );
+  // writeToEnvFile("TRAVA_NFT_HEURISTIC_FARMING_POLISH_ADDRESS", travaNftHeuristicFarmingPolish.address);
 
   //        ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
   //        ||                               Trava NFT farm Contract                          ||
@@ -364,6 +364,29 @@ async function main() {
   //        ||                               Trava NFT  Expedition Contract                                   ||
   //        ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
   //    */
+
+  //        ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
+  //        ||                               Trava NFT veTrava Contract                       ||
+  //        ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
+  //    */
+
+  const travaNFTVeTravaCreateSale = await redeploy(
+    "TravaNFTVeTravaCreateSale",
+    process.env.DFS_REGISTRY_ADDRESS
+  );
+  writeToEnvFile("TRAVA_NFT_VE_TRAVA_CREATE_SALE_ADDRESS", travaNFTVeTravaCreateSale.address);
+  
+  const travaNFTVeTravaCancelSale = await redeploy(
+    "TravaNFTVeTravaCancelSale",
+    process.env.DFS_REGISTRY_ADDRESS
+  );
+  writeToEnvFile("TRAVA_NFT_VE_TRAVA_CANCEL_SALE_ADDRESS", travaNFTVeTravaCancelSale.address);
+
+  const travaNFTVeTravaBuy = await redeploy(
+    "TravaNFTVeTravaBuy",
+    process.env.DFS_REGISTRY_ADDRESS
+  );
+  writeToEnvFile("TRAVA_NFT_VE_TRAVA_BUY_ADDRESS", travaNFTVeTravaBuy.address);
   /*
        ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
        ||                               PancakeV2 Contract                               ||
