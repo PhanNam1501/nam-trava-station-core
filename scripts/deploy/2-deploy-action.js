@@ -253,12 +253,20 @@ async function main() {
   //        ||                               Trava NFT Heuristic Farming Contract             ||
   //        ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
   //    */
+  
+    await changeConstantInFiles(
+    './contracts',
+    ['MainnetTravaNFTHeuristicFarmingAddresses'],
+    'NFT_COLLECTION',
+    process.env.TRAVA_NFT_COLLECTION,
+  );
+  run('compile');
 
-  // const travaNftHeuristicFarmingStake = await redeploy(
-  //   "TravaNFTHeuristicFarmingStake",
-  //   process.env.DFS_REGISTRY_ADDRESS
-  // );
-  // writeToEnvFile("TRAVA_NFT_HEURISTIC_FARMING_STAKE_ADDRESS", travaNftHeuristicFarmingStake.address);
+  const travaNftHeuristicFarmingStake = await redeploy(
+    "TravaNFTHeuristicFarmingStake",
+    process.env.DFS_REGISTRY_ADDRESS
+  );
+  writeToEnvFile("TRAVA_NFT_HEURISTIC_FARMING_STAKE_ADDRESS", travaNftHeuristicFarmingStake.address);
 
   // const travaNftHeuristicFarmingWithdraw = await redeploy(
   //   "TravaNFTHeuristicFarmingWithdraw",
