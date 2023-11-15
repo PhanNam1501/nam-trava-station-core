@@ -17,7 +17,40 @@ async function main() {
 
   // get signer
   const signer = owner;
+  // await changeConstantInFiles(
+  //   './contracts',
+  //   ['MainnetActionsUtilAddresses'],
+  //   'DFS_REG_CONTROLLER_ADDR',
+  //   process.env.DFS_REG_CONTROLLER_ADDR,
+  // );
 
+  await changeConstantInFiles(
+    './contracts',
+    ['MainnetActionsUtilAddresses'],
+    'REGISTRY_ADDR',
+    process.env.DFS_REGISTRY_ADDRESS,
+  );
+
+  await changeConstantInFiles(
+    './contracts',
+    ['MainnetActionsUtilAddresses'],
+    'DEFISAVER_LOGGER',
+    process.env.DEFISAVER_LOGGER_ADDRESS,
+  );
+
+  await changeConstantInFiles(
+    './contracts',
+    ['MainnetActionsUtilAddresses'],
+    'SUB_STORAGE_ADDR',
+    process.env.SUB_STORAGE_ADDRESS,
+  );
+
+  await changeConstantInFiles(
+    './contracts',
+    ['MainnetActionsUtilAddresses'],
+    'PROXY_AUTH_ADDR',
+    process.env.PROXY_AUTH_ADDRESS,
+  );
   //     /*
   //         ||--------------------------------------------------------------------------------||
   //         ||                                 Action Contract                                ||
