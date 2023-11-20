@@ -374,51 +374,59 @@ async function main() {
   //        ||                               Trava NFT  Expedition Contract                                   ||
   //        ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
   //    */
+    const travaNFTExpeditionDeploy = await redeploy(
+    "TravaNFTExpeditionDeploy",
+    process.env.DFS_REGISTRY_ADDRESS
+  );
+  writeToEnvFile(
+    "TRAVA_NFT_EXPEDITION_DEPLOY",
+    travaNFTExpeditionDeploy.address
+  );
 
   //        ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
   //        ||                               Trava NFT veTrava Contract                       ||
   //        ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
   //    */
 
-  await changeConstantInFiles(
-    "./contracts",
-    ["MainnetTravaNFTVeTravaAddresses"],
-    "VE_TRAVA_ADDRESS",
-    process.env.VE_TRAVA
-  );
-  run("compile");
+  // await changeConstantInFiles(
+  //   "./contracts",
+  //   ["MainnetTravaNFTVeTravaAddresses"],
+  //   "VE_TRAVA_ADDRESS",
+  //   process.env.VE_TRAVA
+  // );
+  // run("compile");
 
-  await changeConstantInFiles(
-    "./contracts",
-    ["MainnetTravaNFTVeTravaAddresses"],
-    "VE_TRAVA_MARKETPLACE_ADDRESS",
-    process.env.VE_TRAVA_MARKETPLACE_ADDRESS
-  );
-  run("compile");
+  // await changeConstantInFiles(
+  //   "./contracts",
+  //   ["MainnetTravaNFTVeTravaAddresses"],
+  //   "VE_TRAVA_MARKETPLACE_ADDRESS",
+  //   process.env.VE_TRAVA_MARKETPLACE_ADDRESS
+  // );
+  // run("compile");
 
-  const travaNFTVeTravaCreateSale = await redeploy(
-    "TravaNFTVeTravaCreateSale",
-    process.env.DFS_REGISTRY_ADDRESS
-  );
-  writeToEnvFile(
-    "TRAVA_NFT_VE_TRAVA_CREATE_SALE_ADDRESS",
-    travaNFTVeTravaCreateSale.address
-  );
+  // const travaNFTVeTravaCreateSale = await redeploy(
+  //   "TravaNFTVeTravaCreateSale",
+  //   process.env.DFS_REGISTRY_ADDRESS
+  // );
+  // writeToEnvFile(
+  //   "TRAVA_NFT_VE_TRAVA_CREATE_SALE_ADDRESS",
+  //   travaNFTVeTravaCreateSale.address
+  // );
 
-  const travaNFTVeTravaCancelSale = await redeploy(
-    "TravaNFTVeTravaCancelSale",
-    process.env.DFS_REGISTRY_ADDRESS
-  );
-  writeToEnvFile(
-    "TRAVA_NFT_VE_TRAVA_CANCEL_SALE_ADDRESS",
-    travaNFTVeTravaCancelSale.address
-  );
+  // const travaNFTVeTravaCancelSale = await redeploy(
+  //   "TravaNFTVeTravaCancelSale",
+  //   process.env.DFS_REGISTRY_ADDRESS
+  // );
+  // writeToEnvFile(
+  //   "TRAVA_NFT_VE_TRAVA_CANCEL_SALE_ADDRESS",
+  //   travaNFTVeTravaCancelSale.address
+  // );
 
-  const travaNFTVeTravaBuy = await redeploy(
-    "TravaNFTVeTravaBuy",
-    process.env.DFS_REGISTRY_ADDRESS
-  );
-  writeToEnvFile("TRAVA_NFT_VE_TRAVA_BUY_ADDRESS", travaNFTVeTravaBuy.address);
+  // const travaNFTVeTravaBuy = await redeploy(
+  //   "TravaNFTVeTravaBuy",
+  //   process.env.DFS_REGISTRY_ADDRESS
+  // );
+  // writeToEnvFile("TRAVA_NFT_VE_TRAVA_BUY_ADDRESS", travaNFTVeTravaBuy.address);
   /*
        ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
        ||                               PancakeV2 Contract                               ||
