@@ -6,10 +6,7 @@ import "./helpers/TravaNFTExpeditionHelper.sol";
 import {INFTCollection} from "../../../../interfaces/trava/nft/INFTCollection.sol";
 import {INFTExpedition} from "../../../../interfaces/trava/nft/INFTExpedition.sol";
 
-contract TravaNFTExpeditionAbandon is
-    ActionBase,
-    TravaNFTExpeditionHelper
-{
+contract TravaNFTExpeditionAbandon is ActionBase, TravaNFTExpeditionHelper {
     struct Params {
         address vault;
         uint256 id;
@@ -61,11 +58,7 @@ contract TravaNFTExpeditionAbandon is
         bytes memory _callData
     ) public payable override {
         Params memory params = parseInputs(_callData);
-        (, bytes memory logData) = _abandon(
-            params.vault,
-            params.id,
-            params.to
-        );
+        (, bytes memory logData) = _abandon(params.vault, params.id, params.to);
         logger.logActionDirectEvent("TravaNFTExpeditionDeploy", logData);
     }
 
@@ -86,12 +79,14 @@ contract TravaNFTExpeditionAbandon is
         }
 
         INFTExpedition(_vault).abandon(_id);
-        
-        INFTCollection(NFT_COLLECTION).transferFrom(
-            address(this),
-            _to,
-            _id
-        );
+
+        if (_to != address(this)) {
+            INFTCollection(NFT_COLLECTION).transferFrom(
+                address(this),
+                _to,
+                _id
+            );
+        }
 
         bytes memory logData = abi.encode(_vault, _id, _to);
         return (_id, logData);
@@ -103,4 +98,3 @@ contract TravaNFTExpeditionAbandon is
         params = abi.decode(_callData, (Params));
     }
 }
-
