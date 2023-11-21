@@ -7,10 +7,7 @@ import "./helpers/TravaNFTExpeditionHelper.sol";
 import {INFTCollection} from "../../../../interfaces/trava/nft/INFTCollection.sol";
 import {INFTExpedition} from "../../../../interfaces/trava/nft/INFTExpedition.sol";
 
-contract TravaNFTExpeditionWithdraw is
-    ActionBase,
-    TravaNFTExpeditionHelper
-{
+contract TravaNFTExpeditionWithdraw is ActionBase, TravaNFTExpeditionHelper {
     using TokenUtils for address;
 
     struct Params {
@@ -91,20 +88,30 @@ contract TravaNFTExpeditionWithdraw is
         address payment_governor_token = address(PAYMENT_GOVERNOR);
 
         // get balance token reward before withdraw
-        uint256 rewardBalanceBefore = payment_governor_token.getBalance(address(this));
+        uint256 rewardBalanceBefore = payment_governor_token.getBalance(
+            address(this)
+        );
 
         INFTExpedition(_vault).withdraw(_id);
-        
-        // get balance of token reward after withdraw
-        uint256 rewardBalanceAfter = payment_governor_token.getBalance(address(this));
-        // transfer the reward token 
-        payment_governor_token.withdrawTokens(_to, rewardBalanceAfter - rewardBalanceBefore);
 
-        INFTCollection(NFT_COLLECTION).transferFrom(
-            address(this),
-            _to,
-            _id
+        // get balance of token reward after withdraw
+        uint256 rewardBalanceAfter = payment_governor_token.getBalance(
+            address(this)
         );
+
+        if (_to != address(this)) {
+            // transfer the reward token
+            payment_governor_token.withdrawTokens(
+                _to,
+                rewardBalanceAfter - rewardBalanceBefore
+            );
+
+            INFTCollection(NFT_COLLECTION).transferFrom(
+                address(this),
+                _to,
+                _id
+            );
+        }
 
         bytes memory logData = abi.encode(_vault, _id, _to);
         return (_id, logData);
@@ -116,4 +123,3 @@ contract TravaNFTExpeditionWithdraw is
         params = abi.decode(_callData, (Params));
     }
 }
-

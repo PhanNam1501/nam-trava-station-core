@@ -16,7 +16,8 @@ contract TravaNFTExpeditionDeploy is ActionBase, TravaNFTExpeditionHelper {
         uint256 id;
         uint256[] buffWinRateTickets;
         uint256[] buffExpTickets;
-        address from;
+        address fromKnight;
+        address fromFee;
     }
 
     /// @inheritdoc ActionBase
@@ -62,9 +63,16 @@ contract TravaNFTExpeditionDeploy is ActionBase, TravaNFTExpeditionHelper {
             );
         }
 
-        params.from = _parseParamAddr(
-            params.from,
+        params.fromKnight = _parseParamAddr(
+            params.fromKnight,
             _paramMapping[2 + nWinTickets + nExpTickets],
+            _subData,
+            _returnValues
+        );
+
+        params.fromFee = _parseParamAddr(
+            params.fromFee,
+            _paramMapping[3 + nWinTickets + nExpTickets],
             _subData,
             _returnValues
         );
@@ -74,7 +82,8 @@ contract TravaNFTExpeditionDeploy is ActionBase, TravaNFTExpeditionHelper {
             params.id,
             params.buffWinRateTickets,
             params.buffExpTickets,
-            params.from
+            params.fromKnight,
+            params.fromFee
         );
 
         emit ActionEvent("TravaNFTExpeditionDeploy", logData);
@@ -91,7 +100,8 @@ contract TravaNFTExpeditionDeploy is ActionBase, TravaNFTExpeditionHelper {
             params.id,
             params.buffWinRateTickets,
             params.buffExpTickets,
-            params.from
+            params.fromKnight,
+            params.fromFee
         );
         logger.logActionDirectEvent("TravaNFTExpeditionDeploy", logData);
     }
@@ -108,14 +118,18 @@ contract TravaNFTExpeditionDeploy is ActionBase, TravaNFTExpeditionHelper {
         uint256 _id,
         uint256[] memory _buffWinRateTickets,
         uint256[] memory _buffExpTickets,
-        address _from
+        address _fromKnight,
+        address _fromFee
     ) internal returns (uint256, bytes memory) {
-        if (_from == address(0)) {
-            _from = address(this);
+        if (_fromKnight == address(0)) {
+            _fromKnight = address(this);
+        }
+
+        if (_fromFee == address(0)) {
+            _fromFee = address(this);
         }
 
         uint256 entryPrice = INFTExpedition(_vault).getExpeditionPrice();
-        // uint256[] memory ticketIds = [100001, 100002, 100003];
 
         uint24[3] memory sourceArray = [100001, 100002, 100003];
         uint256[] memory ticketIds = new uint256[](sourceArray.length);
@@ -126,34 +140,50 @@ contract TravaNFTExpeditionDeploy is ActionBase, TravaNFTExpeditionHelper {
 
         // approve vault to use entry price of governor_token
         address payment_governor = address(PAYMENT_GOVERNOR);
-        payment_governor.approveToken(_vault, entryPrice );
 
-        INFTCollection(NFT_COLLECTION).transferFrom(_from, address(this), _id);
+        // pull tokens to proxy so we can use to pay entry price lock
+        payment_governor.pullTokensIfNeeded(_fromFee, entryPrice);
+
+        // approve NFT expedition to pull token
+        payment_governor.approveToken(_vault, entryPrice);
+
+        require(
+            INFTCollection(NFT_COLLECTION).ownerOf(_id) == _fromKnight,
+            "Owner NFT Knight does not possess token"
+        );
+
+        INFTCollection(NFT_COLLECTION).transferFrom(
+            _fromKnight,
+            address(this),
+            _id
+        );
 
         require(
             INFTCollection(NFT_COLLECTION).ownerOf(_id) == address(this),
-            "Owner does not possess token"
+            "Owner Smart Wallet does not possess token"
         );
 
+        // approve NFT expedition to pull nft
         INFTCollection(NFT_COLLECTION).approve(_vault, _id);
 
         // transfer tickets from to
         INFTTicket(NFT_TICKET).safeBatchTransferFrom(
-            _from,
+            _fromKnight,
             address(this),
             ticketIds,
             _buffWinRateTickets,
             ""
         );
         INFTTicket(NFT_TICKET).safeBatchTransferFrom(
-            _from,
+            _fromKnight,
             address(this),
             ticketIds,
             _buffExpTickets,
             ""
         );
 
-        INFTTicket(NFT_TICKET).setApprovalForAll(_vault, true);
+        if (!INFTTicket(NFT_TICKET).isApprovedForAll(address(this), _vault))
+            INFTTicket(NFT_TICKET).setApprovalForAll(_vault, true);
 
         INFTExpedition(_vault).deploy(
             _id,
@@ -166,7 +196,8 @@ contract TravaNFTExpeditionDeploy is ActionBase, TravaNFTExpeditionHelper {
             _id,
             _buffWinRateTickets,
             _buffExpTickets,
-            _from
+            _fromKnight,
+            _fromFee
         );
         return (_id, logData);
     }
