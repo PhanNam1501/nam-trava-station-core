@@ -3,8 +3,6 @@ pragma solidity 0.8.4;
 
 import "../../../ActionBase.sol";
 import "./helpers/TravaNFTExpeditionHelper.sol";
-import {INFTCollection} from "../../../../interfaces/trava/nft/INFTCollection.sol";
-import {INFTExpedition} from "../../../../interfaces/trava/nft/INFTExpedition.sol";
 
 contract TravaNFTExpeditionAbandon is ActionBase, TravaNFTExpeditionHelper {
     struct Params {

@@ -4,9 +4,6 @@ pragma solidity 0.8.4;
 import "../../../ActionBase.sol";
 import "../../../../utils/TokenUtils.sol";
 import "./helpers/TravaNFTExpeditionHelper.sol";
-import {INFTCollection} from "../../../../interfaces/trava/nft/INFTCollection.sol";
-import {INFTExpedition} from "../../../../interfaces/trava/nft/INFTExpedition.sol";
-import {INFTTicket} from "../../../../interfaces/trava/nft/INFTTicket.sol";
 
 contract TravaNFTExpeditionDeploy is ActionBase, TravaNFTExpeditionHelper {
     using TokenUtils for address;
@@ -131,11 +128,18 @@ contract TravaNFTExpeditionDeploy is ActionBase, TravaNFTExpeditionHelper {
 
         uint256 entryPrice = INFTExpedition(_vault).getExpeditionPrice();
 
-        uint24[3] memory sourceArray = [100001, 100002, 100003];
-        uint256[] memory ticketIds = new uint256[](sourceArray.length);
+        // uint24[3] memory sourceArray = [100001, 100002, 100003];
+        // uint256[] memory ticketIds = new uint256[](sourceArray.length);
 
-        for (uint i = 0; i < sourceArray.length; i++) {
-            ticketIds[i] = uint256(sourceArray[i]);
+        // for (uint i = 0; i < sourceArray.length; i++) {
+        //     ticketIds[i] = uint256(sourceArray[i]);
+        // }
+
+        uint8[3] memory sourceArrayTickets = [0, 0, 0];
+        uint256[] memory arrayTickets = new uint256[](sourceArrayTickets.length);
+
+        for (uint i = 0; i < sourceArrayTickets.length; i++) {
+            arrayTickets[i] = uint256(sourceArrayTickets[i]);
         }
 
         // approve vault to use entry price of governor_token
@@ -146,6 +150,7 @@ contract TravaNFTExpeditionDeploy is ActionBase, TravaNFTExpeditionHelper {
 
         // approve NFT expedition to pull token
         payment_governor.approveToken(_vault, entryPrice);
+        payment_governor.approveToken(address(RECIPIENT), entryPrice);
 
         require(
             INFTCollection(NFT_COLLECTION).ownerOf(_id) == _fromKnight,
@@ -167,28 +172,52 @@ contract TravaNFTExpeditionDeploy is ActionBase, TravaNFTExpeditionHelper {
         INFTCollection(NFT_COLLECTION).approve(_vault, _id);
 
         // transfer tickets from to
-        INFTTicket(NFT_TICKET).safeBatchTransferFrom(
-            _fromKnight,
-            address(this),
-            ticketIds,
-            _buffWinRateTickets,
-            ""
-        );
-        INFTTicket(NFT_TICKET).safeBatchTransferFrom(
-            _fromKnight,
-            address(this),
-            ticketIds,
-            _buffExpTickets,
-            ""
-        );
+        // INFTTicket(NFT_TICKET).safeBatchTransferFrom(
+        //     _fromKnight,
+        //     address(this),
+        //     ticketIds,
+        //     _buffWinRateTickets,
+        //     ""
+        // );
+        // INFTTicket(NFT_TICKET).safeBatchTransferFrom(
+        //     _fromKnight,
+        //     address(this),
+        //     ticketIds,
+        //     _buffExpTickets,
+        //     ""
+        // );
+
+        // INFTTicket(NFT_TICKET).safeTransferFrom(
+        //     _fromKnight,
+        //     address(this),
+        //     100001,
+        //     _buffWinRateTickets[0] + _buffExpTickets[0],
+        //     "0x"
+        // );
+
+        // INFTTicket(NFT_TICKET).safeTransferFrom(
+        //     _fromKnight,
+        //     address(this),
+        //     100002,
+        //     _buffWinRateTickets[1] + _buffExpTickets[1],
+        //     "0x"
+        // );
+
+        // INFTTicket(NFT_TICKET).safeTransferFrom(
+        //     _fromKnight,
+        //     address(this),
+        //     100003,
+        //     _buffWinRateTickets[2] + _buffExpTickets[2],
+        //     "0x"
+        // );
 
         if (!INFTTicket(NFT_TICKET).isApprovedForAll(address(this), _vault))
             INFTTicket(NFT_TICKET).setApprovalForAll(_vault, true);
 
         INFTExpedition(_vault).deploy(
             _id,
-            _buffWinRateTickets,
-            _buffExpTickets
+            arrayTickets,
+            arrayTickets
         );
 
         bytes memory logData = abi.encode(

@@ -2,11 +2,31 @@
 pragma solidity 0.8.4;
 
 import "./MainnetTravaNFTExpeditionAddresses.sol";
-import "../../../../../interfaces/trava/nft/INFTAuction.sol";
-import "../../../../../interfaces/trava/nft/INFTCore.sol";
+import "../../../../../interfaces/trava/nft/INFTCollection.sol";
+import "../../../../../interfaces/trava/nft/INFTExpedition.sol";
+import "../../../../../interfaces/trava/nft/INFTTicket.sol";
 
 // import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 
 /// @title Utility functions and data used in travaNFT actions
 contract TravaNFTExpeditionHelper is MainnetTravaNFTExpeditionAddresses {
+    function onERC1155Received(
+        address operator,
+        address from,
+        uint256 id,
+        uint256 value,
+        bytes calldata data
+    ) external returns (bytes4) {
+        return this.onERC1155Received.selector;
+    }
+
+    function onERC1155BatchReceived(
+        address operator,
+        address from,
+        uint256[] calldata ids,
+        uint256[] calldata values,
+        bytes calldata data
+    ) external returns (bytes4) {
+        return this.onERC1155BatchReceived.selector;
+    }
 }

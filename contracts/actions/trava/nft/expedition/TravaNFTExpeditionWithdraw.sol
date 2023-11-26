@@ -4,8 +4,6 @@ pragma solidity 0.8.4;
 import "../../../ActionBase.sol";
 import "../../../../utils/TokenUtils.sol";
 import "./helpers/TravaNFTExpeditionHelper.sol";
-import {INFTCollection} from "../../../../interfaces/trava/nft/INFTCollection.sol";
-import {INFTExpedition} from "../../../../interfaces/trava/nft/INFTExpedition.sol";
 
 contract TravaNFTExpeditionWithdraw is ActionBase, TravaNFTExpeditionHelper {
     using TokenUtils for address;
