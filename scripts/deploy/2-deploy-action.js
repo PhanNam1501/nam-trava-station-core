@@ -407,7 +407,7 @@ async function main() {
   //        ||                               Trava NFT  Expedition Contract                                   ||
   //        ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
   //    */
-    const travaNFTExpeditionDeploy = await redeploy(
+  const travaNFTExpeditionDeploy = await redeploy(
     "TravaNFTExpeditionDeploy",
     process.env.DFS_REGISTRY_ADDRESS
   );
@@ -415,6 +415,24 @@ async function main() {
     "TRAVA_NFT_EXPEDITION_DEPLOY",
     travaNFTExpeditionDeploy.address
   );
+
+  // const travaNFTExpeditionAbandon = await redeploy(
+  //   "TravaNFTExpeditionAbandon",
+  //   process.env.DFS_REGISTRY_ADDRESS
+  // );
+  // writeToEnvFile(
+  //   "TRAVA_NFT_EXPEDITION_ABANDON",
+  //   travaNFTExpeditionAbandon.address
+  // );
+
+  // const travaNFTExpeditionWithdraw = await redeploy(
+  //   "TravaNFTExpeditionWithdraw",
+  //   process.env.DFS_REGISTRY_ADDRESS
+  // );
+  // writeToEnvFile(
+  //   "TRAVA_NFT_EXPEDITION_WITHDRAW",
+  //   travaNFTExpeditionWithdraw.address
+  // );
 
   //        ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
   //        ||                               Trava NFT veTrava Contract                       ||
