@@ -10,23 +10,4 @@ import "../../../../../interfaces/trava/nft/INFTTicket.sol";
 
 /// @title Utility functions and data used in travaNFT actions
 contract TravaNFTExpeditionHelper is MainnetTravaNFTExpeditionAddresses {
-    function onERC1155Received(
-        address operator,
-        address from,
-        uint256 id,
-        uint256 value,
-        bytes calldata data
-    ) external returns (bytes4) {
-        return this.onERC1155Received.selector;
-    }
-
-    function onERC1155BatchReceived(
-        address operator,
-        address from,
-        uint256[] calldata ids,
-        uint256[] calldata values,
-        bytes calldata data
-    ) external returns (bytes4) {
-        return this.onERC1155BatchReceived.selector;
-    }
 }
