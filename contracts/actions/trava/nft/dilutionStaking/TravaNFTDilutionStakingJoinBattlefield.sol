@@ -144,7 +144,7 @@ contract TravaNFTDilutionStakingJoinBattlefield is
 
         for (uint256 id = 0; id < _tokenIds.length; id++) {
             require(
-                INFTCollection(NFT_COLLECTION).ownerOf(id) == _fromKnight,
+                INFTCollection(NFT_COLLECTION).ownerOf(_tokenIds[id]) == _fromKnight,
                 "Owner NFT Knight does not possess token"
             );
         }

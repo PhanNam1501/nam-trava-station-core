@@ -401,9 +401,120 @@
                                 "type": "uint256"
                             }
                         ],
+                        "name": "privateBattleInfos",
+                        "outputs": [
+                            {
+                                "components": [
+                                    {
+                                        "internalType": "address",
+                                        "name": "owner",
+                                        "type": "address"
+                                    },
+                                    {
+                                        "internalType": "uint256",
+                                        "name": "tokenId",
+                                        "type": "uint256"
+                                    },
+                                    {
+                                        "internalType": "uint256",
+                                        "name": "lockAmount",
+                                        "type": "uint256"
+                                    },
+                                    {
+                                        "internalType": "uint256",
+                                        "name": "lockCirculatingSupply",
+                                        "type": "uint256"
+                                    }
+                                ],
+                                "internalType": "struct INFTDilutionStaking.PrivateBattleFieldInfo",
+                                "name": "",
+                                "type": "tuple"
+                            }
+                        ],
+                        "stateMutability": "view",
+                        "type": "function"
+                    },
+                    {
+                        "inputs": [
+                            {
+                                "internalType": "uint256",
+                                "name": "_privateBattleFieldId",
+                                "type": "uint256"
+                            }
+                        ],
+                        "name": "privateBattleStates",
+                        "outputs": [
+                            {
+                                "components": [
+                                    {
+                                        "internalType": "uint256",
+                                        "name": "unlockTime",
+                                        "type": "uint256"
+                                    },
+                                    {
+                                        "internalType": "uint256",
+                                        "name": "lastUpdate",
+                                        "type": "uint256"
+                                    },
+                                    {
+                                        "internalType": "uint256",
+                                        "name": "index",
+                                        "type": "uint256"
+                                    },
+                                    {
+                                        "internalType": "uint256",
+                                        "name": "totalPower",
+                                        "type": "uint256"
+                                    },
+                                    {
+                                        "internalType": "uint256",
+                                        "name": "totalFee",
+                                        "type": "uint256"
+                                    },
+                                    {
+                                        "internalType": "uint256",
+                                        "name": "unlockCirculatingSupply",
+                                        "type": "uint256"
+                                    }
+                                ],
+                                "internalType": "struct INFTDilutionStaking.PrivateBattleFieldState",
+                                "name": "",
+                                "type": "tuple"
+                            }
+                        ],
+                        "stateMutability": "view",
+                        "type": "function"
+                    },
+                    {
+                        "inputs": [
+                            {
+                                "internalType": "uint256",
+                                "name": "_privateBattleFieldId",
+                                "type": "uint256"
+                            }
+                        ],
                         "name": "retreatPrivateBattlefield",
                         "outputs": [],
                         "stateMutability": "nonpayable",
+                        "type": "function"
+                    },
+                    {
+                        "inputs": [
+                            {
+                                "internalType": "uint256",
+                                "name": "_time",
+                                "type": "uint256"
+                            }
+                        ],
+                        "name": "timeLockToDilution",
+                        "outputs": [
+                            {
+                                "internalType": "uint256",
+                                "name": "",
+                                "type": "uint256"
+                            }
+                        ],
+                        "stateMutability": "view",
                         "type": "function"
                     },
                     {
@@ -485,13 +596,16 @@
                         "getUniqueKnightDilutionReward(uint256)": "886adf03",
                         "joinBattlefield(uint256[],uint8,uint256,uint256)": "8cb6665f",
                         "joinPrivateBattlefield(uint256,uint256[],uint256[])": "d308c9be",
+                        "privateBattleInfos(uint256)": "2a95e426",
+                        "privateBattleStates(uint256)": "c256b0a8",
                         "retreatPrivateBattlefield(uint256)": "6197136f",
+                        "timeLockToDilution(uint256)": "7c3cf701",
                         "updateUnlockCirculatingSupplyPrivate(uint256)": "d09ca1ed",
                         "withdrawAndClaimRewardBattlefield(uint256)": "eaf43823",
                         "withdrawPrivateBattlefield(uint256,uint256[])": "dcf8061c"
                     }
                 },
-                "metadata": "{\"compiler\":{\"version\":\"0.8.4+commit.c7e474f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"components\":[{\"internalType\":\"uint40\",\"name\":\"copper\",\"type\":\"uint40\"},{\"internalType\":\"uint40\",\"name\":\"silver\",\"type\":\"uint40\"},{\"internalType\":\"uint40\",\"name\":\"gold\",\"type\":\"uint40\"},{\"internalType\":\"uint40\",\"name\":\"diamond\",\"type\":\"uint40\"},{\"internalType\":\"uint40\",\"name\":\"crystal\",\"type\":\"uint40\"},{\"internalType\":\"uint40\",\"name\":\"unique\",\"type\":\"uint40\"}],\"internalType\":\"struct INFTDilutionStaking.KnightAmount\",\"name\":\"_knightAmount\",\"type\":\"tuple\"}],\"name\":\"calculateArmyPower\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"uint40\",\"name\":\"copper\",\"type\":\"uint40\"},{\"internalType\":\"uint40\",\"name\":\"silver\",\"type\":\"uint40\"},{\"internalType\":\"uint40\",\"name\":\"gold\",\"type\":\"uint40\"},{\"internalType\":\"uint40\",\"name\":\"diamond\",\"type\":\"uint40\"},{\"internalType\":\"uint40\",\"name\":\"crystal\",\"type\":\"uint40\"},{\"internalType\":\"uint40\",\"name\":\"unique\",\"type\":\"uint40\"}],\"internalType\":\"struct INFTDilutionStaking.KnightAmount\",\"name\":\"_knightAmount\",\"type\":\"tuple\"},{\"components\":[{\"internalType\":\"uint40\",\"name\":\"copper\",\"type\":\"uint40\"},{\"internalType\":\"uint40\",\"name\":\"silver\",\"type\":\"uint40\"},{\"internalType\":\"uint40\",\"name\":\"gold\",\"type\":\"uint40\"},{\"internalType\":\"uint40\",\"name\":\"diamond\",\"type\":\"uint40\"},{\"internalType\":\"uint40\",\"name\":\"crystal\",\"type\":\"uint40\"},{\"internalType\":\"uint40\",\"name\":\"unique\",\"type\":\"uint40\"}],\"internalType\":\"struct INFTDilutionStaking.KnightAmount\",\"name\":\"_knightRequirement\",\"type\":\"tuple\"}],\"name\":\"checkKnightRequirement\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_tokenId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_stakedAmount\",\"type\":\"uint256\"}],\"name\":\"deployPrivateBattlefield\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_armyId\",\"type\":\"uint256\"}],\"name\":\"getArmyInfo\",\"outputs\":[{\"components\":[{\"internalType\":\"enum INFTDilutionStaking.ArmyRank\",\"name\":\"armyRank\",\"type\":\"uint8\"},{\"internalType\":\"uint128\",\"name\":\"unlockTime\",\"type\":\"uint128\"},{\"internalType\":\"uint128\",\"name\":\"dilution\",\"type\":\"uint128\"},{\"internalType\":\"uint256\",\"name\":\"lockAmount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"lockCirculatingSupply\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"unlockCirculatingSupply\",\"type\":\"uint256\"},{\"internalType\":\"uint256[]\",\"name\":\"stakedKnight\",\"type\":\"uint256[]\"}],\"internalType\":\"struct INFTDilutionStaking.ArmyInfo\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"enum INFTDilutionStaking.ArmyRank\",\"name\":\"armyRank\",\"type\":\"uint8\"},{\"internalType\":\"uint128\",\"name\":\"unlockTime\",\"type\":\"uint128\"},{\"internalType\":\"uint128\",\"name\":\"dilution\",\"type\":\"uint128\"},{\"internalType\":\"uint256\",\"name\":\"lockAmount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"lockCirculatingSupply\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"unlockCirculatingSupply\",\"type\":\"uint256\"},{\"internalType\":\"uint256[]\",\"name\":\"stakedKnight\",\"type\":\"uint256[]\"}],\"internalType\":\"struct INFTDilutionStaking.ArmyInfo\",\"name\":\"_armyInfo\",\"type\":\"tuple\"}],\"name\":\"getBattlefieldReward\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getCurrentCirculatingSupply\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_tokenId\",\"type\":\"uint256\"}],\"name\":\"getCurrentMercenaryDilution\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_tokenId\",\"type\":\"uint256\"}],\"name\":\"getMercenaryDilutionReward\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_privateBattleId\",\"type\":\"uint256\"}],\"name\":\"getUniqueKnightDilutionReward\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256[]\",\"name\":\"_tokenIds\",\"type\":\"uint256[]\"},{\"internalType\":\"enum INFTDilutionStaking.ArmyRank\",\"name\":\"_stakeType\",\"type\":\"uint8\"},{\"internalType\":\"uint256\",\"name\":\"_lockAmount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_timeLock\",\"type\":\"uint256\"}],\"name\":\"joinBattlefield\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_privateBattleId\",\"type\":\"uint256\"},{\"internalType\":\"uint256[]\",\"name\":\"_tokenIds\",\"type\":\"uint256[]\"},{\"internalType\":\"uint256[]\",\"name\":\"_lockAmounts\",\"type\":\"uint256[]\"}],\"name\":\"joinPrivateBattlefield\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_privateBattleFieldId\",\"type\":\"uint256\"}],\"name\":\"retreatPrivateBattlefield\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_privateBattleId\",\"type\":\"uint256\"}],\"name\":\"updateUnlockCirculatingSupplyPrivate\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_armyId\",\"type\":\"uint256\"}],\"name\":\"withdrawAndClaimRewardBattlefield\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_privateBattleId\",\"type\":\"uint256\"},{\"internalType\":\"uint256[]\",\"name\":\"_tokenIds\",\"type\":\"uint256[]\"}],\"name\":\"withdrawPrivateBattlefield\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"e:/trava-saver-main-core/trava-station-core/contracts/interfaces/trava/nft/INFTDilutionStaking.sol\":\"INFTDilutionStaking\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"e:/trava-saver-main-core/trava-station-core/contracts/interfaces/trava/nft/INFTDilutionStaking.sol\":{\"keccak256\":\"0x1bb5db573a9b4b369d7594293470b9dce82323a9009be29c5a872f9a9d00ff20\",\"license\":\"Unlicense\",\"urls\":[\"bzz-raw://7dc53be474f4978262508d02bb748953fdcc6d9168fcf4c2c2d0548ee3a9f277\",\"dweb:/ipfs/QmWSMfNMe7fyX6SPRVyFEUhGHAVu5eFWK1DwTH2DygULfp\"]}},\"version\":1}",
+                "metadata": "{\"compiler\":{\"version\":\"0.8.4+commit.c7e474f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"components\":[{\"internalType\":\"uint40\",\"name\":\"copper\",\"type\":\"uint40\"},{\"internalType\":\"uint40\",\"name\":\"silver\",\"type\":\"uint40\"},{\"internalType\":\"uint40\",\"name\":\"gold\",\"type\":\"uint40\"},{\"internalType\":\"uint40\",\"name\":\"diamond\",\"type\":\"uint40\"},{\"internalType\":\"uint40\",\"name\":\"crystal\",\"type\":\"uint40\"},{\"internalType\":\"uint40\",\"name\":\"unique\",\"type\":\"uint40\"}],\"internalType\":\"struct INFTDilutionStaking.KnightAmount\",\"name\":\"_knightAmount\",\"type\":\"tuple\"}],\"name\":\"calculateArmyPower\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"uint40\",\"name\":\"copper\",\"type\":\"uint40\"},{\"internalType\":\"uint40\",\"name\":\"silver\",\"type\":\"uint40\"},{\"internalType\":\"uint40\",\"name\":\"gold\",\"type\":\"uint40\"},{\"internalType\":\"uint40\",\"name\":\"diamond\",\"type\":\"uint40\"},{\"internalType\":\"uint40\",\"name\":\"crystal\",\"type\":\"uint40\"},{\"internalType\":\"uint40\",\"name\":\"unique\",\"type\":\"uint40\"}],\"internalType\":\"struct INFTDilutionStaking.KnightAmount\",\"name\":\"_knightAmount\",\"type\":\"tuple\"},{\"components\":[{\"internalType\":\"uint40\",\"name\":\"copper\",\"type\":\"uint40\"},{\"internalType\":\"uint40\",\"name\":\"silver\",\"type\":\"uint40\"},{\"internalType\":\"uint40\",\"name\":\"gold\",\"type\":\"uint40\"},{\"internalType\":\"uint40\",\"name\":\"diamond\",\"type\":\"uint40\"},{\"internalType\":\"uint40\",\"name\":\"crystal\",\"type\":\"uint40\"},{\"internalType\":\"uint40\",\"name\":\"unique\",\"type\":\"uint40\"}],\"internalType\":\"struct INFTDilutionStaking.KnightAmount\",\"name\":\"_knightRequirement\",\"type\":\"tuple\"}],\"name\":\"checkKnightRequirement\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_tokenId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_stakedAmount\",\"type\":\"uint256\"}],\"name\":\"deployPrivateBattlefield\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_armyId\",\"type\":\"uint256\"}],\"name\":\"getArmyInfo\",\"outputs\":[{\"components\":[{\"internalType\":\"enum INFTDilutionStaking.ArmyRank\",\"name\":\"armyRank\",\"type\":\"uint8\"},{\"internalType\":\"uint128\",\"name\":\"unlockTime\",\"type\":\"uint128\"},{\"internalType\":\"uint128\",\"name\":\"dilution\",\"type\":\"uint128\"},{\"internalType\":\"uint256\",\"name\":\"lockAmount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"lockCirculatingSupply\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"unlockCirculatingSupply\",\"type\":\"uint256\"},{\"internalType\":\"uint256[]\",\"name\":\"stakedKnight\",\"type\":\"uint256[]\"}],\"internalType\":\"struct INFTDilutionStaking.ArmyInfo\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"components\":[{\"internalType\":\"enum INFTDilutionStaking.ArmyRank\",\"name\":\"armyRank\",\"type\":\"uint8\"},{\"internalType\":\"uint128\",\"name\":\"unlockTime\",\"type\":\"uint128\"},{\"internalType\":\"uint128\",\"name\":\"dilution\",\"type\":\"uint128\"},{\"internalType\":\"uint256\",\"name\":\"lockAmount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"lockCirculatingSupply\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"unlockCirculatingSupply\",\"type\":\"uint256\"},{\"internalType\":\"uint256[]\",\"name\":\"stakedKnight\",\"type\":\"uint256[]\"}],\"internalType\":\"struct INFTDilutionStaking.ArmyInfo\",\"name\":\"_armyInfo\",\"type\":\"tuple\"}],\"name\":\"getBattlefieldReward\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getCurrentCirculatingSupply\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_tokenId\",\"type\":\"uint256\"}],\"name\":\"getCurrentMercenaryDilution\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_tokenId\",\"type\":\"uint256\"}],\"name\":\"getMercenaryDilutionReward\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_privateBattleId\",\"type\":\"uint256\"}],\"name\":\"getUniqueKnightDilutionReward\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256[]\",\"name\":\"_tokenIds\",\"type\":\"uint256[]\"},{\"internalType\":\"enum INFTDilutionStaking.ArmyRank\",\"name\":\"_stakeType\",\"type\":\"uint8\"},{\"internalType\":\"uint256\",\"name\":\"_lockAmount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"_timeLock\",\"type\":\"uint256\"}],\"name\":\"joinBattlefield\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_privateBattleId\",\"type\":\"uint256\"},{\"internalType\":\"uint256[]\",\"name\":\"_tokenIds\",\"type\":\"uint256[]\"},{\"internalType\":\"uint256[]\",\"name\":\"_lockAmounts\",\"type\":\"uint256[]\"}],\"name\":\"joinPrivateBattlefield\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_privateBattleFieldId\",\"type\":\"uint256\"}],\"name\":\"privateBattleInfos\",\"outputs\":[{\"components\":[{\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"tokenId\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"lockAmount\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"lockCirculatingSupply\",\"type\":\"uint256\"}],\"internalType\":\"struct INFTDilutionStaking.PrivateBattleFieldInfo\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_privateBattleFieldId\",\"type\":\"uint256\"}],\"name\":\"privateBattleStates\",\"outputs\":[{\"components\":[{\"internalType\":\"uint256\",\"name\":\"unlockTime\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"lastUpdate\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"index\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"totalPower\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"totalFee\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"unlockCirculatingSupply\",\"type\":\"uint256\"}],\"internalType\":\"struct INFTDilutionStaking.PrivateBattleFieldState\",\"name\":\"\",\"type\":\"tuple\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_privateBattleFieldId\",\"type\":\"uint256\"}],\"name\":\"retreatPrivateBattlefield\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_time\",\"type\":\"uint256\"}],\"name\":\"timeLockToDilution\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_privateBattleId\",\"type\":\"uint256\"}],\"name\":\"updateUnlockCirculatingSupplyPrivate\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_armyId\",\"type\":\"uint256\"}],\"name\":\"withdrawAndClaimRewardBattlefield\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_privateBattleId\",\"type\":\"uint256\"},{\"internalType\":\"uint256[]\",\"name\":\"_tokenIds\",\"type\":\"uint256[]\"}],\"name\":\"withdrawPrivateBattlefield\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"e:/trava-saver-main-core/trava-station-core/contracts/interfaces/trava/nft/INFTDilutionStaking.sol\":\"INFTDilutionStaking\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"e:/trava-saver-main-core/trava-station-core/contracts/interfaces/trava/nft/INFTDilutionStaking.sol\":{\"keccak256\":\"0xde3dea5e2284952fddb65d5144576750175e36ae4198ce0e3fc4fff7566ccddb\",\"license\":\"Unlicense\",\"urls\":[\"bzz-raw://26f7b612758c148988603203b8b87c384a0b641062dbccd52040a7b0b1ca3235\",\"dweb:/ipfs/QmXyNBqLaKj5wNKgc6RUNkbT4xJcS3rreLLRHJZAhcGCPJ\"]}},\"version\":1}",
                 "storageLayout": {
                     "storage": [],
                     "types": null
@@ -510,10 +624,10 @@
                 "absolutePath": "e:/trava-saver-main-core/trava-station-core/contracts/interfaces/trava/nft/INFTDilutionStaking.sol",
                 "exportedSymbols": {
                     "INFTDilutionStaking": [
-                        236
+                        259
                     ]
                 },
-                "id": 237,
+                "id": 260,
                 "license": "Unlicense",
                 "nodeType": "SourceUnit",
                 "nodes": [
@@ -533,9 +647,9 @@
                         "contractDependencies": [],
                         "contractKind": "interface",
                         "fullyImplemented": false,
-                        "id": 236,
+                        "id": 259,
                         "linearizedBaseContracts": [
-                            236
+                            259
                         ],
                         "name": "INFTDilutionStaking",
                         "nameLocation": "75:19:0",
@@ -801,7 +915,7 @@
                                 "name": "KnightAmount",
                                 "nameLocation": "338:12:0",
                                 "nodeType": "StructDefinition",
-                                "scope": 236,
+                                "scope": 259,
                                 "src": "331:172:0",
                                 "visibility": "public"
                             },
@@ -901,7 +1015,7 @@
                                 "name": "ArmyRequirement",
                                 "nameLocation": "518:15:0",
                                 "nodeType": "StructDefinition",
-                                "scope": 236,
+                                "scope": 259,
                                 "src": "511:125:0",
                                 "visibility": "public"
                             },
@@ -1118,7 +1232,7 @@
                                 "name": "ArmyInfo",
                                 "nameLocation": "651:8:0",
                                 "nodeType": "StructDefinition",
-                                "scope": 236,
+                                "scope": 259,
                                 "src": "644:252:0",
                                 "visibility": "public"
                             },
@@ -1292,7 +1406,7 @@
                                 "name": "NFTPower",
                                 "nameLocation": "911:8:0",
                                 "nodeType": "StructDefinition",
-                                "scope": 236,
+                                "scope": 259,
                                 "src": "904:168:0",
                                 "visibility": "public"
                             },
@@ -1413,7 +1527,7 @@
                                 "name": "PrivateBattleFieldInfo",
                                 "nameLocation": "1087:22:0",
                                 "nodeType": "StructDefinition",
-                                "scope": 236,
+                                "scope": 259,
                                 "src": "1080:157:0",
                                 "visibility": "public"
                             },
@@ -1587,7 +1701,7 @@
                                 "name": "PrivateBattleFieldState",
                                 "nameLocation": "1252:23:0",
                                 "nodeType": "StructDefinition",
-                                "scope": 236,
+                                "scope": 259,
                                 "src": "1245:219:0",
                                 "visibility": "public"
                             },
@@ -1762,7 +1876,7 @@
                                 "name": "MercenaryInfo",
                                 "nameLocation": "1479:13:0",
                                 "nodeType": "StructDefinition",
-                                "scope": 236,
+                                "scope": 259,
                                 "src": "1472:207:0",
                                 "visibility": "public"
                             },
@@ -2044,7 +2158,7 @@
                                 "name": "PrivateBattleCondition",
                                 "nameLocation": "1694:22:0",
                                 "nodeType": "StructDefinition",
-                                "scope": 236,
+                                "scope": 259,
                                 "src": "1687:338:0",
                                 "visibility": "public"
                             },
@@ -2194,7 +2308,7 @@
                                     "parameters": [],
                                     "src": "2200:0:0"
                                 },
-                                "scope": 236,
+                                "scope": 259,
                                 "src": "2033:168:0",
                                 "stateMutability": "nonpayable",
                                 "virtual": false,
@@ -2249,7 +2363,7 @@
                                     "parameters": [],
                                     "src": "2277:0:0"
                                 },
-                                "scope": 236,
+                                "scope": 259,
                                 "src": "2209:69:0",
                                 "stateMutability": "nonpayable",
                                 "virtual": false,
@@ -2339,7 +2453,7 @@
                                     ],
                                     "src": "2387:9:0"
                                 },
-                                "scope": 236,
+                                "scope": 259,
                                 "src": "2286:111:0",
                                 "stateMutability": "view",
                                 "virtual": false,
@@ -2463,7 +2577,7 @@
                                     ],
                                     "src": "2559:6:0"
                                 },
-                                "scope": 236,
+                                "scope": 259,
                                 "src": "2405:161:0",
                                 "stateMutability": "pure",
                                 "virtual": false,
@@ -2518,7 +2632,7 @@
                                     ],
                                     "src": "2635:9:0"
                                 },
-                                "scope": 236,
+                                "scope": 259,
                                 "src": "2574:71:0",
                                 "stateMutability": "view",
                                 "virtual": false,
@@ -2608,7 +2722,7 @@
                                     ],
                                     "src": "2748:9:0"
                                 },
-                                "scope": 236,
+                                "scope": 259,
                                 "src": "2653:105:0",
                                 "stateMutability": "view",
                                 "virtual": false,
@@ -2690,7 +2804,7 @@
                                     "parameters": [],
                                     "src": "2874:0:0"
                                 },
-                                "scope": 236,
+                                "scope": 259,
                                 "src": "2766:109:0",
                                 "stateMutability": "nonpayable",
                                 "virtual": false,
@@ -2745,7 +2859,7 @@
                                     "parameters": [],
                                     "src": "2957:0:0"
                                 },
-                                "scope": 236,
+                                "scope": 259,
                                 "src": "2883:75:0",
                                 "stateMutability": "nonpayable",
                                 "virtual": false,
@@ -2872,7 +2986,7 @@
                                     "parameters": [],
                                     "src": "3129:0:0"
                                 },
-                                "scope": 236,
+                                "scope": 259,
                                 "src": "2966:164:0",
                                 "stateMutability": "nonpayable",
                                 "virtual": false,
@@ -2963,7 +3077,7 @@
                                     "parameters": [],
                                     "src": "3263:0:0"
                                 },
-                                "scope": 236,
+                                "scope": 259,
                                 "src": "3138:126:0",
                                 "stateMutability": "nonpayable",
                                 "virtual": false,
@@ -3018,7 +3132,7 @@
                                     "parameters": [],
                                     "src": "3368:0:0"
                                 },
-                                "scope": 236,
+                                "scope": 259,
                                 "src": "3272:97:0",
                                 "stateMutability": "nonpayable",
                                 "virtual": false,
@@ -3101,7 +3215,7 @@
                                     ],
                                     "src": "3470:9:0"
                                 },
-                                "scope": 236,
+                                "scope": 259,
                                 "src": "3377:103:0",
                                 "stateMutability": "view",
                                 "virtual": false,
@@ -3184,7 +3298,7 @@
                                     ],
                                     "src": "3591:9:0"
                                 },
-                                "scope": 236,
+                                "scope": 259,
                                 "src": "3488:113:0",
                                 "stateMutability": "view",
                                 "virtual": false,
@@ -3267,7 +3381,7 @@
                                     ],
                                     "src": "3701:9:0"
                                 },
-                                "scope": 236,
+                                "scope": 259,
                                 "src": "3609:102:0",
                                 "stateMutability": "view",
                                 "virtual": false,
@@ -3291,10 +3405,10 @@
                                             "id": 229,
                                             "mutability": "mutable",
                                             "name": "_armyId",
-                                            "nameLocation": "3748:7:0",
+                                            "nameLocation": "3758:7:0",
                                             "nodeType": "VariableDeclaration",
                                             "scope": 235,
-                                            "src": "3740:15:0",
+                                            "src": "3750:15:0",
                                             "stateVariable": false,
                                             "storageLocation": "default",
                                             "typeDescriptions": {
@@ -3305,7 +3419,7 @@
                                                 "id": 228,
                                                 "name": "uint256",
                                                 "nodeType": "ElementaryTypeName",
-                                                "src": "3740:7:0",
+                                                "src": "3750:7:0",
                                                 "typeDescriptions": {
                                                     "typeIdentifier": "t_uint256",
                                                     "typeString": "uint256"
@@ -3314,7 +3428,7 @@
                                             "visibility": "internal"
                                         }
                                     ],
-                                    "src": "3739:17:0"
+                                    "src": "3739:33:0"
                                 },
                                 "returnParameters": {
                                     "id": 234,
@@ -3328,7 +3442,7 @@
                                             "nameLocation": "-1:-1:-1",
                                             "nodeType": "VariableDeclaration",
                                             "scope": 235,
-                                            "src": "3780:15:0",
+                                            "src": "3796:15:0",
                                             "stateVariable": false,
                                             "storageLocation": "memory",
                                             "typeDescriptions": {
@@ -3343,10 +3457,10 @@
                                                     "name": "ArmyInfo",
                                                     "nodeType": "IdentifierPath",
                                                     "referencedDeclaration": 51,
-                                                    "src": "3780:8:0"
+                                                    "src": "3796:8:0"
                                                 },
                                                 "referencedDeclaration": 51,
-                                                "src": "3780:8:0",
+                                                "src": "3796:8:0",
                                                 "typeDescriptions": {
                                                     "typeIdentifier": "t_struct$_ArmyInfo_$51_storage_ptr",
                                                     "typeString": "struct INFTDilutionStaking.ArmyInfo"
@@ -3355,21 +3469,284 @@
                                             "visibility": "internal"
                                         }
                                     ],
-                                    "src": "3779:17:0"
+                                    "src": "3795:17:0"
                                 },
-                                "scope": 236,
-                                "src": "3719:78:0",
+                                "scope": 259,
+                                "src": "3719:94:0",
+                                "stateMutability": "view",
+                                "virtual": false,
+                                "visibility": "external"
+                            },
+                            {
+                                "functionSelector": "2a95e426",
+                                "id": 243,
+                                "implemented": false,
+                                "kind": "function",
+                                "modifiers": [],
+                                "name": "privateBattleInfos",
+                                "nameLocation": "3830:18:0",
+                                "nodeType": "FunctionDefinition",
+                                "parameters": {
+                                    "id": 238,
+                                    "nodeType": "ParameterList",
+                                    "parameters": [
+                                        {
+                                            "constant": false,
+                                            "id": 237,
+                                            "mutability": "mutable",
+                                            "name": "_privateBattleFieldId",
+                                            "nameLocation": "3867:21:0",
+                                            "nodeType": "VariableDeclaration",
+                                            "scope": 243,
+                                            "src": "3859:29:0",
+                                            "stateVariable": false,
+                                            "storageLocation": "default",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_uint256",
+                                                "typeString": "uint256"
+                                            },
+                                            "typeName": {
+                                                "id": 236,
+                                                "name": "uint256",
+                                                "nodeType": "ElementaryTypeName",
+                                                "src": "3859:7:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_uint256",
+                                                    "typeString": "uint256"
+                                                }
+                                            },
+                                            "visibility": "internal"
+                                        }
+                                    ],
+                                    "src": "3848:47:0"
+                                },
+                                "returnParameters": {
+                                    "id": 242,
+                                    "nodeType": "ParameterList",
+                                    "parameters": [
+                                        {
+                                            "constant": false,
+                                            "id": 241,
+                                            "mutability": "mutable",
+                                            "name": "",
+                                            "nameLocation": "-1:-1:-1",
+                                            "nodeType": "VariableDeclaration",
+                                            "scope": 243,
+                                            "src": "3919:29:0",
+                                            "stateVariable": false,
+                                            "storageLocation": "memory",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_struct$_PrivateBattleFieldInfo_$73_memory_ptr",
+                                                "typeString": "struct INFTDilutionStaking.PrivateBattleFieldInfo"
+                                            },
+                                            "typeName": {
+                                                "id": 240,
+                                                "nodeType": "UserDefinedTypeName",
+                                                "pathNode": {
+                                                    "id": 239,
+                                                    "name": "PrivateBattleFieldInfo",
+                                                    "nodeType": "IdentifierPath",
+                                                    "referencedDeclaration": 73,
+                                                    "src": "3919:22:0"
+                                                },
+                                                "referencedDeclaration": 73,
+                                                "src": "3919:22:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_struct$_PrivateBattleFieldInfo_$73_storage_ptr",
+                                                    "typeString": "struct INFTDilutionStaking.PrivateBattleFieldInfo"
+                                                }
+                                            },
+                                            "visibility": "internal"
+                                        }
+                                    ],
+                                    "src": "3918:31:0"
+                                },
+                                "scope": 259,
+                                "src": "3821:129:0",
+                                "stateMutability": "view",
+                                "virtual": false,
+                                "visibility": "external"
+                            },
+                            {
+                                "functionSelector": "c256b0a8",
+                                "id": 251,
+                                "implemented": false,
+                                "kind": "function",
+                                "modifiers": [],
+                                "name": "privateBattleStates",
+                                "nameLocation": "3967:19:0",
+                                "nodeType": "FunctionDefinition",
+                                "parameters": {
+                                    "id": 246,
+                                    "nodeType": "ParameterList",
+                                    "parameters": [
+                                        {
+                                            "constant": false,
+                                            "id": 245,
+                                            "mutability": "mutable",
+                                            "name": "_privateBattleFieldId",
+                                            "nameLocation": "4005:21:0",
+                                            "nodeType": "VariableDeclaration",
+                                            "scope": 251,
+                                            "src": "3997:29:0",
+                                            "stateVariable": false,
+                                            "storageLocation": "default",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_uint256",
+                                                "typeString": "uint256"
+                                            },
+                                            "typeName": {
+                                                "id": 244,
+                                                "name": "uint256",
+                                                "nodeType": "ElementaryTypeName",
+                                                "src": "3997:7:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_uint256",
+                                                    "typeString": "uint256"
+                                                }
+                                            },
+                                            "visibility": "internal"
+                                        }
+                                    ],
+                                    "src": "3986:47:0"
+                                },
+                                "returnParameters": {
+                                    "id": 250,
+                                    "nodeType": "ParameterList",
+                                    "parameters": [
+                                        {
+                                            "constant": false,
+                                            "id": 249,
+                                            "mutability": "mutable",
+                                            "name": "",
+                                            "nameLocation": "-1:-1:-1",
+                                            "nodeType": "VariableDeclaration",
+                                            "scope": 251,
+                                            "src": "4057:30:0",
+                                            "stateVariable": false,
+                                            "storageLocation": "memory",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_struct$_PrivateBattleFieldState_$86_memory_ptr",
+                                                "typeString": "struct INFTDilutionStaking.PrivateBattleFieldState"
+                                            },
+                                            "typeName": {
+                                                "id": 248,
+                                                "nodeType": "UserDefinedTypeName",
+                                                "pathNode": {
+                                                    "id": 247,
+                                                    "name": "PrivateBattleFieldState",
+                                                    "nodeType": "IdentifierPath",
+                                                    "referencedDeclaration": 86,
+                                                    "src": "4057:23:0"
+                                                },
+                                                "referencedDeclaration": 86,
+                                                "src": "4057:23:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_struct$_PrivateBattleFieldState_$86_storage_ptr",
+                                                    "typeString": "struct INFTDilutionStaking.PrivateBattleFieldState"
+                                                }
+                                            },
+                                            "visibility": "internal"
+                                        }
+                                    ],
+                                    "src": "4056:32:0"
+                                },
+                                "scope": 259,
+                                "src": "3958:131:0",
+                                "stateMutability": "view",
+                                "virtual": false,
+                                "visibility": "external"
+                            },
+                            {
+                                "functionSelector": "7c3cf701",
+                                "id": 258,
+                                "implemented": false,
+                                "kind": "function",
+                                "modifiers": [],
+                                "name": "timeLockToDilution",
+                                "nameLocation": "4110:18:0",
+                                "nodeType": "FunctionDefinition",
+                                "parameters": {
+                                    "id": 254,
+                                    "nodeType": "ParameterList",
+                                    "parameters": [
+                                        {
+                                            "constant": false,
+                                            "id": 253,
+                                            "mutability": "mutable",
+                                            "name": "_time",
+                                            "nameLocation": "4147:5:0",
+                                            "nodeType": "VariableDeclaration",
+                                            "scope": 258,
+                                            "src": "4139:13:0",
+                                            "stateVariable": false,
+                                            "storageLocation": "default",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_uint256",
+                                                "typeString": "uint256"
+                                            },
+                                            "typeName": {
+                                                "id": 252,
+                                                "name": "uint256",
+                                                "nodeType": "ElementaryTypeName",
+                                                "src": "4139:7:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_uint256",
+                                                    "typeString": "uint256"
+                                                }
+                                            },
+                                            "visibility": "internal"
+                                        }
+                                    ],
+                                    "src": "4128:31:0"
+                                },
+                                "returnParameters": {
+                                    "id": 257,
+                                    "nodeType": "ParameterList",
+                                    "parameters": [
+                                        {
+                                            "constant": false,
+                                            "id": 256,
+                                            "mutability": "mutable",
+                                            "name": "",
+                                            "nameLocation": "-1:-1:-1",
+                                            "nodeType": "VariableDeclaration",
+                                            "scope": 258,
+                                            "src": "4183:7:0",
+                                            "stateVariable": false,
+                                            "storageLocation": "default",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_uint256",
+                                                "typeString": "uint256"
+                                            },
+                                            "typeName": {
+                                                "id": 255,
+                                                "name": "uint256",
+                                                "nodeType": "ElementaryTypeName",
+                                                "src": "4183:7:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_uint256",
+                                                    "typeString": "uint256"
+                                                }
+                                            },
+                                            "visibility": "internal"
+                                        }
+                                    ],
+                                    "src": "4182:9:0"
+                                },
+                                "scope": 259,
+                                "src": "4101:91:0",
                                 "stateMutability": "view",
                                 "virtual": false,
                                 "visibility": "external"
                             }
                         ],
-                        "scope": 237,
-                        "src": "65:3735:0",
+                        "scope": 260,
+                        "src": "65:4132:0",
                         "usedErrors": []
                     }
                 ],
-                "src": "39:3763:0"
+                "src": "39:4160:0"
             },
             "id": 0
         }

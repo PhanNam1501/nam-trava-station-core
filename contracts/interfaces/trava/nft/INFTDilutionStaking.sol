@@ -152,12 +152,16 @@ interface INFTDilutionStaking {
         uint256 _armyId
     ) external view returns (ArmyInfo memory);
 
-    function getPrivateBattleInfos(
+    function privateBattleInfos(
         uint256 _privateBattleFieldId
     ) external view returns (PrivateBattleFieldInfo memory);
-
-    function getPrivateBattleStates(
+    
+    function privateBattleStates(  
         uint256 _privateBattleFieldId
     ) external view returns (PrivateBattleFieldState memory);
+    
+    function timeLockToDilution(
+        uint256 _time
+    ) external view returns (uint256);
 
 }

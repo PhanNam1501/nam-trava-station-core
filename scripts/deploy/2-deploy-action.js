@@ -404,48 +404,48 @@ async function main() {
   // writeToEnvFile("TRAVA_NFT_AUCTION_FINALIZE_AUCTION_ADDRESS", travaNFTAuctionFinalizeAuction.address);
 
   //        ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
-  //        ||                               Trava NFT Diluiton Staking Contract                          ||
+  //        ||                               Trava NFT Dilutiton Staking Contract                          ||
   //        ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
   //    */
 
-  // const travaNFTDilutionStakingJoinBattlefield = await redeploy(
-  //   "TravaNFTDilutionStakingJoinBattlefield",
-  //   process.env.DFS_REGISTRY_ADDRESS
-  // );
-  // writeToEnvFile(
-  //   "TRAVA_NFT_DILUTION_STAKING_JOIN_BATTLE_ADDRESS",
-  //   travaNFTDilutionStakingJoinBattlefield.address
-  // );
+  const travaNFTDilutionStakingJoinBattlefield = await redeploy(
+    "TravaNFTDilutionStakingJoinBattlefield",
+    process.env.DFS_REGISTRY_ADDRESS
+  );
+  writeToEnvFile(
+    "TRAVA_NFT_DILUTION_STAKING_JOIN_BATTLE_ADDRESS",
+    travaNFTDilutionStakingJoinBattlefield.address
+  );
 
   //        ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
   //        ||                               Trava NFT Expedition Contract                                   ||
   //        ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
   //    */
 
-  await changeConstantInFiles(
-    "./contracts",
-    ["MainnetTravaNFTExpeditionAddresses"],
-    "NFT_TICKET",
-    process.env.TRAVA_NFT_TICKET
-  );
-  run("compile");
+  // await changeConstantInFiles(
+  //   "./contracts",
+  //   ["MainnetTravaNFTExpeditionAddresses"],
+  //   "NFT_TICKET",
+  //   process.env.TRAVA_NFT_TICKET
+  // );
+  // run("compile");
 
-  await changeConstantInFiles(
-    "./contracts",
-    ["MainnetTravaNFTExpeditionAddresses"],
-    "RECIPIENT",
-    process.env.TRAVA_NFT_EXPEDITION_RECIPIENT_ADDRESS
-  );
-  run("compile");
+  // await changeConstantInFiles(
+  //   "./contracts",
+  //   ["MainnetTravaNFTExpeditionAddresses"],
+  //   "RECIPIENT",
+  //   process.env.TRAVA_NFT_EXPEDITION_RECIPIENT_ADDRESS
+  // );
+  // run("compile");
 
-  const travaNFTExpeditionDeploy = await redeploy(
-    "TravaNFTExpeditionDeploy",
-    process.env.DFS_REGISTRY_ADDRESS
-  );
-  writeToEnvFile(
-    "TRAVA_NFT_EXPEDITION_DEPLOY_ADDRESS",
-    travaNFTExpeditionDeploy.address
-  );
+  // const travaNFTExpeditionDeploy = await redeploy(
+  //   "TravaNFTExpeditionDeploy",
+  //   process.env.DFS_REGISTRY_ADDRESS
+  // );
+  // writeToEnvFile(
+  //   "TRAVA_NFT_EXPEDITION_DEPLOY_ADDRESS",
+  //   travaNFTExpeditionDeploy.address
+  // );
 
   // const travaNFTExpeditionAbandon = await redeploy(
   //   "TravaNFTExpeditionAbandon",
