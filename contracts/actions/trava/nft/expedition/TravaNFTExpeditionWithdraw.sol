@@ -11,7 +11,8 @@ contract TravaNFTExpeditionWithdraw is ActionBase, TravaNFTExpeditionHelper {
     struct Params {
         address vault;
         uint256 id;
-        address to;
+        address toKnight;
+        address toToken;
     }
 
     /// @inheritdoc ActionBase
@@ -37,9 +38,16 @@ contract TravaNFTExpeditionWithdraw is ActionBase, TravaNFTExpeditionHelper {
             _returnValues
         );
 
-        params.to = _parseParamAddr(
-            params.to,
+        params.toKnight = _parseParamAddr(
+            params.toKnight,
             _paramMapping[2],
+            _subData,
+            _returnValues
+        );
+
+          params.toToken = _parseParamAddr(
+            params.toToken,
+            _paramMapping[3],
             _subData,
             _returnValues
         );
@@ -47,7 +55,8 @@ contract TravaNFTExpeditionWithdraw is ActionBase, TravaNFTExpeditionHelper {
         (uint256 id, bytes memory logData) = _withdraw(
             params.vault,
             params.id,
-            params.to
+            params.toKnight,
+            params.toToken
         );
 
         emit ActionEvent("TravaNFTExpeditionWithdraw", logData);
@@ -62,7 +71,8 @@ contract TravaNFTExpeditionWithdraw is ActionBase, TravaNFTExpeditionHelper {
         (, bytes memory logData) = _withdraw(
             params.vault,
             params.id,
-            params.to
+            params.toKnight,
+            params.toToken
         );
         logger.logActionDirectEvent("TravaNFTExpeditionDeploy", logData);
     }
@@ -77,10 +87,15 @@ contract TravaNFTExpeditionWithdraw is ActionBase, TravaNFTExpeditionHelper {
     function _withdraw(
         address _vault,
         uint256 _id,
-        address _to
+        address _toKnight,
+        address _toToken
     ) internal returns (uint256, bytes memory) {
-        if (_to == address(0)) {
-            _to = address(this);
+        if (_toKnight == address(0)) {
+            _toKnight = address(this);
+        }
+
+        if (_toToken == address(0)) {
+            _toToken = address(this);
         }
 
         address payment_governor_token = address(PAYMENT_GOVERNOR);
@@ -97,21 +112,24 @@ contract TravaNFTExpeditionWithdraw is ActionBase, TravaNFTExpeditionHelper {
             address(this)
         );
 
-        if (_to != address(this)) {
-            // transfer the reward token
-            payment_governor_token.withdrawTokens(
-                _to,
-                rewardBalanceAfter - rewardBalanceBefore
-            );
-
+        if (_toKnight != address(this)) {
+        
             INFTCollection(NFT_COLLECTION).transferFrom(
                 address(this),
-                _to,
+                _toKnight,
                 _id
             );
         }
 
-        bytes memory logData = abi.encode(_vault, _id, _to);
+        if(_toToken !=address(this)){
+            // transfer the reward token
+            payment_governor_token.withdrawTokens(
+                _toToken,
+                rewardBalanceAfter - rewardBalanceBefore
+            );
+        }
+
+        bytes memory logData = abi.encode(_vault, _id, _toKnight, _toToken);
         return (_id, logData);
     }
 
