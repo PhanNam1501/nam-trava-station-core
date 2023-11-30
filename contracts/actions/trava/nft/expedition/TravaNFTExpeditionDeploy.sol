@@ -150,8 +150,7 @@ contract TravaNFTExpeditionDeploy is ActionBase, TravaNFTExpeditionHelper {
 
         // approve NFT expedition to pull token
         payment_governor.approveToken(_vault, entryPrice);
-        payment_governor.approveToken(address(RECIPIENT), entryPrice);
-
+    
         require(
             INFTCollection(NFT_COLLECTION).ownerOf(_id) == _fromKnight,
             "Owner NFT Knight does not possess token"
@@ -161,11 +160,6 @@ contract TravaNFTExpeditionDeploy is ActionBase, TravaNFTExpeditionHelper {
             _fromKnight,
             address(this),
             _id
-        );
-
-        require(
-            INFTCollection(NFT_COLLECTION).ownerOf(_id) == address(this),
-            "Owner Smart Wallet does not possess token"
         );
 
         // approve NFT expedition to pull nft
@@ -211,8 +205,8 @@ contract TravaNFTExpeditionDeploy is ActionBase, TravaNFTExpeditionHelper {
         //     "0x"
         // );
 
-        if (!INFTTicket(NFT_TICKET).isApprovedForAll(address(this), _vault))
-            INFTTicket(NFT_TICKET).setApprovalForAll(_vault, true);
+        // if (!INFTTicket(NFT_TICKET).isApprovedForAll(address(this), _vault))
+        //     INFTTicket(NFT_TICKET).setApprovalForAll(_vault, true);
 
         INFTExpedition(_vault).deploy(
             _id,
