@@ -181,7 +181,7 @@ module.exports = {
       ],
     },
     mainnet: {
-      url: "https://endpoints.omniatech.io/v1/bsc/mainnet/public",
+      url: "https://bsc.publicnode.com",
       chainId: 56,
       gasPrice: 6e9,
       // gas: 2e7,

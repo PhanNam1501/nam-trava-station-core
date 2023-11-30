@@ -109,7 +109,7 @@ contract TravaNFTDilutionStakingRetreatPrivateBattlefield is
 
         INFTDilutionStaking.PrivateBattleFieldInfo
             memory privateBatteInfo = INFTDilutionStaking(_vault)
-                .getPrivateBattleInfos(_privateBattleFieldId);
+                .privateBattleInfos(_privateBattleFieldId);
 
         address lock_token_address = address(TRAVA_TOKEN_LOCK);
 
