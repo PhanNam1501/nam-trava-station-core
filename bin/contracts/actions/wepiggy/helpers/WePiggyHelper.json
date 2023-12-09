@@ -1,0 +1,1333 @@
+{
+    "contractName": "WePiggyHelper",
+    "abi": [
+        {
+            "inputs": [],
+            "name": "WePiggyEnterMarketError",
+            "type": "error"
+        },
+        {
+            "inputs": [],
+            "name": "WePiggyExitMarketError",
+            "type": "error"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_pTokenAddr",
+                    "type": "address"
+                }
+            ],
+            "name": "enterMarket",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_pTokenAddr",
+                    "type": "address"
+                }
+            ],
+            "name": "exitMarket",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        }
+    ],
+    "metadata": "{\"compiler\":{\"version\":\"0.8.4+commit.c7e474f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"WePiggyEnterMarketError\",\"type\":\"error\"},{\"inputs\":[],\"name\":\"WePiggyExitMarketError\",\"type\":\"error\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_pTokenAddr\",\"type\":\"address\"}],\"name\":\"enterMarket\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_pTokenAddr\",\"type\":\"address\"}],\"name\":\"exitMarket\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"enterMarket(address)\":{\"details\":\"Markets can be entered multiple times, without the code reverting\",\"params\":{\"_pTokenAddr\":\"PToken address of the token\"}},\"exitMarket(address)\":{\"params\":{\"_pTokenAddr\":\"PToken address of the token\"}}},\"title\":\"Utility functions and data used in WePiggy actions\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"enterMarket(address)\":{\"notice\":\"Enters the WePiggy market so it can be deposited/borrowed\"},\"exitMarket(address)\":{\"notice\":\"Exits the WePiggy market\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"e:/trava-saver-main-core/trava-station-core/contracts/actions/wepiggy/helpers/WePiggyHelper.sol\":\"WePiggyHelper\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"e:/trava-saver-main-core/trava-station-core/contracts/actions/wepiggy/helpers/MainnetWePiggyAddresses.sol\":{\"keccak256\":\"0x24c26612696259779661dda068c45342107fd1d5f76c55ba6b8b692fb99be743\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://e18173b391b181dfc7dbd053bdfc9a9594ae2d0704cb8ccc8460f544cd7fb671\",\"dweb:/ipfs/QmbBcCnSuFgLocG4N4sPtjpU8BtMsQJ3c6HxPynxgVDmWR\"]},\"e:/trava-saver-main-core/trava-station-core/contracts/actions/wepiggy/helpers/WePiggyHelper.sol\":{\"keccak256\":\"0x7d02451444d0c26822a8d0bcf540264a29e7bd2df641046f9879fccb654afa19\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://8cac35ec0e3f09b51ee55abb3a4e43fd92fc6540502f1569a53c98f0b4ba92a4\",\"dweb:/ipfs/QmaNjrYsNvVk9dXb8jNfdxfc7tZzxNtyoexiX4z7sbURR8\"]},\"e:/trava-saver-main-core/trava-station-core/contracts/interfaces/IBEP20.sol\":{\"keccak256\":\"0x7c1a1d4259a790b30b7163a084393e47e3215f654c48bf45d12eab796ef6e4c5\",\"license\":\"agpl-3.0\",\"urls\":[\"bzz-raw://d62a24a05c9d6b47759f15fbdd3e6804fbf4e073c09f2bddc0a1f0e30bfc73b9\",\"dweb:/ipfs/QmVrM4fW1tBvwYsXjmEn32CQdAWpxHyPyQr1WY948AEu9v\"]},\"e:/trava-saver-main-core/trava-station-core/contracts/interfaces/IERC20.sol\":{\"keccak256\":\"0xb8d31a1f252e05b49ce7d826cbe82d98b752f4dbfc80e0096bb52f0aa939447c\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://7a2da48add5d900f6be73da8101356271fa462c9fdd50ee6931f20d9e2b54168\",\"dweb:/ipfs/QmRGhMDJ3hutzqwk118XwPw3j3kKgihbTDgGqmHnrDQg6G\"]},\"e:/trava-saver-main-core/trava-station-core/contracts/interfaces/IWBNB.sol\":{\"keccak256\":\"0x2a4efbda3b26ff26f1d644eccd6955ab9f87d6b8a5cc5823f3d98861fe68b2f8\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://3f9e948e297b66a53dd89d90aeb18b3f5d624950c9fe15ba8d873462beaac5bc\",\"dweb:/ipfs/QmPV5mnv5ePF2xGmTQrJRECSnDgUz8c8JmsJw9jcxRzxbe\"]},\"e:/trava-saver-main-core/trava-station-core/contracts/interfaces/wepiggy/IPToken.sol\":{\"keccak256\":\"0xfe5b2b6eef2f31f0ead3269d38128b69538089f75f4012814fe12a999619a4ec\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://ed08594a717578719c0d71dcc90ddc89c6bc9c2db9dbcac8a217aa6a08204da4\",\"dweb:/ipfs/Qmb3UDmKyynrjeZwJTqSg14nSG1iuX6uYod2ZRg9nWnwy3\"]},\"e:/trava-saver-main-core/trava-station-core/contracts/interfaces/wepiggy/IWePiggyComptroller.sol\":{\"keccak256\":\"0x6393b89aa3d4b6565ed1506a7697d74765e7ff1fa580ecb8daf912643f77183f\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://bc2a3e2cda3db5b4055cdf48ca7399e1016f81b7a4c3faf7274942c623a66bef\",\"dweb:/ipfs/QmfErUbCEXu1kzVftqBf3uPU64YN84VZiuHp1i7vCRaCZY\"]},\"e:/trava-saver-main-core/trava-station-core/contracts/utils/Address.sol\":{\"keccak256\":\"0x4ea07aab79bb6ea1963790775a5a59005f1ad0d99017f1c5d0b4448d0cb64e52\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://22c67fc92d1116bf92a6bb256236495bb681dbd97c2de2748a8fa4b2fe021125\",\"dweb:/ipfs/QmbC1noNbWENZCv16YmfnNdRBQJ1dgfKxQxnALBqHyZMPP\"]},\"e:/trava-saver-main-core/trava-station-core/contracts/utils/SafeBEP20.sol\":{\"keccak256\":\"0xc19686463143b1d0167bb76dada1e25e3fe3e47e47dfa51efd14c82cdd87bc7d\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://c59fc5c4ed671419f80860171030baf489c5e94245ffc2f2f7e084443c2720f9\",\"dweb:/ipfs/QmU7ZveYmwZBvywFvLeCkr8FRLkzzktGxDrLLGh6NXH9Dk\"]},\"e:/trava-saver-main-core/trava-station-core/contracts/utils/SafeMath.sol\":{\"keccak256\":\"0xbe0df78e5eb7668d97084931af472c33b351c853afaa7403c8bc6853d2365deb\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://3a6f6f28501112c1ec0d26bc8d9578118ef218dffb917ccb750e2e267997a0ad\",\"dweb:/ipfs/QmaCncoMhJWmUSr8y6pTUwwoo5Er9x3RMXueTc8nZLeGt9\"]},\"e:/trava-saver-main-core/trava-station-core/contracts/utils/TokenUtils.sol\":{\"keccak256\":\"0x2d31bbf3b80b1e50d191565448219e2e9b0f1d3595b2986089de1d6b8fe07749\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://480282b4641864156ad4722c7658ac141a0cc5af5d424f7259679c6368996f49\",\"dweb:/ipfs/QmZhQ2w5qWetdgZkyBWtHtAZ3a4KC9i5zPyg4wz8uSgFY8\"]}},\"version\":1}",
+    "bytecode": "608060405234801561001057600080fd5b506103ef806100206000396000f3fe608060405234801561001057600080fd5b50600436106100365760003560e01c80633fe5d4251461003b578063ede4edd014610050575b600080fd5b61004e610049366004610250565b610063565b005b61004e61005e366004610250565b61019f565b6040805160018082528183019092526000916020808301908036833701905050905081816000815181106100a757634e487b7160e01b600052603260045260246000fd5b6001600160a01b0390921660209283029190910190910152604051631853304760e31b815260009073fd301ad2503b25a7670a45b11a043c20b04ee8969063c2998238906100f9908590600401610356565b600060405180830381600087803b15801561011357600080fd5b505af1158015610127573d6000803e3d6000fd5b505050506040513d6000823e601f3d908101601f1916820160405261014f919081019061027e565b905060008160008151811061017457634e487b7160e01b600052603260045260246000fd5b60200260200101511461019a5760405163d95ba2bf60e01b815260040160405180910390fd5b505050565b604051630ede4edd60e41b81526001600160a01b038216600482015260009073fd301ad2503b25a7670a45b11a043c20b04ee8969063ede4edd090602401602060405180830381600087803b1580156101f757600080fd5b505af115801561020b573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061022f919061033e565b1461024d57604051636c6baebf60e11b815260040160405180910390fd5b50565b600060208284031215610261578081fd5b81356001600160a01b0381168114610277578182fd5b9392505050565b60006020808385031215610290578182fd5b825167ffffffffffffffff808211156102a7578384fd5b818501915085601f8301126102ba578384fd5b8151818111156102cc576102cc6103a3565b8060051b604051601f19603f830116810181811085821117156102f1576102f16103a3565b604052828152858101935084860182860187018a101561030f578788fd5b8795505b83861015610331578051855260019590950194938601938601610313565b5098975050505050505050565b60006020828403121561034f578081fd5b5051919050565b6020808252825182820181905260009190848201906040850190845b818110156103975783516001600160a01b031683529284019291840191600101610372565b50909695505050505050565b634e487b7160e01b600052604160045260246000fdfea26469706673582212203317e369a7bc3625e37f1f47df70ae1e903a7442d9ab48f362e23202efdaef8164736f6c63430008040033",
+    "deployedBytecode": "608060405234801561001057600080fd5b50600436106100365760003560e01c80633fe5d4251461003b578063ede4edd014610050575b600080fd5b61004e610049366004610250565b610063565b005b61004e61005e366004610250565b61019f565b6040805160018082528183019092526000916020808301908036833701905050905081816000815181106100a757634e487b7160e01b600052603260045260246000fd5b6001600160a01b0390921660209283029190910190910152604051631853304760e31b815260009073fd301ad2503b25a7670a45b11a043c20b04ee8969063c2998238906100f9908590600401610356565b600060405180830381600087803b15801561011357600080fd5b505af1158015610127573d6000803e3d6000fd5b505050506040513d6000823e601f3d908101601f1916820160405261014f919081019061027e565b905060008160008151811061017457634e487b7160e01b600052603260045260246000fd5b60200260200101511461019a5760405163d95ba2bf60e01b815260040160405180910390fd5b505050565b604051630ede4edd60e41b81526001600160a01b038216600482015260009073fd301ad2503b25a7670a45b11a043c20b04ee8969063ede4edd090602401602060405180830381600087803b1580156101f757600080fd5b505af115801561020b573d6000803e3d6000fd5b505050506040513d601f19601f8201168201806040525081019061022f919061033e565b1461024d57604051636c6baebf60e11b815260040160405180910390fd5b50565b600060208284031215610261578081fd5b81356001600160a01b0381168114610277578182fd5b9392505050565b60006020808385031215610290578182fd5b825167ffffffffffffffff808211156102a7578384fd5b818501915085601f8301126102ba578384fd5b8151818111156102cc576102cc6103a3565b8060051b604051601f19603f830116810181811085821117156102f1576102f16103a3565b604052828152858101935084860182860187018a101561030f578788fd5b8795505b83861015610331578051855260019590950194938601938601610313565b5098975050505050505050565b60006020828403121561034f578081fd5b5051919050565b6020808252825182820181905260009190848201906040850190845b818110156103975783516001600160a01b031683529284019291840191600101610372565b50909695505050505050565b634e487b7160e01b600052604160045260246000fdfea26469706673582212203317e369a7bc3625e37f1f47df70ae1e903a7442d9ab48f362e23202efdaef8164736f6c63430008040033",
+    "sourceMap": "322:1400:1:-:0;;;;;;;;;;;;;;;;;;;",
+    "deployedSourceMap": "322:1400:1:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1050:353;;;;;;:::i;:::-;;:::i;:::-;;1509:210;;;;;;:::i;:::-;;:::i;1050:353::-;1137:16;;;1151:1;1137:16;;;;;;;;;1110:24;;1137:16;;;;;;;;;;;-1:-1:-1;1137:16:1;1110:43;;1177:11;1164:7;1172:1;1164:10;;;;;;-1:-1:-1;;;1164:10:1;;;;;;;;;-1:-1:-1;;;;;1164:24:1;;;:10;;;;;;;;;;;:24;1229:67;;-1:-1:-1;;;1229:67:1;;1201:25;;273:42:0;;1229:58:1;;:67;;1288:7;;1229:67;;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;1229:67:1;;;;;;;;;;;;:::i;:::-;1201:95;;408:1;1313:8;1322:1;1313:11;;;;;;-1:-1:-1;;;1313:11:1;;;;;;;;;;;;;;;:23;1309:87;;1359:25;;-1:-1:-1;;;1359:25:1;;;;;;;;;;;1309:87;1050:353;;;:::o;1509:210::-;1572:69;;-1:-1:-1;;;1572:69:1;;-1:-1:-1;;;;;1854:32:11;;1572:69:1;;;1836:51:11;408:1:1;;273:42:0;;1572:56:1;;1809:18:11;;1572:69:1;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;:81;1568:144;;1676:24;;-1:-1:-1;;;1676:24:1;;;;;;;;;;;1568:144;1509:210;:::o;14:306:11:-;73:6;126:2;114:9;105:7;101:23;97:32;94:2;;;147:6;139;132:22;94:2;178:23;;-1:-1:-1;;;;;230:31:11;;220:42;;210:2;;281:6;273;266:22;210:2;309:5;84:236;-1:-1:-1;;;84:236:11:o;325:1161::-;420:6;451:2;494;482:9;473:7;469:23;465:32;462:2;;;515:6;507;500:22;462:2;553:9;547:16;582:18;623:2;615:6;612:14;609:2;;;644:6;636;629:22;609:2;687:6;676:9;672:22;662:32;;732:7;725:4;721:2;717:13;713:27;703:2;;759:6;751;744:22;703:2;793;787:9;815:2;811;808:10;805:2;;;821:18;;:::i;:::-;867:2;864:1;860:10;899:2;893:9;962:2;958:7;953:2;949;945:11;941:25;933:6;929:38;1017:6;1005:10;1002:22;997:2;985:10;982:18;979:46;976:2;;;1028:18;;:::i;:::-;1064:2;1057:22;1114:18;;;1148:15;;;;-1:-1:-1;1183:11:11;;;1213;;;1209:20;;1206:33;-1:-1:-1;1203:2:11;;;1257:6;1249;1242:22;1203:2;1284:6;1275:15;;1299:156;1313:2;1310:1;1307:9;1299:156;;;1370:10;;1358:23;;1331:1;1324:9;;;;;1401:12;;;;1433;;1299:156;;;-1:-1:-1;1474:6:11;431:1055;-1:-1:-1;;;;;;;;431:1055:11:o;1491:194::-;1561:6;1614:2;1602:9;1593:7;1589:23;1585:32;1582:2;;;1635:6;1627;1620:22;1582:2;-1:-1:-1;1663:16:11;;1572:113;-1:-1:-1;1572:113:11:o;1898:661::-;2069:2;2121:21;;;2191:13;;2094:18;;;2213:22;;;2040:4;;2069:2;2292:15;;;;2266:2;2251:18;;;2040:4;2338:195;2352:6;2349:1;2346:13;2338:195;;;2417:13;;-1:-1:-1;;;;;2413:39:11;2401:52;;2508:15;;;;2473:12;;;;2449:1;2367:9;2338:195;;;-1:-1:-1;2550:3:11;;2049:510;-1:-1:-1;;;;;;2049:510:11:o;2564:127::-;2625:10;2620:3;2616:20;2613:1;2606:31;2656:4;2653:1;2646:15;2680:4;2677:1;2670:15",
+    "sourcePath": "e:/trava-saver-main-core/trava-station-core/contracts/actions/wepiggy/helpers/WePiggyHelper.sol",
+    "compiler": {
+        "name": "solc",
+        "version": "0.8.4+commit.c7e474f2"
+    },
+    "ast": {
+        "absolutePath": "e:/trava-saver-main-core/trava-station-core/contracts/actions/wepiggy/helpers/WePiggyHelper.sol",
+        "exportedSymbols": {
+            "Address": [
+                985
+            ],
+            "IBEP20": [
+                223
+            ],
+            "IERC20": [
+                299
+            ],
+            "IPToken": [
+                531
+            ],
+            "IWBNB": [
+                376
+            ],
+            "IWePiggyComptroller": [
+                752
+            ],
+            "MainnetWePiggyAddresses": [
+                8
+            ],
+            "SafeBEP20": [
+                1147
+            ],
+            "SafeMath": [
+                1334
+            ],
+            "TokenUtils": [
+                1604
+            ],
+            "WePiggyHelper": [
+                114
+            ]
+        },
+        "id": 115,
+        "license": "MIT",
+        "nodeType": "SourceUnit",
+        "nodes": [
+            {
+                "id": 10,
+                "literals": [
+                    "solidity",
+                    "0.8",
+                    ".4"
+                ],
+                "nodeType": "PragmaDirective",
+                "src": "35:22:1"
+            },
+            {
+                "absolutePath": "e:/trava-saver-main-core/trava-station-core/contracts/interfaces/wepiggy/IWePiggyComptroller.sol",
+                "file": "../../../interfaces/wepiggy/IWePiggyComptroller.sol",
+                "id": 11,
+                "nameLocation": "-1:-1:-1",
+                "nodeType": "ImportDirective",
+                "scope": 115,
+                "sourceUnit": 753,
+                "src": "61:61:1",
+                "symbolAliases": [],
+                "unitAlias": ""
+            },
+            {
+                "absolutePath": "e:/trava-saver-main-core/trava-station-core/contracts/interfaces/wepiggy/IPToken.sol",
+                "file": "../../../interfaces/wepiggy/IPToken.sol",
+                "id": 12,
+                "nameLocation": "-1:-1:-1",
+                "nodeType": "ImportDirective",
+                "scope": 115,
+                "sourceUnit": 532,
+                "src": "124:49:1",
+                "symbolAliases": [],
+                "unitAlias": ""
+            },
+            {
+                "absolutePath": "e:/trava-saver-main-core/trava-station-core/contracts/utils/TokenUtils.sol",
+                "file": "../../../utils/TokenUtils.sol",
+                "id": 13,
+                "nameLocation": "-1:-1:-1",
+                "nodeType": "ImportDirective",
+                "scope": 115,
+                "sourceUnit": 1605,
+                "src": "175:39:1",
+                "symbolAliases": [],
+                "unitAlias": ""
+            },
+            {
+                "absolutePath": "e:/trava-saver-main-core/trava-station-core/contracts/actions/wepiggy/helpers/MainnetWePiggyAddresses.sol",
+                "file": "./MainnetWePiggyAddresses.sol",
+                "id": 14,
+                "nameLocation": "-1:-1:-1",
+                "nodeType": "ImportDirective",
+                "scope": 115,
+                "sourceUnit": 9,
+                "src": "216:39:1",
+                "symbolAliases": [],
+                "unitAlias": ""
+            },
+            {
+                "abstract": false,
+                "baseContracts": [
+                    {
+                        "baseName": {
+                            "id": 16,
+                            "name": "MainnetWePiggyAddresses",
+                            "nodeType": "IdentifierPath",
+                            "referencedDeclaration": 8,
+                            "src": "348:23:1"
+                        },
+                        "id": 17,
+                        "nodeType": "InheritanceSpecifier",
+                        "src": "348:23:1"
+                    }
+                ],
+                "contractDependencies": [],
+                "contractKind": "contract",
+                "documentation": {
+                    "id": 15,
+                    "nodeType": "StructuredDocumentation",
+                    "src": "259:63:1",
+                    "text": "@title Utility functions and data used in WePiggy actions"
+                },
+                "fullyImplemented": true,
+                "id": 114,
+                "linearizedBaseContracts": [
+                    114,
+                    8
+                ],
+                "name": "WePiggyHelper",
+                "nameLocation": "331:13:1",
+                "nodeType": "ContractDefinition",
+                "nodes": [
+                    {
+                        "constant": true,
+                        "id": 20,
+                        "mutability": "constant",
+                        "name": "NO_ERROR",
+                        "nameLocation": "397:8:1",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 114,
+                        "src": "380:29:1",
+                        "stateVariable": true,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                            "typeIdentifier": "t_uint256",
+                            "typeString": "uint256"
+                        },
+                        "typeName": {
+                            "id": 18,
+                            "name": "uint256",
+                            "nodeType": "ElementaryTypeName",
+                            "src": "380:7:1",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_uint256",
+                                "typeString": "uint256"
+                            }
+                        },
+                        "value": {
+                            "hexValue": "30",
+                            "id": 19,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "kind": "number",
+                            "lValueRequested": false,
+                            "nodeType": "Literal",
+                            "src": "408:1:1",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_rational_0_by_1",
+                                "typeString": "int_const 0"
+                            },
+                            "value": "0"
+                        },
+                        "visibility": "internal"
+                    },
+                    {
+                        "id": 22,
+                        "name": "WePiggyEnterMarketError",
+                        "nameLocation": "422:23:1",
+                        "nodeType": "ErrorDefinition",
+                        "parameters": {
+                            "id": 21,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "445:2:1"
+                        },
+                        "src": "416:32:1"
+                    },
+                    {
+                        "id": 24,
+                        "name": "WePiggyExitMarketError",
+                        "nameLocation": "460:22:1",
+                        "nodeType": "ErrorDefinition",
+                        "parameters": {
+                            "id": 23,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "482:2:1"
+                        },
+                        "src": "454:31:1"
+                    },
+                    {
+                        "body": {
+                            "id": 46,
+                            "nodeType": "Block",
+                            "src": "651:180:1",
+                            "statements": [
+                                {
+                                    "condition": {
+                                        "commonType": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        },
+                                        "id": 33,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "lValueRequested": false,
+                                        "leftExpression": {
+                                            "id": 31,
+                                            "name": "_pTokenAddr",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 26,
+                                            "src": "711:11:1",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_address",
+                                                "typeString": "address"
+                                            }
+                                        },
+                                        "nodeType": "BinaryOperation",
+                                        "operator": "==",
+                                        "rightExpression": {
+                                            "id": 32,
+                                            "name": "P_BNB_ADDR",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 4,
+                                            "src": "726:10:1",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_address",
+                                                "typeString": "address"
+                                            }
+                                        },
+                                        "src": "711:25:1",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_bool",
+                                            "typeString": "bool"
+                                        }
+                                    },
+                                    "id": 37,
+                                    "nodeType": "IfStatement",
+                                    "src": "707:58:1",
+                                    "trueBody": {
+                                        "expression": {
+                                            "expression": {
+                                                "id": 34,
+                                                "name": "TokenUtils",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 1604,
+                                                "src": "745:10:1",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_type$_t_contract$_TokenUtils_$1604_$",
+                                                    "typeString": "type(library TokenUtils)"
+                                                }
+                                            },
+                                            "id": 35,
+                                            "isConstant": false,
+                                            "isLValue": false,
+                                            "isPure": false,
+                                            "lValueRequested": false,
+                                            "memberName": "WBNB_ADDR",
+                                            "nodeType": "MemberAccess",
+                                            "referencedDeclaration": 1345,
+                                            "src": "745:20:1",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_address",
+                                                "typeString": "address"
+                                            }
+                                        },
+                                        "functionReturnParameters": 30,
+                                        "id": 36,
+                                        "nodeType": "Return",
+                                        "src": "738:27:1"
+                                    }
+                                },
+                                {
+                                    "expression": {
+                                        "id": 44,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "lValueRequested": false,
+                                        "leftHandSide": {
+                                            "id": 38,
+                                            "name": "tokenAddr",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 29,
+                                            "src": "778:9:1",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_address",
+                                                "typeString": "address"
+                                            }
+                                        },
+                                        "nodeType": "Assignment",
+                                        "operator": "=",
+                                        "rightHandSide": {
+                                            "arguments": [],
+                                            "expression": {
+                                                "argumentTypes": [],
+                                                "expression": {
+                                                    "arguments": [
+                                                        {
+                                                            "id": 40,
+                                                            "name": "_pTokenAddr",
+                                                            "nodeType": "Identifier",
+                                                            "overloadedDeclarations": [],
+                                                            "referencedDeclaration": 26,
+                                                            "src": "798:11:1",
+                                                            "typeDescriptions": {
+                                                                "typeIdentifier": "t_address",
+                                                                "typeString": "address"
+                                                            }
+                                                        }
+                                                    ],
+                                                    "expression": {
+                                                        "argumentTypes": [
+                                                            {
+                                                                "typeIdentifier": "t_address",
+                                                                "typeString": "address"
+                                                            }
+                                                        ],
+                                                        "id": 39,
+                                                        "name": "IPToken",
+                                                        "nodeType": "Identifier",
+                                                        "overloadedDeclarations": [],
+                                                        "referencedDeclaration": 531,
+                                                        "src": "790:7:1",
+                                                        "typeDescriptions": {
+                                                            "typeIdentifier": "t_type$_t_contract$_IPToken_$531_$",
+                                                            "typeString": "type(contract IPToken)"
+                                                        }
+                                                    },
+                                                    "id": 41,
+                                                    "isConstant": false,
+                                                    "isLValue": false,
+                                                    "isPure": false,
+                                                    "kind": "typeConversion",
+                                                    "lValueRequested": false,
+                                                    "names": [],
+                                                    "nodeType": "FunctionCall",
+                                                    "src": "790:20:1",
+                                                    "tryCall": false,
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_contract$_IPToken_$531",
+                                                        "typeString": "contract IPToken"
+                                                    }
+                                                },
+                                                "id": 42,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": false,
+                                                "lValueRequested": false,
+                                                "memberName": "underlying",
+                                                "nodeType": "MemberAccess",
+                                                "referencedDeclaration": 530,
+                                                "src": "790:31:1",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_function_external_nonpayable$__$returns$_t_address_$",
+                                                    "typeString": "function () external returns (address)"
+                                                }
+                                            },
+                                            "id": 43,
+                                            "isConstant": false,
+                                            "isLValue": false,
+                                            "isPure": false,
+                                            "kind": "functionCall",
+                                            "lValueRequested": false,
+                                            "names": [],
+                                            "nodeType": "FunctionCall",
+                                            "src": "790:33:1",
+                                            "tryCall": false,
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_address",
+                                                "typeString": "address"
+                                            }
+                                        },
+                                        "src": "778:45:1",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "id": 45,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "778:45:1"
+                                }
+                            ]
+                        },
+                        "id": 47,
+                        "implemented": true,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "getUnderlyingAddr",
+                        "nameLocation": "575:17:1",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 27,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 26,
+                                    "mutability": "mutable",
+                                    "name": "_pTokenAddr",
+                                    "nameLocation": "601:11:1",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 47,
+                                    "src": "593:19:1",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                    },
+                                    "typeName": {
+                                        "id": 25,
+                                        "name": "address",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "593:7:1",
+                                        "stateMutability": "nonpayable",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "592:21:1"
+                        },
+                        "returnParameters": {
+                            "id": 30,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 29,
+                                    "mutability": "mutable",
+                                    "name": "tokenAddr",
+                                    "nameLocation": "640:9:1",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 47,
+                                    "src": "632:17:1",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                    },
+                                    "typeName": {
+                                        "id": 28,
+                                        "name": "address",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "632:7:1",
+                                        "stateMutability": "nonpayable",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "631:19:1"
+                        },
+                        "scope": 114,
+                        "src": "566:265:1",
+                        "stateMutability": "nonpayable",
+                        "virtual": false,
+                        "visibility": "internal"
+                    },
+                    {
+                        "body": {
+                            "id": 92,
+                            "nodeType": "Block",
+                            "src": "1099:304:1",
+                            "statements": [
+                                {
+                                    "assignments": [
+                                        57
+                                    ],
+                                    "declarations": [
+                                        {
+                                            "constant": false,
+                                            "id": 57,
+                                            "mutability": "mutable",
+                                            "name": "markets",
+                                            "nameLocation": "1127:7:1",
+                                            "nodeType": "VariableDeclaration",
+                                            "scope": 92,
+                                            "src": "1110:24:1",
+                                            "stateVariable": false,
+                                            "storageLocation": "memory",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
+                                                "typeString": "address[]"
+                                            },
+                                            "typeName": {
+                                                "baseType": {
+                                                    "id": 55,
+                                                    "name": "address",
+                                                    "nodeType": "ElementaryTypeName",
+                                                    "src": "1110:7:1",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_address",
+                                                        "typeString": "address"
+                                                    }
+                                                },
+                                                "id": 56,
+                                                "nodeType": "ArrayTypeName",
+                                                "src": "1110:9:1",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                                                    "typeString": "address[]"
+                                                }
+                                            },
+                                            "visibility": "internal"
+                                        }
+                                    ],
+                                    "id": 63,
+                                    "initialValue": {
+                                        "arguments": [
+                                            {
+                                                "hexValue": "31",
+                                                "id": 61,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": true,
+                                                "kind": "number",
+                                                "lValueRequested": false,
+                                                "nodeType": "Literal",
+                                                "src": "1151:1:1",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_rational_1_by_1",
+                                                    "typeString": "int_const 1"
+                                                },
+                                                "value": "1"
+                                            }
+                                        ],
+                                        "expression": {
+                                            "argumentTypes": [
+                                                {
+                                                    "typeIdentifier": "t_rational_1_by_1",
+                                                    "typeString": "int_const 1"
+                                                }
+                                            ],
+                                            "id": 60,
+                                            "isConstant": false,
+                                            "isLValue": false,
+                                            "isPure": true,
+                                            "lValueRequested": false,
+                                            "nodeType": "NewExpression",
+                                            "src": "1137:13:1",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_function_objectcreation_pure$_t_uint256_$returns$_t_array$_t_address_$dyn_memory_ptr_$",
+                                                "typeString": "function (uint256) pure returns (address[] memory)"
+                                            },
+                                            "typeName": {
+                                                "baseType": {
+                                                    "id": 58,
+                                                    "name": "address",
+                                                    "nodeType": "ElementaryTypeName",
+                                                    "src": "1141:7:1",
+                                                    "stateMutability": "nonpayable",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_address",
+                                                        "typeString": "address"
+                                                    }
+                                                },
+                                                "id": 59,
+                                                "nodeType": "ArrayTypeName",
+                                                "src": "1141:9:1",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                                                    "typeString": "address[]"
+                                                }
+                                            }
+                                        },
+                                        "id": 62,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": true,
+                                        "kind": "functionCall",
+                                        "lValueRequested": false,
+                                        "names": [],
+                                        "nodeType": "FunctionCall",
+                                        "src": "1137:16:1",
+                                        "tryCall": false,
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
+                                            "typeString": "address[] memory"
+                                        }
+                                    },
+                                    "nodeType": "VariableDeclarationStatement",
+                                    "src": "1110:43:1"
+                                },
+                                {
+                                    "expression": {
+                                        "id": 68,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "lValueRequested": false,
+                                        "leftHandSide": {
+                                            "baseExpression": {
+                                                "id": 64,
+                                                "name": "markets",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 57,
+                                                "src": "1164:7:1",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
+                                                    "typeString": "address[] memory"
+                                                }
+                                            },
+                                            "id": 66,
+                                            "indexExpression": {
+                                                "hexValue": "30",
+                                                "id": 65,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": true,
+                                                "kind": "number",
+                                                "lValueRequested": false,
+                                                "nodeType": "Literal",
+                                                "src": "1172:1:1",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_rational_0_by_1",
+                                                    "typeString": "int_const 0"
+                                                },
+                                                "value": "0"
+                                            },
+                                            "isConstant": false,
+                                            "isLValue": true,
+                                            "isPure": false,
+                                            "lValueRequested": true,
+                                            "nodeType": "IndexAccess",
+                                            "src": "1164:10:1",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_address",
+                                                "typeString": "address"
+                                            }
+                                        },
+                                        "nodeType": "Assignment",
+                                        "operator": "=",
+                                        "rightHandSide": {
+                                            "id": 67,
+                                            "name": "_pTokenAddr",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 50,
+                                            "src": "1177:11:1",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_address",
+                                                "typeString": "address"
+                                            }
+                                        },
+                                        "src": "1164:24:1",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "id": 69,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "1164:24:1"
+                                },
+                                {
+                                    "assignments": [
+                                        74
+                                    ],
+                                    "declarations": [
+                                        {
+                                            "constant": false,
+                                            "id": 74,
+                                            "mutability": "mutable",
+                                            "name": "errCodes",
+                                            "nameLocation": "1218:8:1",
+                                            "nodeType": "VariableDeclaration",
+                                            "scope": 92,
+                                            "src": "1201:25:1",
+                                            "stateVariable": false,
+                                            "storageLocation": "memory",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_array$_t_uint256_$dyn_memory_ptr",
+                                                "typeString": "uint256[]"
+                                            },
+                                            "typeName": {
+                                                "baseType": {
+                                                    "id": 72,
+                                                    "name": "uint256",
+                                                    "nodeType": "ElementaryTypeName",
+                                                    "src": "1201:7:1",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_uint256",
+                                                        "typeString": "uint256"
+                                                    }
+                                                },
+                                                "id": 73,
+                                                "nodeType": "ArrayTypeName",
+                                                "src": "1201:9:1",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_array$_t_uint256_$dyn_storage_ptr",
+                                                    "typeString": "uint256[]"
+                                                }
+                                            },
+                                            "visibility": "internal"
+                                        }
+                                    ],
+                                    "id": 81,
+                                    "initialValue": {
+                                        "arguments": [
+                                            {
+                                                "id": 79,
+                                                "name": "markets",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 57,
+                                                "src": "1288:7:1",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
+                                                    "typeString": "address[] memory"
+                                                }
+                                            }
+                                        ],
+                                        "expression": {
+                                            "argumentTypes": [
+                                                {
+                                                    "typeIdentifier": "t_array$_t_address_$dyn_memory_ptr",
+                                                    "typeString": "address[] memory"
+                                                }
+                                            ],
+                                            "expression": {
+                                                "arguments": [
+                                                    {
+                                                        "id": 76,
+                                                        "name": "COMPTROLLER_ADDR_WEPIGGY",
+                                                        "nodeType": "Identifier",
+                                                        "overloadedDeclarations": [],
+                                                        "referencedDeclaration": 7,
+                                                        "src": "1249:24:1",
+                                                        "typeDescriptions": {
+                                                            "typeIdentifier": "t_address",
+                                                            "typeString": "address"
+                                                        }
+                                                    }
+                                                ],
+                                                "expression": {
+                                                    "argumentTypes": [
+                                                        {
+                                                            "typeIdentifier": "t_address",
+                                                            "typeString": "address"
+                                                        }
+                                                    ],
+                                                    "id": 75,
+                                                    "name": "IWePiggyComptroller",
+                                                    "nodeType": "Identifier",
+                                                    "overloadedDeclarations": [],
+                                                    "referencedDeclaration": 752,
+                                                    "src": "1229:19:1",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_type$_t_contract$_IWePiggyComptroller_$752_$",
+                                                        "typeString": "type(contract IWePiggyComptroller)"
+                                                    }
+                                                },
+                                                "id": 77,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": true,
+                                                "kind": "typeConversion",
+                                                "lValueRequested": false,
+                                                "names": [],
+                                                "nodeType": "FunctionCall",
+                                                "src": "1229:45:1",
+                                                "tryCall": false,
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_contract$_IWePiggyComptroller_$752",
+                                                    "typeString": "contract IWePiggyComptroller"
+                                                }
+                                            },
+                                            "id": 78,
+                                            "isConstant": false,
+                                            "isLValue": false,
+                                            "isPure": false,
+                                            "lValueRequested": false,
+                                            "memberName": "enterMarkets",
+                                            "nodeType": "MemberAccess",
+                                            "referencedDeclaration": 543,
+                                            "src": "1229:58:1",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_function_external_nonpayable$_t_array$_t_address_$dyn_memory_ptr_$returns$_t_array$_t_uint256_$dyn_memory_ptr_$",
+                                                "typeString": "function (address[] memory) external returns (uint256[] memory)"
+                                            }
+                                        },
+                                        "id": 80,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "kind": "functionCall",
+                                        "lValueRequested": false,
+                                        "names": [],
+                                        "nodeType": "FunctionCall",
+                                        "src": "1229:67:1",
+                                        "tryCall": false,
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_array$_t_uint256_$dyn_memory_ptr",
+                                            "typeString": "uint256[] memory"
+                                        }
+                                    },
+                                    "nodeType": "VariableDeclarationStatement",
+                                    "src": "1201:95:1"
+                                },
+                                {
+                                    "condition": {
+                                        "commonType": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        },
+                                        "id": 86,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "lValueRequested": false,
+                                        "leftExpression": {
+                                            "baseExpression": {
+                                                "id": 82,
+                                                "name": "errCodes",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 74,
+                                                "src": "1313:8:1",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_array$_t_uint256_$dyn_memory_ptr",
+                                                    "typeString": "uint256[] memory"
+                                                }
+                                            },
+                                            "id": 84,
+                                            "indexExpression": {
+                                                "hexValue": "30",
+                                                "id": 83,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": true,
+                                                "kind": "number",
+                                                "lValueRequested": false,
+                                                "nodeType": "Literal",
+                                                "src": "1322:1:1",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_rational_0_by_1",
+                                                    "typeString": "int_const 0"
+                                                },
+                                                "value": "0"
+                                            },
+                                            "isConstant": false,
+                                            "isLValue": true,
+                                            "isPure": false,
+                                            "lValueRequested": false,
+                                            "nodeType": "IndexAccess",
+                                            "src": "1313:11:1",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_uint256",
+                                                "typeString": "uint256"
+                                            }
+                                        },
+                                        "nodeType": "BinaryOperation",
+                                        "operator": "!=",
+                                        "rightExpression": {
+                                            "id": 85,
+                                            "name": "NO_ERROR",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 20,
+                                            "src": "1328:8:1",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_uint256",
+                                                "typeString": "uint256"
+                                            }
+                                        },
+                                        "src": "1313:23:1",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_bool",
+                                            "typeString": "bool"
+                                        }
+                                    },
+                                    "id": 91,
+                                    "nodeType": "IfStatement",
+                                    "src": "1309:87:1",
+                                    "trueBody": {
+                                        "id": 90,
+                                        "nodeType": "Block",
+                                        "src": "1337:59:1",
+                                        "statements": [
+                                            {
+                                                "errorCall": {
+                                                    "arguments": [],
+                                                    "expression": {
+                                                        "argumentTypes": [],
+                                                        "id": 87,
+                                                        "name": "WePiggyEnterMarketError",
+                                                        "nodeType": "Identifier",
+                                                        "overloadedDeclarations": [],
+                                                        "referencedDeclaration": 22,
+                                                        "src": "1359:23:1",
+                                                        "typeDescriptions": {
+                                                            "typeIdentifier": "t_function_error_pure$__$returns$__$",
+                                                            "typeString": "function () pure"
+                                                        }
+                                                    },
+                                                    "id": 88,
+                                                    "isConstant": false,
+                                                    "isLValue": false,
+                                                    "isPure": false,
+                                                    "kind": "functionCall",
+                                                    "lValueRequested": false,
+                                                    "names": [],
+                                                    "nodeType": "FunctionCall",
+                                                    "src": "1359:25:1",
+                                                    "tryCall": false,
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_tuple$__$",
+                                                        "typeString": "tuple()"
+                                                    }
+                                                },
+                                                "id": 89,
+                                                "nodeType": "RevertStatement",
+                                                "src": "1352:32:1"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        },
+                        "documentation": {
+                            "id": 48,
+                            "nodeType": "StructuredDocumentation",
+                            "src": "839:205:1",
+                            "text": "@notice Enters the WePiggy market so it can be deposited/borrowed\n @dev Markets can be entered multiple times, without the code reverting\n @param _pTokenAddr PToken address of the token"
+                        },
+                        "functionSelector": "3fe5d425",
+                        "id": 93,
+                        "implemented": true,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "enterMarket",
+                        "nameLocation": "1059:11:1",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 51,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 50,
+                                    "mutability": "mutable",
+                                    "name": "_pTokenAddr",
+                                    "nameLocation": "1079:11:1",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 93,
+                                    "src": "1071:19:1",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                    },
+                                    "typeName": {
+                                        "id": 49,
+                                        "name": "address",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "1071:7:1",
+                                        "stateMutability": "nonpayable",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "1070:21:1"
+                        },
+                        "returnParameters": {
+                            "id": 52,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "1099:0:1"
+                        },
+                        "scope": 114,
+                        "src": "1050:353:1",
+                        "stateMutability": "nonpayable",
+                        "virtual": false,
+                        "visibility": "public"
+                    },
+                    {
+                        "body": {
+                            "id": 112,
+                            "nodeType": "Block",
+                            "src": "1557:162:1",
+                            "statements": [
+                                {
+                                    "condition": {
+                                        "commonType": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        },
+                                        "id": 106,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "lValueRequested": false,
+                                        "leftExpression": {
+                                            "arguments": [
+                                                {
+                                                    "id": 103,
+                                                    "name": "_pTokenAddr",
+                                                    "nodeType": "Identifier",
+                                                    "overloadedDeclarations": [],
+                                                    "referencedDeclaration": 96,
+                                                    "src": "1629:11:1",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_address",
+                                                        "typeString": "address"
+                                                    }
+                                                }
+                                            ],
+                                            "expression": {
+                                                "argumentTypes": [
+                                                    {
+                                                        "typeIdentifier": "t_address",
+                                                        "typeString": "address"
+                                                    }
+                                                ],
+                                                "expression": {
+                                                    "arguments": [
+                                                        {
+                                                            "id": 100,
+                                                            "name": "COMPTROLLER_ADDR_WEPIGGY",
+                                                            "nodeType": "Identifier",
+                                                            "overloadedDeclarations": [],
+                                                            "referencedDeclaration": 7,
+                                                            "src": "1592:24:1",
+                                                            "typeDescriptions": {
+                                                                "typeIdentifier": "t_address",
+                                                                "typeString": "address"
+                                                            }
+                                                        }
+                                                    ],
+                                                    "expression": {
+                                                        "argumentTypes": [
+                                                            {
+                                                                "typeIdentifier": "t_address",
+                                                                "typeString": "address"
+                                                            }
+                                                        ],
+                                                        "id": 99,
+                                                        "name": "IWePiggyComptroller",
+                                                        "nodeType": "Identifier",
+                                                        "overloadedDeclarations": [],
+                                                        "referencedDeclaration": 752,
+                                                        "src": "1572:19:1",
+                                                        "typeDescriptions": {
+                                                            "typeIdentifier": "t_type$_t_contract$_IWePiggyComptroller_$752_$",
+                                                            "typeString": "type(contract IWePiggyComptroller)"
+                                                        }
+                                                    },
+                                                    "id": 101,
+                                                    "isConstant": false,
+                                                    "isLValue": false,
+                                                    "isPure": true,
+                                                    "kind": "typeConversion",
+                                                    "lValueRequested": false,
+                                                    "names": [],
+                                                    "nodeType": "FunctionCall",
+                                                    "src": "1572:45:1",
+                                                    "tryCall": false,
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_contract$_IWePiggyComptroller_$752",
+                                                        "typeString": "contract IWePiggyComptroller"
+                                                    }
+                                                },
+                                                "id": 102,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": false,
+                                                "lValueRequested": false,
+                                                "memberName": "exitMarket",
+                                                "nodeType": "MemberAccess",
+                                                "referencedDeclaration": 551,
+                                                "src": "1572:56:1",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_function_external_nonpayable$_t_address_$returns$_t_uint256_$",
+                                                    "typeString": "function (address) external returns (uint256)"
+                                                }
+                                            },
+                                            "id": 104,
+                                            "isConstant": false,
+                                            "isLValue": false,
+                                            "isPure": false,
+                                            "kind": "functionCall",
+                                            "lValueRequested": false,
+                                            "names": [],
+                                            "nodeType": "FunctionCall",
+                                            "src": "1572:69:1",
+                                            "tryCall": false,
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_uint256",
+                                                "typeString": "uint256"
+                                            }
+                                        },
+                                        "nodeType": "BinaryOperation",
+                                        "operator": "!=",
+                                        "rightExpression": {
+                                            "id": 105,
+                                            "name": "NO_ERROR",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 20,
+                                            "src": "1645:8:1",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_uint256",
+                                                "typeString": "uint256"
+                                            }
+                                        },
+                                        "src": "1572:81:1",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_bool",
+                                            "typeString": "bool"
+                                        }
+                                    },
+                                    "id": 111,
+                                    "nodeType": "IfStatement",
+                                    "src": "1568:144:1",
+                                    "trueBody": {
+                                        "id": 110,
+                                        "nodeType": "Block",
+                                        "src": "1654:58:1",
+                                        "statements": [
+                                            {
+                                                "errorCall": {
+                                                    "arguments": [],
+                                                    "expression": {
+                                                        "argumentTypes": [],
+                                                        "id": 107,
+                                                        "name": "WePiggyExitMarketError",
+                                                        "nodeType": "Identifier",
+                                                        "overloadedDeclarations": [],
+                                                        "referencedDeclaration": 24,
+                                                        "src": "1676:22:1",
+                                                        "typeDescriptions": {
+                                                            "typeIdentifier": "t_function_error_pure$__$returns$__$",
+                                                            "typeString": "function () pure"
+                                                        }
+                                                    },
+                                                    "id": 108,
+                                                    "isConstant": false,
+                                                    "isLValue": false,
+                                                    "isPure": false,
+                                                    "kind": "functionCall",
+                                                    "lValueRequested": false,
+                                                    "names": [],
+                                                    "nodeType": "FunctionCall",
+                                                    "src": "1676:24:1",
+                                                    "tryCall": false,
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_tuple$__$",
+                                                        "typeString": "tuple()"
+                                                    }
+                                                },
+                                                "id": 109,
+                                                "nodeType": "RevertStatement",
+                                                "src": "1669:31:1"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        },
+                        "documentation": {
+                            "id": 94,
+                            "nodeType": "StructuredDocumentation",
+                            "src": "1411:92:1",
+                            "text": "@notice Exits the WePiggy market\n @param _pTokenAddr PToken address of the token"
+                        },
+                        "functionSelector": "ede4edd0",
+                        "id": 113,
+                        "implemented": true,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "exitMarket",
+                        "nameLocation": "1518:10:1",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 97,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 96,
+                                    "mutability": "mutable",
+                                    "name": "_pTokenAddr",
+                                    "nameLocation": "1537:11:1",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 113,
+                                    "src": "1529:19:1",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                    },
+                                    "typeName": {
+                                        "id": 95,
+                                        "name": "address",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "1529:7:1",
+                                        "stateMutability": "nonpayable",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "1528:21:1"
+                        },
+                        "returnParameters": {
+                            "id": 98,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "1557:0:1"
+                        },
+                        "scope": 114,
+                        "src": "1509:210:1",
+                        "stateMutability": "nonpayable",
+                        "virtual": false,
+                        "visibility": "public"
+                    }
+                ],
+                "scope": 115,
+                "src": "322:1400:1",
+                "usedErrors": [
+                    22,
+                    24
+                ]
+            }
+        ],
+        "src": "35:1689:1"
+    },
+    "functionHashes": {
+        "enterMarket(address)": "3fe5d425",
+        "exitMarket(address)": "ede4edd0"
+    },
+    "gasEstimates": {
+        "creation": {
+            "codeDepositCost": "201400",
+            "executionCost": "245",
+            "totalCost": "201645"
+        },
+        "external": {
+            "enterMarket(address)": "infinite",
+            "exitMarket(address)": "infinite"
+        },
+        "internal": {
+            "getUnderlyingAddr(address)": "infinite"
+        }
+    }
+}

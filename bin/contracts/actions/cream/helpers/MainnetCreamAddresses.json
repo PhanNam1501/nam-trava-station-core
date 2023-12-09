@@ -1,0 +1,153 @@
+{
+    "contractName": "MainnetCreamAddresses",
+    "abi": [],
+    "metadata": "{\"compiler\":{\"version\":\"0.8.4+commit.c7e474f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"e:/trava-saver-main-core/trava-station-core/contracts/actions/cream/helpers/MainnetCreamAddresses.sol\":\"MainnetCreamAddresses\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"e:/trava-saver-main-core/trava-station-core/contracts/actions/cream/helpers/MainnetCreamAddresses.sol\":{\"keccak256\":\"0xb3f70e3b1f5eae79da76134d81d64f6e013e17e6700168563c28cc7d94076bb6\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://29e64e56d6201b581c15e0c853852dfc695967a356c0bf5ac189d7d86f53fa5f\",\"dweb:/ipfs/QmdQkeA5tq2vfcCEdksQjbEpozhRGcufZU4Nnbse6TV3rF\"]}},\"version\":1}",
+    "bytecode": "6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea26469706673582212209a24fdccab403a4ec40f3d2500e8e18a44be61d0f249238a05eec88bb6207b9564736f6c63430008040033",
+    "deployedBytecode": "6080604052600080fdfea26469706673582212209a24fdccab403a4ec40f3d2500e8e18a44be61d0f249238a05eec88bb6207b9564736f6c63430008040033",
+    "sourceMap": "92:232:0:-:0;;;;;;;;;;;;;;;;;;;",
+    "deployedSourceMap": "92:232:0:-:0;;;;;",
+    "sourcePath": "e:/trava-saver-main-core/trava-station-core/contracts/actions/cream/helpers/MainnetCreamAddresses.sol",
+    "compiler": {
+        "name": "solc",
+        "version": "0.8.4+commit.c7e474f2"
+    },
+    "ast": {
+        "absolutePath": "e:/trava-saver-main-core/trava-station-core/contracts/actions/cream/helpers/MainnetCreamAddresses.sol",
+        "exportedSymbols": {
+            "MainnetCreamAddresses": [
+                8
+            ]
+        },
+        "id": 9,
+        "license": "MIT",
+        "nodeType": "SourceUnit",
+        "nodes": [
+            {
+                "id": 1,
+                "literals": [
+                    "solidity",
+                    "0.8",
+                    ".4"
+                ],
+                "nodeType": "PragmaDirective",
+                "src": "35:22:0"
+            },
+            {
+                "abstract": false,
+                "baseContracts": [],
+                "contractDependencies": [],
+                "contractKind": "contract",
+                "fullyImplemented": true,
+                "id": 8,
+                "linearizedBaseContracts": [
+                    8
+                ],
+                "name": "MainnetCreamAddresses",
+                "nameLocation": "101:21:0",
+                "nodeType": "ContractDefinition",
+                "nodes": [
+                    {
+                        "constant": true,
+                        "id": 4,
+                        "mutability": "constant",
+                        "name": "V_BNB_ADDR",
+                        "nameLocation": "156:10:0",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 8,
+                        "src": "130:81:0",
+                        "stateVariable": true,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                        },
+                        "typeName": {
+                            "id": 2,
+                            "name": "address",
+                            "nodeType": "ElementaryTypeName",
+                            "src": "130:7:0",
+                            "stateMutability": "nonpayable",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_address",
+                                "typeString": "address"
+                            }
+                        },
+                        "value": {
+                            "hexValue": "307832453732323265353163306636653938363130413135343341613338333645303932434465363263",
+                            "id": 3,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "kind": "number",
+                            "lValueRequested": false,
+                            "nodeType": "Literal",
+                            "src": "169:42:0",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_address",
+                                "typeString": "address"
+                            },
+                            "value": "0x2E7222e51c0f6e98610A1543Aa3836E092CDe62c"
+                        },
+                        "visibility": "internal"
+                    },
+                    {
+                        "constant": true,
+                        "id": 7,
+                        "mutability": "constant",
+                        "name": "COMPTROLLER_ADDRESS_CREAM",
+                        "nameLocation": "244:25:0",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 8,
+                        "src": "218:96:0",
+                        "stateVariable": true,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                        },
+                        "typeName": {
+                            "id": 5,
+                            "name": "address",
+                            "nodeType": "ElementaryTypeName",
+                            "src": "218:7:0",
+                            "stateMutability": "nonpayable",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_address",
+                                "typeString": "address"
+                            }
+                        },
+                        "value": {
+                            "hexValue": "307833643542433363386431336463423862463331373039326438343738336332363937414539323538",
+                            "id": 6,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "kind": "number",
+                            "lValueRequested": false,
+                            "nodeType": "Literal",
+                            "src": "272:42:0",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_address",
+                                "typeString": "address"
+                            },
+                            "value": "0x3d5BC3c8d13dcB8bF317092d84783c2697AE9258"
+                        },
+                        "visibility": "internal"
+                    }
+                ],
+                "scope": 9,
+                "src": "92:232:0",
+                "usedErrors": []
+            }
+        ],
+        "src": "35:291:0"
+    },
+    "functionHashes": {},
+    "gasEstimates": {
+        "creation": {
+            "codeDepositCost": "12600",
+            "executionCost": "66",
+            "totalCost": "12666"
+        }
+    }
+}

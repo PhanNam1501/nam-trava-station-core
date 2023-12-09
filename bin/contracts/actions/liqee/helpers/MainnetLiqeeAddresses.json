@@ -1,0 +1,153 @@
+{
+    "contractName": "MainnetLiqeeAddresses",
+    "abi": [],
+    "metadata": "{\"compiler\":{\"version\":\"0.8.4+commit.c7e474f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"e:/trava-saver-main-core/trava-station-core/contracts/actions/liqee/helpers/MainnetLiqeeAddresses.sol\":\"MainnetLiqeeAddresses\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"e:/trava-saver-main-core/trava-station-core/contracts/actions/liqee/helpers/MainnetLiqeeAddresses.sol\":{\"keccak256\":\"0xf93cb2a8d741b0d9b7befeca56eb10e53a04d6a7153b1619e4cd596ef67077dc\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://e8f238ae254af34e106b9e27a122687d85ade5412e5be4e16ec3551d8d906e19\",\"dweb:/ipfs/QmeVQUVcut5KRhsgZpfUGGvHupHTr6d3pWWtA5xWP7yzZ5\"]}},\"version\":1}",
+    "bytecode": "6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea2646970667358221220c42215d352fe4fd8bed438279b2540f0396a780255595f3ae3bd426ce576acfb64736f6c63430008040033",
+    "deployedBytecode": "6080604052600080fdfea2646970667358221220c42215d352fe4fd8bed438279b2540f0396a780255595f3ae3bd426ce576acfb64736f6c63430008040033",
+    "sourceMap": "92:217:0:-:0;;;;;;;;;;;;;;;;;;;",
+    "deployedSourceMap": "92:217:0:-:0;;;;;",
+    "sourcePath": "e:/trava-saver-main-core/trava-station-core/contracts/actions/liqee/helpers/MainnetLiqeeAddresses.sol",
+    "compiler": {
+        "name": "solc",
+        "version": "0.8.4+commit.c7e474f2"
+    },
+    "ast": {
+        "absolutePath": "e:/trava-saver-main-core/trava-station-core/contracts/actions/liqee/helpers/MainnetLiqeeAddresses.sol",
+        "exportedSymbols": {
+            "MainnetLiqeeAddresses": [
+                8
+            ]
+        },
+        "id": 9,
+        "license": "MIT",
+        "nodeType": "SourceUnit",
+        "nodes": [
+            {
+                "id": 1,
+                "literals": [
+                    "solidity",
+                    "0.8",
+                    ".4"
+                ],
+                "nodeType": "PragmaDirective",
+                "src": "35:22:0"
+            },
+            {
+                "abstract": false,
+                "baseContracts": [],
+                "contractDependencies": [],
+                "contractKind": "contract",
+                "fullyImplemented": true,
+                "id": 8,
+                "linearizedBaseContracts": [
+                    8
+                ],
+                "name": "MainnetLiqeeAddresses",
+                "nameLocation": "101:21:0",
+                "nodeType": "ContractDefinition",
+                "nodes": [
+                    {
+                        "constant": true,
+                        "id": 4,
+                        "mutability": "constant",
+                        "name": "iBNB",
+                        "nameLocation": "156:4:0",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 8,
+                        "src": "130:75:0",
+                        "stateVariable": true,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                        },
+                        "typeName": {
+                            "id": 2,
+                            "name": "address",
+                            "nodeType": "ElementaryTypeName",
+                            "src": "130:7:0",
+                            "stateMutability": "nonpayable",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_address",
+                                "typeString": "address"
+                            }
+                        },
+                        "value": {
+                            "hexValue": "307831466665313742393962343339624530614643383331323339644445436461324137393066463341",
+                            "id": 3,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "kind": "number",
+                            "lValueRequested": false,
+                            "nodeType": "Literal",
+                            "src": "163:42:0",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_address",
+                                "typeString": "address"
+                            },
+                            "value": "0x1Ffe17B99b439bE0aFC831239dDECda2A790fF3A"
+                        },
+                        "visibility": "internal"
+                    },
+                    {
+                        "constant": true,
+                        "id": 7,
+                        "mutability": "constant",
+                        "name": "COMPTROLLER_ADDR_LIQEE",
+                        "nameLocation": "238:22:0",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 8,
+                        "src": "212:93:0",
+                        "stateVariable": true,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                            "typeIdentifier": "t_address",
+                            "typeString": "address"
+                        },
+                        "typeName": {
+                            "id": 5,
+                            "name": "address",
+                            "nodeType": "ElementaryTypeName",
+                            "src": "212:7:0",
+                            "stateMutability": "nonpayable",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_address",
+                                "typeString": "address"
+                            }
+                        },
+                        "value": {
+                            "hexValue": "307833643542433363386431336463423862463331373039326438343738336332363937414539323538",
+                            "id": 6,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "kind": "number",
+                            "lValueRequested": false,
+                            "nodeType": "Literal",
+                            "src": "263:42:0",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_address",
+                                "typeString": "address"
+                            },
+                            "value": "0x3d5BC3c8d13dcB8bF317092d84783c2697AE9258"
+                        },
+                        "visibility": "internal"
+                    }
+                ],
+                "scope": 9,
+                "src": "92:217:0",
+                "usedErrors": []
+            }
+        ],
+        "src": "35:276:0"
+    },
+    "functionHashes": {},
+    "gasEstimates": {
+        "creation": {
+            "codeDepositCost": "12600",
+            "executionCost": "66",
+            "totalCost": "12666"
+        }
+    }
+}

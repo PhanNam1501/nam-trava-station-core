@@ -1,0 +1,1880 @@
+{
+    "contractName": "GranaryHelper",
+    "abi": [
+        {
+            "inputs": [],
+            "name": "DATA_PROVIDER_ID",
+            "outputs": [
+                {
+                    "internalType": "bytes32",
+                    "name": "",
+                    "type": "bytes32"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [],
+            "name": "GRANARY_REFERRAL_CODE",
+            "outputs": [
+                {
+                    "internalType": "uint16",
+                    "name": "",
+                    "type": "uint16"
+                }
+            ],
+            "stateMutability": "view",
+            "type": "function"
+        },
+        {
+            "inputs": [
+                {
+                    "internalType": "address",
+                    "name": "_market",
+                    "type": "address"
+                },
+                {
+                    "internalType": "address",
+                    "name": "_tokenAddr",
+                    "type": "address"
+                },
+                {
+                    "internalType": "bool",
+                    "name": "_useAsCollateral",
+                    "type": "bool"
+                }
+            ],
+            "name": "enableAsCollateral",
+            "outputs": [],
+            "stateMutability": "nonpayable",
+            "type": "function"
+        }
+    ],
+    "metadata": "{\"compiler\":{\"version\":\"0.8.4+commit.c7e474f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"DATA_PROVIDER_ID\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"GRANARY_REFERRAL_CODE\",\"outputs\":[{\"internalType\":\"uint16\",\"name\":\"\",\"type\":\"uint16\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_market\",\"type\":\"address\"},{\"internalType\":\"address\",\"name\":\"_tokenAddr\",\"type\":\"address\"},{\"internalType\":\"bool\",\"name\":\"_useAsCollateral\",\"type\":\"bool\"}],\"name\":\"enableAsCollateral\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"title\":\"Utility functions and data used in Granary actions\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"enableAsCollateral(address,address,bool)\":{\"notice\":\"Enable/Disable a token as collateral for the specified Granary market\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"e:/trava-saver-main-core/trava-station-core/contracts/actions/granary/helpers/GranaryHelper.sol\":\"GranaryHelper\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"e:/trava-saver-main-core/trava-station-core/contracts/actions/granary/helpers/GranaryHelper.sol\":{\"keccak256\":\"0x665b2ef73e2c5cced2f5d8d4a116a8bb1a7a9c6fe9803b19b6b08fa1eef41688\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://602e3a91f362d2e309ab0f893fe9f412c0ceb804b75958ae02e643c4f7c0bb89\",\"dweb:/ipfs/QmdUS31GKqCrDhu49nqiZypwMRHcTMYWMZhupLKaeeZD3M\"]},\"e:/trava-saver-main-core/trava-station-core/contracts/actions/granary/helpers/MainnetGranaryAddresses.sol\":{\"keccak256\":\"0xb2ae690f7e3b7f16cc1625286ea981145702bcf61dfcc8ab24bf2275c852c62a\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://5e87e2bd55752e662f95016e024f3e0d778117ca4c3ce5f2e822cc4af3fce004\",\"dweb:/ipfs/QmRhGbWAgTfhacDWb3K7BDMHvxKtZWMc8cXxaX9NyUwkbk\"]},\"e:/trava-saver-main-core/trava-station-core/contracts/interfaces/granary/IGranaryLendingPool.sol\":{\"keccak256\":\"0x2111684d4b46fd3f5ae4b48daa9ff572788fdc1a78f4509c8c2ec7ecc949dde7\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://d0986fd2b08a89c4f564b76d7b8858913f7276bbb710e3766c1d77cdaae9d1fc\",\"dweb:/ipfs/QmbuVxhPuKLWPHM9QDjrQnAfypqcRBgHaHX3igA13haJom\"]},\"e:/trava-saver-main-core/trava-station-core/contracts/interfaces/granary/IGranaryLendingPoolAddressesProvider.sol\":{\"keccak256\":\"0x2c32ed7c88d29e1537d076a4ae72211182e1c109e295052a3ee1472221f2a205\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://ea20c686e8e350569516b7ceffec103529ce9e403fe0b1d27e4af3152481c094\",\"dweb:/ipfs/QmexmZdTYaLAu65ViCRFqP5mdyX9f1t7f5uuAv7rguoVxb\"]},\"e:/trava-saver-main-core/trava-station-core/contracts/interfaces/granary/IGranaryProtocolDataProvider.sol\":{\"keccak256\":\"0x9fb9472122ae3dbad6d1e74462a9c1500d257ad8735d531adf1d7ccf21be3df4\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://7a4a1d7696b2c49de51c304ae4e96267d4c7f7b7cfd5adf70398fae47882a81b\",\"dweb:/ipfs/QmZqs3wr2ZPgrmpDgcKKoRXfNmAr1dzf4GLmH1X5GtDc6b\"]}},\"version\":1}",
+    "bytecode": "608060405234801561001057600080fd5b50610233806100206000396000f3fe608060405234801561001057600080fd5b50600436106100415760003560e01c8063cfcd924c14610046578063daa6059914610066578063f1cb30881461007f575b600080fd5b61004e604081565b60405161ffff90911681526020015b60405180910390f35b610071600160f81b81565b60405190815260200161005d565b61009261008d366004610197565b610094565b005b6000836001600160a01b0316630261bf8b6040518163ffffffff1660e01b815260040160206040518083038186803b1580156100cf57600080fd5b505afa1580156100e3573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906101079190610174565b604051635a3b74b960e01b81526001600160a01b038581166004830152841515602483015291925090821690635a3b74b990604401600060405180830381600087803b15801561015657600080fd5b505af115801561016a573d6000803e3d6000fd5b5050505050505050565b600060208284031215610185578081fd5b8151610190816101e5565b9392505050565b6000806000606084860312156101ab578182fd5b83356101b6816101e5565b925060208401356101c6816101e5565b9150604084013580151581146101da578182fd5b809150509250925092565b6001600160a01b03811681146101fa57600080fd5b5056fea2646970667358221220d60f59b28178b3ac1225143fab9c2cd5cf5689e5919077a57e8285eb9f98e3bd64736f6c63430008040033",
+    "deployedBytecode": "608060405234801561001057600080fd5b50600436106100415760003560e01c8063cfcd924c14610046578063daa6059914610066578063f1cb30881461007f575b600080fd5b61004e604081565b60405161ffff90911681526020015b60405180910390f35b610071600160f81b81565b60405190815260200161005d565b61009261008d366004610197565b610094565b005b6000836001600160a01b0316630261bf8b6040518163ffffffff1660e01b815260040160206040518083038186803b1580156100cf57600080fd5b505afa1580156100e3573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906101079190610174565b604051635a3b74b960e01b81526001600160a01b038581166004830152841515602483015291925090821690635a3b74b990604401600060405180830381600087803b15801561015657600080fd5b505af115801561016a573d6000803e3d6000fd5b5050505050505050565b600060208284031215610185578081fd5b8151610190816101e5565b9392505050565b6000806000606084860312156101ab578182fd5b83356101b6816101e5565b925060208401356101c6816101e5565b9150604084013580151581146101da578182fd5b809150509250925092565b6001600160a01b03811681146101fa57600080fd5b5056fea2646970667358221220d60f59b28178b3ac1225143fab9c2cd5cf5689e5919077a57e8285eb9f98e3bd64736f6c63430008040033",
+    "sourceMap": "300:2383:0:-:0;;;;;;;;;;;;;;;;;;;",
+    "deployedSourceMap": "300:2383:0:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;357:49;;404:2;357:49;;;;;1507:6:5;1495:19;;;1477:38;;1465:2;1450:18;357:49:0;;;;;;;;415:118;;-1:-1:-1;;;415:118:0;;;;;1297:25:5;;;1285:2;1270:18;415:118:0;1252:76:5;629:337:0;;;;;;:::i;:::-;;:::i;:::-;;;769:19;828:7;-1:-1:-1;;;;;791:60:0;;:62;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;866:92;;-1:-1:-1;;;866:92:0;;-1:-1:-1;;;;;1048:32:5;;;866:92:0;;;1030:51:5;1124:14;;1117:22;1097:18;;;1090:50;769:84:0;;-1:-1:-1;866:62:0;;;;;;1003:18:5;;866:92:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;629:337;;;;:::o;14:261:5:-;84:6;137:2;125:9;116:7;112:23;108:32;105:2;;;158:6;150;143:22;105:2;195:9;189:16;214:31;239:5;214:31;:::i;:::-;264:5;95:180;-1:-1:-1;;;95:180:5:o;280:577::-;354:6;362;370;423:2;411:9;402:7;398:23;394:32;391:2;;;444:6;436;429:22;391:2;488:9;475:23;507:31;532:5;507:31;:::i;:::-;557:5;-1:-1:-1;614:2:5;599:18;;586:32;627:33;586:32;627:33;:::i;:::-;679:7;-1:-1:-1;738:2:5;723:18;;710:32;780:15;;773:23;761:36;;751:2;;816:6;808;801:22;751:2;844:7;834:17;;;381:476;;;;;:::o;1526:131::-;-1:-1:-1;;;;;1601:31:5;;1591:42;;1581:2;;1647:1;1644;1637:12;1581:2;1571:86;:::o",
+    "sourcePath": "e:/trava-saver-main-core/trava-station-core/contracts/actions/granary/helpers/GranaryHelper.sol",
+    "compiler": {
+        "name": "solc",
+        "version": "0.8.4+commit.c7e474f2"
+    },
+    "ast": {
+        "absolutePath": "e:/trava-saver-main-core/trava-station-core/contracts/actions/granary/helpers/GranaryHelper.sol",
+        "exportedSymbols": {
+            "DataTypes": [
+                184
+            ],
+            "GranaryHelper": [
+                139
+            ],
+            "IGranaryLendingPool": [
+                421
+            ],
+            "IGranaryLendingPoolAddressesProvider": [
+                526
+            ],
+            "IGranaryProtocolDataProvider": [
+                634
+            ],
+            "MainnetGranaryAddresses": [
+                142
+            ]
+        },
+        "id": 140,
+        "license": "MIT",
+        "nodeType": "SourceUnit",
+        "nodes": [
+            {
+                "id": 1,
+                "literals": [
+                    "solidity",
+                    "0.8",
+                    ".4"
+                ],
+                "nodeType": "PragmaDirective",
+                "src": "33:22:0"
+            },
+            {
+                "absolutePath": "e:/trava-saver-main-core/trava-station-core/contracts/interfaces/granary/IGranaryLendingPool.sol",
+                "file": "../../../interfaces/granary/IGranaryLendingPool.sol",
+                "id": 2,
+                "nameLocation": "-1:-1:-1",
+                "nodeType": "ImportDirective",
+                "scope": 140,
+                "sourceUnit": 422,
+                "src": "59:61:0",
+                "symbolAliases": [],
+                "unitAlias": ""
+            },
+            {
+                "absolutePath": "e:/trava-saver-main-core/trava-station-core/contracts/interfaces/granary/IGranaryProtocolDataProvider.sol",
+                "file": "../../../interfaces/granary/IGranaryProtocolDataProvider.sol",
+                "id": 3,
+                "nameLocation": "-1:-1:-1",
+                "nodeType": "ImportDirective",
+                "scope": 140,
+                "sourceUnit": 635,
+                "src": "122:70:0",
+                "symbolAliases": [],
+                "unitAlias": ""
+            },
+            {
+                "absolutePath": "e:/trava-saver-main-core/trava-station-core/contracts/actions/granary/helpers/MainnetGranaryAddresses.sol",
+                "file": "./MainnetGranaryAddresses.sol",
+                "id": 4,
+                "nameLocation": "-1:-1:-1",
+                "nodeType": "ImportDirective",
+                "scope": 140,
+                "sourceUnit": 143,
+                "src": "194:39:0",
+                "symbolAliases": [],
+                "unitAlias": ""
+            },
+            {
+                "abstract": false,
+                "baseContracts": [
+                    {
+                        "baseName": {
+                            "id": 6,
+                            "name": "MainnetGranaryAddresses",
+                            "nodeType": "IdentifierPath",
+                            "referencedDeclaration": 142,
+                            "src": "326:23:0"
+                        },
+                        "id": 7,
+                        "nodeType": "InheritanceSpecifier",
+                        "src": "326:23:0"
+                    }
+                ],
+                "contractDependencies": [],
+                "contractKind": "contract",
+                "documentation": {
+                    "id": 5,
+                    "nodeType": "StructuredDocumentation",
+                    "src": "237:63:0",
+                    "text": "@title Utility functions and data used in Granary actions"
+                },
+                "fullyImplemented": true,
+                "id": 139,
+                "linearizedBaseContracts": [
+                    139,
+                    142
+                ],
+                "name": "GranaryHelper",
+                "nameLocation": "309:13:0",
+                "nodeType": "ContractDefinition",
+                "nodes": [
+                    {
+                        "constant": true,
+                        "functionSelector": "cfcd924c",
+                        "id": 10,
+                        "mutability": "constant",
+                        "name": "GRANARY_REFERRAL_CODE",
+                        "nameLocation": "380:21:0",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 139,
+                        "src": "357:49:0",
+                        "stateVariable": true,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                            "typeIdentifier": "t_uint16",
+                            "typeString": "uint16"
+                        },
+                        "typeName": {
+                            "id": 8,
+                            "name": "uint16",
+                            "nodeType": "ElementaryTypeName",
+                            "src": "357:6:0",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_uint16",
+                                "typeString": "uint16"
+                            }
+                        },
+                        "value": {
+                            "hexValue": "3634",
+                            "id": 9,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "kind": "number",
+                            "lValueRequested": false,
+                            "nodeType": "Literal",
+                            "src": "404:2:0",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_rational_64_by_1",
+                                "typeString": "int_const 64"
+                            },
+                            "value": "64"
+                        },
+                        "visibility": "public"
+                    },
+                    {
+                        "constant": true,
+                        "functionSelector": "daa60599",
+                        "id": 13,
+                        "mutability": "constant",
+                        "name": "DATA_PROVIDER_ID",
+                        "nameLocation": "439:16:0",
+                        "nodeType": "VariableDeclaration",
+                        "scope": 139,
+                        "src": "415:118:0",
+                        "stateVariable": true,
+                        "storageLocation": "default",
+                        "typeDescriptions": {
+                            "typeIdentifier": "t_bytes32",
+                            "typeString": "bytes32"
+                        },
+                        "typeName": {
+                            "id": 11,
+                            "name": "bytes32",
+                            "nodeType": "ElementaryTypeName",
+                            "src": "415:7:0",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_bytes32",
+                                "typeString": "bytes32"
+                            }
+                        },
+                        "value": {
+                            "hexValue": "307830313030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030303030",
+                            "id": 12,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": true,
+                            "kind": "number",
+                            "lValueRequested": false,
+                            "nodeType": "Literal",
+                            "src": "467:66:0",
+                            "typeDescriptions": {
+                                "typeIdentifier": "t_rational_452312848583266388373324160190187140051835877600158453279131187530910662656_by_1",
+                                "typeString": "int_const 4523...(67 digits omitted)...2656"
+                            },
+                            "value": "0x0100000000000000000000000000000000000000000000000000000000000000"
+                        },
+                        "visibility": "public"
+                    },
+                    {
+                        "body": {
+                            "id": 39,
+                            "nodeType": "Block",
+                            "src": "758:208:0",
+                            "statements": [
+                                {
+                                    "assignments": [
+                                        24
+                                    ],
+                                    "declarations": [
+                                        {
+                                            "constant": false,
+                                            "id": 24,
+                                            "mutability": "mutable",
+                                            "name": "lendingPool",
+                                            "nameLocation": "777:11:0",
+                                            "nodeType": "VariableDeclaration",
+                                            "scope": 39,
+                                            "src": "769:19:0",
+                                            "stateVariable": false,
+                                            "storageLocation": "default",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_address",
+                                                "typeString": "address"
+                                            },
+                                            "typeName": {
+                                                "id": 23,
+                                                "name": "address",
+                                                "nodeType": "ElementaryTypeName",
+                                                "src": "769:7:0",
+                                                "stateMutability": "nonpayable",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                }
+                                            },
+                                            "visibility": "internal"
+                                        }
+                                    ],
+                                    "id": 30,
+                                    "initialValue": {
+                                        "arguments": [],
+                                        "expression": {
+                                            "argumentTypes": [],
+                                            "expression": {
+                                                "arguments": [
+                                                    {
+                                                        "id": 26,
+                                                        "name": "_market",
+                                                        "nodeType": "Identifier",
+                                                        "overloadedDeclarations": [],
+                                                        "referencedDeclaration": 16,
+                                                        "src": "828:7:0",
+                                                        "typeDescriptions": {
+                                                            "typeIdentifier": "t_address",
+                                                            "typeString": "address"
+                                                        }
+                                                    }
+                                                ],
+                                                "expression": {
+                                                    "argumentTypes": [
+                                                        {
+                                                            "typeIdentifier": "t_address",
+                                                            "typeString": "address"
+                                                        }
+                                                    ],
+                                                    "id": 25,
+                                                    "name": "IGranaryLendingPoolAddressesProvider",
+                                                    "nodeType": "Identifier",
+                                                    "overloadedDeclarations": [],
+                                                    "referencedDeclaration": 526,
+                                                    "src": "791:36:0",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_type$_t_contract$_IGranaryLendingPoolAddressesProvider_$526_$",
+                                                        "typeString": "type(contract IGranaryLendingPoolAddressesProvider)"
+                                                    }
+                                                },
+                                                "id": 27,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": false,
+                                                "kind": "typeConversion",
+                                                "lValueRequested": false,
+                                                "names": [],
+                                                "nodeType": "FunctionCall",
+                                                "src": "791:45:0",
+                                                "tryCall": false,
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_contract$_IGranaryLendingPoolAddressesProvider_$526",
+                                                    "typeString": "contract IGranaryLendingPoolAddressesProvider"
+                                                }
+                                            },
+                                            "id": 28,
+                                            "isConstant": false,
+                                            "isLValue": false,
+                                            "isPure": false,
+                                            "lValueRequested": false,
+                                            "memberName": "getLendingPool",
+                                            "nodeType": "MemberAccess",
+                                            "referencedDeclaration": 460,
+                                            "src": "791:60:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_function_external_view$__$returns$_t_address_$",
+                                                "typeString": "function () view external returns (address)"
+                                            }
+                                        },
+                                        "id": 29,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "kind": "functionCall",
+                                        "lValueRequested": false,
+                                        "names": [],
+                                        "nodeType": "FunctionCall",
+                                        "src": "791:62:0",
+                                        "tryCall": false,
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "nodeType": "VariableDeclarationStatement",
+                                    "src": "769:84:0"
+                                },
+                                {
+                                    "expression": {
+                                        "arguments": [
+                                            {
+                                                "id": 35,
+                                                "name": "_tokenAddr",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 18,
+                                                "src": "929:10:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                }
+                                            },
+                                            {
+                                                "id": 36,
+                                                "name": "_useAsCollateral",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 20,
+                                                "src": "941:16:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_bool",
+                                                    "typeString": "bool"
+                                                }
+                                            }
+                                        ],
+                                        "expression": {
+                                            "argumentTypes": [
+                                                {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                },
+                                                {
+                                                    "typeIdentifier": "t_bool",
+                                                    "typeString": "bool"
+                                                }
+                                            ],
+                                            "expression": {
+                                                "arguments": [
+                                                    {
+                                                        "id": 32,
+                                                        "name": "lendingPool",
+                                                        "nodeType": "Identifier",
+                                                        "overloadedDeclarations": [],
+                                                        "referencedDeclaration": 24,
+                                                        "src": "886:11:0",
+                                                        "typeDescriptions": {
+                                                            "typeIdentifier": "t_address",
+                                                            "typeString": "address"
+                                                        }
+                                                    }
+                                                ],
+                                                "expression": {
+                                                    "argumentTypes": [
+                                                        {
+                                                            "typeIdentifier": "t_address",
+                                                            "typeString": "address"
+                                                        }
+                                                    ],
+                                                    "id": 31,
+                                                    "name": "IGranaryLendingPool",
+                                                    "nodeType": "Identifier",
+                                                    "overloadedDeclarations": [],
+                                                    "referencedDeclaration": 421,
+                                                    "src": "866:19:0",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_type$_t_contract$_IGranaryLendingPool_$421_$",
+                                                        "typeString": "type(contract IGranaryLendingPool)"
+                                                    }
+                                                },
+                                                "id": 33,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": false,
+                                                "kind": "typeConversion",
+                                                "lValueRequested": false,
+                                                "names": [],
+                                                "nodeType": "FunctionCall",
+                                                "src": "866:32:0",
+                                                "tryCall": false,
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_contract$_IGranaryLendingPool_$421",
+                                                    "typeString": "contract IGranaryLendingPool"
+                                                }
+                                            },
+                                            "id": 34,
+                                            "isConstant": false,
+                                            "isLValue": false,
+                                            "isPure": false,
+                                            "lValueRequested": false,
+                                            "memberName": "setUserUseReserveAsCollateral",
+                                            "nodeType": "MemberAccess",
+                                            "referencedDeclaration": 260,
+                                            "src": "866:62:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_function_external_nonpayable$_t_address_$_t_bool_$returns$__$",
+                                                "typeString": "function (address,bool) external"
+                                            }
+                                        },
+                                        "id": 37,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "kind": "functionCall",
+                                        "lValueRequested": false,
+                                        "names": [],
+                                        "nodeType": "FunctionCall",
+                                        "src": "866:92:0",
+                                        "tryCall": false,
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_tuple$__$",
+                                            "typeString": "tuple()"
+                                        }
+                                    },
+                                    "id": 38,
+                                    "nodeType": "ExpressionStatement",
+                                    "src": "866:92:0"
+                                }
+                            ]
+                        },
+                        "documentation": {
+                            "id": 14,
+                            "nodeType": "StructuredDocumentation",
+                            "src": "542:81:0",
+                            "text": "@notice Enable/Disable a token as collateral for the specified Granary market"
+                        },
+                        "functionSelector": "f1cb3088",
+                        "id": 40,
+                        "implemented": true,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "enableAsCollateral",
+                        "nameLocation": "638:18:0",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 21,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 16,
+                                    "mutability": "mutable",
+                                    "name": "_market",
+                                    "nameLocation": "675:7:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 40,
+                                    "src": "667:15:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                    },
+                                    "typeName": {
+                                        "id": 15,
+                                        "name": "address",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "667:7:0",
+                                        "stateMutability": "nonpayable",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                },
+                                {
+                                    "constant": false,
+                                    "id": 18,
+                                    "mutability": "mutable",
+                                    "name": "_tokenAddr",
+                                    "nameLocation": "701:10:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 40,
+                                    "src": "693:18:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                    },
+                                    "typeName": {
+                                        "id": 17,
+                                        "name": "address",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "693:7:0",
+                                        "stateMutability": "nonpayable",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                },
+                                {
+                                    "constant": false,
+                                    "id": 20,
+                                    "mutability": "mutable",
+                                    "name": "_useAsCollateral",
+                                    "nameLocation": "727:16:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 40,
+                                    "src": "722:21:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_bool",
+                                        "typeString": "bool"
+                                    },
+                                    "typeName": {
+                                        "id": 19,
+                                        "name": "bool",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "722:4:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_bool",
+                                            "typeString": "bool"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "656:94:0"
+                        },
+                        "returnParameters": {
+                            "id": 22,
+                            "nodeType": "ParameterList",
+                            "parameters": [],
+                            "src": "758:0:0"
+                        },
+                        "scope": 139,
+                        "src": "629:337:0",
+                        "stateMutability": "nonpayable",
+                        "virtual": false,
+                        "visibility": "public"
+                    },
+                    {
+                        "body": {
+                            "id": 58,
+                            "nodeType": "Block",
+                            "src": "1559:175:0",
+                            "statements": [
+                                {
+                                    "expression": {
+                                        "arguments": [
+                                            {
+                                                "arguments": [
+                                                    {
+                                                        "id": 54,
+                                                        "name": "DATA_PROVIDER_ID",
+                                                        "nodeType": "Identifier",
+                                                        "overloadedDeclarations": [],
+                                                        "referencedDeclaration": 13,
+                                                        "src": "1694:16:0",
+                                                        "typeDescriptions": {
+                                                            "typeIdentifier": "t_bytes32",
+                                                            "typeString": "bytes32"
+                                                        }
+                                                    }
+                                                ],
+                                                "expression": {
+                                                    "argumentTypes": [
+                                                        {
+                                                            "typeIdentifier": "t_bytes32",
+                                                            "typeString": "bytes32"
+                                                        }
+                                                    ],
+                                                    "expression": {
+                                                        "arguments": [
+                                                            {
+                                                                "id": 51,
+                                                                "name": "_market",
+                                                                "nodeType": "Identifier",
+                                                                "overloadedDeclarations": [],
+                                                                "referencedDeclaration": 43,
+                                                                "src": "1674:7:0",
+                                                                "typeDescriptions": {
+                                                                    "typeIdentifier": "t_address",
+                                                                    "typeString": "address"
+                                                                }
+                                                            }
+                                                        ],
+                                                        "expression": {
+                                                            "argumentTypes": [
+                                                                {
+                                                                    "typeIdentifier": "t_address",
+                                                                    "typeString": "address"
+                                                                }
+                                                            ],
+                                                            "id": 50,
+                                                            "name": "IGranaryLendingPoolAddressesProvider",
+                                                            "nodeType": "Identifier",
+                                                            "overloadedDeclarations": [],
+                                                            "referencedDeclaration": 526,
+                                                            "src": "1637:36:0",
+                                                            "typeDescriptions": {
+                                                                "typeIdentifier": "t_type$_t_contract$_IGranaryLendingPoolAddressesProvider_$526_$",
+                                                                "typeString": "type(contract IGranaryLendingPoolAddressesProvider)"
+                                                            }
+                                                        },
+                                                        "id": 52,
+                                                        "isConstant": false,
+                                                        "isLValue": false,
+                                                        "isPure": false,
+                                                        "kind": "typeConversion",
+                                                        "lValueRequested": false,
+                                                        "names": [],
+                                                        "nodeType": "FunctionCall",
+                                                        "src": "1637:45:0",
+                                                        "tryCall": false,
+                                                        "typeDescriptions": {
+                                                            "typeIdentifier": "t_contract$_IGranaryLendingPoolAddressesProvider_$526",
+                                                            "typeString": "contract IGranaryLendingPoolAddressesProvider"
+                                                        }
+                                                    },
+                                                    "id": 53,
+                                                    "isConstant": false,
+                                                    "isLValue": false,
+                                                    "isPure": false,
+                                                    "lValueRequested": false,
+                                                    "memberName": "getAddress",
+                                                    "nodeType": "MemberAccess",
+                                                    "referencedDeclaration": 455,
+                                                    "src": "1637:56:0",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_function_external_view$_t_bytes32_$returns$_t_address_$",
+                                                        "typeString": "function (bytes32) view external returns (address)"
+                                                    }
+                                                },
+                                                "id": 55,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": false,
+                                                "kind": "functionCall",
+                                                "lValueRequested": false,
+                                                "names": [],
+                                                "nodeType": "FunctionCall",
+                                                "src": "1637:74:0",
+                                                "tryCall": false,
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                }
+                                            }
+                                        ],
+                                        "expression": {
+                                            "argumentTypes": [
+                                                {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                }
+                                            ],
+                                            "id": 49,
+                                            "name": "IGranaryProtocolDataProvider",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 634,
+                                            "src": "1590:28:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_type$_t_contract$_IGranaryProtocolDataProvider_$634_$",
+                                                "typeString": "type(contract IGranaryProtocolDataProvider)"
+                                            }
+                                        },
+                                        "id": 56,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "kind": "typeConversion",
+                                        "lValueRequested": false,
+                                        "names": [],
+                                        "nodeType": "FunctionCall",
+                                        "src": "1590:136:0",
+                                        "tryCall": false,
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_contract$_IGranaryProtocolDataProvider_$634",
+                                            "typeString": "contract IGranaryProtocolDataProvider"
+                                        }
+                                    },
+                                    "functionReturnParameters": 48,
+                                    "id": 57,
+                                    "nodeType": "Return",
+                                    "src": "1570:156:0"
+                                }
+                            ]
+                        },
+                        "documentation": {
+                            "id": 41,
+                            "nodeType": "StructuredDocumentation",
+                            "src": "1398:60:0",
+                            "text": "@notice Fetch the data provider for the specified market"
+                        },
+                        "id": 59,
+                        "implemented": true,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "getDataProvider",
+                        "nameLocation": "1473:15:0",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 44,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 43,
+                                    "mutability": "mutable",
+                                    "name": "_market",
+                                    "nameLocation": "1497:7:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 59,
+                                    "src": "1489:15:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                    },
+                                    "typeName": {
+                                        "id": 42,
+                                        "name": "address",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "1489:7:0",
+                                        "stateMutability": "nonpayable",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "1488:17:0"
+                        },
+                        "returnParameters": {
+                            "id": 48,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 47,
+                                    "mutability": "mutable",
+                                    "name": "",
+                                    "nameLocation": "-1:-1:-1",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 59,
+                                    "src": "1529:28:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_contract$_IGranaryProtocolDataProvider_$634",
+                                        "typeString": "contract IGranaryProtocolDataProvider"
+                                    },
+                                    "typeName": {
+                                        "id": 46,
+                                        "nodeType": "UserDefinedTypeName",
+                                        "pathNode": {
+                                            "id": 45,
+                                            "name": "IGranaryProtocolDataProvider",
+                                            "nodeType": "IdentifierPath",
+                                            "referencedDeclaration": 634,
+                                            "src": "1529:28:0"
+                                        },
+                                        "referencedDeclaration": 634,
+                                        "src": "1529:28:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_contract$_IGranaryProtocolDataProvider_$634",
+                                            "typeString": "contract IGranaryProtocolDataProvider"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "1528:30:0"
+                        },
+                        "scope": 139,
+                        "src": "1464:270:0",
+                        "stateMutability": "view",
+                        "virtual": false,
+                        "visibility": "internal"
+                    },
+                    {
+                        "body": {
+                            "id": 76,
+                            "nodeType": "Block",
+                            "src": "1902:109:0",
+                            "statements": [
+                                {
+                                    "expression": {
+                                        "arguments": [
+                                            {
+                                                "arguments": [],
+                                                "expression": {
+                                                    "argumentTypes": [],
+                                                    "expression": {
+                                                        "arguments": [
+                                                            {
+                                                                "id": 70,
+                                                                "name": "_market",
+                                                                "nodeType": "Identifier",
+                                                                "overloadedDeclarations": [],
+                                                                "referencedDeclaration": 62,
+                                                                "src": "1977:7:0",
+                                                                "typeDescriptions": {
+                                                                    "typeIdentifier": "t_address",
+                                                                    "typeString": "address"
+                                                                }
+                                                            }
+                                                        ],
+                                                        "expression": {
+                                                            "argumentTypes": [
+                                                                {
+                                                                    "typeIdentifier": "t_address",
+                                                                    "typeString": "address"
+                                                                }
+                                                            ],
+                                                            "id": 69,
+                                                            "name": "IGranaryLendingPoolAddressesProvider",
+                                                            "nodeType": "Identifier",
+                                                            "overloadedDeclarations": [],
+                                                            "referencedDeclaration": 526,
+                                                            "src": "1940:36:0",
+                                                            "typeDescriptions": {
+                                                                "typeIdentifier": "t_type$_t_contract$_IGranaryLendingPoolAddressesProvider_$526_$",
+                                                                "typeString": "type(contract IGranaryLendingPoolAddressesProvider)"
+                                                            }
+                                                        },
+                                                        "id": 71,
+                                                        "isConstant": false,
+                                                        "isLValue": false,
+                                                        "isPure": false,
+                                                        "kind": "typeConversion",
+                                                        "lValueRequested": false,
+                                                        "names": [],
+                                                        "nodeType": "FunctionCall",
+                                                        "src": "1940:45:0",
+                                                        "tryCall": false,
+                                                        "typeDescriptions": {
+                                                            "typeIdentifier": "t_contract$_IGranaryLendingPoolAddressesProvider_$526",
+                                                            "typeString": "contract IGranaryLendingPoolAddressesProvider"
+                                                        }
+                                                    },
+                                                    "id": 72,
+                                                    "isConstant": false,
+                                                    "isLValue": false,
+                                                    "isPure": false,
+                                                    "lValueRequested": false,
+                                                    "memberName": "getLendingPool",
+                                                    "nodeType": "MemberAccess",
+                                                    "referencedDeclaration": 460,
+                                                    "src": "1940:60:0",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_function_external_view$__$returns$_t_address_$",
+                                                        "typeString": "function () view external returns (address)"
+                                                    }
+                                                },
+                                                "id": 73,
+                                                "isConstant": false,
+                                                "isLValue": false,
+                                                "isPure": false,
+                                                "kind": "functionCall",
+                                                "lValueRequested": false,
+                                                "names": [],
+                                                "nodeType": "FunctionCall",
+                                                "src": "1940:62:0",
+                                                "tryCall": false,
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                }
+                                            }
+                                        ],
+                                        "expression": {
+                                            "argumentTypes": [
+                                                {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                }
+                                            ],
+                                            "id": 68,
+                                            "name": "IGranaryLendingPool",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 421,
+                                            "src": "1920:19:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_type$_t_contract$_IGranaryLendingPool_$421_$",
+                                                "typeString": "type(contract IGranaryLendingPool)"
+                                            }
+                                        },
+                                        "id": 74,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "kind": "typeConversion",
+                                        "lValueRequested": false,
+                                        "names": [],
+                                        "nodeType": "FunctionCall",
+                                        "src": "1920:83:0",
+                                        "tryCall": false,
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_contract$_IGranaryLendingPool_$421",
+                                            "typeString": "contract IGranaryLendingPool"
+                                        }
+                                    },
+                                    "functionReturnParameters": 67,
+                                    "id": 75,
+                                    "nodeType": "Return",
+                                    "src": "1913:90:0"
+                                }
+                            ]
+                        },
+                        "documentation": {
+                            "id": 60,
+                            "nodeType": "StructuredDocumentation",
+                            "src": "1742:69:0",
+                            "text": "@notice Returns the lending pool contract of the specified market"
+                        },
+                        "id": 77,
+                        "implemented": true,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "getLendingPool",
+                        "nameLocation": "1826:14:0",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 63,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 62,
+                                    "mutability": "mutable",
+                                    "name": "_market",
+                                    "nameLocation": "1849:7:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 77,
+                                    "src": "1841:15:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                    },
+                                    "typeName": {
+                                        "id": 61,
+                                        "name": "address",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "1841:7:0",
+                                        "stateMutability": "nonpayable",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "1840:17:0"
+                        },
+                        "returnParameters": {
+                            "id": 67,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 66,
+                                    "mutability": "mutable",
+                                    "name": "",
+                                    "nameLocation": "-1:-1:-1",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 77,
+                                    "src": "1881:19:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_contract$_IGranaryLendingPool_$421",
+                                        "typeString": "contract IGranaryLendingPool"
+                                    },
+                                    "typeName": {
+                                        "id": 65,
+                                        "nodeType": "UserDefinedTypeName",
+                                        "pathNode": {
+                                            "id": 64,
+                                            "name": "IGranaryLendingPool",
+                                            "nodeType": "IdentifierPath",
+                                            "referencedDeclaration": 421,
+                                            "src": "1881:19:0"
+                                        },
+                                        "referencedDeclaration": 421,
+                                        "src": "1881:19:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_contract$_IGranaryLendingPool_$421",
+                                            "typeString": "contract IGranaryLendingPool"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "1880:21:0"
+                        },
+                        "scope": 139,
+                        "src": "1817:194:0",
+                        "stateMutability": "view",
+                        "virtual": false,
+                        "visibility": "internal"
+                    },
+                    {
+                        "body": {
+                            "id": 137,
+                            "nodeType": "Block",
+                            "src": "2153:527:0",
+                            "statements": [
+                                {
+                                    "assignments": [
+                                        91
+                                    ],
+                                    "declarations": [
+                                        {
+                                            "constant": false,
+                                            "id": 91,
+                                            "mutability": "mutable",
+                                            "name": "STABLE_ID",
+                                            "nameLocation": "2172:9:0",
+                                            "nodeType": "VariableDeclaration",
+                                            "scope": 137,
+                                            "src": "2164:17:0",
+                                            "stateVariable": false,
+                                            "storageLocation": "default",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_uint256",
+                                                "typeString": "uint256"
+                                            },
+                                            "typeName": {
+                                                "id": 90,
+                                                "name": "uint256",
+                                                "nodeType": "ElementaryTypeName",
+                                                "src": "2164:7:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_uint256",
+                                                    "typeString": "uint256"
+                                                }
+                                            },
+                                            "visibility": "internal"
+                                        }
+                                    ],
+                                    "id": 93,
+                                    "initialValue": {
+                                        "hexValue": "31",
+                                        "id": 92,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": true,
+                                        "kind": "number",
+                                        "lValueRequested": false,
+                                        "nodeType": "Literal",
+                                        "src": "2184:1:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_rational_1_by_1",
+                                            "typeString": "int_const 1"
+                                        },
+                                        "value": "1"
+                                    },
+                                    "nodeType": "VariableDeclarationStatement",
+                                    "src": "2164:21:0"
+                                },
+                                {
+                                    "assignments": [
+                                        95
+                                    ],
+                                    "declarations": [
+                                        {
+                                            "constant": false,
+                                            "id": 95,
+                                            "mutability": "mutable",
+                                            "name": "VARIABLE_ID",
+                                            "nameLocation": "2204:11:0",
+                                            "nodeType": "VariableDeclaration",
+                                            "scope": 137,
+                                            "src": "2196:19:0",
+                                            "stateVariable": false,
+                                            "storageLocation": "default",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_uint256",
+                                                "typeString": "uint256"
+                                            },
+                                            "typeName": {
+                                                "id": 94,
+                                                "name": "uint256",
+                                                "nodeType": "ElementaryTypeName",
+                                                "src": "2196:7:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_uint256",
+                                                    "typeString": "uint256"
+                                                }
+                                            },
+                                            "visibility": "internal"
+                                        }
+                                    ],
+                                    "id": 97,
+                                    "initialValue": {
+                                        "hexValue": "32",
+                                        "id": 96,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": true,
+                                        "kind": "number",
+                                        "lValueRequested": false,
+                                        "nodeType": "Literal",
+                                        "src": "2218:1:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_rational_2_by_1",
+                                            "typeString": "int_const 2"
+                                        },
+                                        "value": "2"
+                                    },
+                                    "nodeType": "VariableDeclarationStatement",
+                                    "src": "2196:23:0"
+                                },
+                                {
+                                    "assignments": [
+                                        100
+                                    ],
+                                    "declarations": [
+                                        {
+                                            "constant": false,
+                                            "id": 100,
+                                            "mutability": "mutable",
+                                            "name": "dataProvider",
+                                            "nameLocation": "2261:12:0",
+                                            "nodeType": "VariableDeclaration",
+                                            "scope": 137,
+                                            "src": "2232:41:0",
+                                            "stateVariable": false,
+                                            "storageLocation": "default",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_contract$_IGranaryProtocolDataProvider_$634",
+                                                "typeString": "contract IGranaryProtocolDataProvider"
+                                            },
+                                            "typeName": {
+                                                "id": 99,
+                                                "nodeType": "UserDefinedTypeName",
+                                                "pathNode": {
+                                                    "id": 98,
+                                                    "name": "IGranaryProtocolDataProvider",
+                                                    "nodeType": "IdentifierPath",
+                                                    "referencedDeclaration": 634,
+                                                    "src": "2232:28:0"
+                                                },
+                                                "referencedDeclaration": 634,
+                                                "src": "2232:28:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_contract$_IGranaryProtocolDataProvider_$634",
+                                                    "typeString": "contract IGranaryProtocolDataProvider"
+                                                }
+                                            },
+                                            "visibility": "internal"
+                                        }
+                                    ],
+                                    "id": 104,
+                                    "initialValue": {
+                                        "arguments": [
+                                            {
+                                                "id": 102,
+                                                "name": "_market",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 79,
+                                                "src": "2292:7:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                }
+                                            }
+                                        ],
+                                        "expression": {
+                                            "argumentTypes": [
+                                                {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                }
+                                            ],
+                                            "id": 101,
+                                            "name": "getDataProvider",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 59,
+                                            "src": "2276:15:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_function_internal_view$_t_address_$returns$_t_contract$_IGranaryProtocolDataProvider_$634_$",
+                                                "typeString": "function (address) view returns (contract IGranaryProtocolDataProvider)"
+                                            }
+                                        },
+                                        "id": 103,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "kind": "functionCall",
+                                        "lValueRequested": false,
+                                        "names": [],
+                                        "nodeType": "FunctionCall",
+                                        "src": "2276:24:0",
+                                        "tryCall": false,
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_contract$_IGranaryProtocolDataProvider_$634",
+                                            "typeString": "contract IGranaryProtocolDataProvider"
+                                        }
+                                    },
+                                    "nodeType": "VariableDeclarationStatement",
+                                    "src": "2232:68:0"
+                                },
+                                {
+                                    "assignments": [
+                                        null,
+                                        106,
+                                        108,
+                                        null,
+                                        null,
+                                        null,
+                                        null,
+                                        null,
+                                        null
+                                    ],
+                                    "declarations": [
+                                        null,
+                                        {
+                                            "constant": false,
+                                            "id": 106,
+                                            "mutability": "mutable",
+                                            "name": "borrowsStable",
+                                            "nameLocation": "2322:13:0",
+                                            "nodeType": "VariableDeclaration",
+                                            "scope": 137,
+                                            "src": "2314:21:0",
+                                            "stateVariable": false,
+                                            "storageLocation": "default",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_uint256",
+                                                "typeString": "uint256"
+                                            },
+                                            "typeName": {
+                                                "id": 105,
+                                                "name": "uint256",
+                                                "nodeType": "ElementaryTypeName",
+                                                "src": "2314:7:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_uint256",
+                                                    "typeString": "uint256"
+                                                }
+                                            },
+                                            "visibility": "internal"
+                                        },
+                                        {
+                                            "constant": false,
+                                            "id": 108,
+                                            "mutability": "mutable",
+                                            "name": "borrowsVariable",
+                                            "nameLocation": "2345:15:0",
+                                            "nodeType": "VariableDeclaration",
+                                            "scope": 137,
+                                            "src": "2337:23:0",
+                                            "stateVariable": false,
+                                            "storageLocation": "default",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_uint256",
+                                                "typeString": "uint256"
+                                            },
+                                            "typeName": {
+                                                "id": 107,
+                                                "name": "uint256",
+                                                "nodeType": "ElementaryTypeName",
+                                                "src": "2337:7:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_uint256",
+                                                    "typeString": "uint256"
+                                                }
+                                            },
+                                            "visibility": "internal"
+                                        },
+                                        null,
+                                        null,
+                                        null,
+                                        null,
+                                        null,
+                                        null
+                                    ],
+                                    "id": 114,
+                                    "initialValue": {
+                                        "arguments": [
+                                            {
+                                                "id": 111,
+                                                "name": "_tokenAddr",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 81,
+                                                "src": "2421:10:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                }
+                                            },
+                                            {
+                                                "id": 112,
+                                                "name": "_debtOwner",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 85,
+                                                "src": "2433:10:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                }
+                                            }
+                                        ],
+                                        "expression": {
+                                            "argumentTypes": [
+                                                {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                },
+                                                {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                }
+                                            ],
+                                            "expression": {
+                                                "id": 109,
+                                                "name": "dataProvider",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 100,
+                                                "src": "2389:12:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_contract$_IGranaryProtocolDataProvider_$634",
+                                                    "typeString": "contract IGranaryProtocolDataProvider"
+                                                }
+                                            },
+                                            "id": 110,
+                                            "isConstant": false,
+                                            "isLValue": false,
+                                            "isPure": false,
+                                            "lValueRequested": false,
+                                            "memberName": "getUserReserveData",
+                                            "nodeType": "MemberAccess",
+                                            "referencedDeclaration": 622,
+                                            "src": "2389:31:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_function_external_view$_t_address_$_t_address_$returns$_t_uint256_$_t_uint256_$_t_uint256_$_t_uint256_$_t_uint256_$_t_uint256_$_t_uint256_$_t_uint40_$_t_bool_$",
+                                                "typeString": "function (address,address) view external returns (uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint40,bool)"
+                                            }
+                                        },
+                                        "id": 113,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "kind": "functionCall",
+                                        "lValueRequested": false,
+                                        "names": [],
+                                        "nodeType": "FunctionCall",
+                                        "src": "2389:55:0",
+                                        "tryCall": false,
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_tuple$_t_uint256_$_t_uint256_$_t_uint256_$_t_uint256_$_t_uint256_$_t_uint256_$_t_uint256_$_t_uint40_$_t_bool_$",
+                                            "typeString": "tuple(uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint40,bool)"
+                                        }
+                                    },
+                                    "nodeType": "VariableDeclarationStatement",
+                                    "src": "2311:133:0"
+                                },
+                                {
+                                    "condition": {
+                                        "commonType": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        },
+                                        "id": 117,
+                                        "isConstant": false,
+                                        "isLValue": false,
+                                        "isPure": false,
+                                        "lValueRequested": false,
+                                        "leftExpression": {
+                                            "id": 115,
+                                            "name": "_borrowType",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 83,
+                                            "src": "2461:11:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_uint256",
+                                                "typeString": "uint256"
+                                            }
+                                        },
+                                        "nodeType": "BinaryOperation",
+                                        "operator": "==",
+                                        "rightExpression": {
+                                            "id": 116,
+                                            "name": "STABLE_ID",
+                                            "nodeType": "Identifier",
+                                            "overloadedDeclarations": [],
+                                            "referencedDeclaration": 91,
+                                            "src": "2476:9:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_uint256",
+                                                "typeString": "uint256"
+                                            }
+                                        },
+                                        "src": "2461:24:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_bool",
+                                            "typeString": "bool"
+                                        }
+                                    },
+                                    "falseBody": {
+                                        "condition": {
+                                            "commonType": {
+                                                "typeIdentifier": "t_uint256",
+                                                "typeString": "uint256"
+                                            },
+                                            "id": 127,
+                                            "isConstant": false,
+                                            "isLValue": false,
+                                            "isPure": false,
+                                            "lValueRequested": false,
+                                            "leftExpression": {
+                                                "id": 125,
+                                                "name": "_borrowType",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 83,
+                                                "src": "2570:11:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_uint256",
+                                                    "typeString": "uint256"
+                                                }
+                                            },
+                                            "nodeType": "BinaryOperation",
+                                            "operator": "==",
+                                            "rightExpression": {
+                                                "id": 126,
+                                                "name": "VARIABLE_ID",
+                                                "nodeType": "Identifier",
+                                                "overloadedDeclarations": [],
+                                                "referencedDeclaration": 95,
+                                                "src": "2585:11:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_uint256",
+                                                    "typeString": "uint256"
+                                                }
+                                            },
+                                            "src": "2570:26:0",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_bool",
+                                                "typeString": "bool"
+                                            }
+                                        },
+                                        "id": 135,
+                                        "nodeType": "IfStatement",
+                                        "src": "2566:107:0",
+                                        "trueBody": {
+                                            "id": 134,
+                                            "nodeType": "Block",
+                                            "src": "2598:75:0",
+                                            "statements": [
+                                                {
+                                                    "expression": {
+                                                        "id": 130,
+                                                        "isConstant": false,
+                                                        "isLValue": false,
+                                                        "isPure": false,
+                                                        "lValueRequested": false,
+                                                        "leftHandSide": {
+                                                            "id": 128,
+                                                            "name": "debt",
+                                                            "nodeType": "Identifier",
+                                                            "overloadedDeclarations": [],
+                                                            "referencedDeclaration": 88,
+                                                            "src": "2613:4:0",
+                                                            "typeDescriptions": {
+                                                                "typeIdentifier": "t_uint256",
+                                                                "typeString": "uint256"
+                                                            }
+                                                        },
+                                                        "nodeType": "Assignment",
+                                                        "operator": "=",
+                                                        "rightHandSide": {
+                                                            "id": 129,
+                                                            "name": "borrowsVariable",
+                                                            "nodeType": "Identifier",
+                                                            "overloadedDeclarations": [],
+                                                            "referencedDeclaration": 108,
+                                                            "src": "2620:15:0",
+                                                            "typeDescriptions": {
+                                                                "typeIdentifier": "t_uint256",
+                                                                "typeString": "uint256"
+                                                            }
+                                                        },
+                                                        "src": "2613:22:0",
+                                                        "typeDescriptions": {
+                                                            "typeIdentifier": "t_uint256",
+                                                            "typeString": "uint256"
+                                                        }
+                                                    },
+                                                    "id": 131,
+                                                    "nodeType": "ExpressionStatement",
+                                                    "src": "2613:22:0"
+                                                },
+                                                {
+                                                    "expression": {
+                                                        "id": 132,
+                                                        "name": "debt",
+                                                        "nodeType": "Identifier",
+                                                        "overloadedDeclarations": [],
+                                                        "referencedDeclaration": 88,
+                                                        "src": "2657:4:0",
+                                                        "typeDescriptions": {
+                                                            "typeIdentifier": "t_uint256",
+                                                            "typeString": "uint256"
+                                                        }
+                                                    },
+                                                    "functionReturnParameters": 89,
+                                                    "id": 133,
+                                                    "nodeType": "Return",
+                                                    "src": "2650:11:0"
+                                                }
+                                            ]
+                                        }
+                                    },
+                                    "id": 136,
+                                    "nodeType": "IfStatement",
+                                    "src": "2457:216:0",
+                                    "trueBody": {
+                                        "id": 124,
+                                        "nodeType": "Block",
+                                        "src": "2487:73:0",
+                                        "statements": [
+                                            {
+                                                "expression": {
+                                                    "id": 120,
+                                                    "isConstant": false,
+                                                    "isLValue": false,
+                                                    "isPure": false,
+                                                    "lValueRequested": false,
+                                                    "leftHandSide": {
+                                                        "id": 118,
+                                                        "name": "debt",
+                                                        "nodeType": "Identifier",
+                                                        "overloadedDeclarations": [],
+                                                        "referencedDeclaration": 88,
+                                                        "src": "2502:4:0",
+                                                        "typeDescriptions": {
+                                                            "typeIdentifier": "t_uint256",
+                                                            "typeString": "uint256"
+                                                        }
+                                                    },
+                                                    "nodeType": "Assignment",
+                                                    "operator": "=",
+                                                    "rightHandSide": {
+                                                        "id": 119,
+                                                        "name": "borrowsStable",
+                                                        "nodeType": "Identifier",
+                                                        "overloadedDeclarations": [],
+                                                        "referencedDeclaration": 106,
+                                                        "src": "2509:13:0",
+                                                        "typeDescriptions": {
+                                                            "typeIdentifier": "t_uint256",
+                                                            "typeString": "uint256"
+                                                        }
+                                                    },
+                                                    "src": "2502:20:0",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_uint256",
+                                                        "typeString": "uint256"
+                                                    }
+                                                },
+                                                "id": 121,
+                                                "nodeType": "ExpressionStatement",
+                                                "src": "2502:20:0"
+                                            },
+                                            {
+                                                "expression": {
+                                                    "id": 122,
+                                                    "name": "debt",
+                                                    "nodeType": "Identifier",
+                                                    "overloadedDeclarations": [],
+                                                    "referencedDeclaration": 88,
+                                                    "src": "2544:4:0",
+                                                    "typeDescriptions": {
+                                                        "typeIdentifier": "t_uint256",
+                                                        "typeString": "uint256"
+                                                    }
+                                                },
+                                                "functionReturnParameters": 89,
+                                                "id": 123,
+                                                "nodeType": "Return",
+                                                "src": "2537:11:0"
+                                            }
+                                        ]
+                                    }
+                                }
+                            ]
+                        },
+                        "id": 138,
+                        "implemented": true,
+                        "kind": "function",
+                        "modifiers": [],
+                        "name": "getWholeDebt",
+                        "nameLocation": "2028:12:0",
+                        "nodeType": "FunctionDefinition",
+                        "parameters": {
+                            "id": 86,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 79,
+                                    "mutability": "mutable",
+                                    "name": "_market",
+                                    "nameLocation": "2049:7:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 138,
+                                    "src": "2041:15:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                    },
+                                    "typeName": {
+                                        "id": 78,
+                                        "name": "address",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "2041:7:0",
+                                        "stateMutability": "nonpayable",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                },
+                                {
+                                    "constant": false,
+                                    "id": 81,
+                                    "mutability": "mutable",
+                                    "name": "_tokenAddr",
+                                    "nameLocation": "2066:10:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 138,
+                                    "src": "2058:18:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                    },
+                                    "typeName": {
+                                        "id": 80,
+                                        "name": "address",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "2058:7:0",
+                                        "stateMutability": "nonpayable",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                },
+                                {
+                                    "constant": false,
+                                    "id": 83,
+                                    "mutability": "mutable",
+                                    "name": "_borrowType",
+                                    "nameLocation": "2083:11:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 138,
+                                    "src": "2078:16:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_uint256",
+                                        "typeString": "uint256"
+                                    },
+                                    "typeName": {
+                                        "id": 82,
+                                        "name": "uint",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "2078:4:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                },
+                                {
+                                    "constant": false,
+                                    "id": 85,
+                                    "mutability": "mutable",
+                                    "name": "_debtOwner",
+                                    "nameLocation": "2104:10:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 138,
+                                    "src": "2096:18:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_address",
+                                        "typeString": "address"
+                                    },
+                                    "typeName": {
+                                        "id": 84,
+                                        "name": "address",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "2096:7:0",
+                                        "stateMutability": "nonpayable",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_address",
+                                            "typeString": "address"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "2040:75:0"
+                        },
+                        "returnParameters": {
+                            "id": 89,
+                            "nodeType": "ParameterList",
+                            "parameters": [
+                                {
+                                    "constant": false,
+                                    "id": 88,
+                                    "mutability": "mutable",
+                                    "name": "debt",
+                                    "nameLocation": "2147:4:0",
+                                    "nodeType": "VariableDeclaration",
+                                    "scope": 138,
+                                    "src": "2139:12:0",
+                                    "stateVariable": false,
+                                    "storageLocation": "default",
+                                    "typeDescriptions": {
+                                        "typeIdentifier": "t_uint256",
+                                        "typeString": "uint256"
+                                    },
+                                    "typeName": {
+                                        "id": 87,
+                                        "name": "uint256",
+                                        "nodeType": "ElementaryTypeName",
+                                        "src": "2139:7:0",
+                                        "typeDescriptions": {
+                                            "typeIdentifier": "t_uint256",
+                                            "typeString": "uint256"
+                                        }
+                                    },
+                                    "visibility": "internal"
+                                }
+                            ],
+                            "src": "2138:14:0"
+                        },
+                        "scope": 139,
+                        "src": "2019:661:0",
+                        "stateMutability": "view",
+                        "virtual": false,
+                        "visibility": "internal"
+                    }
+                ],
+                "scope": 140,
+                "src": "300:2383:0",
+                "usedErrors": []
+            }
+        ],
+        "src": "33:2652:0"
+    },
+    "functionHashes": {
+        "DATA_PROVIDER_ID()": "daa60599",
+        "GRANARY_REFERRAL_CODE()": "cfcd924c",
+        "enableAsCollateral(address,address,bool)": "f1cb3088"
+    },
+    "gasEstimates": {
+        "creation": {
+            "codeDepositCost": "112600",
+            "executionCost": "159",
+            "totalCost": "112759"
+        },
+        "external": {
+            "DATA_PROVIDER_ID()": "201",
+            "GRANARY_REFERRAL_CODE()": "171",
+            "enableAsCollateral(address,address,bool)": "infinite"
+        },
+        "internal": {
+            "getDataProvider(address)": "infinite",
+            "getLendingPool(address)": "infinite",
+            "getWholeDebt(address,address,uint256,address)": "infinite"
+        }
+    }
+}

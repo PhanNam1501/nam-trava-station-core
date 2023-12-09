@@ -1,0 +1,64 @@
+{
+    "contractName": "MainnetGranaryAddresses",
+    "abi": [],
+    "metadata": "{\"compiler\":{\"version\":\"0.8.4+commit.c7e474f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"e:/trava-saver-main-core/trava-station-core/contracts/actions/granary/helpers/MainnetGranaryAddresses.sol\":\"MainnetGranaryAddresses\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"e:/trava-saver-main-core/trava-station-core/contracts/actions/granary/helpers/MainnetGranaryAddresses.sol\":{\"keccak256\":\"0xb2ae690f7e3b7f16cc1625286ea981145702bcf61dfcc8ab24bf2275c852c62a\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://5e87e2bd55752e662f95016e024f3e0d778117ca4c3ce5f2e822cc4af3fce004\",\"dweb:/ipfs/QmRhGbWAgTfhacDWb3K7BDMHvxKtZWMc8cXxaX9NyUwkbk\"]}},\"version\":1}",
+    "bytecode": "6080604052348015600f57600080fd5b50603f80601d6000396000f3fe6080604052600080fdfea264697066735822122092d0140e54390d1f329a79519a669a785e7c6bea8fbd7c5757f411972e8e263a64736f6c63430008040033",
+    "deployedBytecode": "6080604052600080fdfea264697066735822122092d0140e54390d1f329a79519a669a785e7c6bea8fbd7c5757f411972e8e263a64736f6c63430008040033",
+    "sourceMap": "61:43:0:-:0;;;;;;;;;;;;;;;;;;;",
+    "deployedSourceMap": "61:43:0:-:0;;;;;",
+    "sourcePath": "e:/trava-saver-main-core/trava-station-core/contracts/actions/granary/helpers/MainnetGranaryAddresses.sol",
+    "compiler": {
+        "name": "solc",
+        "version": "0.8.4+commit.c7e474f2"
+    },
+    "ast": {
+        "absolutePath": "e:/trava-saver-main-core/trava-station-core/contracts/actions/granary/helpers/MainnetGranaryAddresses.sol",
+        "exportedSymbols": {
+            "MainnetGranaryAddresses": [
+                2
+            ]
+        },
+        "id": 3,
+        "license": "MIT",
+        "nodeType": "SourceUnit",
+        "nodes": [
+            {
+                "id": 1,
+                "literals": [
+                    "solidity",
+                    "0.8",
+                    ".4"
+                ],
+                "nodeType": "PragmaDirective",
+                "src": "35:22:0"
+            },
+            {
+                "abstract": false,
+                "baseContracts": [],
+                "contractDependencies": [],
+                "contractKind": "contract",
+                "fullyImplemented": true,
+                "id": 2,
+                "linearizedBaseContracts": [
+                    2
+                ],
+                "name": "MainnetGranaryAddresses",
+                "nameLocation": "70:23:0",
+                "nodeType": "ContractDefinition",
+                "nodes": [],
+                "scope": 3,
+                "src": "61:43:0",
+                "usedErrors": []
+            }
+        ],
+        "src": "35:69:0"
+    },
+    "functionHashes": {},
+    "gasEstimates": {
+        "creation": {
+            "codeDepositCost": "12600",
+            "executionCost": "66",
+            "totalCost": "12666"
+        }
+    }
+}

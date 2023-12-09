@@ -1,0 +1,1528 @@
+{
+    "contracts": {
+        "e:/trava-saver-main-core/trava-station-core/contracts/interfaces/radiant/IRadiantLendingPoolAddressesProvider.sol": {
+            "IRadiantLendingPoolAddressesProvider": {
+                "abi": [
+                    {
+                        "inputs": [
+                            {
+                                "internalType": "bytes32",
+                                "name": "id",
+                                "type": "bytes32"
+                            }
+                        ],
+                        "name": "getAddress",
+                        "outputs": [
+                            {
+                                "internalType": "address",
+                                "name": "",
+                                "type": "address"
+                            }
+                        ],
+                        "stateMutability": "view",
+                        "type": "function"
+                    },
+                    {
+                        "inputs": [],
+                        "name": "getEmergencyAdmin",
+                        "outputs": [
+                            {
+                                "internalType": "address",
+                                "name": "",
+                                "type": "address"
+                            }
+                        ],
+                        "stateMutability": "view",
+                        "type": "function"
+                    },
+                    {
+                        "inputs": [],
+                        "name": "getLendingPool",
+                        "outputs": [
+                            {
+                                "internalType": "address",
+                                "name": "",
+                                "type": "address"
+                            }
+                        ],
+                        "stateMutability": "view",
+                        "type": "function"
+                    },
+                    {
+                        "inputs": [],
+                        "name": "getLendingPoolCollateralManager",
+                        "outputs": [
+                            {
+                                "internalType": "address",
+                                "name": "",
+                                "type": "address"
+                            }
+                        ],
+                        "stateMutability": "view",
+                        "type": "function"
+                    },
+                    {
+                        "inputs": [],
+                        "name": "getLendingPoolConfigurator",
+                        "outputs": [
+                            {
+                                "internalType": "address",
+                                "name": "",
+                                "type": "address"
+                            }
+                        ],
+                        "stateMutability": "view",
+                        "type": "function"
+                    },
+                    {
+                        "inputs": [],
+                        "name": "getLendingRateOracle",
+                        "outputs": [
+                            {
+                                "internalType": "address",
+                                "name": "",
+                                "type": "address"
+                            }
+                        ],
+                        "stateMutability": "view",
+                        "type": "function"
+                    },
+                    {
+                        "inputs": [],
+                        "name": "getMarketId",
+                        "outputs": [
+                            {
+                                "internalType": "string",
+                                "name": "",
+                                "type": "string"
+                            }
+                        ],
+                        "stateMutability": "view",
+                        "type": "function"
+                    },
+                    {
+                        "inputs": [],
+                        "name": "getPoolAdmin",
+                        "outputs": [
+                            {
+                                "internalType": "address",
+                                "name": "",
+                                "type": "address"
+                            }
+                        ],
+                        "stateMutability": "view",
+                        "type": "function"
+                    },
+                    {
+                        "inputs": [],
+                        "name": "getPriceOracle",
+                        "outputs": [
+                            {
+                                "internalType": "address",
+                                "name": "",
+                                "type": "address"
+                            }
+                        ],
+                        "stateMutability": "view",
+                        "type": "function"
+                    },
+                    {
+                        "inputs": [
+                            {
+                                "internalType": "bytes32",
+                                "name": "id",
+                                "type": "bytes32"
+                            },
+                            {
+                                "internalType": "address",
+                                "name": "newAddress",
+                                "type": "address"
+                            }
+                        ],
+                        "name": "setAddress",
+                        "outputs": [],
+                        "stateMutability": "nonpayable",
+                        "type": "function"
+                    },
+                    {
+                        "inputs": [
+                            {
+                                "internalType": "bytes32",
+                                "name": "id",
+                                "type": "bytes32"
+                            },
+                            {
+                                "internalType": "address",
+                                "name": "impl",
+                                "type": "address"
+                            }
+                        ],
+                        "name": "setAddressAsProxy",
+                        "outputs": [],
+                        "stateMutability": "nonpayable",
+                        "type": "function"
+                    },
+                    {
+                        "inputs": [
+                            {
+                                "internalType": "address",
+                                "name": "admin",
+                                "type": "address"
+                            }
+                        ],
+                        "name": "setEmergencyAdmin",
+                        "outputs": [],
+                        "stateMutability": "nonpayable",
+                        "type": "function"
+                    },
+                    {
+                        "inputs": [
+                            {
+                                "internalType": "address",
+                                "name": "manager",
+                                "type": "address"
+                            }
+                        ],
+                        "name": "setLendingPoolCollateralManager",
+                        "outputs": [],
+                        "stateMutability": "nonpayable",
+                        "type": "function"
+                    },
+                    {
+                        "inputs": [
+                            {
+                                "internalType": "address",
+                                "name": "configurator",
+                                "type": "address"
+                            }
+                        ],
+                        "name": "setLendingPoolConfiguratorImpl",
+                        "outputs": [],
+                        "stateMutability": "nonpayable",
+                        "type": "function"
+                    },
+                    {
+                        "inputs": [
+                            {
+                                "internalType": "address",
+                                "name": "pool",
+                                "type": "address"
+                            }
+                        ],
+                        "name": "setLendingPoolImpl",
+                        "outputs": [],
+                        "stateMutability": "nonpayable",
+                        "type": "function"
+                    },
+                    {
+                        "inputs": [
+                            {
+                                "internalType": "address",
+                                "name": "lendingRateOracle",
+                                "type": "address"
+                            }
+                        ],
+                        "name": "setLendingRateOracle",
+                        "outputs": [],
+                        "stateMutability": "nonpayable",
+                        "type": "function"
+                    },
+                    {
+                        "inputs": [
+                            {
+                                "internalType": "string",
+                                "name": "marketId",
+                                "type": "string"
+                            }
+                        ],
+                        "name": "setMarketId",
+                        "outputs": [],
+                        "stateMutability": "nonpayable",
+                        "type": "function"
+                    },
+                    {
+                        "inputs": [
+                            {
+                                "internalType": "address",
+                                "name": "admin",
+                                "type": "address"
+                            }
+                        ],
+                        "name": "setPoolAdmin",
+                        "outputs": [],
+                        "stateMutability": "nonpayable",
+                        "type": "function"
+                    },
+                    {
+                        "inputs": [
+                            {
+                                "internalType": "address",
+                                "name": "priceOracle",
+                                "type": "address"
+                            }
+                        ],
+                        "name": "setPriceOracle",
+                        "outputs": [],
+                        "stateMutability": "nonpayable",
+                        "type": "function"
+                    }
+                ],
+                "devdoc": {
+                    "author": "Aave*",
+                    "details": "Main registry of addresses part of or connected to the protocol, including permissioned roles - Acting also as factory of proxies and admin of those, so with right to change its implementations - Owned by the Aave Governance",
+                    "kind": "dev",
+                    "methods": {},
+                    "title": "LendingPoolAddressesProvider contract",
+                    "version": 1
+                },
+                "evm": {
+                    "bytecode": {
+                        "generatedSources": [],
+                        "linkReferences": {},
+                        "object": "",
+                        "opcodes": "",
+                        "sourceMap": ""
+                    },
+                    "deployedBytecode": {
+                        "generatedSources": [],
+                        "immutableReferences": {},
+                        "linkReferences": {},
+                        "object": "",
+                        "opcodes": "",
+                        "sourceMap": ""
+                    },
+                    "gasEstimates": null,
+                    "methodIdentifiers": {
+                        "getAddress(bytes32)": "21f8a721",
+                        "getEmergencyAdmin()": "ddcaa9ea",
+                        "getLendingPool()": "0261bf8b",
+                        "getLendingPoolCollateralManager()": "712d9171",
+                        "getLendingPoolConfigurator()": "85c858b1",
+                        "getLendingRateOracle()": "3618abba",
+                        "getMarketId()": "568ef470",
+                        "getPoolAdmin()": "aecda378",
+                        "getPriceOracle()": "fca513a8",
+                        "setAddress(bytes32,address)": "ca446dd9",
+                        "setAddressAsProxy(bytes32,address)": "5dcc528c",
+                        "setEmergencyAdmin(address)": "35da3394",
+                        "setLendingPoolCollateralManager(address)": "398e5553",
+                        "setLendingPoolConfiguratorImpl(address)": "c12542df",
+                        "setLendingPoolImpl(address)": "5aef021f",
+                        "setLendingRateOracle(address)": "820d1274",
+                        "setMarketId(string)": "f67b1847",
+                        "setPoolAdmin(address)": "283d62ad",
+                        "setPriceOracle(address)": "530e784f"
+                    }
+                },
+                "metadata": "{\"compiler\":{\"version\":\"0.8.4+commit.c7e474f2\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"id\",\"type\":\"bytes32\"}],\"name\":\"getAddress\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getEmergencyAdmin\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getLendingPool\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getLendingPoolCollateralManager\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getLendingPoolConfigurator\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getLendingRateOracle\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getMarketId\",\"outputs\":[{\"internalType\":\"string\",\"name\":\"\",\"type\":\"string\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getPoolAdmin\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getPriceOracle\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"id\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"newAddress\",\"type\":\"address\"}],\"name\":\"setAddress\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"id\",\"type\":\"bytes32\"},{\"internalType\":\"address\",\"name\":\"impl\",\"type\":\"address\"}],\"name\":\"setAddressAsProxy\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"admin\",\"type\":\"address\"}],\"name\":\"setEmergencyAdmin\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"manager\",\"type\":\"address\"}],\"name\":\"setLendingPoolCollateralManager\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"configurator\",\"type\":\"address\"}],\"name\":\"setLendingPoolConfiguratorImpl\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"pool\",\"type\":\"address\"}],\"name\":\"setLendingPoolImpl\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"lendingRateOracle\",\"type\":\"address\"}],\"name\":\"setLendingRateOracle\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"string\",\"name\":\"marketId\",\"type\":\"string\"}],\"name\":\"setMarketId\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"admin\",\"type\":\"address\"}],\"name\":\"setPoolAdmin\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"priceOracle\",\"type\":\"address\"}],\"name\":\"setPriceOracle\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"author\":\"Aave*\",\"details\":\"Main registry of addresses part of or connected to the protocol, including permissioned roles - Acting also as factory of proxies and admin of those, so with right to change its implementations - Owned by the Aave Governance\",\"kind\":\"dev\",\"methods\":{},\"title\":\"LendingPoolAddressesProvider contract\",\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"e:/trava-saver-main-core/trava-station-core/contracts/interfaces/radiant/IRadiantLendingPoolAddressesProvider.sol\":\"IRadiantLendingPoolAddressesProvider\"},\"evmVersion\":\"istanbul\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"e:/trava-saver-main-core/trava-station-core/contracts/interfaces/radiant/IRadiantLendingPoolAddressesProvider.sol\":{\"keccak256\":\"0x90e607e97c54a04b947ebbf0602b9d1d49f76bf67f6ad53dac96985a1fa109bf\",\"license\":\"agpl-3.0\",\"urls\":[\"bzz-raw://85aff4903e07a8dee953fd3f1d4082d43a80c25de765e822f99c796032f97767\",\"dweb:/ipfs/QmbsYopXZjNjdVhWCxaXUmovEPrxkTAGRaJgGKeLstowUc\"]}},\"version\":1}",
+                "storageLayout": {
+                    "storage": [],
+                    "types": null
+                },
+                "userdoc": {
+                    "kind": "user",
+                    "methods": {},
+                    "version": 1
+                }
+            }
+        }
+    },
+    "sources": {
+        "e:/trava-saver-main-core/trava-station-core/contracts/interfaces/radiant/IRadiantLendingPoolAddressesProvider.sol": {
+            "ast": {
+                "absolutePath": "e:/trava-saver-main-core/trava-station-core/contracts/interfaces/radiant/IRadiantLendingPoolAddressesProvider.sol",
+                "exportedSymbols": {
+                    "IRadiantLendingPoolAddressesProvider": [
+                        104
+                    ]
+                },
+                "id": 105,
+                "license": "agpl-3.0",
+                "nodeType": "SourceUnit",
+                "nodes": [
+                    {
+                        "id": 1,
+                        "literals": [
+                            "solidity",
+                            "0.8",
+                            ".4"
+                        ],
+                        "nodeType": "PragmaDirective",
+                        "src": "38:22:0"
+                    },
+                    {
+                        "abstract": false,
+                        "baseContracts": [],
+                        "contractDependencies": [],
+                        "contractKind": "interface",
+                        "documentation": {
+                            "id": 2,
+                            "nodeType": "StructuredDocumentation",
+                            "src": "64:317:0",
+                            "text": " @title LendingPoolAddressesProvider contract\n @dev Main registry of addresses part of or connected to the protocol, including permissioned roles\n - Acting also as factory of proxies and admin of those, so with right to change its implementations\n - Owned by the Aave Governance\n @author Aave*"
+                        },
+                        "fullyImplemented": false,
+                        "id": 104,
+                        "linearizedBaseContracts": [
+                            104
+                        ],
+                        "name": "IRadiantLendingPoolAddressesProvider",
+                        "nameLocation": "393:36:0",
+                        "nodeType": "ContractDefinition",
+                        "nodes": [
+                            {
+                                "functionSelector": "568ef470",
+                                "id": 7,
+                                "implemented": false,
+                                "kind": "function",
+                                "modifiers": [],
+                                "name": "getMarketId",
+                                "nameLocation": "446:11:0",
+                                "nodeType": "FunctionDefinition",
+                                "parameters": {
+                                    "id": 3,
+                                    "nodeType": "ParameterList",
+                                    "parameters": [],
+                                    "src": "457:2:0"
+                                },
+                                "returnParameters": {
+                                    "id": 6,
+                                    "nodeType": "ParameterList",
+                                    "parameters": [
+                                        {
+                                            "constant": false,
+                                            "id": 5,
+                                            "mutability": "mutable",
+                                            "name": "",
+                                            "nameLocation": "-1:-1:-1",
+                                            "nodeType": "VariableDeclaration",
+                                            "scope": 7,
+                                            "src": "483:13:0",
+                                            "stateVariable": false,
+                                            "storageLocation": "memory",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_string_memory_ptr",
+                                                "typeString": "string"
+                                            },
+                                            "typeName": {
+                                                "id": 4,
+                                                "name": "string",
+                                                "nodeType": "ElementaryTypeName",
+                                                "src": "483:6:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_string_storage_ptr",
+                                                    "typeString": "string"
+                                                }
+                                            },
+                                            "visibility": "internal"
+                                        }
+                                    ],
+                                    "src": "482:15:0"
+                                },
+                                "scope": 104,
+                                "src": "437:61:0",
+                                "stateMutability": "view",
+                                "virtual": false,
+                                "visibility": "external"
+                            },
+                            {
+                                "functionSelector": "f67b1847",
+                                "id": 12,
+                                "implemented": false,
+                                "kind": "function",
+                                "modifiers": [],
+                                "name": "setMarketId",
+                                "nameLocation": "513:11:0",
+                                "nodeType": "FunctionDefinition",
+                                "parameters": {
+                                    "id": 10,
+                                    "nodeType": "ParameterList",
+                                    "parameters": [
+                                        {
+                                            "constant": false,
+                                            "id": 9,
+                                            "mutability": "mutable",
+                                            "name": "marketId",
+                                            "nameLocation": "541:8:0",
+                                            "nodeType": "VariableDeclaration",
+                                            "scope": 12,
+                                            "src": "525:24:0",
+                                            "stateVariable": false,
+                                            "storageLocation": "calldata",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_string_calldata_ptr",
+                                                "typeString": "string"
+                                            },
+                                            "typeName": {
+                                                "id": 8,
+                                                "name": "string",
+                                                "nodeType": "ElementaryTypeName",
+                                                "src": "525:6:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_string_storage_ptr",
+                                                    "typeString": "string"
+                                                }
+                                            },
+                                            "visibility": "internal"
+                                        }
+                                    ],
+                                    "src": "524:26:0"
+                                },
+                                "returnParameters": {
+                                    "id": 11,
+                                    "nodeType": "ParameterList",
+                                    "parameters": [],
+                                    "src": "559:0:0"
+                                },
+                                "scope": 104,
+                                "src": "504:56:0",
+                                "stateMutability": "nonpayable",
+                                "virtual": false,
+                                "visibility": "external"
+                            },
+                            {
+                                "functionSelector": "ca446dd9",
+                                "id": 19,
+                                "implemented": false,
+                                "kind": "function",
+                                "modifiers": [],
+                                "name": "setAddress",
+                                "nameLocation": "575:10:0",
+                                "nodeType": "FunctionDefinition",
+                                "parameters": {
+                                    "id": 17,
+                                    "nodeType": "ParameterList",
+                                    "parameters": [
+                                        {
+                                            "constant": false,
+                                            "id": 14,
+                                            "mutability": "mutable",
+                                            "name": "id",
+                                            "nameLocation": "594:2:0",
+                                            "nodeType": "VariableDeclaration",
+                                            "scope": 19,
+                                            "src": "586:10:0",
+                                            "stateVariable": false,
+                                            "storageLocation": "default",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_bytes32",
+                                                "typeString": "bytes32"
+                                            },
+                                            "typeName": {
+                                                "id": 13,
+                                                "name": "bytes32",
+                                                "nodeType": "ElementaryTypeName",
+                                                "src": "586:7:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_bytes32",
+                                                    "typeString": "bytes32"
+                                                }
+                                            },
+                                            "visibility": "internal"
+                                        },
+                                        {
+                                            "constant": false,
+                                            "id": 16,
+                                            "mutability": "mutable",
+                                            "name": "newAddress",
+                                            "nameLocation": "606:10:0",
+                                            "nodeType": "VariableDeclaration",
+                                            "scope": 19,
+                                            "src": "598:18:0",
+                                            "stateVariable": false,
+                                            "storageLocation": "default",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_address",
+                                                "typeString": "address"
+                                            },
+                                            "typeName": {
+                                                "id": 15,
+                                                "name": "address",
+                                                "nodeType": "ElementaryTypeName",
+                                                "src": "598:7:0",
+                                                "stateMutability": "nonpayable",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                }
+                                            },
+                                            "visibility": "internal"
+                                        }
+                                    ],
+                                    "src": "585:32:0"
+                                },
+                                "returnParameters": {
+                                    "id": 18,
+                                    "nodeType": "ParameterList",
+                                    "parameters": [],
+                                    "src": "626:0:0"
+                                },
+                                "scope": 104,
+                                "src": "566:61:0",
+                                "stateMutability": "nonpayable",
+                                "virtual": false,
+                                "visibility": "external"
+                            },
+                            {
+                                "functionSelector": "5dcc528c",
+                                "id": 26,
+                                "implemented": false,
+                                "kind": "function",
+                                "modifiers": [],
+                                "name": "setAddressAsProxy",
+                                "nameLocation": "642:17:0",
+                                "nodeType": "FunctionDefinition",
+                                "parameters": {
+                                    "id": 24,
+                                    "nodeType": "ParameterList",
+                                    "parameters": [
+                                        {
+                                            "constant": false,
+                                            "id": 21,
+                                            "mutability": "mutable",
+                                            "name": "id",
+                                            "nameLocation": "668:2:0",
+                                            "nodeType": "VariableDeclaration",
+                                            "scope": 26,
+                                            "src": "660:10:0",
+                                            "stateVariable": false,
+                                            "storageLocation": "default",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_bytes32",
+                                                "typeString": "bytes32"
+                                            },
+                                            "typeName": {
+                                                "id": 20,
+                                                "name": "bytes32",
+                                                "nodeType": "ElementaryTypeName",
+                                                "src": "660:7:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_bytes32",
+                                                    "typeString": "bytes32"
+                                                }
+                                            },
+                                            "visibility": "internal"
+                                        },
+                                        {
+                                            "constant": false,
+                                            "id": 23,
+                                            "mutability": "mutable",
+                                            "name": "impl",
+                                            "nameLocation": "680:4:0",
+                                            "nodeType": "VariableDeclaration",
+                                            "scope": 26,
+                                            "src": "672:12:0",
+                                            "stateVariable": false,
+                                            "storageLocation": "default",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_address",
+                                                "typeString": "address"
+                                            },
+                                            "typeName": {
+                                                "id": 22,
+                                                "name": "address",
+                                                "nodeType": "ElementaryTypeName",
+                                                "src": "672:7:0",
+                                                "stateMutability": "nonpayable",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                }
+                                            },
+                                            "visibility": "internal"
+                                        }
+                                    ],
+                                    "src": "659:26:0"
+                                },
+                                "returnParameters": {
+                                    "id": 25,
+                                    "nodeType": "ParameterList",
+                                    "parameters": [],
+                                    "src": "694:0:0"
+                                },
+                                "scope": 104,
+                                "src": "633:62:0",
+                                "stateMutability": "nonpayable",
+                                "virtual": false,
+                                "visibility": "external"
+                            },
+                            {
+                                "functionSelector": "21f8a721",
+                                "id": 33,
+                                "implemented": false,
+                                "kind": "function",
+                                "modifiers": [],
+                                "name": "getAddress",
+                                "nameLocation": "710:10:0",
+                                "nodeType": "FunctionDefinition",
+                                "parameters": {
+                                    "id": 29,
+                                    "nodeType": "ParameterList",
+                                    "parameters": [
+                                        {
+                                            "constant": false,
+                                            "id": 28,
+                                            "mutability": "mutable",
+                                            "name": "id",
+                                            "nameLocation": "729:2:0",
+                                            "nodeType": "VariableDeclaration",
+                                            "scope": 33,
+                                            "src": "721:10:0",
+                                            "stateVariable": false,
+                                            "storageLocation": "default",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_bytes32",
+                                                "typeString": "bytes32"
+                                            },
+                                            "typeName": {
+                                                "id": 27,
+                                                "name": "bytes32",
+                                                "nodeType": "ElementaryTypeName",
+                                                "src": "721:7:0",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_bytes32",
+                                                    "typeString": "bytes32"
+                                                }
+                                            },
+                                            "visibility": "internal"
+                                        }
+                                    ],
+                                    "src": "720:12:0"
+                                },
+                                "returnParameters": {
+                                    "id": 32,
+                                    "nodeType": "ParameterList",
+                                    "parameters": [
+                                        {
+                                            "constant": false,
+                                            "id": 31,
+                                            "mutability": "mutable",
+                                            "name": "",
+                                            "nameLocation": "-1:-1:-1",
+                                            "nodeType": "VariableDeclaration",
+                                            "scope": 33,
+                                            "src": "756:7:0",
+                                            "stateVariable": false,
+                                            "storageLocation": "default",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_address",
+                                                "typeString": "address"
+                                            },
+                                            "typeName": {
+                                                "id": 30,
+                                                "name": "address",
+                                                "nodeType": "ElementaryTypeName",
+                                                "src": "756:7:0",
+                                                "stateMutability": "nonpayable",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                }
+                                            },
+                                            "visibility": "internal"
+                                        }
+                                    ],
+                                    "src": "755:9:0"
+                                },
+                                "scope": 104,
+                                "src": "701:64:0",
+                                "stateMutability": "view",
+                                "virtual": false,
+                                "visibility": "external"
+                            },
+                            {
+                                "functionSelector": "0261bf8b",
+                                "id": 38,
+                                "implemented": false,
+                                "kind": "function",
+                                "modifiers": [],
+                                "name": "getLendingPool",
+                                "nameLocation": "780:14:0",
+                                "nodeType": "FunctionDefinition",
+                                "parameters": {
+                                    "id": 34,
+                                    "nodeType": "ParameterList",
+                                    "parameters": [],
+                                    "src": "794:2:0"
+                                },
+                                "returnParameters": {
+                                    "id": 37,
+                                    "nodeType": "ParameterList",
+                                    "parameters": [
+                                        {
+                                            "constant": false,
+                                            "id": 36,
+                                            "mutability": "mutable",
+                                            "name": "",
+                                            "nameLocation": "-1:-1:-1",
+                                            "nodeType": "VariableDeclaration",
+                                            "scope": 38,
+                                            "src": "820:7:0",
+                                            "stateVariable": false,
+                                            "storageLocation": "default",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_address",
+                                                "typeString": "address"
+                                            },
+                                            "typeName": {
+                                                "id": 35,
+                                                "name": "address",
+                                                "nodeType": "ElementaryTypeName",
+                                                "src": "820:7:0",
+                                                "stateMutability": "nonpayable",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                }
+                                            },
+                                            "visibility": "internal"
+                                        }
+                                    ],
+                                    "src": "819:9:0"
+                                },
+                                "scope": 104,
+                                "src": "771:58:0",
+                                "stateMutability": "view",
+                                "virtual": false,
+                                "visibility": "external"
+                            },
+                            {
+                                "functionSelector": "5aef021f",
+                                "id": 43,
+                                "implemented": false,
+                                "kind": "function",
+                                "modifiers": [],
+                                "name": "setLendingPoolImpl",
+                                "nameLocation": "844:18:0",
+                                "nodeType": "FunctionDefinition",
+                                "parameters": {
+                                    "id": 41,
+                                    "nodeType": "ParameterList",
+                                    "parameters": [
+                                        {
+                                            "constant": false,
+                                            "id": 40,
+                                            "mutability": "mutable",
+                                            "name": "pool",
+                                            "nameLocation": "871:4:0",
+                                            "nodeType": "VariableDeclaration",
+                                            "scope": 43,
+                                            "src": "863:12:0",
+                                            "stateVariable": false,
+                                            "storageLocation": "default",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_address",
+                                                "typeString": "address"
+                                            },
+                                            "typeName": {
+                                                "id": 39,
+                                                "name": "address",
+                                                "nodeType": "ElementaryTypeName",
+                                                "src": "863:7:0",
+                                                "stateMutability": "nonpayable",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                }
+                                            },
+                                            "visibility": "internal"
+                                        }
+                                    ],
+                                    "src": "862:14:0"
+                                },
+                                "returnParameters": {
+                                    "id": 42,
+                                    "nodeType": "ParameterList",
+                                    "parameters": [],
+                                    "src": "885:0:0"
+                                },
+                                "scope": 104,
+                                "src": "835:51:0",
+                                "stateMutability": "nonpayable",
+                                "virtual": false,
+                                "visibility": "external"
+                            },
+                            {
+                                "functionSelector": "85c858b1",
+                                "id": 48,
+                                "implemented": false,
+                                "kind": "function",
+                                "modifiers": [],
+                                "name": "getLendingPoolConfigurator",
+                                "nameLocation": "901:26:0",
+                                "nodeType": "FunctionDefinition",
+                                "parameters": {
+                                    "id": 44,
+                                    "nodeType": "ParameterList",
+                                    "parameters": [],
+                                    "src": "927:2:0"
+                                },
+                                "returnParameters": {
+                                    "id": 47,
+                                    "nodeType": "ParameterList",
+                                    "parameters": [
+                                        {
+                                            "constant": false,
+                                            "id": 46,
+                                            "mutability": "mutable",
+                                            "name": "",
+                                            "nameLocation": "-1:-1:-1",
+                                            "nodeType": "VariableDeclaration",
+                                            "scope": 48,
+                                            "src": "953:7:0",
+                                            "stateVariable": false,
+                                            "storageLocation": "default",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_address",
+                                                "typeString": "address"
+                                            },
+                                            "typeName": {
+                                                "id": 45,
+                                                "name": "address",
+                                                "nodeType": "ElementaryTypeName",
+                                                "src": "953:7:0",
+                                                "stateMutability": "nonpayable",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                }
+                                            },
+                                            "visibility": "internal"
+                                        }
+                                    ],
+                                    "src": "952:9:0"
+                                },
+                                "scope": 104,
+                                "src": "892:70:0",
+                                "stateMutability": "view",
+                                "virtual": false,
+                                "visibility": "external"
+                            },
+                            {
+                                "functionSelector": "c12542df",
+                                "id": 53,
+                                "implemented": false,
+                                "kind": "function",
+                                "modifiers": [],
+                                "name": "setLendingPoolConfiguratorImpl",
+                                "nameLocation": "977:30:0",
+                                "nodeType": "FunctionDefinition",
+                                "parameters": {
+                                    "id": 51,
+                                    "nodeType": "ParameterList",
+                                    "parameters": [
+                                        {
+                                            "constant": false,
+                                            "id": 50,
+                                            "mutability": "mutable",
+                                            "name": "configurator",
+                                            "nameLocation": "1016:12:0",
+                                            "nodeType": "VariableDeclaration",
+                                            "scope": 53,
+                                            "src": "1008:20:0",
+                                            "stateVariable": false,
+                                            "storageLocation": "default",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_address",
+                                                "typeString": "address"
+                                            },
+                                            "typeName": {
+                                                "id": 49,
+                                                "name": "address",
+                                                "nodeType": "ElementaryTypeName",
+                                                "src": "1008:7:0",
+                                                "stateMutability": "nonpayable",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                }
+                                            },
+                                            "visibility": "internal"
+                                        }
+                                    ],
+                                    "src": "1007:22:0"
+                                },
+                                "returnParameters": {
+                                    "id": 52,
+                                    "nodeType": "ParameterList",
+                                    "parameters": [],
+                                    "src": "1038:0:0"
+                                },
+                                "scope": 104,
+                                "src": "968:71:0",
+                                "stateMutability": "nonpayable",
+                                "virtual": false,
+                                "visibility": "external"
+                            },
+                            {
+                                "functionSelector": "712d9171",
+                                "id": 58,
+                                "implemented": false,
+                                "kind": "function",
+                                "modifiers": [],
+                                "name": "getLendingPoolCollateralManager",
+                                "nameLocation": "1054:31:0",
+                                "nodeType": "FunctionDefinition",
+                                "parameters": {
+                                    "id": 54,
+                                    "nodeType": "ParameterList",
+                                    "parameters": [],
+                                    "src": "1085:2:0"
+                                },
+                                "returnParameters": {
+                                    "id": 57,
+                                    "nodeType": "ParameterList",
+                                    "parameters": [
+                                        {
+                                            "constant": false,
+                                            "id": 56,
+                                            "mutability": "mutable",
+                                            "name": "",
+                                            "nameLocation": "-1:-1:-1",
+                                            "nodeType": "VariableDeclaration",
+                                            "scope": 58,
+                                            "src": "1111:7:0",
+                                            "stateVariable": false,
+                                            "storageLocation": "default",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_address",
+                                                "typeString": "address"
+                                            },
+                                            "typeName": {
+                                                "id": 55,
+                                                "name": "address",
+                                                "nodeType": "ElementaryTypeName",
+                                                "src": "1111:7:0",
+                                                "stateMutability": "nonpayable",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                }
+                                            },
+                                            "visibility": "internal"
+                                        }
+                                    ],
+                                    "src": "1110:9:0"
+                                },
+                                "scope": 104,
+                                "src": "1045:75:0",
+                                "stateMutability": "view",
+                                "virtual": false,
+                                "visibility": "external"
+                            },
+                            {
+                                "functionSelector": "398e5553",
+                                "id": 63,
+                                "implemented": false,
+                                "kind": "function",
+                                "modifiers": [],
+                                "name": "setLendingPoolCollateralManager",
+                                "nameLocation": "1135:31:0",
+                                "nodeType": "FunctionDefinition",
+                                "parameters": {
+                                    "id": 61,
+                                    "nodeType": "ParameterList",
+                                    "parameters": [
+                                        {
+                                            "constant": false,
+                                            "id": 60,
+                                            "mutability": "mutable",
+                                            "name": "manager",
+                                            "nameLocation": "1175:7:0",
+                                            "nodeType": "VariableDeclaration",
+                                            "scope": 63,
+                                            "src": "1167:15:0",
+                                            "stateVariable": false,
+                                            "storageLocation": "default",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_address",
+                                                "typeString": "address"
+                                            },
+                                            "typeName": {
+                                                "id": 59,
+                                                "name": "address",
+                                                "nodeType": "ElementaryTypeName",
+                                                "src": "1167:7:0",
+                                                "stateMutability": "nonpayable",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                }
+                                            },
+                                            "visibility": "internal"
+                                        }
+                                    ],
+                                    "src": "1166:17:0"
+                                },
+                                "returnParameters": {
+                                    "id": 62,
+                                    "nodeType": "ParameterList",
+                                    "parameters": [],
+                                    "src": "1192:0:0"
+                                },
+                                "scope": 104,
+                                "src": "1126:67:0",
+                                "stateMutability": "nonpayable",
+                                "virtual": false,
+                                "visibility": "external"
+                            },
+                            {
+                                "functionSelector": "aecda378",
+                                "id": 68,
+                                "implemented": false,
+                                "kind": "function",
+                                "modifiers": [],
+                                "name": "getPoolAdmin",
+                                "nameLocation": "1208:12:0",
+                                "nodeType": "FunctionDefinition",
+                                "parameters": {
+                                    "id": 64,
+                                    "nodeType": "ParameterList",
+                                    "parameters": [],
+                                    "src": "1220:2:0"
+                                },
+                                "returnParameters": {
+                                    "id": 67,
+                                    "nodeType": "ParameterList",
+                                    "parameters": [
+                                        {
+                                            "constant": false,
+                                            "id": 66,
+                                            "mutability": "mutable",
+                                            "name": "",
+                                            "nameLocation": "-1:-1:-1",
+                                            "nodeType": "VariableDeclaration",
+                                            "scope": 68,
+                                            "src": "1246:7:0",
+                                            "stateVariable": false,
+                                            "storageLocation": "default",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_address",
+                                                "typeString": "address"
+                                            },
+                                            "typeName": {
+                                                "id": 65,
+                                                "name": "address",
+                                                "nodeType": "ElementaryTypeName",
+                                                "src": "1246:7:0",
+                                                "stateMutability": "nonpayable",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                }
+                                            },
+                                            "visibility": "internal"
+                                        }
+                                    ],
+                                    "src": "1245:9:0"
+                                },
+                                "scope": 104,
+                                "src": "1199:56:0",
+                                "stateMutability": "view",
+                                "virtual": false,
+                                "visibility": "external"
+                            },
+                            {
+                                "functionSelector": "283d62ad",
+                                "id": 73,
+                                "implemented": false,
+                                "kind": "function",
+                                "modifiers": [],
+                                "name": "setPoolAdmin",
+                                "nameLocation": "1270:12:0",
+                                "nodeType": "FunctionDefinition",
+                                "parameters": {
+                                    "id": 71,
+                                    "nodeType": "ParameterList",
+                                    "parameters": [
+                                        {
+                                            "constant": false,
+                                            "id": 70,
+                                            "mutability": "mutable",
+                                            "name": "admin",
+                                            "nameLocation": "1291:5:0",
+                                            "nodeType": "VariableDeclaration",
+                                            "scope": 73,
+                                            "src": "1283:13:0",
+                                            "stateVariable": false,
+                                            "storageLocation": "default",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_address",
+                                                "typeString": "address"
+                                            },
+                                            "typeName": {
+                                                "id": 69,
+                                                "name": "address",
+                                                "nodeType": "ElementaryTypeName",
+                                                "src": "1283:7:0",
+                                                "stateMutability": "nonpayable",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                }
+                                            },
+                                            "visibility": "internal"
+                                        }
+                                    ],
+                                    "src": "1282:15:0"
+                                },
+                                "returnParameters": {
+                                    "id": 72,
+                                    "nodeType": "ParameterList",
+                                    "parameters": [],
+                                    "src": "1306:0:0"
+                                },
+                                "scope": 104,
+                                "src": "1261:46:0",
+                                "stateMutability": "nonpayable",
+                                "virtual": false,
+                                "visibility": "external"
+                            },
+                            {
+                                "functionSelector": "ddcaa9ea",
+                                "id": 78,
+                                "implemented": false,
+                                "kind": "function",
+                                "modifiers": [],
+                                "name": "getEmergencyAdmin",
+                                "nameLocation": "1322:17:0",
+                                "nodeType": "FunctionDefinition",
+                                "parameters": {
+                                    "id": 74,
+                                    "nodeType": "ParameterList",
+                                    "parameters": [],
+                                    "src": "1339:2:0"
+                                },
+                                "returnParameters": {
+                                    "id": 77,
+                                    "nodeType": "ParameterList",
+                                    "parameters": [
+                                        {
+                                            "constant": false,
+                                            "id": 76,
+                                            "mutability": "mutable",
+                                            "name": "",
+                                            "nameLocation": "-1:-1:-1",
+                                            "nodeType": "VariableDeclaration",
+                                            "scope": 78,
+                                            "src": "1365:7:0",
+                                            "stateVariable": false,
+                                            "storageLocation": "default",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_address",
+                                                "typeString": "address"
+                                            },
+                                            "typeName": {
+                                                "id": 75,
+                                                "name": "address",
+                                                "nodeType": "ElementaryTypeName",
+                                                "src": "1365:7:0",
+                                                "stateMutability": "nonpayable",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                }
+                                            },
+                                            "visibility": "internal"
+                                        }
+                                    ],
+                                    "src": "1364:9:0"
+                                },
+                                "scope": 104,
+                                "src": "1313:61:0",
+                                "stateMutability": "view",
+                                "virtual": false,
+                                "visibility": "external"
+                            },
+                            {
+                                "functionSelector": "35da3394",
+                                "id": 83,
+                                "implemented": false,
+                                "kind": "function",
+                                "modifiers": [],
+                                "name": "setEmergencyAdmin",
+                                "nameLocation": "1389:17:0",
+                                "nodeType": "FunctionDefinition",
+                                "parameters": {
+                                    "id": 81,
+                                    "nodeType": "ParameterList",
+                                    "parameters": [
+                                        {
+                                            "constant": false,
+                                            "id": 80,
+                                            "mutability": "mutable",
+                                            "name": "admin",
+                                            "nameLocation": "1415:5:0",
+                                            "nodeType": "VariableDeclaration",
+                                            "scope": 83,
+                                            "src": "1407:13:0",
+                                            "stateVariable": false,
+                                            "storageLocation": "default",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_address",
+                                                "typeString": "address"
+                                            },
+                                            "typeName": {
+                                                "id": 79,
+                                                "name": "address",
+                                                "nodeType": "ElementaryTypeName",
+                                                "src": "1407:7:0",
+                                                "stateMutability": "nonpayable",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                }
+                                            },
+                                            "visibility": "internal"
+                                        }
+                                    ],
+                                    "src": "1406:15:0"
+                                },
+                                "returnParameters": {
+                                    "id": 82,
+                                    "nodeType": "ParameterList",
+                                    "parameters": [],
+                                    "src": "1430:0:0"
+                                },
+                                "scope": 104,
+                                "src": "1380:51:0",
+                                "stateMutability": "nonpayable",
+                                "virtual": false,
+                                "visibility": "external"
+                            },
+                            {
+                                "functionSelector": "fca513a8",
+                                "id": 88,
+                                "implemented": false,
+                                "kind": "function",
+                                "modifiers": [],
+                                "name": "getPriceOracle",
+                                "nameLocation": "1446:14:0",
+                                "nodeType": "FunctionDefinition",
+                                "parameters": {
+                                    "id": 84,
+                                    "nodeType": "ParameterList",
+                                    "parameters": [],
+                                    "src": "1460:2:0"
+                                },
+                                "returnParameters": {
+                                    "id": 87,
+                                    "nodeType": "ParameterList",
+                                    "parameters": [
+                                        {
+                                            "constant": false,
+                                            "id": 86,
+                                            "mutability": "mutable",
+                                            "name": "",
+                                            "nameLocation": "-1:-1:-1",
+                                            "nodeType": "VariableDeclaration",
+                                            "scope": 88,
+                                            "src": "1486:7:0",
+                                            "stateVariable": false,
+                                            "storageLocation": "default",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_address",
+                                                "typeString": "address"
+                                            },
+                                            "typeName": {
+                                                "id": 85,
+                                                "name": "address",
+                                                "nodeType": "ElementaryTypeName",
+                                                "src": "1486:7:0",
+                                                "stateMutability": "nonpayable",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                }
+                                            },
+                                            "visibility": "internal"
+                                        }
+                                    ],
+                                    "src": "1485:9:0"
+                                },
+                                "scope": 104,
+                                "src": "1437:58:0",
+                                "stateMutability": "view",
+                                "virtual": false,
+                                "visibility": "external"
+                            },
+                            {
+                                "functionSelector": "530e784f",
+                                "id": 93,
+                                "implemented": false,
+                                "kind": "function",
+                                "modifiers": [],
+                                "name": "setPriceOracle",
+                                "nameLocation": "1510:14:0",
+                                "nodeType": "FunctionDefinition",
+                                "parameters": {
+                                    "id": 91,
+                                    "nodeType": "ParameterList",
+                                    "parameters": [
+                                        {
+                                            "constant": false,
+                                            "id": 90,
+                                            "mutability": "mutable",
+                                            "name": "priceOracle",
+                                            "nameLocation": "1533:11:0",
+                                            "nodeType": "VariableDeclaration",
+                                            "scope": 93,
+                                            "src": "1525:19:0",
+                                            "stateVariable": false,
+                                            "storageLocation": "default",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_address",
+                                                "typeString": "address"
+                                            },
+                                            "typeName": {
+                                                "id": 89,
+                                                "name": "address",
+                                                "nodeType": "ElementaryTypeName",
+                                                "src": "1525:7:0",
+                                                "stateMutability": "nonpayable",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                }
+                                            },
+                                            "visibility": "internal"
+                                        }
+                                    ],
+                                    "src": "1524:21:0"
+                                },
+                                "returnParameters": {
+                                    "id": 92,
+                                    "nodeType": "ParameterList",
+                                    "parameters": [],
+                                    "src": "1554:0:0"
+                                },
+                                "scope": 104,
+                                "src": "1501:54:0",
+                                "stateMutability": "nonpayable",
+                                "virtual": false,
+                                "visibility": "external"
+                            },
+                            {
+                                "functionSelector": "3618abba",
+                                "id": 98,
+                                "implemented": false,
+                                "kind": "function",
+                                "modifiers": [],
+                                "name": "getLendingRateOracle",
+                                "nameLocation": "1570:20:0",
+                                "nodeType": "FunctionDefinition",
+                                "parameters": {
+                                    "id": 94,
+                                    "nodeType": "ParameterList",
+                                    "parameters": [],
+                                    "src": "1590:2:0"
+                                },
+                                "returnParameters": {
+                                    "id": 97,
+                                    "nodeType": "ParameterList",
+                                    "parameters": [
+                                        {
+                                            "constant": false,
+                                            "id": 96,
+                                            "mutability": "mutable",
+                                            "name": "",
+                                            "nameLocation": "-1:-1:-1",
+                                            "nodeType": "VariableDeclaration",
+                                            "scope": 98,
+                                            "src": "1616:7:0",
+                                            "stateVariable": false,
+                                            "storageLocation": "default",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_address",
+                                                "typeString": "address"
+                                            },
+                                            "typeName": {
+                                                "id": 95,
+                                                "name": "address",
+                                                "nodeType": "ElementaryTypeName",
+                                                "src": "1616:7:0",
+                                                "stateMutability": "nonpayable",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                }
+                                            },
+                                            "visibility": "internal"
+                                        }
+                                    ],
+                                    "src": "1615:9:0"
+                                },
+                                "scope": 104,
+                                "src": "1561:64:0",
+                                "stateMutability": "view",
+                                "virtual": false,
+                                "visibility": "external"
+                            },
+                            {
+                                "functionSelector": "820d1274",
+                                "id": 103,
+                                "implemented": false,
+                                "kind": "function",
+                                "modifiers": [],
+                                "name": "setLendingRateOracle",
+                                "nameLocation": "1640:20:0",
+                                "nodeType": "FunctionDefinition",
+                                "parameters": {
+                                    "id": 101,
+                                    "nodeType": "ParameterList",
+                                    "parameters": [
+                                        {
+                                            "constant": false,
+                                            "id": 100,
+                                            "mutability": "mutable",
+                                            "name": "lendingRateOracle",
+                                            "nameLocation": "1669:17:0",
+                                            "nodeType": "VariableDeclaration",
+                                            "scope": 103,
+                                            "src": "1661:25:0",
+                                            "stateVariable": false,
+                                            "storageLocation": "default",
+                                            "typeDescriptions": {
+                                                "typeIdentifier": "t_address",
+                                                "typeString": "address"
+                                            },
+                                            "typeName": {
+                                                "id": 99,
+                                                "name": "address",
+                                                "nodeType": "ElementaryTypeName",
+                                                "src": "1661:7:0",
+                                                "stateMutability": "nonpayable",
+                                                "typeDescriptions": {
+                                                    "typeIdentifier": "t_address",
+                                                    "typeString": "address"
+                                                }
+                                            },
+                                            "visibility": "internal"
+                                        }
+                                    ],
+                                    "src": "1660:27:0"
+                                },
+                                "returnParameters": {
+                                    "id": 102,
+                                    "nodeType": "ParameterList",
+                                    "parameters": [],
+                                    "src": "1696:0:0"
+                                },
+                                "scope": 104,
+                                "src": "1631:66:0",
+                                "stateMutability": "nonpayable",
+                                "virtual": false,
+                                "visibility": "external"
+                            }
+                        ],
+                        "scope": 105,
+                        "src": "383:1317:0",
+                        "usedErrors": []
+                    }
+                ],
+                "src": "38:1664:0"
+            },
+            "id": 0
+        }
+    }
+}
