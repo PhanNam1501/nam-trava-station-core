@@ -93,7 +93,9 @@ contract GranaryWithdraw is ActionBase, GranaryHelper {
         uint256 _amount,
         address _to
     ) internal returns (uint256, bytes memory) {
-        IGranaryLendingPool lendingPool = getLendingPool(_market);
+        // IGranaryLendingPool lendingPool = getLendingPool(_market);
+        IGranaryLendingPool lendingPool = IGranaryLendingPool(_market);
+
         uint256 tokenBefore;
         uint256 amountToWithdraw = _amount;
 

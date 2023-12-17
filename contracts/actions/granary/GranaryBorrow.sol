@@ -114,7 +114,10 @@ contract GranaryBorrow is ActionBase, GranaryHelper {
         address _to,
         address _onBehalf
     ) internal returns (uint256, bytes memory) {
-        IGranaryLendingPool lendingPool = getLendingPool(_market);
+        // IGranaryLendingPool lendingPool = getLendingPool(_market);
+
+        IGranaryLendingPool lendingPool = IGranaryLendingPool(_market);
+
         // defaults to onBehalf of proxy
         if (_onBehalf == address(0)) {
             _onBehalf = address(this);

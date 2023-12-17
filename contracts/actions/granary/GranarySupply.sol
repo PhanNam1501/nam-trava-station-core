@@ -118,7 +118,9 @@ contract GranarySupply is ActionBase, GranaryHelper {
         address _onBehalf,
         bool _enableAsColl
     ) internal returns (uint256, bytes memory) {
-        IGranaryLendingPool lendingPool = getLendingPool(_market);
+        // IGranaryLendingPool lendingPool = getLendingPool(_market);
+
+        IGranaryLendingPool lendingPool = IGranaryLendingPool(_market);
 
         // if amount is set to max, take the whole _from balance
         if (_amount == type(uint256).max) {

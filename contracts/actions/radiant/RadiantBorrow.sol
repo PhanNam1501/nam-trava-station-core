@@ -114,11 +114,21 @@ contract RadiantBorrow is ActionBase, RadiantHelper {
         address _to,
         address _onBehalf
     ) internal returns (uint256, bytes memory) {
-        IRadiantLendingPool lendingPool = getLendingPool(_market);
+        //IRadiantLendingPool lendingPool = getLendingPool(_market);
+
+        IRadiantLendingPool lendingPool = IRadiantLendingPool(_market);
+
         // defaults to onBehalf of proxy
         if (_onBehalf == address(0)) {
             _onBehalf = address(this);
         }
+
+        // console.log("Market %s" , _market);
+        // console.log("Token %s" , _tokenAddr);
+        // console.log("Amount %s", _amount);
+        // console.log("Ratemode %s" , _rateMode);
+        // console.log("to %s" , _to);
+        // console.log("_onbehalf %s" , _onBehalf);
 
         lendingPool.borrow(
             _tokenAddr,

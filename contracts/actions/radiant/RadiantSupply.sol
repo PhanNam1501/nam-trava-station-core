@@ -118,7 +118,9 @@ contract RadiantSupply is ActionBase, RadiantHelper {
         address _onBehalf,
         bool _enableAsColl
     ) internal returns (uint256, bytes memory) {
-        IRadiantLendingPool lendingPool = getLendingPool(_market);
+        // IRadiantLendingPool lendingPool = getLendingPool(_market);
+        
+        IRadiantLendingPool lendingPool = IRadiantLendingPool(_market);
 
         // if amount is set to max, take the whole _from balance
         if (_amount == type(uint256).max) {

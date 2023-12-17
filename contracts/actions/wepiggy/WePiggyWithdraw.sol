@@ -95,7 +95,7 @@ contract WePiggyWithdraw is ActionBase, WePiggyHelper {
         }
 
         uint256 tokenBalanceBefore = tokenAddr.getBalance(address(this));
-
+                
         // if _amount type(uint).max that means take out proxy whole balance
         if (_amount == type(uint256).max) {
             _amount = _pTokenAddr.getBalance(address(this));

@@ -93,7 +93,9 @@ contract RadiantWithdraw is ActionBase, RadiantHelper {
         uint256 _amount,
         address _to
     ) internal returns (uint256, bytes memory) {
-        IRadiantLendingPool lendingPool = getLendingPool(_market);
+        // IRadiantLendingPool lendingPool = getLendingPool(_market);
+        IRadiantLendingPool lendingPool = IRadiantLendingPool(_market);
+
         uint256 tokenBefore;
         uint256 amountToWithdraw = _amount;
 
