@@ -98,6 +98,8 @@ contract TravaNFTExpeditionWithdraw is ActionBase, TravaNFTExpeditionHelper {
             _toToken = address(this);
         }
 
+        require( !INFTExpedition(_vault).isOnDuty(_id) , "Not finished");
+
         address payment_governor_token = address(PAYMENT_GOVERNOR);
 
         // get balance token reward before withdraw

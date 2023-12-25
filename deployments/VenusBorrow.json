@@ -3,11 +3,6 @@
 	"abi": [
 		{
 			"inputs": [],
-			"name": "CompBorrowError",
-			"type": "error"
-		},
-		{
-			"inputs": [],
 			"name": "NonContractCall",
 			"type": "error"
 		},
@@ -29,6 +24,11 @@
 		{
 			"inputs": [],
 			"name": "SubIndexValueError",
+			"type": "error"
+		},
+		{
+			"inputs": [],
+			"name": "VenusBorrowError",
 			"type": "error"
 		},
 		{
@@ -258,7 +258,7 @@
 					"components": [
 						{
 							"internalType": "address",
-							"name": "cTokenAddr",
+							"name": "vTokenAddr",
 							"type": "address"
 						},
 						{

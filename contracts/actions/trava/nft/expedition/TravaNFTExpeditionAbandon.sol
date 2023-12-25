@@ -76,6 +76,8 @@ contract TravaNFTExpeditionAbandon is ActionBase, TravaNFTExpeditionHelper {
             _to = address(this);
         }
 
+        require( INFTExpedition(_vault).isOnDuty(_id) , "Cannot abandon");
+
         INFTExpedition(_vault).abandon(_id);
 
         if (_to != address(this)) {

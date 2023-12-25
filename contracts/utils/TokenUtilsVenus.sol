@@ -13,12 +13,8 @@ library TokenUtilsVenus {
     address public constant STBNB_ADDR =
         0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84;
 
-    // address public constant WBNB_ADDR = 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2;
-    // address public constant BNB_ADDR = 0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE;
-
-
-
-    address public constant WBNB_ADDR = 0xae13d989daC2f0dEbFf460aC112a837C89BAa7cd;
+    address public constant WBNB_ADDR =
+        0xae13d989daC2f0dEbFf460aC112a837C89BAa7cd;
     address public constant BNB_ADDR =
         0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE;
 

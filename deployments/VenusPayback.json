@@ -3,11 +3,6 @@
 	"abi": [
 		{
 			"inputs": [],
-			"name": "CompPaybackError",
-			"type": "error"
-		},
-		{
-			"inputs": [],
 			"name": "NonContractCall",
 			"type": "error"
 		},
@@ -39,6 +34,11 @@
 		{
 			"inputs": [],
 			"name": "VenusExitMarketError",
+			"type": "error"
+		},
+		{
+			"inputs": [],
+			"name": "VenusPaybackError",
 			"type": "error"
 		},
 		{
@@ -258,7 +258,7 @@
 					"components": [
 						{
 							"internalType": "address",
-							"name": "cTokenAddr",
+							"name": "vTokenAddr",
 							"type": "address"
 						},
 						{

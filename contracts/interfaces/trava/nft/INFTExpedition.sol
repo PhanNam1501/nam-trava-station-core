@@ -19,4 +19,6 @@ interface INFTExpedition {
     function abandon(uint256 _collectionId) external;
 
     function withdraw(uint256 _collectionId) external;
+
+    function isOnDuty(uint256 _collectionId) external view returns (bool) ;
 }

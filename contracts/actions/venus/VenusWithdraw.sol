@@ -3,22 +3,21 @@
 pragma solidity 0.8.4;
 
 import "../../interfaces/IWBNB.sol";
-import "../../interfaces/venus/IVToken.sol";
 import "../../utils/TokenUtilsVenus.sol";
 import "../ActionBase.sol";
 import "./helpers/VenusHelper.sol";
 
-/// @title Withdraw a token from Compound
+/// @title Withdraw a token from Venus
 contract VenusWithdraw is ActionBase, VenusHelper {
     using TokenUtilsVenus for address;
     struct Params {
-        address cTokenAddr;
+        address vTokenAddr;
         uint256 amount;
         address to;
     }
 
-    error CompRedeemError();
-    error CompUnderlyingRedeemError();
+    error VenusRedeemError();
+    error VenusUnderlyingRedeemError();
 
     /// @inheritdoc ActionBase
     function executeAction(
@@ -29,20 +28,45 @@ contract VenusWithdraw is ActionBase, VenusHelper {
     ) public payable virtual override returns (bytes32) {
         Params memory params = parseInputs(_callData);
 
-        params.cTokenAddr = _parseParamAddr(params.cTokenAddr, _paramMapping[0], _subData, _returnValues);
-        params.amount = _parseParamUint(params.amount, _paramMapping[1], _subData, _returnValues);
-        params.to = _parseParamAddr(params.to, _paramMapping[2], _subData, _returnValues);
+        params.vTokenAddr = _parseParamAddr(
+            params.vTokenAddr,
+            _paramMapping[0],
+            _subData,
+            _returnValues
+        );
+        params.amount = _parseParamUint(
+            params.amount,
+            _paramMapping[1],
+            _subData,
+            _returnValues
+        );
+        params.to = _parseParamAddr(
+            params.to,
+            _paramMapping[2],
+            _subData,
+            _returnValues
+        );
 
-        (uint256 withdrawAmount, bytes memory logData) = _withdraw(params.cTokenAddr, params.amount, params.to);
-        emit ActionEvent("CompWithdraw", logData);
+        (uint256 withdrawAmount, bytes memory logData) = _withdraw(
+            params.vTokenAddr,
+            params.amount,
+            params.to
+        );
+        emit ActionEvent("VenusWithdraw", logData);
         return bytes32(withdrawAmount);
     }
 
     /// @inheritdoc ActionBase
-    function executeActionDirect(bytes memory _callData) public payable override {
+    function executeActionDirect(
+        bytes memory _callData
+    ) public payable override {
         Params memory params = parseInputs(_callData);
-        (, bytes memory logData) = _withdraw(params.cTokenAddr, params.amount, params.to);
-        logger.logActionDirectEvent("CompWithdraw", logData);
+        (, bytes memory logData) = _withdraw(
+            params.vTokenAddr,
+            params.amount,
+            params.to
+        );
+        logger.logActionDirectEvent("VenusWithdraw", logData);
     }
 
     /// @inheritdoc ActionBase
@@ -52,34 +76,39 @@ contract VenusWithdraw is ActionBase, VenusHelper {
 
     //////////////////////////// ACTION LOGIC ////////////////////////////
 
-    /// @notice Withdraws a underlying token amount from compound
+    /// @notice Withdraws a underlying token amount from venus
     /// @dev Send type(uint).max to withdraw whole balance
-    /// @param _cTokenAddr cToken address
+    /// @param _vTokenAddr vToken address
     /// @param _amount Amount of underlying tokens to withdraw
     /// @param _to Address where to send the tokens to (can be left on proxy)
     function _withdraw(
-        address _cTokenAddr,
+        address _vTokenAddr,
         uint256 _amount,
         address _to
     ) internal returns (uint256, bytes memory) {
-        address tokenAddr = getUnderlyingAddr(_cTokenAddr);
+        address tokenAddr = getUnderlyingAddr(_vTokenAddr);
 
         // because comp returns native eth we need to check the balance of that
+        // if (tokenAddr == TokenUtilsVenus.WBNB_ADDR) {
+        //     tokenAddr = TokenUtilsVenus.WBNB_ADDR;
+        // }
+
         if (tokenAddr == TokenUtilsVenus.WBNB_ADDR) {
-            tokenAddr = TokenUtilsVenus.WBNB_ADDR;
+            tokenAddr = TokenUtilsVenus.BNB_ADDR;
         }
 
         uint256 tokenBalanceBefore = tokenAddr.getBalance(address(this));
 
         // if _amount type(uint).max that means take out proxy whole balance
         if (_amount == type(uint256).max) {
-            _amount = _cTokenAddr.getBalance(address(this));
-            if (IVToken(_cTokenAddr).redeem(_amount) != NO_ERROR){
-                revert CompRedeemError();
+            _amount = _vTokenAddr.getBalance(address(this));
+            if (IVToken(_vTokenAddr).redeem(_amount) != NO_ERROR) {
+                revert VenusRedeemError();
             }
         } else {
-            if (IVToken(_cTokenAddr).redeemUnderlying(_amount) != NO_ERROR){
-                revert CompUnderlyingRedeemError();
+            // Sender redeems vTokens in exchange for a specified amount of underlying asset
+            if (IVToken(_vTokenAddr).redeemUnderlying(_amount) != NO_ERROR) {
+                revert VenusUnderlyingRedeemError();
             }
         }
 
@@ -91,7 +120,8 @@ contract VenusWithdraw is ActionBase, VenusHelper {
         // always return WETH, never native Eth
         if (tokenAddr == TokenUtilsVenus.WBNB_ADDR) {
             TokenUtilsVenus.depositWbnb(_amount);
-            tokenAddr = TokenUtilsVenus.WBNB_ADDR    ; // switch back to weth
+            //tokenAddr = TokenUtilsVenus.WBNB_ADDR; // switch back to weth
+            tokenAddr = TokenUtilsVenus.BNB_ADDR;
         }
 
         // If tokens needs to be send to the _to address
@@ -101,7 +131,9 @@ contract VenusWithdraw is ActionBase, VenusHelper {
         return (_amount, logData);
     }
 
-    function parseInputs(bytes memory _callData) public pure returns (Params memory params) {
+    function parseInputs(
+        bytes memory _callData
+    ) public pure returns (Params memory params) {
         params = abi.decode(_callData, (Params));
     }
 }

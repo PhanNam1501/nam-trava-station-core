@@ -7,7 +7,7 @@ import "../../utils/TokenUtilsVenus.sol";
 import "../ActionBase.sol";
 import "./helpers/VenusHelper.sol";
 
-/// @title Supply a token to Compound
+/// @title Supply a token to Venus
 contract VenusSupply is ActionBase, VenusHelper {
     using TokenUtilsVenus for address;
     struct Params {
@@ -28,19 +28,46 @@ contract VenusSupply is ActionBase, VenusHelper {
     ) public payable virtual override returns (bytes32) {
         Params memory params = parseInputs(_callData);
 
-        params.vTokenAddr = _parseParamAddr(params.vTokenAddr, _paramMapping[0], _subData, _returnValues);
-        params.amount = _parseParamUint(params.amount, _paramMapping[1], _subData, _returnValues);
-        params.from = _parseParamAddr(params.from, _paramMapping[2], _subData, _returnValues);
+        params.vTokenAddr = _parseParamAddr(
+            params.vTokenAddr,
+            _paramMapping[0],
+            _subData,
+            _returnValues
+        );
+        params.amount = _parseParamUint(
+            params.amount,
+            _paramMapping[1],
+            _subData,
+            _returnValues
+        );
+        params.from = _parseParamAddr(
+            params.from,
+            _paramMapping[2],
+            _subData,
+            _returnValues
+        );
 
-        (uint256 withdrawAmount, bytes memory logData) = _supply(params.vTokenAddr, params.amount, params.from, params.enableAsColl);
+        (uint256 supplyAmount, bytes memory logData) = _supply(
+            params.vTokenAddr,
+            params.amount,
+            params.from,
+            params.enableAsColl
+        );
         emit ActionEvent("VenusSupply", logData);
-        return bytes32(withdrawAmount);
+        return bytes32(supplyAmount);
     }
 
     /// @inheritdoc ActionBase
-    function executeActionDirect(bytes memory _callData) public payable override {
+    function executeActionDirect(
+        bytes memory _callData
+    ) public payable override {
         Params memory params = parseInputs(_callData);
-        (, bytes memory logData) = _supply(params.vTokenAddr, params.amount, params.from, params.enableAsColl);
+        (, bytes memory logData) = _supply(
+            params.vTokenAddr,
+            params.amount,
+            params.from,
+            params.enableAsColl
+        );
         logger.logActionDirectEvent("VenusSupply", logData);
     }
 
@@ -78,22 +105,30 @@ contract VenusSupply is ActionBase, VenusHelper {
         }
 
         // we always expect actions to deal with WETH never Eth
+        // supply WBNB in proxy and change to active BNB to supply in protocol
         if (tokenAddr != TokenUtilsVenus.WBNB_ADDR) {
             tokenAddr.approveToken(_vTokenAddr, _amount);
 
-            if (IVToken(_vTokenAddr).mint(_amount) != NO_ERROR){
+            if (IVToken(_vTokenAddr).mint(_amount) != NO_ERROR) {
                 revert VenusSupplyError();
             }
         } else {
-            TokenUtilsVenus.withdrawWbnb(_amount);
+            TokenUtilsVenus.withdrawWbnb(_amount); // change from Wbnb to BNB
             IVToken(_vTokenAddr).mint{value: _amount}(); // reverts on fail
         }
 
-        bytes memory logData = abi.encode(tokenAddr, _amount, _from, _enableAsColl);
+        bytes memory logData = abi.encode(
+            tokenAddr,
+            _amount,
+            _from,
+            _enableAsColl
+        );
         return (_amount, logData);
     }
 
-    function parseInputs(bytes memory _callData) public pure returns (Params memory params) {
+    function parseInputs(
+        bytes memory _callData
+    ) public pure returns (Params memory params) {
         params = abi.decode(_callData, (Params));
     }
 }
