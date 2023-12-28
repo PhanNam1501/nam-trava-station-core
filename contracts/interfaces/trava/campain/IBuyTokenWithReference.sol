@@ -1,10 +1,10 @@
 // SPDX-License-Identifier: MIT
 pragma solidity 0.8.4;
 
-interface IBuyAction {
-    event BuyToken(
-        address indexed buyAddr,
-        address indexed refAddr,
+interface IBuyTokenWithReference {
+    event BuyTokenWithReferenceSuccessed(
+        address buyAddr,
+        address refAddr,
         uint256 amounts
     );
 

@@ -3,10 +3,10 @@
 pragma solidity 0.8.4;
 
 import "../../ActionBase.sol";
-import "./helpers/TravaCampainHelper.sol";
+import "./helpers/LiquidityCampainHelper.sol";
 
 /// @title Supply a token to an Trava market
-contract TravaTodCampainBuyToken is ActionBase, TravaCampainHelper {
+contract LiquidityCampainBuyToken is ActionBase, LiquidityCampainHelper {
     using TokenUtils for address;
 
     struct Params {
@@ -98,7 +98,7 @@ contract TravaTodCampainBuyToken is ActionBase, TravaCampainHelper {
             params.referred,
             params.from
         );
-        emit ActionEvent("TravaTodCampainBuyToken", logData);
+        emit ActionEvent("LiquidityCampainBuyToken", logData);
         return bytes32(amountsBuy);
     }
 
@@ -117,7 +117,7 @@ contract TravaTodCampainBuyToken is ActionBase, TravaCampainHelper {
             params.referred,
             params.from
         );
-        logger.logActionDirectEvent("TravaTodCampainBuyToken", logData);
+        logger.logActionDirectEvent("LiquidityCampainBuyToken", logData);
     }
 
     /// @inheritdoc ActionBase
@@ -153,7 +153,7 @@ contract TravaTodCampainBuyToken is ActionBase, TravaCampainHelper {
 
         _path[0].approveToken(_campainAction, _amountIn);
 
-        uint256[] memory amountsBuyArr = IBuyAction(_campainAction).buyToken(
+        uint256[] memory amountsBuyArr = IBuyTokenWithReference(_campainAction).buyToken(
             _amountIn,
             _amountOutMin,
             _path,

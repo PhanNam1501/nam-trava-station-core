@@ -23,7 +23,7 @@ async function main() {
   //   'DFS_REG_CONTROLLER_ADDR',
   //   process.env.DFS_REG_CONTROLLER_ADDR,
   // );
-
+  
   await changeConstantInFiles(
     './contracts',
     ['MainnetActionsUtilAddresses'],
@@ -422,31 +422,6 @@ async function main() {
   //        ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
   //    */
 
-<<<<<<< HEAD
-  await changeConstantInFiles(
-    "./contracts",
-    ["MainnetTravaNFTExpeditionAddresses"],
-    "NFT_TICKET",
-    process.env.TRAVA_NFT_TICKET
-  );
-  run("compile");
-
-  await changeConstantInFiles(
-    "./contracts",
-    ["MainnetTravaNFTExpeditionAddresses"],
-    "NFT_COLLECTION",
-    process.env.TRAVA_NFT_COLLECTION
-  );
-  run("compile");
-
-  await changeConstantInFiles(
-    "./contracts",
-    ["MainnetTravaNFTExpeditionAddresses"],
-    "PAYMENT_GOVERNOR",
-    process.env.TRAVA_TOKEN_IN_MARKET
-  );
-  run("compile");
-=======
   // await changeConstantInFiles(
   //   "./contracts",
   //   ["MainnetTravaNFTExpeditionAddresses"],
@@ -458,11 +433,18 @@ async function main() {
   // await changeConstantInFiles(
   //   "./contracts",
   //   ["MainnetTravaNFTExpeditionAddresses"],
-  //   "RECIPIENT",
-  //   process.env.TRAVA_NFT_EXPEDITION_RECIPIENT_ADDRESS
+  //   "NFT_COLLECTION",
+  //   process.env.TRAVA_NFT_COLLECTION
   // );
   // run("compile");
->>>>>>> origin/origin/ngan
+
+  // await changeConstantInFiles(
+  //   "./contracts",
+  //   ["MainnetTravaNFTExpeditionAddresses"],
+  //   "PAYMENT_GOVERNOR",
+  //   process.env.TRAVA_TOKEN_IN_MARKET
+  // );
+  // run("compile");
 
   // const travaNFTExpeditionDeploy = await redeploy(
   //   "TravaNFTExpeditionDeploy",
@@ -482,16 +464,6 @@ async function main() {
   //   travaNFTExpeditionAbandon.address
   // );
 
-<<<<<<< HEAD
-  const travaNFTExpeditionWithdraw = await redeploy(
-    "TravaNFTExpeditionWithdraw",
-    process.env.DFS_REGISTRY_ADDRESS
-  );
-  writeToEnvFile(
-    "TRAVA_NFT_EXPEDITION_WITHDRAW_ADDRESS",
-    travaNFTExpeditionWithdraw.address
-  );
-=======
   // const travaNFTExpeditionWithdraw = await redeploy(
   //   "TravaNFTExpeditionWithdraw",
   //   process.env.DFS_REGISTRY_ADDRESS
@@ -500,7 +472,6 @@ async function main() {
   //   "TRAVA_NFT_EXPEDITION_WITHDRAW_ADDRESS",
   //   travaNFTExpeditionWithdraw.address
   // );
->>>>>>> origin/origin/ngan
 
   //        ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
   //        ||                               Trava NFT veTrava Contract                       ||
@@ -633,11 +604,11 @@ async function main() {
   // );
   // writeToEnvFile("VENUS_BORROW_ADDRESS", venusBorrow.address);
 
-  const venusRepay = await redeploy(
-    "VenusRepay",
-    process.env.DFS_REGISTRY_ADDRESS
-  );
-  writeToEnvFile("VENUS_REPAY_ADDRESS", venusRepay.address);
+  // const venusRepay = await redeploy(
+  //   "VenusRepay",
+  //   process.env.DFS_REGISTRY_ADDRESS
+  // );
+  // writeToEnvFile("VENUS_REPAY_ADDRESS", venusRepay.address);
 
   // const venusSupply = await redeploy(
   //   "VenusSupply",
@@ -662,11 +633,11 @@ async function main() {
   // );
   // writeToEnvFile("CREAM_BORROW_ADDRESS", creamBorrow.address);
 
-  const creamRepay = await redeploy(
-    "CreamRepay",
-    process.env.DFS_REGISTRY_ADDRESS
-  );
-  writeToEnvFile("CREAM_REPAY_ADDRESS", creamRepay.address);
+  // const creamRepay = await redeploy(
+  //   "CreamRepay",
+  //   process.env.DFS_REGISTRY_ADDRESS
+  // );
+  // writeToEnvFile("CREAM_REPAY_ADDRESS", creamRepay.address);
 
   // const creamSupply = await redeploy(
   //   "CreamSupply",
@@ -691,11 +662,11 @@ async function main() {
       // );
       // writeToEnvFile("LIQEE_BORROW_ADDRESS", liqeeBorrow.address);
     
-      const liqeeRepay = await redeploy(
-        "LiqeeRepay",
-        process.env.DFS_REGISTRY_ADDRESS
-      );
-      writeToEnvFile("LIQEE_REPAY_ADDRESS", liqeeRepay.address);
+      // const liqeeRepay = await redeploy(
+      //   "LiqeeRepay",
+      //   process.env.DFS_REGISTRY_ADDRESS
+      // );
+      // writeToEnvFile("LIQEE_REPAY_ADDRESS", liqeeRepay.address);
     
       // const liqeeSupply = await redeploy(
       //   "LiqeeSupply",
@@ -720,11 +691,11 @@ async function main() {
   //     );
   //     writeToEnvFile("WEPIGGY_BORROW_ADDRESS", WePiggyBorrow.address);
     
-      const WePiggyRepay = await redeploy(
-        "WePiggyRepay",
-        process.env.DFS_REGISTRY_ADDRESS
-      );
-      writeToEnvFile("WEPIGGY_REPAY_ADDRESS", WePiggyRepay.address);
+      // const WePiggyRepay = await redeploy(
+      //   "WePiggyRepay",
+      //   process.env.DFS_REGISTRY_ADDRESS
+      // );
+      // writeToEnvFile("WEPIGGY_REPAY_ADDRESS", WePiggyRepay.address);
     
       // const wePiggySupply = await redeploy(
       //   "WePiggySupply",
@@ -749,11 +720,11 @@ async function main() {
       // );
       // writeToEnvFile("RADIANT_BORROW_ADDRESS", radiantBorrow.address);
     
-      const radiantRepay = await redeploy(
-        "RadiantRepay",
-        process.env.DFS_REGISTRY_ADDRESS
-      );
-      writeToEnvFile("RADIANT_REPAY_ADDRESS", radiantRepay.address);
+      // const radiantRepay = await redeploy(
+      //   "RadiantRepay",
+      //   process.env.DFS_REGISTRY_ADDRESS
+      // );
+      // writeToEnvFile("RADIANT_REPAY_ADDRESS", radiantRepay.address);
     
       // const radiantSupply = await redeploy(
       //   "RadiantSupply",
@@ -778,11 +749,11 @@ async function main() {
       // );
       // writeToEnvFile("GRANARY_BORROW_ADDRESS", granaryBorrow.address);
     
-      const granaryRepay = await redeploy(
-        "GranaryRepay",
-        process.env.DFS_REGISTRY_ADDRESS
-      );
-      writeToEnvFile("GRANARY_REPAY_ADDRESS", granaryRepay.address);
+      // const granaryRepay = await redeploy(
+      //   "GranaryRepay",
+      //   process.env.DFS_REGISTRY_ADDRESS
+      // );
+      // writeToEnvFile("GRANARY_REPAY_ADDRESS", granaryRepay.address);
     
       // const granarySupply = await redeploy(
       //   "GranarySupply",
@@ -795,6 +766,24 @@ async function main() {
       //   process.env.DFS_REGISTRY_ADDRESS
       // );
       // writeToEnvFile("GRANARY_WITHDRAW_ADDRESS", granaryWithdraw.address);
+
+
+      /*
+       ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
+       ||                               Trava Tod Liquidity Contract                               ||
+       ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
+   */
+      const liquidityCampainBuyToken = await redeploy(
+        "LiquidityCampainBuyToken",
+        process.env.DFS_REGISTRY_ADDRESS
+      );
+      writeToEnvFile("LIQUIDITY_CAMPAIN_BUY_TOKEN_ADDRESS", liquidityCampainBuyToken.address);
+
+      // const liquidityCampainStake = await redeploy(
+      //   "LiquidityCampainStake",
+      //   process.env.DFS_REGISTRY_ADDRESS
+      // );
+      // writeToEnvFile("LIQUIDITY_CAMPAIN_STAKE_ADDRESS", liquidityCampainStake.address);
 }
 
 start(main);

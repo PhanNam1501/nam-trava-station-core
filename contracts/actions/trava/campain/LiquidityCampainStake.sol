@@ -4,10 +4,10 @@ pragma solidity 0.8.4;
 
 import "../../../utils/TokenUtils.sol";
 import "../../ActionBase.sol";
-import "./helpers/TravaCampainHelper.sol";
+import "./helpers/LiquidityCampainHelper.sol";
 
 /// @title Supply a token to an Trava market
-contract TravaStakingStake is ActionBase, TravaCampainHelper {
+contract LiquidityCampainStake is ActionBase, LiquidityCampainHelper {
     using TokenUtils for address;
 
     struct Params {
@@ -50,7 +50,7 @@ contract TravaStakingStake is ActionBase, TravaCampainHelper {
             params.onBehalfOf,
             params.amount
         );
-        emit ActionEvent("TravaTodCampainStake", logData);
+        emit ActionEvent("LiquidityCampainStake", logData);
         return bytes32(stakeAmount);
     }
 
@@ -64,7 +64,7 @@ contract TravaStakingStake is ActionBase, TravaCampainHelper {
             params.onBehalfOf,
             params.amount
         );
-        logger.logActionDirectEvent("TravaTodCampainStake", logData);
+        logger.logActionDirectEvent("LiquidityCampainStake", logData);
     }
 
     /// @inheritdoc ActionBase
