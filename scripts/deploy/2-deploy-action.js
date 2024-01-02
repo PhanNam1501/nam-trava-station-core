@@ -773,11 +773,11 @@ async function main() {
        ||                               Trava Tod Liquidity Contract                               ||
        ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
    */
-      const liquidityCampainBuyToken = await redeploy(
-        "LiquidityCampainBuyToken",
+      const liquidityCampaignBuyToken = await redeploy(
+        "LiquidityCampaignBuyToken",
         process.env.DFS_REGISTRY_ADDRESS
       );
-      writeToEnvFile("LIQUIDITY_CAMPAIN_BUY_TOKEN_ADDRESS", liquidityCampainBuyToken.address);
+      writeToEnvFile("LIQUIDITY_CAMPAIGN_BUY_TOKEN_ADDRESS", liquidityCampaignBuyToken.address);
 
       // const liquidityCampainStake = await redeploy(
       //   "LiquidityCampainStake",

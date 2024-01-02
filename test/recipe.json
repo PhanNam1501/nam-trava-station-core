@@ -1,0 +1,65 @@
+{
+    "recipe_id": "9",
+    "recipe_name": "Actions to join Referral Event of Partnership Campaign",
+    "recipe_title": "",
+    "content": "Buying TRAVA/TOD by BNB via Freight",
+    "is_release": true,
+    "protocol": {
+        "utilityGroup": {
+            "dapp": [
+                "utility"
+            ]
+        },
+        "travaGroup": {
+            "dapp": [
+                "travaReferralCampaign"
+            ]
+        }
+    },
+    "actions": [
+        {
+            "action_id": "0x0001",
+            "action_name": "wrap",
+            "params": {}
+        },
+        {
+            "action_id": "0x004a",
+            "action_name": "travaReferralCampaignBuyToken",
+            "params": {
+                "amountIn": "",
+                "path": [
+                    "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
+                    "0xe9e7cea3dedca5984780bafc599bd69add087d56",
+                    "0x21d5Fa5ECf2605c0E835Ae054AF9bbA0468e5951"
+                ],
+                "to": "smartWallet",
+                "from": "smartWallet"
+            }
+        },
+        {
+            "action_id": "0x004a",
+            "action_name": "travaReferralCampaignBuyToken",
+            "params": {
+                "amountIn": "all",
+                "path": [
+                    "0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c",
+                    "0x0391bE54E72F7e001f6BBc331777710b4f2999Ef"
+                ],
+                "to": "smartWallet",
+                "from": "smartWallet"
+            }
+        }
+    ],
+    "usecase": [
+        "Optimize gas when participating in referral campain with BNB asset"
+    ],
+    "conditions": {
+        "??": {
+            "conditionId": "??",
+            "level": "1",
+            "type": "Balance",
+            "content": "> $10"
+        }
+    },
+    "uses": "0"
+}

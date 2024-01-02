@@ -3,14 +3,14 @@
 pragma solidity 0.8.4;
 
 import "../../ActionBase.sol";
-import "./helpers/LiquidityCampainHelper.sol";
+import "./helpers/LiquidityCampaignHelper.sol";
 
 /// @title Supply a token to an Trava market
-contract LiquidityCampainBuyToken is ActionBase, LiquidityCampainHelper {
+contract LiquidityCampaignBuyToken is ActionBase, LiquidityCampaignHelper {
     using TokenUtils for address;
 
     struct Params {
-        address campainAction;
+        address campaignAction;
         uint256 amountIn;
         uint256 amountOutMin;
         address[] path;
@@ -29,8 +29,8 @@ contract LiquidityCampainBuyToken is ActionBase, LiquidityCampainHelper {
     ) public payable virtual override returns (bytes32) {
         Params memory params = parseInputs(_callData);
 
-        params.campainAction = _parseParamAddr(
-            params.campainAction,
+        params.campaignAction = _parseParamAddr(
+            params.campaignAction,
             _paramMapping[0],
             _subData,
             _returnValues
@@ -89,7 +89,7 @@ contract LiquidityCampainBuyToken is ActionBase, LiquidityCampainHelper {
         );
 
         (uint256 amountsBuy, bytes memory logData) = _buyToken(
-            params.campainAction,
+            params.campaignAction,
             params.amountIn,
             params.amountOutMin,
             params.path,
@@ -98,7 +98,7 @@ contract LiquidityCampainBuyToken is ActionBase, LiquidityCampainHelper {
             params.referred,
             params.from
         );
-        emit ActionEvent("LiquidityCampainBuyToken", logData);
+        emit ActionEvent("LiquidityCampaignBuyToken", logData);
         return bytes32(amountsBuy);
     }
 
@@ -108,7 +108,7 @@ contract LiquidityCampainBuyToken is ActionBase, LiquidityCampainHelper {
     ) public payable override {
         Params memory params = parseInputs(_callData);
         (, bytes memory logData) = _buyToken(
-            params.campainAction,
+            params.campaignAction,
             params.amountIn,
             params.amountOutMin,
             params.path,
@@ -117,7 +117,7 @@ contract LiquidityCampainBuyToken is ActionBase, LiquidityCampainHelper {
             params.referred,
             params.from
         );
-        logger.logActionDirectEvent("LiquidityCampainBuyToken", logData);
+        logger.logActionDirectEvent("LiquidityCampaignBuyToken", logData);
     }
 
     /// @inheritdoc ActionBase
@@ -128,7 +128,7 @@ contract LiquidityCampainBuyToken is ActionBase, LiquidityCampainHelper {
     //////////////////////////// ACTION LOGIC ////////////////////////////
 
     function _buyToken(
-        address _campainAction,
+        address _campaignAction,
         uint256 _amountIn,
         uint256 _amountOutMin,
         address[] memory _path,
@@ -151,9 +151,9 @@ contract LiquidityCampainBuyToken is ActionBase, LiquidityCampainHelper {
 
         _path[0].pullTokensIfNeeded(_from, _amountIn);
 
-        _path[0].approveToken(_campainAction, _amountIn);
+        _path[0].approveToken(_campaignAction, _amountIn);
 
-        uint256[] memory amountsBuyArr = IBuyTokenWithReference(_campainAction).buyToken(
+        uint256[] memory amountsBuyArr = IBuyTokenWithReference(_campaignAction).buyToken(
             _amountIn,
             _amountOutMin,
             _path,
@@ -163,7 +163,7 @@ contract LiquidityCampainBuyToken is ActionBase, LiquidityCampainHelper {
         );
 
         bytes memory logData = abi.encode(
-            _campainAction,
+            _campaignAction,
             _amountIn,
             _amountOutMin,
             _path,

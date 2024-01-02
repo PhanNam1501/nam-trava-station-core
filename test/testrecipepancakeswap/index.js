@@ -70,23 +70,23 @@ describe("Test Pancakeswap", async function() {
     // // Phải tạo lại 2 token mới và thế vào env nhé
     // // Action này createPool r cung vào pool luôn
     // // Lỗi lạ xuất hiện là do thiếu gasLimit
-    // await createPool(
-    //   ownerAcc,
-    //   proxy, 
-    //   process.env.TOKEN_B_TEST2, 
-    //   process.env.TOKEN_A_TEST2, 
-    //   "2500", 
-    //   "-28150", 
-    //   "-26050", 
-    //   "145075268333520540069",
-    //   "10000000000000000000",
-    //   "0", 
-    //   "0", 
-    //   "0x595622cbd0fc4727df476a1172ada30a9ddf8f43", 
-    //   "2688452425",
-    //   "0x595622cbd0fc4727df476a1172ada30a9ddf8f43",
-    //   '20456476331960289157024907122'
-    // );
+    await createPool(
+      ownerAcc,
+      proxy, 
+      process.env.TOKEN_B_TEST2, 
+      process.env.TOKEN_A_TEST2, 
+      "2500", 
+      "-28150", 
+      "-26050", 
+      "145075268333520540069",
+      "10000000000000000000",
+      "0", 
+      "0", 
+      "0x595622cbd0fc4727df476a1172ada30a9ddf8f43", 
+      "2688452425",
+      "0x595622cbd0fc4727df476a1172ada30a9ddf8f43",
+      '20456476331960289157024907122'
+    );
   });
   it("Test increaseLiquidity", async() => {
     // await increaseLiquidity(
