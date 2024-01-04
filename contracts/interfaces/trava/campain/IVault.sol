@@ -4,7 +4,7 @@ pragma solidity 0.8.4;
 import "../../IBEP20.sol";
 
 interface IVault {
-     function stake(address onBehalfOf, uint256 amount) external;
+    function stake(address onBehalfOf, uint256 amount) external;
 
     function redeem(address to, uint256 amount) external;
 
@@ -12,7 +12,7 @@ interface IVault {
 
     function claimRewards(address to, uint256 amount) external;
 
-    function swapToken(
+    function buyToken(
         uint256 amountIn,
         uint256 amountOutMin,
         address[] memory path,
@@ -31,8 +31,10 @@ interface IVault {
         uint256 amount
     ) external returns (uint256);
 
-    function STAKE_TOKEN() external returns (IBEP20);
+    function STAKED_TOKEN() external returns (IBEP20);
 
+    function REWARD_TOKEN() external returns (IBEP20);
+    
     function setUnstakeWindow(uint256 _unstakeWindow) external;
 
     function setCoolDownSeconds(uint256 _coolDownSeconds) external;
