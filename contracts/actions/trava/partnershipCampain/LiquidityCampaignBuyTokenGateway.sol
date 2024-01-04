@@ -11,6 +11,7 @@ contract LiquidityCampaignBuyTokenGateway is ActionBase, LiquidityCampaignHelper
 
     struct Params {
         address campaignAction;
+        uint256 amountIn;
         uint256 amountOutMin;
         address[] path;
         address to;
@@ -28,16 +29,23 @@ contract LiquidityCampaignBuyTokenGateway is ActionBase, LiquidityCampaignHelper
     ) public payable virtual override returns (bytes32) {
         Params memory params = parseInputs(_callData);
 
-        params.campaignAction = _parseParamAddr(
+                params.campaignAction = _parseParamAddr(
             params.campaignAction,
             _paramMapping[0],
             _subData,
             _returnValues
         );
 
+        params.amountIn = _parseParamUint(
+            params.amountIn,
+            _paramMapping[1],
+            _subData,
+            _returnValues
+        );
+
         params.amountOutMin = _parseParamUint(
             params.amountOutMin,
-            _paramMapping[1],
+            _paramMapping[2],
             _subData,
             _returnValues
         );
@@ -46,7 +54,7 @@ contract LiquidityCampaignBuyTokenGateway is ActionBase, LiquidityCampaignHelper
         for (uint256 i = 0; i < nPaths; i++) {
             params.path[i] = _parseParamAddr(
                 params.path[i],
-                _paramMapping[i + 2],
+                _paramMapping[i + 3],
                 _subData,
                 _returnValues
             );
@@ -54,34 +62,35 @@ contract LiquidityCampaignBuyTokenGateway is ActionBase, LiquidityCampaignHelper
 
         params.to = _parseParamAddr(
             params.to,
-            _paramMapping[2 + nPaths],
+            _paramMapping[3 + nPaths],
             _subData,
             _returnValues
         );
 
         params.deadline = _parseParamUint(
             params.deadline,
-            _paramMapping[3 + nPaths],
+            _paramMapping[4 + nPaths],
             _subData,
             _returnValues
         );
 
         params.referred = _parseParamAddr(
             params.referred,
-            _paramMapping[4 + nPaths],
+            _paramMapping[5 + nPaths],
             _subData,
             _returnValues
         );
 
         params.from = _parseParamAddr(
             params.from,
-            _paramMapping[5 + nPaths],
+            _paramMapping[6 + nPaths],
             _subData,
             _returnValues
         );
 
-        (uint256 amountsBuy, bytes memory logData) = _buyToken(
-            params.campaignAction,
+        (uint256 amountsBuy, bytes memory logData) = _buyTokenGateWay(
+            params.campaignAction,  
+            params.amountIn,
             params.amountOutMin,
             params.path,
             params.to,
@@ -89,6 +98,7 @@ contract LiquidityCampaignBuyTokenGateway is ActionBase, LiquidityCampaignHelper
             params.referred,
             params.from
         );
+
         emit ActionEvent("LiquidityCampaignBuyTokenGateway", logData);
         return bytes32(amountsBuy);
     }
@@ -98,8 +108,9 @@ contract LiquidityCampaignBuyTokenGateway is ActionBase, LiquidityCampaignHelper
         bytes memory _callData
     ) public payable override {
         Params memory params = parseInputs(_callData);
-        (, bytes memory logData) = _buyToken(
+        (, bytes memory logData) = _buyTokenGateWay(
             params.campaignAction,
+            params.amountIn,
             params.amountOutMin,
             params.path,
             params.to,
@@ -117,8 +128,9 @@ contract LiquidityCampaignBuyTokenGateway is ActionBase, LiquidityCampaignHelper
 
     //////////////////////////// ACTION LOGIC ////////////////////////////
 
-    function _buyToken(
+    function _buyTokenGateWay(
         address _campaignAction,
+        uint256 _amountIn,
         uint256 _amountOutMin,
         address[] memory _path,
         address _to,
@@ -128,14 +140,12 @@ contract LiquidityCampaignBuyTokenGateway is ActionBase, LiquidityCampaignHelper
     ) internal returns (uint256 amountsBuy, bytes memory) {
         require( _path[0] == TokenUtils.WBNB_ADDR , "IVALID_PATH");
 
-        uint256 amountWBNBBefore = TokenUtils.WBNB_ADDR.getBalance(address(this));
-       
+        if (_amountIn == type(uint256).max) {
+            _amountIn = address(this).balance;
+        }
+
        // from bnb -> WBNB
-        TokenUtils.depositWbnb(msg.value);
-
-        uint256 amountWBNBAfter = TokenUtils.WBNB_ADDR.getBalance(address(this));
-
-        uint256 _amountIn = amountWBNBAfter - amountWBNBBefore;
+        TokenUtils.depositWbnb(_amountIn);
 
         if (_from == address(0)) {
             _from = address(this);
@@ -144,6 +154,8 @@ contract LiquidityCampaignBuyTokenGateway is ActionBase, LiquidityCampaignHelper
         if (_to == address(0)) {
             _to = address(this);
         }
+
+        _path[0].approveToken(_campaignAction, _amountIn);
 
         uint256[] memory amountsBuyArr = IBuyTokenWithReference(_campaignAction).buyToken(
             _amountIn,

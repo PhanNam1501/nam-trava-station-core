@@ -507,7 +507,7 @@ const redeploy = async (name, regAddr = addrs[getNetwork()].REGISTRY_ADDR, saveO
 
     registry = registry.connect(signer);
     console.log("Registry")
-    const c = await deployAsOwner(name, undefined, ...args);
+    const c = await deployContract(name, ...args);
     
     if (name === 'StrategyExecutor' || name === 'StrategyExecutorL2') {
         // eslint-disable-next-line no-param-reassign
@@ -524,7 +524,9 @@ const redeploy = async (name, regAddr = addrs[getNetwork()].REGISTRY_ADDR, saveO
     console.log(name, id);
 
     if (!(await registry.isRegistered(id))) {
-        await (await registry.addNewContract(id, c.address, 0)).wait();
+        // let nonce = await signer.getTransactionCount(  );
+        // console.log("nonce", nonce)
+        await (await registry.addNewContract(id, c.address, 0, {nonce: nonce})).wait();
     } else {
         await (await registry.startContractChange(id, c.address)).wait();
 

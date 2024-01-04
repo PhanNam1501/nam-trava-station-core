@@ -51,6 +51,7 @@ async function main() {
     'PROXY_AUTH_ADDR',
     process.env.PROXY_AUTH_ADDRESS,
   );
+
   //     /*
   //         ||--------------------------------------------------------------------------------||
   //         ||                                 Action Contract                                ||
@@ -62,13 +63,13 @@ async function main() {
   //         ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
   //     */
 
-  // await changeConstantInFiles(
-  //   './contracts',
-  //   ['TokenUtils'],
-  //   'WBNB_ADDR',
-  //   process.env.WBNB_BSCTESTNET,
-  // );
-  // run('compile');
+  await changeConstantInFiles(
+    './contracts',
+    ['TokenUtils'],
+    'WBNB_ADDR',
+    process.env.WBNB_BSCTESTNET,
+  );
+  run('compile');
   // const wrapBnb = await redeploy('WrapBnb', process.env.DFS_REGISTRY_ADDRESS);
   // writeToEnvFile("WRAP_BNB_ADDRESS", wrapBnb.address)
 
@@ -773,11 +774,25 @@ async function main() {
        ||                               Trava Tod Liquidity Contract                               ||
        ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
    */
-      const liquidityCampaignBuyToken = await redeploy(
-        "LiquidityCampaignBuyToken",
+       await changeConstantInFiles(
+        './contracts',
+        ['TokenUtils'],
+        'WBNB_ADDR',
+        process.env.WBNB_BSCTESTNET,
+      );
+      run('compile');
+      
+      // const liquidityCampaignBuyToken = await redeploy(
+      //   "LiquidityCampaignBuyToken",
+      //   process.env.DFS_REGISTRY_ADDRESS
+      // );
+      // writeToEnvFile("LIQUIDITY_CAMPAIGN_BUY_TOKEN_ADDRESS", liquidityCampaignBuyToken.address);
+
+      const liquidityCampaignBuyTokenGateway = await redeploy(
+        "LiquidityCampaignBuyTokenGateway",
         process.env.DFS_REGISTRY_ADDRESS
       );
-      writeToEnvFile("LIQUIDITY_CAMPAIGN_BUY_TOKEN_ADDRESS", liquidityCampaignBuyToken.address);
+      writeToEnvFile("LIQUIDITY_CAMPAIGN_BUY_TOKEN_GATEWAY_ADDRESS", liquidityCampaignBuyTokenGateway.address);
 
       // const liquidityCampainStake = await redeploy(
       //   "LiquidityCampainStake",
