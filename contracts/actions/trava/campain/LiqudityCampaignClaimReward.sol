@@ -7,12 +7,12 @@ import "../../ActionBase.sol";
 import "./helpers/LiquidityCampaignHelper.sol";
 
 /// @title Supply a token to an Trava market
-contract LiquidityCampaignStake is ActionBase, LiquidityCampaignHelper {
+contract LiquidityCampaignClaimReward is ActionBase, LiquidityCampaignHelper {
     using TokenUtils for address;
 
     struct Params {
         address stakingPool;
-        address onBehalfOf;
+        address to;
         uint256 amount;
     }
 
@@ -32,8 +32,8 @@ contract LiquidityCampaignStake is ActionBase, LiquidityCampaignHelper {
             _returnValues
         );
 
-        params.onBehalfOf = _parseParamAddr(
-            params.onBehalfOf,
+        params.to = _parseParamAddr(
+            params.to,
             _paramMapping[1],
             _subData,
             _returnValues
@@ -45,13 +45,13 @@ contract LiquidityCampaignStake is ActionBase, LiquidityCampaignHelper {
             _returnValues
         );
 
-        (uint256 stakeAmount, bytes memory logData) = _stake(
+        (uint256 amountClaim, bytes memory logData) = _claimReward(
             params.stakingPool,
-            params.onBehalfOf,
+            params.to,
             params.amount
         );
-        emit ActionEvent("LiquidityCampaignStake", logData);
-        return bytes32(stakeAmount);
+        emit ActionEvent("LiquidityCampaignClaimReward", logData);
+        return bytes32(amountClaim);
     }
 
     /// @inheritdoc ActionBase
@@ -59,12 +59,12 @@ contract LiquidityCampaignStake is ActionBase, LiquidityCampaignHelper {
         bytes memory _callData
     ) public payable override {
         Params memory params = parseInputs(_callData);
-        (, bytes memory logData) = _stake(
+        (, bytes memory logData) = _claimReward(
             params.stakingPool,
-            params.onBehalfOf,
+            params.to,
             params.amount
         );
-        logger.logActionDirectEvent("LiquidityCampaignStake", logData);
+        logger.logActionDirectEvent("LiquidityCampaignClaimReward", logData);
     }
 
     /// @inheritdoc ActionBase
@@ -74,38 +74,27 @@ contract LiquidityCampaignStake is ActionBase, LiquidityCampaignHelper {
 
     //////////////////////////// ACTION LOGIC ////////////////////////////
 
-    function _stake(
+    function _claimReward(
         address _stakingPool,
-        address _onBehalfOf,
+        address _to,
         uint256 _amount
     ) internal returns (uint256, bytes memory) {
-        address _stakedToken = address(IVault(_stakingPool).STAKED_TOKEN());
-        // if amount is set to max, take the whole _from balance
-        if (_amount == type(uint256).max) {
-            _amount = IBEP20(_stakedToken).balanceOf(_onBehalfOf);
-        }
-
+        address _rewardToken = address(IVault(_stakingPool).REWARD_TOKEN());
         // default to onBehalf of proxy
-        if (_onBehalfOf == address(0)) {
-            _onBehalfOf = address(this);
+        if (_to == address(0)) {
+            _to = address(this);
         }
-
-        // pull stakedTokens to proxy so we can stake
-        _stakedToken.pullTokensIfNeeded(_onBehalfOf, _amount);
-
-        // approve trava pool to pull stakedTokens
-        IBEP20(_stakedToken).approve(_stakingPool, _amount);
 
         // deposit in behalf of the proxy
-        IVault(_stakingPool).stake(
-            _onBehalfOf,
+        IVault(_stakingPool).claimRewards(
+            _to,
             _amount
         );
 
 
         bytes memory logData = abi.encode(
-            _stakedToken,
-            _onBehalfOf,
+            _rewardToken,
+            _to,
             _amount
         );
         return (_amount, logData);
