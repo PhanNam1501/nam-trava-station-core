@@ -14,6 +14,7 @@ contract LiquidityCampaignStake is ActionBase, LiquidityCampaignHelper {
         address stakingPool;
         address onBehalfOf;
         uint256 amount;
+        address from;
     }
 
     /// @inheritdoc ActionBase
@@ -45,10 +46,18 @@ contract LiquidityCampaignStake is ActionBase, LiquidityCampaignHelper {
             _returnValues
         );
 
+        params.from = _parseParamAddr(
+            params.from,
+            _paramMapping[3],
+            _subData,
+            _returnValues
+        );
+
         (uint256 stakeAmount, bytes memory logData) = _stake(
             params.stakingPool,
             params.onBehalfOf,
-            params.amount
+            params.amount,
+            params.from
         );
         emit ActionEvent("LiquidityCampaignStake", logData);
         return bytes32(stakeAmount);
@@ -62,7 +71,8 @@ contract LiquidityCampaignStake is ActionBase, LiquidityCampaignHelper {
         (, bytes memory logData) = _stake(
             params.stakingPool,
             params.onBehalfOf,
-            params.amount
+            params.amount,
+            params.from
         );
         logger.logActionDirectEvent("LiquidityCampaignStake", logData);
     }
@@ -77,12 +87,13 @@ contract LiquidityCampaignStake is ActionBase, LiquidityCampaignHelper {
     function _stake(
         address _stakingPool,
         address _onBehalfOf,
-        uint256 _amount
+        uint256 _amount,
+        address _from
     ) internal returns (uint256, bytes memory) {
         address _stakedToken = address(IVault(_stakingPool).STAKED_TOKEN());
         // if amount is set to max, take the whole _from balance
         if (_amount == type(uint256).max) {
-            _amount = IBEP20(_stakedToken).balanceOf(_onBehalfOf);
+            _amount = IBEP20(_stakedToken).balanceOf(_from);
         }
 
         // default to onBehalf of proxy
@@ -90,8 +101,13 @@ contract LiquidityCampaignStake is ActionBase, LiquidityCampaignHelper {
             _onBehalfOf = address(this);
         }
 
+        // default to onBehalf of proxy
+        if (_from == address(0)) {
+            _from = address(this);
+        }
+
         // pull stakedTokens to proxy so we can stake
-        _stakedToken.pullTokensIfNeeded(_onBehalfOf, _amount);
+        _stakedToken.pullTokensIfNeeded(_from, _amount);
 
         // approve trava pool to pull stakedTokens
         IBEP20(_stakedToken).approve(_stakingPool, _amount);

@@ -788,17 +788,29 @@ async function main() {
       // );
       // writeToEnvFile("LIQUIDITY_CAMPAIGN_BUY_TOKEN_ADDRESS", liquidityCampaignBuyToken.address);
 
-      const liquidityCampaignBuyTokenGateway = await redeploy(
-        "LiquidityCampaignBuyTokenGateway",
-        process.env.DFS_REGISTRY_ADDRESS
-      );
-      writeToEnvFile("LIQUIDITY_CAMPAIGN_BUY_TOKEN_GATEWAY_ADDRESS", liquidityCampaignBuyTokenGateway.address);
-
-      // const liquidityCampainStake = await redeploy(
-      //   "LiquidityCampainStake",
+      // const liquidityCampaignBuyTokenGateway = await redeploy(
+      //   "LiquidityCampaignBuyTokenGateway",
       //   process.env.DFS_REGISTRY_ADDRESS
       // );
-      // writeToEnvFile("LIQUIDITY_CAMPAIN_STAKE_ADDRESS", liquidityCampainStake.address);
+      // writeToEnvFile("LIQUIDITY_CAMPAIGN_BUY_TOKEN_GATEWAY_ADDRESS", liquidityCampaignBuyTokenGateway.address);
+      
+      // const liquidityCampaignClaimRewards = await redeploy(
+      //   "LiquidityCampaignClaimRewards",
+      //   process.env.DFS_REGISTRY_ADDRESS
+      // );
+      // writeToEnvFile("LIQUIDITY_CAMPAIGN_CLAIM_REWARDS_ADDRESS", liquidityCampaignClaimRewards.address);
+
+      // const liquidityCampaignRedeem = await redeploy(
+      //   "LiquidityCampaignRedeem",
+      //   process.env.DFS_REGISTRY_ADDRESS
+      // );
+      // writeToEnvFile("LIQUIDITY_CAMPAIGN_REDEEM_ADDRESS", liquidityCampaignRedeem.address);
+
+      // const liquidityCampaignStake = await redeploy(
+      //   "LiquidityCampaignStake",
+      //   process.env.DFS_REGISTRY_ADDRESS
+      // );
+      // writeToEnvFile("LIQUIDITY_CAMPAIGN_STAKE_ADDRESS", liquidityCampaignStake.address);
 }
 
 start(main);

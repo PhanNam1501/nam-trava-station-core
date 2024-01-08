@@ -229,6 +229,11 @@
 							"internalType": "uint256",
 							"name": "amount",
 							"type": "uint256"
+						},
+						{
+							"internalType": "address",
+							"name": "from",
+							"type": "address"
 						}
 					],
 					"internalType": "struct LiquidityCampaignStake.Params",
@@ -277,6 +282,9 @@
 		}
 	],
 	"networks": {
-		"bscTestnet": {}
+		"mainnet": {
+			"address": "0x3284633f208ac637B3DC010b12545E7bB220BEB8",
+			"args": []
+		}
 	}
 }
