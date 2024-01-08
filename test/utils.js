@@ -524,8 +524,8 @@ const redeploy = async (name, regAddr = addrs[getNetwork()].REGISTRY_ADDR, saveO
     console.log(name, id);
 
     if (!(await registry.isRegistered(id))) {
-        // let nonce = await signer.getTransactionCount(  );
-        // console.log("nonce", nonce)
+        let nonce = await signer.getTransactionCount(  );
+        console.log("nonce", nonce)
         await (await registry.addNewContract(id, c.address, 0, {nonce: nonce})).wait();
     } else {
         await (await registry.startContractChange(id, c.address)).wait();

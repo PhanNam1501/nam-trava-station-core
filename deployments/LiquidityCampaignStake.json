@@ -1,5 +1,5 @@
 {
-	"contractName": "TravaStakingStake",
+	"contractName": "LiquidityCampaignStake",
 	"abi": [
 		{
 			"inputs": [],
@@ -236,7 +236,7 @@
 							"type": "address"
 						}
 					],
-					"internalType": "struct TravaStakingStake.Params",
+					"internalType": "struct LiquidityCampaignStake.Params",
 					"name": "params",
 					"type": "tuple"
 				}
@@ -283,7 +283,7 @@
 	],
 	"networks": {
 		"mainnet": {
-			"address": "0x0A47854E732b4cC43308fF694F48BB7081579B8F",
+			"address": "0x3284633f208ac637B3DC010b12545E7bB220BEB8",
 			"args": []
 		}
 	}

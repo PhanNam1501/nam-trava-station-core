@@ -1,5 +1,5 @@
 {
-	"contractName": "TravaStakingStake",
+	"contractName": "LiquidityCampaignClaimRewards",
 	"abi": [
 		{
 			"inputs": [],
@@ -222,21 +222,16 @@
 						},
 						{
 							"internalType": "address",
-							"name": "onBehalfOf",
+							"name": "to",
 							"type": "address"
 						},
 						{
 							"internalType": "uint256",
 							"name": "amount",
 							"type": "uint256"
-						},
-						{
-							"internalType": "address",
-							"name": "from",
-							"type": "address"
 						}
 					],
-					"internalType": "struct TravaStakingStake.Params",
+					"internalType": "struct LiquidityCampaignClaimRewards.Params",
 					"name": "params",
 					"type": "tuple"
 				}
@@ -283,7 +278,7 @@
 	],
 	"networks": {
 		"mainnet": {
-			"address": "0x0A47854E732b4cC43308fF694F48BB7081579B8F",
+			"address": "0x388c8957ea1Ed429e2230F95C4d76Ce223Ce01FB",
 			"args": []
 		}
 	}

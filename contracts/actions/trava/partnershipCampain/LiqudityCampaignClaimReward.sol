@@ -7,7 +7,7 @@ import "../../ActionBase.sol";
 import "./helpers/LiquidityCampaignHelper.sol";
 
 /// @title Supply a token to an Trava market
-contract LiquidityCampaignClaimReward is ActionBase, LiquidityCampaignHelper {
+contract LiquidityCampaignClaimRewards is ActionBase, LiquidityCampaignHelper {
     using TokenUtils for address;
 
     struct Params {
@@ -50,7 +50,7 @@ contract LiquidityCampaignClaimReward is ActionBase, LiquidityCampaignHelper {
             params.to,
             params.amount
         );
-        emit ActionEvent("LiquidityCampaignClaimReward", logData);
+        emit ActionEvent("LiquidityCampaignClaimRewards", logData);
         return bytes32(amountClaim);
     }
 
@@ -64,7 +64,7 @@ contract LiquidityCampaignClaimReward is ActionBase, LiquidityCampaignHelper {
             params.to,
             params.amount
         );
-        logger.logActionDirectEvent("LiquidityCampaignClaimReward", logData);
+        logger.logActionDirectEvent("LiquidityCampaignClaimRewards", logData);
     }
 
     /// @inheritdoc ActionBase
