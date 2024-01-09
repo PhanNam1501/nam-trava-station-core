@@ -7,7 +7,7 @@ import "./MainnetGranaryAddresses.sol";
 
 /// @title Utility functions and data used in Granary actions
 contract GranaryHelper is MainnetGranaryAddresses {
-    uint16 public constant GRANARY_REFERRAL_CODE = 64;
+    uint16 public constant GRANARY_REFERRAL_CODE = 0;
 
     bytes32 public constant DATA_PROVIDER_ID =
         0x0100000000000000000000000000000000000000000000000000000000000000;
@@ -22,17 +22,6 @@ contract GranaryHelper is MainnetGranaryAddresses {
 
         IGranaryLendingPool(lendingPool).setUserUseReserveAsCollateral(_tokenAddr, _useAsCollateral);
     }
-
-    /// @notice Switches the borrowing rate mode (stable/variable) for the user
-    // function switchRateMode(
-    //     address _market,
-    //     address _tokenAddr,
-    //     uint256 _rateMode
-    // ) public {
-    //     address lendingPool = IRadiantLendingPoolAddressesProvider(_market).getLendingPool();
-
-    //     IRadiantLendingPool(lendingPool).swapBorrowRateMode(_tokenAddr, _rateMode);
-    // }
 
     /// @notice Fetch the data provider for the specified market
     function getDataProvider(address _market) internal view returns (IGranaryProtocolDataProvider) {

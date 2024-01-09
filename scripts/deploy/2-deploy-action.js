@@ -23,7 +23,7 @@ async function main() {
   //   'DFS_REG_CONTROLLER_ADDR',
   //   process.env.DFS_REG_CONTROLLER_ADDR,
   // );
-  
+
   await changeConstantInFiles(
     './contracts',
     ['MainnetActionsUtilAddresses'],
@@ -657,160 +657,209 @@ async function main() {
        ||                               Liqee     Contract                               ||
        ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
    */
-      //  const liqeeBorrow = await redeploy(
-      //   "LiqeeBorrow",
-      //   process.env.DFS_REGISTRY_ADDRESS
-      // );
-      // writeToEnvFile("LIQEE_BORROW_ADDRESS", liqeeBorrow.address);
-    
-      // const liqeeRepay = await redeploy(
-      //   "LiqeeRepay",
-      //   process.env.DFS_REGISTRY_ADDRESS
-      // );
-      // writeToEnvFile("LIQEE_REPAY_ADDRESS", liqeeRepay.address);
-    
-      // const liqeeSupply = await redeploy(
-      //   "LiqeeSupply",
-      //   process.env.DFS_REGISTRY_ADDRESS
-      // );
-      // writeToEnvFile("LIQEE_SUPPLY_ADDRESS", liqeeSupply.address);
-    
-      // const liqeeWithdraw = await redeploy(
-      //   "LiqeeWithdraw",
-      //   process.env.DFS_REGISTRY_ADDRESS
-      // );
-      // writeToEnvFile("LIQEE_WITHDRAW_ADDRESS", liqeeWithdraw.address);
+  //  const liqeeBorrow = await redeploy(
+  //   "LiqeeBorrow",
+  //   process.env.DFS_REGISTRY_ADDRESS
+  // );
+  // writeToEnvFile("LIQEE_BORROW_ADDRESS", liqeeBorrow.address);
 
-      /*
-       ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
-       ||                               WePiggy     Contract                               ||
-       ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
-  //  */
+  // const liqeeRepay = await redeploy(
+  //   "LiqeeRepay",
+  //   process.env.DFS_REGISTRY_ADDRESS
+  // );
+  // writeToEnvFile("LIQEE_REPAY_ADDRESS", liqeeRepay.address);
+
+  // const liqeeSupply = await redeploy(
+  //   "LiqeeSupply",
+  //   process.env.DFS_REGISTRY_ADDRESS
+  // );
+  // writeToEnvFile("LIQEE_SUPPLY_ADDRESS", liqeeSupply.address);
+
+  // const liqeeWithdraw = await redeploy(
+  //   "LiqeeWithdraw",
+  //   process.env.DFS_REGISTRY_ADDRESS
+  // );
+  // writeToEnvFile("LIQEE_WITHDRAW_ADDRESS", liqeeWithdraw.address);
+
+  /*
+   ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
+   ||                               WePiggy     Contract                               ||
+   ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
+//  */
   //      const WePiggyBorrow = await redeploy(
   //       "WePiggyBorrow",
   //       process.env.DFS_REGISTRY_ADDRESS
   //     );
   //     writeToEnvFile("WEPIGGY_BORROW_ADDRESS", WePiggyBorrow.address);
-    
-      // const WePiggyRepay = await redeploy(
-      //   "WePiggyRepay",
-      //   process.env.DFS_REGISTRY_ADDRESS
-      // );
-      // writeToEnvFile("WEPIGGY_REPAY_ADDRESS", WePiggyRepay.address);
-    
-      // const wePiggySupply = await redeploy(
-      //   "WePiggySupply",
-      //   process.env.DFS_REGISTRY_ADDRESS
-      // );
-      // writeToEnvFile("WEPIGGY_SUPPLY_ADDRESS", wePiggySupply.address);
-    
-      // const wePiggyWithdraw = await redeploy(
-      //   "WePiggyWithdraw",
-      //   process.env.DFS_REGISTRY_ADDRESS
-      // );
-      // writeToEnvFile("WEPIGGY_WITHDRAW_ADDRESS", wePiggyWithdraw.address);
 
-      /*
-       ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
-       ||                               Radiant    Contract                               ||
-       ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
-   */
-      //  const radiantBorrow = await redeploy(
-      //   "RadiantBorrow",
-      //   process.env.DFS_REGISTRY_ADDRESS
-      // );
-      // writeToEnvFile("RADIANT_BORROW_ADDRESS", radiantBorrow.address);
-    
-      // const radiantRepay = await redeploy(
-      //   "RadiantRepay",
-      //   process.env.DFS_REGISTRY_ADDRESS
-      // );
-      // writeToEnvFile("RADIANT_REPAY_ADDRESS", radiantRepay.address);
-    
-      // const radiantSupply = await redeploy(
-      //   "RadiantSupply",
-      //   process.env.DFS_REGISTRY_ADDRESS
-      // );
-      // writeToEnvFile("RADIANT_SUPPLY_ADDRESS", radiantSupply.address);
-    
-      // const radiantWithdraw = await redeploy(
-      //   "RadiantWithdraw",
-      //   process.env.DFS_REGISTRY_ADDRESS
-      // );
-      // writeToEnvFile("RADIANT_WITHDRAW_ADDRESS", radiantWithdraw.address);
+  // const WePiggyRepay = await redeploy(
+  //   "WePiggyRepay",
+  //   process.env.DFS_REGISTRY_ADDRESS
+  // );
+  // writeToEnvFile("WEPIGGY_REPAY_ADDRESS", WePiggyRepay.address);
 
-      /*
-       ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
-       ||                               Granary    Contract                               ||
-       ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
-   */
-      //  const granaryBorrow = await redeploy(
-      //   "GranaryBorrow",
-      //   process.env.DFS_REGISTRY_ADDRESS
-      // );
-      // writeToEnvFile("GRANARY_BORROW_ADDRESS", granaryBorrow.address);
-    
-      // const granaryRepay = await redeploy(
-      //   "GranaryRepay",
-      //   process.env.DFS_REGISTRY_ADDRESS
-      // );
-      // writeToEnvFile("GRANARY_REPAY_ADDRESS", granaryRepay.address);
-    
-      // const granarySupply = await redeploy(
-      //   "GranarySupply",
-      //   process.env.DFS_REGISTRY_ADDRESS
-      // );
-      // writeToEnvFile("GRANARY_SUPPLY_ADDRESS", granarySupply.address);
-    
-      // const granaryWithdraw = await redeploy(
-      //   "GranaryWithdraw",
-      //   process.env.DFS_REGISTRY_ADDRESS
-      // );
-      // writeToEnvFile("GRANARY_WITHDRAW_ADDRESS", granaryWithdraw.address);
+  // const wePiggySupply = await redeploy(
+  //   "WePiggySupply",
+  //   process.env.DFS_REGISTRY_ADDRESS
+  // );
+  // writeToEnvFile("WEPIGGY_SUPPLY_ADDRESS", wePiggySupply.address);
+
+  // const wePiggyWithdraw = await redeploy(
+  //   "WePiggyWithdraw",
+  //   process.env.DFS_REGISTRY_ADDRESS
+  // );
+  // writeToEnvFile("WEPIGGY_WITHDRAW_ADDRESS", wePiggyWithdraw.address);
+
+  /*
+   ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
+   ||                               Radiant    Contract                               ||
+   ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
+*/
+  //  const radiantBorrow = await redeploy(
+  //   "RadiantBorrow",
+  //   process.env.DFS_REGISTRY_ADDRESS
+  // );
+  // writeToEnvFile("RADIANT_BORROW_ADDRESS", radiantBorrow.address);
+
+  // const radiantRepay = await redeploy(
+  //   "RadiantRepay",
+  //   process.env.DFS_REGISTRY_ADDRESS
+  // );
+  // writeToEnvFile("RADIANT_REPAY_ADDRESS", radiantRepay.address);
+
+  // const radiantSupply = await redeploy(
+  //   "RadiantSupply",
+  //   process.env.DFS_REGISTRY_ADDRESS
+  // );
+  // writeToEnvFile("RADIANT_SUPPLY_ADDRESS", radiantSupply.address);
+
+  // const radiantWithdraw = await redeploy(
+  //   "RadiantWithdraw",
+  //   process.env.DFS_REGISTRY_ADDRESS
+  // );
+  // writeToEnvFile("RADIANT_WITHDRAW_ADDRESS", radiantWithdraw.address);
+
+  /*
+   ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
+   ||                               Granary    Contract                               ||
+   ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
+*/
+  //  const granaryBorrow = await redeploy(
+  //   "GranaryBorrow",
+  //   process.env.DFS_REGISTRY_ADDRESS
+  // );
+  // writeToEnvFile("GRANARY_BORROW_ADDRESS", granaryBorrow.address);
+
+  // const granaryRepay = await redeploy(
+  //   "GranaryRepay",
+  //   process.env.DFS_REGISTRY_ADDRESS
+  // );
+  // writeToEnvFile("GRANARY_REPAY_ADDRESS", granaryRepay.address);
+
+  // const granarySupply = await redeploy(
+  //   "GranarySupply",
+  //   process.env.DFS_REGISTRY_ADDRESS
+  // );
+  // writeToEnvFile("GRANARY_SUPPLY_ADDRESS", granarySupply.address);
+
+  // const granaryWithdraw = await redeploy(
+  //   "GranaryWithdraw",
+  //   process.env.DFS_REGISTRY_ADDRESS
+  // );
+  // writeToEnvFile("GRANARY_WITHDRAW_ADDRESS", granaryWithdraw.address);
 
 
-      /*
-       ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
-       ||                               Trava Tod Liquidity Contract                               ||
-       ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
-   */
-       await changeConstantInFiles(
-        './contracts',
-        ['TokenUtils'],
-        'WBNB_ADDR',
-        process.env.WBNB_BSCTESTNET,
-      );
-      run('compile');
-      
-      // const liquidityCampaignBuyToken = await redeploy(
-      //   "LiquidityCampaignBuyToken",
-      //   process.env.DFS_REGISTRY_ADDRESS
-      // );
-      // writeToEnvFile("LIQUIDITY_CAMPAIGN_BUY_TOKEN_ADDRESS", liquidityCampaignBuyToken.address);
+  /*
+   ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
+   ||                               Trava Tod Liquidity Contract                               ||
+   ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
+*/
+  await changeConstantInFiles(
+    './contracts',
+    ['TokenUtils'],
+    'WBNB_ADDR',
+    process.env.WBNB_BSCTESTNET,
+  );
+  run('compile');
 
-      // const liquidityCampaignBuyTokenGateway = await redeploy(
-      //   "LiquidityCampaignBuyTokenGateway",
-      //   process.env.DFS_REGISTRY_ADDRESS
-      // );
-      // writeToEnvFile("LIQUIDITY_CAMPAIGN_BUY_TOKEN_GATEWAY_ADDRESS", liquidityCampaignBuyTokenGateway.address);
-      
-      // const liquidityCampaignClaimRewards = await redeploy(
-      //   "LiquidityCampaignClaimRewards",
-      //   process.env.DFS_REGISTRY_ADDRESS
-      // );
-      // writeToEnvFile("LIQUIDITY_CAMPAIGN_CLAIM_REWARDS_ADDRESS", liquidityCampaignClaimRewards.address);
+  // const liquidityCampaignBuyToken = await redeploy(
+  //   "LiquidityCampaignBuyToken",
+  //   process.env.DFS_REGISTRY_ADDRESS
+  // );
+  // writeToEnvFile("LIQUIDITY_CAMPAIGN_BUY_TOKEN_ADDRESS", liquidityCampaignBuyToken.address);
 
-      // const liquidityCampaignRedeem = await redeploy(
-      //   "LiquidityCampaignRedeem",
-      //   process.env.DFS_REGISTRY_ADDRESS
-      // );
-      // writeToEnvFile("LIQUIDITY_CAMPAIGN_REDEEM_ADDRESS", liquidityCampaignRedeem.address);
+  // const liquidityCampaignBuyTokenGateway = await redeploy(
+  //   "LiquidityCampaignBuyTokenGateway",
+  //   process.env.DFS_REGISTRY_ADDRESS
+  // );
+  // writeToEnvFile("LIQUIDITY_CAMPAIGN_BUY_TOKEN_GATEWAY_ADDRESS", liquidityCampaignBuyTokenGateway.address);
 
-      // const liquidityCampaignStake = await redeploy(
-      //   "LiquidityCampaignStake",
-      //   process.env.DFS_REGISTRY_ADDRESS
-      // );
-      // writeToEnvFile("LIQUIDITY_CAMPAIGN_STAKE_ADDRESS", liquidityCampaignStake.address);
+  // const liquidityCampaignClaimRewards = await redeploy(
+  //   "LiquidityCampaignClaimRewards",
+  //   process.env.DFS_REGISTRY_ADDRESS
+  // );
+  // writeToEnvFile("LIQUIDITY_CAMPAIGN_CLAIM_REWARDS_ADDRESS", liquidityCampaignClaimRewards.address);
+
+  // const liquidityCampaignRedeem = await redeploy(
+  //   "LiquidityCampaignRedeem",
+  //   process.env.DFS_REGISTRY_ADDRESS
+  // );
+  // writeToEnvFile("LIQUIDITY_CAMPAIGN_REDEEM_ADDRESS", liquidityCampaignRedeem.address);
+
+  // const liquidityCampaignStake = await redeploy(
+  //   "LiquidityCampaignStake",
+  //   process.env.DFS_REGISTRY_ADDRESS
+  // );
+  // writeToEnvFile("LIQUIDITY_CAMPAIGN_STAKE_ADDRESS", liquidityCampaignStake.address);
+
+  /*
+     ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
+     ||                               Granary Lending Pool                             ||
+     ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
+//  */
+
+//   const granaryBorrow = await redeploy(
+//     "GranaryBorrow",
+//     process.env.DFS_REGISTRY_ADDRESS
+//   );
+//   writeToEnvFile("GRANARY_BORROW_ADDRESS", granaryBorrow.address);
+
+  // const granaryRepay = await redeploy(
+  //   "GranaryRepay",
+  //   process.env.DFS_REGISTRY_ADDRESS
+  // );
+  // writeToEnvFile("GRANARY_REPAY_ADDRESS", granaryRepay.address);
+
+  // const granarySupply = await redeploy('GranarySupply', process.env.DFS_REGISTRY_ADDRESS);
+  // writeToEnvFile("GRANARY_SUPPLY_ADDRESS", granarySupply.address)
+
+  // const granaryWithdraw = await redeploy('GranaryWithdraw', process.env.DFS_REGISTRY_ADDRESS);
+  // writeToEnvFile("GRANARY_WITHDRAW_ADDRESS", granaryWithdraw.address)
+
+  /*
+     ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
+     ||                               Radiant-V2 Lending Pool                             ||
+     ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
+//  */
+
+  // const radiantBorrow = await redeploy(
+  //   "RadiantBorrow",
+  //   process.env.DFS_REGISTRY_ADDRESS
+  // );
+  // writeToEnvFile("RADIANT_BORROW_ADDRESS", radiantBorrow.address);
+
+  // const radiantRepay = await redeploy(
+  //   "RadiantRepay",
+  //   process.env.DFS_REGISTRY_ADDRESS
+  // );
+  // writeToEnvFile("RADIANT_REPAY_ADDRESS", radiantRepay.address);
+
+  // const radiantSupply = await redeploy('RadiantSupply', process.env.DFS_REGISTRY_ADDRESS);
+  // writeToEnvFile("RADIANT_SUPPLY_ADDRESS", radiantSupply.address)
+
+  // const radiantWithdraw = await redeploy('RadiantWithdraw', process.env.DFS_REGISTRY_ADDRESS);
+  // writeToEnvFile("RADIANT_WITHDRAW_ADDRESS", radiantWithdraw.address)
+
 }
 
 start(main);
