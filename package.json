@@ -42,6 +42,6 @@
     "npm": "^9.7.1",
     "readline-sync": "^1.4.10",
     "trava-simulation-route": "1.0.81",
-    "trava-station-sdk": "1.0.42"
+    "trava-station-sdk": "1.0.61"
   }
 }
