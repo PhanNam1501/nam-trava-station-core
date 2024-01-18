@@ -1,24 +1,14 @@
 {
-	"contractName": "LiqeeWithdraw",
+	"contractName": "CreamCollateral",
 	"abi": [
 		{
 			"inputs": [],
-			"name": "LiqeeEnterMarketError",
+			"name": "CreamEnterMarketError",
 			"type": "error"
 		},
 		{
 			"inputs": [],
-			"name": "LiqeeExitMarketError",
-			"type": "error"
-		},
-		{
-			"inputs": [],
-			"name": "LiqeeRedeemError",
-			"type": "error"
-		},
-		{
-			"inputs": [],
-			"name": "LiqeeUnderlyingRedeemError",
+			"name": "CreamExitMarketError",
 			"type": "error"
 		},
 		{
@@ -160,7 +150,7 @@
 			"inputs": [
 				{
 					"internalType": "address",
-					"name": "_iTokenAddr",
+					"name": "_cTokenAddr",
 					"type": "address"
 				}
 			],
@@ -220,7 +210,7 @@
 			"inputs": [
 				{
 					"internalType": "address",
-					"name": "_iTokenAddr",
+					"name": "_cTokenAddr",
 					"type": "address"
 				}
 			],
@@ -263,21 +253,21 @@
 					"components": [
 						{
 							"internalType": "address",
-							"name": "iTokenAddr",
+							"name": "comptroller",
 							"type": "address"
 						},
 						{
-							"internalType": "uint256",
-							"name": "amount",
-							"type": "uint256"
+							"internalType": "address[]",
+							"name": "cTokens",
+							"type": "address[]"
 						},
 						{
-							"internalType": "address",
-							"name": "to",
-							"type": "address"
+							"internalType": "bool[]",
+							"name": "enableAsColl",
+							"type": "bool[]"
 						}
 					],
-					"internalType": "struct LiqeeWithdraw.Params",
+					"internalType": "struct CreamCollateral.Params",
 					"name": "params",
 					"type": "tuple"
 				}
@@ -324,7 +314,7 @@
 	],
 	"networks": {
 		"mainnet": {
-			"address": "0x9EeeA1865aA6160A2eAc55381a34b5AD9d2E0364",
+			"address": "0x5Ff781F43045155B8e4C288Da772ab61164b36E5",
 			"args": []
 		}
 	}

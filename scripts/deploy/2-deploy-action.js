@@ -865,111 +865,111 @@ async function main() {
      ||                               Venus Lending Pool                               ||
      ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
 //  */
-  const venusCollateral = await redeploy(
-    "VenusCollateral",
-    process.env.DFS_REGISTRY_ADDRESS
-  );
-  writeToEnvFile("VENUS_COLLATERAL_ADDRESS", venusCollateral.address);
+  // const venusCollateral = await redeploy(
+  //   "VenusCollateral",
+  //   process.env.DFS_REGISTRY_ADDRESS
+  // );
+  // writeToEnvFile("VENUS_COLLATERAL_ADDRESS", venusCollateral.address);
 
-  const venusBorrow = await redeploy(
-    "VenusBorrow",
-    process.env.DFS_REGISTRY_ADDRESS
-  );
-  writeToEnvFile("VENUS_BORROW_ADDRESS", venusBorrow.address);
+  // const venusBorrow = await redeploy(
+  //   "VenusBorrow",
+  //   process.env.DFS_REGISTRY_ADDRESS
+  // );
+  // writeToEnvFile("VENUS_BORROW_ADDRESS", venusBorrow.address);
 
-  const venusRepay = await redeploy(
-    "VenusRepay",
-    process.env.DFS_REGISTRY_ADDRESS
-  );
-  writeToEnvFile("VENUS_REPAY_ADDRESS", venusRepay.address);
+  // const venusRepay = await redeploy(
+  //   "VenusRepay",
+  //   process.env.DFS_REGISTRY_ADDRESS
+  // );
+  // writeToEnvFile("VENUS_REPAY_ADDRESS", venusRepay.address);
 
-  const venusSupply = await redeploy('VenusSupply', process.env.DFS_REGISTRY_ADDRESS);
-  writeToEnvFile("VENUS_SUPPLY_ADDRESS", venusSupply.address)
+  // const venusSupply = await redeploy('VenusSupply', process.env.DFS_REGISTRY_ADDRESS);
+  // writeToEnvFile("VENUS_SUPPLY_ADDRESS", venusSupply.address)
 
-  const venusWithdraw = await redeploy('VenusWithdraw', process.env.DFS_REGISTRY_ADDRESS);
-  writeToEnvFile("VENUS_WITHDRAW_ADDRESS", venusWithdraw.address)
+  // const venusWithdraw = await redeploy('VenusWithdraw', process.env.DFS_REGISTRY_ADDRESS);
+  // writeToEnvFile("VENUS_WITHDRAW_ADDRESS", venusWithdraw.address)
 
-  /*
-   ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
-   ||                               Cream Lending Pool                               ||
-   ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
-//  */
-  const creamCollateral = await redeploy(
-    "CreamCollateral",
-    process.env.DFS_REGISTRY_ADDRESS
-  );
-  writeToEnvFile("CREAM_COLLATERAL_ADDRESS", creamCollateral.address);
+//   /*
+//    ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
+//    ||                               Cream Lending Pool                               ||
+//    ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
+// //  */
+  // const creamCollateral = await redeploy(
+  //   "CreamCollateral",
+  //   process.env.DFS_REGISTRY_ADDRESS
+  // );
+  // writeToEnvFile("CREAM_COLLATERAL_ADDRESS", creamCollateral.address);
 
-  const creamBorrow = await redeploy(
-    "CreamBorrow",
-    process.env.DFS_REGISTRY_ADDRESS
-  );
-  writeToEnvFile("CREAM_BORROW_ADDRESS", creamBorrow.address);
+  // const creamBorrow = await redeploy(
+  //   "CreamBorrow",
+  //   process.env.DFS_REGISTRY_ADDRESS
+  // );
+  // writeToEnvFile("CREAM_BORROW_ADDRESS", creamBorrow.address);
 
-  const creamRepay = await redeploy(
-    "CreamRepay",
-    process.env.DFS_REGISTRY_ADDRESS
-  );
-  writeToEnvFile("CREAM_REPAY_ADDRESS", creamRepay.address);
+  // const creamRepay = await redeploy(
+  //   "CreamRepay",
+  //   process.env.DFS_REGISTRY_ADDRESS
+  // );
+  // writeToEnvFile("CREAM_REPAY_ADDRESS", creamRepay.address);
 
-  const creamSupply = await redeploy('CreamSupply', process.env.DFS_REGISTRY_ADDRESS);
-  writeToEnvFile("CREAM_SUPPLY_ADDRESS", creamSupply.address)
+  // const creamSupply = await redeploy('CreamSupply', process.env.DFS_REGISTRY_ADDRESS);
+  // writeToEnvFile("CREAM_SUPPLY_ADDRESS", creamSupply.address)
 
-  const creamWithdraw = await redeploy('CreamWithdraw', process.env.DFS_REGISTRY_ADDRESS);
-  writeToEnvFile("CREAM_WITHDRAW_ADDRESS", creamWithdraw.address)
+  // const creamWithdraw = await redeploy('CreamWithdraw', process.env.DFS_REGISTRY_ADDRESS);
+  // writeToEnvFile("CREAM_WITHDRAW_ADDRESS", creamWithdraw.address)
 
-  /*
-   ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
-   ||                               WePiggy Lending Pool                               ||
-   ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
-//  */
-  const wePiggyCollateral = await redeploy(
-    "WePiggyCollateral",
-    process.env.DFS_REGISTRY_ADDRESS
-  );
-  writeToEnvFile("WEPIGGY_COLLATERAL_ADDRESS", wePiggyCollateral.address);
+//   /*
+//    ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
+//    ||                               WePiggy Lending Pool                               ||
+//    ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
+// //  */
+  // const wePiggyCollateral = await redeploy(
+  //   "WePiggyCollateral",
+  //   process.env.DFS_REGISTRY_ADDRESS
+  // );
+  // writeToEnvFile("WEPIGGY_COLLATERAL_ADDRESS", wePiggyCollateral.address);
 
-  const wePiggyBorrow = await redeploy(
-    "WePiggyBorrow",
-    process.env.DFS_REGISTRY_ADDRESS
-  );
-  writeToEnvFile("WEPIGGY_BORROW_ADDRESS", wePiggyBorrow.address);
+  // const wePiggyBorrow = await redeploy(
+  //   "WePiggyBorrow",
+  //   process.env.DFS_REGISTRY_ADDRESS
+  // );
+  // writeToEnvFile("WEPIGGY_BORROW_ADDRESS", wePiggyBorrow.address);
 
-  const wePiggyRepay = await redeploy(
-    "WePiggyRepay",
-    process.env.DFS_REGISTRY_ADDRESS
-  );
-  writeToEnvFile("WEPIGGY_REPAY_ADDRESS", wePiggyRepay.address);
+  // const wePiggyRepay = await redeploy(
+  //   "WePiggyRepay",
+  //   process.env.DFS_REGISTRY_ADDRESS
+  // );
+  // writeToEnvFile("WEPIGGY_REPAY_ADDRESS", wePiggyRepay.address);
 
-  const wePiggySupply = await redeploy('WePiggySupply', process.env.DFS_REGISTRY_ADDRESS);
-  writeToEnvFile("WEPIGGY_SUPPLY_ADDRESS", wePiggySupply.address)
+  // const wePiggySupply = await redeploy('WePiggySupply', process.env.DFS_REGISTRY_ADDRESS);
+  // writeToEnvFile("WEPIGGY_SUPPLY_ADDRESS", wePiggySupply.address)
 
-  const wePiggyWithdraw = await redeploy('WePiggyWithdraw', process.env.DFS_REGISTRY_ADDRESS);
-  writeToEnvFile("WEPIGGY_WITHDRAW_ADDRESS", wePiggyWithdraw.address)
+  // const wePiggyWithdraw = await redeploy('WePiggyWithdraw', process.env.DFS_REGISTRY_ADDRESS);
+  // writeToEnvFile("WEPIGGY_WITHDRAW_ADDRESS", wePiggyWithdraw.address)
 
-  /*
-   ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
-   ||                               Liqee Lending Pool                               ||
-   ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
-//  */
+//   /*
+//    ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
+//    ||                               Liqee Lending Pool                               ||
+//    ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
+// //  */
 
-const liqeeBorrow = await redeploy(
-  "LiqeeBorrow",
-  process.env.DFS_REGISTRY_ADDRESS
-);
-writeToEnvFile("LIQEE_BORROW_ADDRESS", liqeeBorrow.address);
+  // const liqeeBorrow = await redeploy(
+  //   "LiqeeBorrow",
+  //   process.env.DFS_REGISTRY_ADDRESS
+  // );
+  // writeToEnvFile("LIQEE_BORROW_ADDRESS", liqeeBorrow.address);
 
-const liqeeRepay = await redeploy(
-  "LiqeeRepay",
-  process.env.DFS_REGISTRY_ADDRESS
-);
-writeToEnvFile("LIQEE_REPAY_ADDRESS", liqeeRepay.address);
+  // const liqeeRepay = await redeploy(
+  //   "LiqeeRepay",
+  //   process.env.DFS_REGISTRY_ADDRESS
+  // );
+  // writeToEnvFile("LIQEE_REPAY_ADDRESS", liqeeRepay.address);
 
-const liqeeSupply = await redeploy('LiqeeSupply', process.env.DFS_REGISTRY_ADDRESS);
-writeToEnvFile("LIQEE_SUPPLY_ADDRESS", liqeeSupply.address)
+  // const liqeeSupply = await redeploy('LiqeeSupply', process.env.DFS_REGISTRY_ADDRESS);
+  // writeToEnvFile("LIQEE_SUPPLY_ADDRESS", liqeeSupply.address)
 
-const liqeeWithdraw = await redeploy('LiqeeWithdraw', process.env.DFS_REGISTRY_ADDRESS);
-writeToEnvFile("LIQEE_WITHDRAW_ADDRESS", liqeeWithdraw.address)
+  // const liqeeWithdraw = await redeploy('LiqeeWithdraw', process.env.DFS_REGISTRY_ADDRESS);
+  // writeToEnvFile("LIQEE_WITHDRAW_ADDRESS", liqeeWithdraw.address)
 
 
 }

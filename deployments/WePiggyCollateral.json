@@ -1,26 +1,6 @@
 {
-	"contractName": "LiqeeWithdraw",
+	"contractName": "WePiggyCollateral",
 	"abi": [
-		{
-			"inputs": [],
-			"name": "LiqeeEnterMarketError",
-			"type": "error"
-		},
-		{
-			"inputs": [],
-			"name": "LiqeeExitMarketError",
-			"type": "error"
-		},
-		{
-			"inputs": [],
-			"name": "LiqeeRedeemError",
-			"type": "error"
-		},
-		{
-			"inputs": [],
-			"name": "LiqeeUnderlyingRedeemError",
-			"type": "error"
-		},
 		{
 			"inputs": [],
 			"name": "NonContractCall",
@@ -44,6 +24,16 @@
 		{
 			"inputs": [],
 			"name": "SubIndexValueError",
+			"type": "error"
+		},
+		{
+			"inputs": [],
+			"name": "WePiggyEnterMarketError",
+			"type": "error"
+		},
+		{
+			"inputs": [],
+			"name": "WePiggyExitMarketError",
 			"type": "error"
 		},
 		{
@@ -160,7 +150,7 @@
 			"inputs": [
 				{
 					"internalType": "address",
-					"name": "_iTokenAddr",
+					"name": "_pTokenAddr",
 					"type": "address"
 				}
 			],
@@ -220,7 +210,7 @@
 			"inputs": [
 				{
 					"internalType": "address",
-					"name": "_iTokenAddr",
+					"name": "_pTokenAddr",
 					"type": "address"
 				}
 			],
@@ -263,21 +253,21 @@
 					"components": [
 						{
 							"internalType": "address",
-							"name": "iTokenAddr",
+							"name": "comptroller",
 							"type": "address"
 						},
 						{
-							"internalType": "uint256",
-							"name": "amount",
-							"type": "uint256"
+							"internalType": "address[]",
+							"name": "cTokens",
+							"type": "address[]"
 						},
 						{
-							"internalType": "address",
-							"name": "to",
-							"type": "address"
+							"internalType": "bool[]",
+							"name": "enableAsColl",
+							"type": "bool[]"
 						}
 					],
-					"internalType": "struct LiqeeWithdraw.Params",
+					"internalType": "struct WePiggyCollateral.Params",
 					"name": "params",
 					"type": "tuple"
 				}
@@ -324,7 +314,7 @@
 	],
 	"networks": {
 		"mainnet": {
-			"address": "0x9EeeA1865aA6160A2eAc55381a34b5AD9d2E0364",
+			"address": "0x5CeBdf9E37d83c22E2eA4E9C56AbBCF2bDd5d924",
 			"args": []
 		}
 	}
