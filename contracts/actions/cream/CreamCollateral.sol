@@ -7,7 +7,6 @@ import "../ActionBase.sol";
 
 contract CreamCollateral is ActionBase, CreamHelper {
     struct Params {
-        address comptroller;
         address[] cTokens;
         bool[] enableAsColl;
     }
@@ -21,26 +20,18 @@ contract CreamCollateral is ActionBase, CreamHelper {
     ) public payable virtual override returns (bytes32) {
         Params memory params = parseInputs(_callData);
 
-        params.comptroller = _parseParamAddr(
-            params.comptroller,
-            _paramMapping[0],
-            _subData,
-            _returnValues
-        );
-
         uint256 nCTokens = params.cTokens.length;
 
         for (uint i = 0; i < nCTokens; i++) {
             params.cTokens[i] = _parseParamAddr(
                 params.cTokens[i],
-                _paramMapping[i + 1],
+                _paramMapping[i],
                 _subData,
                 _returnValues
             );
         }
 
-        bytes memory logData = _switchCollateral(
-            params.comptroller,
+        bytes memory logData = _creamCollateral(
             params.cTokens,
             params.enableAsColl
         );
@@ -55,8 +46,7 @@ contract CreamCollateral is ActionBase, CreamHelper {
     ) public payable override {
         Params memory params = parseInputs(_callData);
 
-        bytes memory logData = _switchCollateral(
-            params.comptroller,
+        bytes memory logData = _creamCollateral(
             params.cTokens,
             params.enableAsColl
         );
@@ -72,8 +62,7 @@ contract CreamCollateral is ActionBase, CreamHelper {
 
     /// @param _cTokens Address of the cToken we'll set collateral or not
     /// @param _enableAsColl If the supply asset should be collateral
-    function _switchCollateral(
-        address _comptroller,
+    function _creamCollateral(
         address[] memory _cTokens,
         bool[] memory _enableAsColl
     ) internal returns (bytes memory) {
@@ -87,7 +76,6 @@ contract CreamCollateral is ActionBase, CreamHelper {
         }
 
         bytes memory logData = abi.encode(
-            _comptroller,
             _cTokens,
             _enableAsColl
         );

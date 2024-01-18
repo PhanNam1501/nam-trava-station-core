@@ -252,11 +252,6 @@
 				{
 					"components": [
 						{
-							"internalType": "address",
-							"name": "comptroller",
-							"type": "address"
-						},
-						{
 							"internalType": "address[]",
 							"name": "cTokens",
 							"type": "address[]"
@@ -314,7 +309,7 @@
 	],
 	"networks": {
 		"mainnet": {
-			"address": "0x5Ff781F43045155B8e4C288Da772ab61164b36E5",
+			"address": "0x0d488c623365eB712A9A5131727e217ca95B525D",
 			"args": []
 		}
 	}
