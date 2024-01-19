@@ -24,33 +24,33 @@ async function main() {
   //   process.env.DFS_REG_CONTROLLER_ADDR,
   // );
 
-  // await changeConstantInFiles(
-  //   './contracts',
-  //   ['MainnetActionsUtilAddresses'],
-  //   'REGISTRY_ADDR',
-  //   process.env.DFS_REGISTRY_ADDRESS,
-  // );
+  await changeConstantInFiles(
+    './contracts',
+    ['MainnetActionsUtilAddresses'],
+    'REGISTRY_ADDR',
+    process.env.DFS_REGISTRY_ADDRESS,
+  );
 
-  // await changeConstantInFiles(
-  //   './contracts',
-  //   ['MainnetActionsUtilAddresses'],
-  //   'DEFISAVER_LOGGER',
-  //   process.env.DEFISAVER_LOGGER_ADDRESS,
-  // );
+  await changeConstantInFiles(
+    './contracts',
+    ['MainnetActionsUtilAddresses'],
+    'DEFISAVER_LOGGER',
+    process.env.DEFISAVER_LOGGER_ADDRESS,
+  );
 
-  // await changeConstantInFiles(
-  //   './contracts',
-  //   ['MainnetActionsUtilAddresses'],
-  //   'SUB_STORAGE_ADDR',
-  //   process.env.SUB_STORAGE_ADDRESS,
-  // );
+  await changeConstantInFiles(
+    './contracts',
+    ['MainnetActionsUtilAddresses'],
+    'SUB_STORAGE_ADDR',
+    process.env.SUB_STORAGE_ADDRESS,
+  );
 
-  // await changeConstantInFiles(
-  //   './contracts',
-  //   ['MainnetActionsUtilAddresses'],
-  //   'PROXY_AUTH_ADDR',
-  //   process.env.PROXY_AUTH_ADDRESS,
-  // );
+  await changeConstantInFiles(
+    './contracts',
+    ['MainnetActionsUtilAddresses'],
+    'PROXY_AUTH_ADDR',
+    process.env.PROXY_AUTH_ADDRESS,
+  );
 
   //     /*
   //         ||--------------------------------------------------------------------------------||
@@ -63,13 +63,13 @@ async function main() {
   //         ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
   //     */
 
-  // await changeConstantInFiles(
-  //   './contracts',
-  //   ['TokenUtils'],
-  //   'WBNB_ADDR',
-  //   process.env.WBNB_BSCTESTNET,
-  // );
-  // run('compile');
+  await changeConstantInFiles(
+    './contracts',
+    ['TokenUtils'],
+    'WBNB_ADDR',
+    process.env.WBNB_BSCTESTNET,
+  );
+  run('compile');
 
   // const wrapBnb = await redeploy('WrapBnb', process.env.DFS_REGISTRY_ADDRESS);
   // writeToEnvFile("WRAP_BNB_ADDRESS", wrapBnb.address)
@@ -888,23 +888,23 @@ async function main() {
   // );
   // writeToEnvFile("VENUS_COLLATERAL_ADDRESS", venusCollateral.address);
 
-  // const venusBorrow = await redeploy(
-  //   "VenusBorrow",
-  //   process.env.DFS_REGISTRY_ADDRESS
-  // );
-  // writeToEnvFile("VENUS_BORROW_ADDRESS", venusBorrow.address);
+  const venusBorrow = await redeploy(
+    "VenusBorrow",
+    process.env.DFS_REGISTRY_ADDRESS
+  );
+  writeToEnvFile("VENUS_BORROW_ADDRESS", venusBorrow.address);
 
-  // const venusRepay = await redeploy(
-  //   "VenusRepay",
-  //   process.env.DFS_REGISTRY_ADDRESS
-  // );
-  // writeToEnvFile("VENUS_REPAY_ADDRESS", venusRepay.address);
+  const venusRepay = await redeploy(
+    "VenusRepay",
+    process.env.DFS_REGISTRY_ADDRESS
+  );
+  writeToEnvFile("VENUS_REPAY_ADDRESS", venusRepay.address);
 
-  // const venusSupply = await redeploy('VenusSupply', process.env.DFS_REGISTRY_ADDRESS);
-  // writeToEnvFile("VENUS_SUPPLY_ADDRESS", venusSupply.address)
+  const venusSupply = await redeploy('VenusSupply', process.env.DFS_REGISTRY_ADDRESS);
+  writeToEnvFile("VENUS_SUPPLY_ADDRESS", venusSupply.address)
 
-  // const venusWithdraw = await redeploy('VenusWithdraw', process.env.DFS_REGISTRY_ADDRESS);
-  // writeToEnvFile("VENUS_WITHDRAW_ADDRESS", venusWithdraw.address)
+  const venusWithdraw = await redeploy('VenusWithdraw', process.env.DFS_REGISTRY_ADDRESS);
+  writeToEnvFile("VENUS_WITHDRAW_ADDRESS", venusWithdraw.address)
 
 //   /*
 //    ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
@@ -912,22 +912,22 @@ async function main() {
 //    ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
 // //  */
 
-await changeConstantInFiles(
-  './contracts',
-  ['MainnetCreamAddresses'],
-  'COMPTROLLER_ADDR_CREAM',
-  process.env.CREAM_COMPTROLLER_ADDRESS,
-);
-run('compile');
+// await changeConstantInFiles(
+//   './contracts',
+//   ['MainnetCreamAddresses'],
+//   'COMPTROLLER_ADDR_CREAM',
+//   process.env.CREAM_COMPTROLLER_ADDRESS,
+// );
+// run('compile');
 
-await changeConstantInFiles(
-  './contracts',
-  ['MainnetVenusAddresses'],
-  'crBNB',
-  process.env.CR_BNB_ADDRESS,
-);
-run('compile');
-  // const creamCollateral = await redeploy(
+// await changeConstantInFiles(
+//   './contracts',
+//   ['MainnetVenusAddresses'],
+//   'crBNB',
+//   process.env.CR_BNB_ADDRESS,
+// );
+// run('compile');
+//   // const creamCollateral = await redeploy(
   //   "CreamCollateral",
   //   process.env.DFS_REGISTRY_ADDRESS
   // );
@@ -957,21 +957,21 @@ run('compile');
 //    ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
 // //  */
 
-await changeConstantInFiles(
-  './contracts',
-  ['MainnetLieeAddresses'],
-  'COMPTROLLER_ADDR_WEPIGGY',
-  process.env.WEPIGGY_COMPTROLLER_ADDRESS,
-);
-run('compile');
+// await changeConstantInFiles(
+//   './contracts',
+//   ['MainnetLieeAddresses'],
+//   'COMPTROLLER_ADDR_WEPIGGY',
+//   process.env.WEPIGGY_COMPTROLLER_ADDRESS,
+// );
+// run('compile');
 
-await changeConstantInFiles(
-  './contracts',
-  ['MainnetLiqeeAddresses'],
-  'P_BNB_ADDR',
-  process.env.P_BNB_ADDRESS,
-);
-run('compile');
+// await changeConstantInFiles(
+//   './contracts',
+//   ['MainnetLiqeeAddresses'],
+//   'P_BNB_ADDR',
+//   process.env.P_BNB_ADDRESS,
+// );
+// run('compile');
 
   // const wePiggyCollateral = await redeploy(
   //   "WePiggyCollateral",
@@ -1003,21 +1003,21 @@ run('compile');
 //    ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
 // //  */
 
-await changeConstantInFiles(
-  './contracts',
-  ['MainnetLieeAddresses'],
-  'COMPTROLLER_ADDR_LIQEE',
-  process.env.LIQEE_COMPTROLLER_ADDRESS,
-);
-run('compile');
+// await changeConstantInFiles(
+//   './contracts',
+//   ['MainnetLieeAddresses'],
+//   'COMPTROLLER_ADDR_LIQEE',
+//   process.env.LIQEE_COMPTROLLER_ADDRESS,
+// );
+// run('compile');
 
-await changeConstantInFiles(
-  './contracts',
-  ['MainnetLiqeeAddresses'],
-  'iBNB',
-  process.env.I_BNB_ADDRESS,
-);
-run('compile');
+// await changeConstantInFiles(
+//   './contracts',
+//   ['MainnetLiqeeAddresses'],
+//   'iBNB',
+//   process.env.I_BNB_ADDRESS,
+// );
+// run('compile');
 
   // const liqeeBorrow = await redeploy(
   //   "LiqeeBorrow",

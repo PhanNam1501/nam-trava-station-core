@@ -35,8 +35,8 @@ const deploy = async (contractName, signer, action, gasPrice, nonce, ...args) =>
 
         let options = { 
             gasPrice, 
-            nonce, 
-            gasLimit: DEPLOYMENT_GAS_LIMIT 
+            nonce
+            // gasLimit: DEPLOYMENT_GAS_LIMIT 
         };
         
         // if (nonce === -1) {
