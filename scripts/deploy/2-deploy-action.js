@@ -24,33 +24,33 @@ async function main() {
   //   process.env.DFS_REG_CONTROLLER_ADDR,
   // );
 
-  await changeConstantInFiles(
-    './contracts',
-    ['MainnetActionsUtilAddresses'],
-    'REGISTRY_ADDR',
-    process.env.DFS_REGISTRY_ADDRESS,
-  );
+  // await changeConstantInFiles(
+  //   './contracts',
+  //   ['MainnetActionsUtilAddresses'],
+  //   'REGISTRY_ADDR',
+  //   process.env.DFS_REGISTRY_ADDRESS,
+  // );
 
-  await changeConstantInFiles(
-    './contracts',
-    ['MainnetActionsUtilAddresses'],
-    'DEFISAVER_LOGGER',
-    process.env.DEFISAVER_LOGGER_ADDRESS,
-  );
+  // await changeConstantInFiles(
+  //   './contracts',
+  //   ['MainnetActionsUtilAddresses'],
+  //   'DEFISAVER_LOGGER',
+  //   process.env.DEFISAVER_LOGGER_ADDRESS,
+  // );
 
-  await changeConstantInFiles(
-    './contracts',
-    ['MainnetActionsUtilAddresses'],
-    'SUB_STORAGE_ADDR',
-    process.env.SUB_STORAGE_ADDRESS,
-  );
+  // await changeConstantInFiles(
+  //   './contracts',
+  //   ['MainnetActionsUtilAddresses'],
+  //   'SUB_STORAGE_ADDR',
+  //   process.env.SUB_STORAGE_ADDRESS,
+  // );
 
-  await changeConstantInFiles(
-    './contracts',
-    ['MainnetActionsUtilAddresses'],
-    'PROXY_AUTH_ADDR',
-    process.env.PROXY_AUTH_ADDRESS,
-  );
+  // await changeConstantInFiles(
+  //   './contracts',
+  //   ['MainnetActionsUtilAddresses'],
+  //   'PROXY_AUTH_ADDR',
+  //   process.env.PROXY_AUTH_ADDRESS,
+  // );
 
   //     /*
   //         ||--------------------------------------------------------------------------------||
@@ -63,13 +63,14 @@ async function main() {
   //         ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
   //     */
 
-  await changeConstantInFiles(
-    './contracts',
-    ['TokenUtils'],
-    'WBNB_ADDR',
-    process.env.WBNB_BSCTESTNET,
-  );
-  run('compile');
+  // await changeConstantInFiles(
+  //   './contracts',
+  //   ['TokenUtils'],
+  //   'WBNB_ADDR',
+  //   process.env.WBNB_BSCTESTNET,
+  // );
+  // run('compile');
+
   // const wrapBnb = await redeploy('WrapBnb', process.env.DFS_REGISTRY_ADDRESS);
   // writeToEnvFile("WRAP_BNB_ADDRESS", wrapBnb.address)
 
@@ -599,11 +600,11 @@ async function main() {
        ||                               Venus     Contract                               ||
        ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
    */
-  const venusBorrow = await redeploy(
-    "VenusBorrow",
-    process.env.DFS_REGISTRY_ADDRESS
-  );
-  writeToEnvFile("VENUS_BORROW_ADDRESS", venusBorrow.address);
+  // const venusBorrow = await redeploy(
+  //   "VenusBorrow",
+  //   process.env.DFS_REGISTRY_ADDRESS
+  // );
+  // writeToEnvFile("VENUS_BORROW_ADDRESS", venusBorrow.address);
 
   // const venusRepay = await redeploy(
   //   "VenusRepay",
@@ -774,13 +775,13 @@ async function main() {
    ||                               Trava Tod Liquidity Contract                               ||
    ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
 */
-  await changeConstantInFiles(
-    './contracts',
-    ['TokenUtils'],
-    'WBNB_ADDR',
-    process.env.WBNB_BSCTESTNET,
-  );
-  run('compile');
+  // await changeConstantInFiles(
+  //   './contracts',
+  //   ['TokenUtils'],
+  //   'WBNB_ADDR',
+  //   process.env.WBNB_BSCTESTNET,
+  // );
+  // run('compile');
 
   // const liquidityCampaignBuyToken = await redeploy(
   //   "LiquidityCampaignBuyToken",
@@ -865,6 +866,22 @@ async function main() {
      ||                               Venus Lending Pool                               ||
      ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
 //  */
+ await changeConstantInFiles(
+    './contracts',
+    ['MainnetVenusAddresses'],
+    'COMPTROLLER_ADDR',
+    process.env.VENUS_UNICONTROLLER_ADDRESS,
+  );
+  run('compile');
+
+  await changeConstantInFiles(
+    './contracts',
+    ['MainnetVenusAddresses'],
+    'V_BNB_ADDR',
+    process.env.V_BNB_ADDRESS,
+  );
+  run('compile');
+
   // const venusCollateral = await redeploy(
   //   "VenusCollateral",
   //   process.env.DFS_REGISTRY_ADDRESS
@@ -894,6 +911,22 @@ async function main() {
 //    ||                               Cream Lending Pool                               ||
 //    ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
 // //  */
+
+await changeConstantInFiles(
+  './contracts',
+  ['MainnetCreamAddresses'],
+  'COMPTROLLER_ADDR_CREAM',
+  process.env.CREAM_COMPTROLLER_ADDRESS,
+);
+run('compile');
+
+await changeConstantInFiles(
+  './contracts',
+  ['MainnetVenusAddresses'],
+  'crBNB',
+  process.env.CR_BNB_ADDRESS,
+);
+run('compile');
   // const creamCollateral = await redeploy(
   //   "CreamCollateral",
   //   process.env.DFS_REGISTRY_ADDRESS
@@ -923,6 +956,23 @@ async function main() {
 //    ||                               WePiggy Lending Pool                               ||
 //    ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
 // //  */
+
+await changeConstantInFiles(
+  './contracts',
+  ['MainnetLieeAddresses'],
+  'COMPTROLLER_ADDR_WEPIGGY',
+  process.env.WEPIGGY_COMPTROLLER_ADDRESS,
+);
+run('compile');
+
+await changeConstantInFiles(
+  './contracts',
+  ['MainnetLiqeeAddresses'],
+  'P_BNB_ADDR',
+  process.env.P_BNB_ADDRESS,
+);
+run('compile');
+
   // const wePiggyCollateral = await redeploy(
   //   "WePiggyCollateral",
   //   process.env.DFS_REGISTRY_ADDRESS
@@ -952,6 +1002,22 @@ async function main() {
 //    ||                               Liqee Lending Pool                               ||
 //    ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
 // //  */
+
+await changeConstantInFiles(
+  './contracts',
+  ['MainnetLieeAddresses'],
+  'COMPTROLLER_ADDR_LIQEE',
+  process.env.LIQEE_COMPTROLLER_ADDRESS,
+);
+run('compile');
+
+await changeConstantInFiles(
+  './contracts',
+  ['MainnetLiqeeAddresses'],
+  'iBNB',
+  process.env.I_BNB_ADDRESS,
+);
+run('compile');
 
   // const liqeeBorrow = await redeploy(
   //   "LiqeeBorrow",
