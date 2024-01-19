@@ -599,11 +599,11 @@ async function main() {
        ||                               Venus     Contract                               ||
        ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
    */
-  // const venusBorrow = await redeploy(
-  //   "VenusBorrow",
-  //   process.env.DFS_REGISTRY_ADDRESS
-  // );
-  // writeToEnvFile("VENUS_BORROW_ADDRESS", venusBorrow.address);
+  const venusBorrow = await redeploy(
+    "VenusBorrow",
+    process.env.DFS_REGISTRY_ADDRESS
+  );
+  writeToEnvFile("VENUS_BORROW_ADDRESS", venusBorrow.address);
 
   // const venusRepay = await redeploy(
   //   "VenusRepay",

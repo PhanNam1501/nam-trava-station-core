@@ -38,7 +38,7 @@ module.exports = {
         settings: {
           optimizer: {
             enabled: true,
-            runs: 420,
+            runs: 0,
           },
         },
       },
@@ -47,7 +47,7 @@ module.exports = {
         settings: {
           optimizer: {
             enabled: true,
-            runs: 420,
+            runs: 0,
           },
         },
       },
@@ -56,7 +56,7 @@ module.exports = {
         settings: {
           optimizer: {
             enabled: true,
-            runs: 420,
+            runs: 0,
           },
         },
       },
@@ -65,7 +65,7 @@ module.exports = {
         settings: {
           optimizer: {
             enabled: true,
-            runs: 420,
+            runs: 0,
           },
         },
       },
@@ -74,7 +74,7 @@ module.exports = {
         settings: {
           optimizer: {
             enabled: true,
-            runs: 420,
+            runs: 0,
           },
         },
       },
@@ -83,7 +83,7 @@ module.exports = {
         settings: {
           optimizer: {
             enabled: true,
-            runs: 420,
+            runs: 0,
           },
         },
       },
@@ -92,7 +92,7 @@ module.exports = {
         settings: {
           optimizer: {
             enabled: true,
-            runs: 420,
+            runs: 0,
           },
         },
       },
@@ -101,7 +101,7 @@ module.exports = {
         settings: {
           optimizer: {
             enabled: true,
-            runs: 420,
+            runs: 0,
           },
         },
       },
@@ -110,7 +110,7 @@ module.exports = {
         settings: {
           optimizer: {
             enabled: true,
-            runs: 420,
+            runs: 0,
           },
         },
       },
@@ -119,7 +119,7 @@ module.exports = {
         settings: {
           optimizer: {
             enabled: true,
-            runs: 420,
+            runs: 0,
           },
         },
       },
@@ -171,11 +171,11 @@ module.exports = {
       // gas: 25e6,
     },
     bscTestnet: {
-      url: "https://bsc-testnet.publicnode.com",
+      url: "https://nd-741-200-374.p2pify.com/e47c8aefbd713f6684e9ee1a095c1052",
       chainId: 97,
-      gasPrice: 20e9,
+      gasPrice: 1e10,
       // gas: 2e7,
-      // gas: 1e7,
+      gas: 1e7,
       accounts: [
         `0x${PRIVATE_KEY}`,
       ],
@@ -201,6 +201,6 @@ module.exports = {
     Mainnet: "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
     Testnet: process.env.WBNB_BSCTESTNET,
     Arbitrum: "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
-    Optimism: "0x4200000000000000000000000000000000000006",
+    Optimism: "0x00000000000000000000000000000000000006",
   },
 };
