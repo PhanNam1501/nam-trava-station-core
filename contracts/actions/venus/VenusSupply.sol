@@ -96,8 +96,9 @@ contract VenusSupply is ActionBase, VenusHelper {
         if (_amount == type(uint256).max) {
             _amount = tokenAddr.getBalance(_from);
         }
+
         // pull the tokens _from to the proxy
-        tokenAddr.pullTokensIfNeeded(_from, _amount);
+        //tokenAddr.pullTokensIfNeeded(_from, _amount);
 
         // enter the market if needed
         if (_enableAsColl) {
@@ -106,16 +107,41 @@ contract VenusSupply is ActionBase, VenusHelper {
 
         // we always expect actions to deal with WETH never Eth
         // supply WBNB in proxy and change to active BNB to supply in protocol
-        if (tokenAddr != TokenUtilsVenus.WBNB_ADDR) {
+
+        if (msg.value == 0) {
+            tokenAddr.pullTokensIfNeeded(_from, _amount);
+
             tokenAddr.approveToken(_vTokenAddr, _amount);
 
-            if (IVToken(_vTokenAddr).mint(_amount) != NO_ERROR) {
-                revert VenusSupplyError();
+            if (tokenAddr != TokenUtilsVenus.WBNB_ADDR) {
+                if (IVToken(_vTokenAddr).mint(_amount) != NO_ERROR) {
+                    revert VenusSupplyError();
+                }
+            } else {
+                TokenUtilsVenus.withdrawWbnb(_amount); // change from Wbnb to BNB
+                IVToken(_vTokenAddr).mint{value: _amount}(); // reverts on fail
             }
         } else {
-            TokenUtilsVenus.withdrawWbnb(_amount); // change from Wbnb to BNB
+            require(msg.value == _amount, "Not enough BNB supply");
             IVToken(_vTokenAddr).mint{value: _amount}(); // reverts on fail
         }
+
+        // if( msg.value == 0 ){
+        // if ( tokenAddr != TokenUtilsVenus.WBNB_ADDR ) {
+        //     tokenAddr.pullTokensIfNeeded(_from, _amount);
+
+        //     tokenAddr.approveToken(_vTokenAddr, _amount);
+
+        //     if (IVToken(_vTokenAddr).mint(_amount) != NO_ERROR) {
+        //         revert VenusSupplyError();
+        //     }
+        // } else if ( tokenAddr == TokenUtilsVenus.WBNB_ADDR && msg.value == 0 )
+        // else {
+        //     require( msg.value == _amount , "Not enough BNB supply" );
+
+        //     TokenUtilsVenus.withdrawWbnb(_amount); // change from Wbnb to BNB
+        //     IVToken(_vTokenAddr).mint{value: _amount}(); // reverts on fail
+        // }
 
         bytes memory logData = abi.encode(
             tokenAddr,
