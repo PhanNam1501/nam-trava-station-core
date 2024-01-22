@@ -90,9 +90,9 @@ contract WePiggyWithdraw is ActionBase, WePiggyHelper {
 
         // because comp returns native eth we need to check the balance of that
 
-        if (tokenAddr == TokenUtilsVenus.WBNB_ADDR) {
-            tokenAddr = TokenUtilsVenus.BNB_ADDR;
-        }
+        // if (tokenAddr == TokenUtilsVenus.WBNB_ADDR) {
+        //     tokenAddr = TokenUtilsVenus.BNB_ADDR;
+        // }
 
         uint256 tokenBalanceBefore = tokenAddr.getBalance(address(this));
                 
@@ -115,10 +115,10 @@ contract WePiggyWithdraw is ActionBase, WePiggyHelper {
         _amount = tokenBalanceAfter - tokenBalanceBefore;
 
         // always return WETH, never native Eth
-        if (tokenAddr == TokenUtilsVenus.WBNB_ADDR) {
-            TokenUtilsVenus.depositWbnb(_amount);
-            tokenAddr = TokenUtilsVenus.BNB_ADDR;
-        }
+        // if (tokenAddr == TokenUtilsVenus.WBNB_ADDR) {
+        //     TokenUtilsVenus.depositWbnb(_amount);
+        //     tokenAddr = TokenUtilsVenus.BNB_ADDR;
+        // }
 
         // If tokens needs to be send to the _to address
         tokenAddr.withdrawTokens(_to, _amount);

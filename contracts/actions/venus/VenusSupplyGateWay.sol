@@ -91,11 +91,15 @@ contract VenusSupplyGateWay is ActionBase, VenusHelper {
         bool _enableAsColl
     ) internal returns (uint256, bytes memory) {
         address tokenAddr = getUnderlyingAddr(_vTokenAddr);
-        
+
         if (_amount == type(uint256).max) {
             _amount = address(this).balance;
         }
 
+        if(_enableAsColl){
+            enterMarket(_vTokenAddr);
+        }
+        
         IVToken(_vTokenAddr).mint{value: _amount}(); // reverts on fail
 
         bytes memory logData = abi.encode(

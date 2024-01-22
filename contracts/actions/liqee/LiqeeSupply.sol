@@ -97,7 +97,7 @@ contract LiqeeSupply is ActionBase, LiqeeHelper {
             _amount = tokenAddr.getBalance(_from);
         }
         // pull the tokens _from to the proxy
-        tokenAddr.pullTokensIfNeeded(_from, _amount);
+        //tokenAddr.pullTokensIfNeeded(_from, _amount);
 
         // enter the market if needed
         if (_enableAsColl) {
@@ -106,7 +106,7 @@ contract LiqeeSupply is ActionBase, LiqeeHelper {
 
         // we always expect actions to deal with WETH never Eth
         // supply WBNB in proxy and change to active BNB to supply in protocol
-        if (tokenAddr != TokenUtilsVenus.WBNB_ADDR) {
+        if (tokenAddr != TokenUtilsVenus.BNB_ADDR) {
             tokenAddr.approveToken(_iTokenAddr, _amount);
 
             IIToken(_iTokenAddr).mintForSelfAndEnterMarket(_amount);
@@ -115,7 +115,7 @@ contract LiqeeSupply is ActionBase, LiqeeHelper {
             //     revert LiqeeSupplyError();
             // }
         } else {
-            TokenUtilsVenus.withdrawWbnb(_amount); // change from Wbnb to BNB
+            //TokenUtilsVenus.withdrawWbnb(_amount); // change from Wbnb to BNB
             IIToken(_iTokenAddr).mint{value: _amount}(); // reverts on fail
         }
 

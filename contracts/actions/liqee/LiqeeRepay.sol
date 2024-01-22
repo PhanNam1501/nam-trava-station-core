@@ -110,17 +110,12 @@ contract LiqeeRepay is ActionBase, LiqeeHelper {
         tokenAddr.pullTokensIfNeeded(_from, _amount);
 
         // we always expect actions to deal with WETH never Eth
-        if (tokenAddr != TokenUtilsVenus.WBNB_ADDR) {
+        if (tokenAddr != TokenUtilsVenus.BNB_ADDR) {
             tokenAddr.approveToken(_iTokenAddr, _amount);
-            // if (
-            //     IIToken(_iTokenAddr).repayBorrowBehalf(_onBehalf, _amount) !=
-            //     NO_ERROR
-            // ) {
-            //     revert CreamRepayError();
-            // }
+            
             IIToken(_iTokenAddr).repayBorrowBehalf(_onBehalf, _amount);
         } else {
-            TokenUtilsVenus.withdrawWbnb(_amount);
+            //TokenUtilsVenus.withdrawWbnb(_amount);
             IIToken(_iTokenAddr).repayBorrowBehalf{value: _amount}(_onBehalf); // reverts on fail
         }
 

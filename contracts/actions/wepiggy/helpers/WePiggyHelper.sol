@@ -17,7 +17,7 @@ contract WePiggyHelper is MainnetWePiggyAddresses{
     // @notice Returns the underlying token address of the given pToken
     function getUnderlyingAddr(address _pTokenAddr) internal returns (address tokenAddr) {
         // cEth has no .underlying() method
-        if (_pTokenAddr == P_BNB_ADDR) return TokenUtils.WBNB_ADDR;
+        if (_pTokenAddr == P_BNB_ADDR) return TokenUtils.BNB_ADDR;
 
         tokenAddr = IPToken(_pTokenAddr).underlying();
     }

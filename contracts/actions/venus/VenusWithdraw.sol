@@ -88,14 +88,9 @@ contract VenusWithdraw is ActionBase, VenusHelper {
     ) internal returns (uint256, bytes memory) {
         address tokenAddr = getUnderlyingAddr(_vTokenAddr);
 
-        // because comp returns native eth we need to check the balance of that
         // if (tokenAddr == TokenUtilsVenus.WBNB_ADDR) {
-        //     tokenAddr = TokenUtilsVenus.WBNB_ADDR;
+        //     tokenAddr = TokenUtilsVenus.BNB_ADDR;
         // }
-
-        if (tokenAddr == TokenUtilsVenus.WBNB_ADDR) {
-            tokenAddr = TokenUtilsVenus.BNB_ADDR;
-        }
 
         uint256 tokenBalanceBefore = tokenAddr.getBalance(address(this));
 
@@ -118,11 +113,11 @@ contract VenusWithdraw is ActionBase, VenusHelper {
         _amount = tokenBalanceAfter - tokenBalanceBefore;
 
         // always return WETH, never native Eth
-        if (tokenAddr == TokenUtilsVenus.WBNB_ADDR) {
-            TokenUtilsVenus.depositWbnb(_amount);
-            //tokenAddr = TokenUtilsVenus.WBNB_ADDR; // switch back to weth
-            tokenAddr = TokenUtilsVenus.BNB_ADDR;
-        }
+        // if (tokenAddr == TokenUtilsVenus.WBNB_ADDR) {
+        //     TokenUtilsVenus.depositWbnb(_amount);
+        //     //tokenAddr = TokenUtilsVenus.WBNB_ADDR; // switch back to weth
+        //     tokenAddr = TokenUtilsVenus.BNB_ADDR;
+        // }
 
         // If tokens needs to be send to the _to address
         tokenAddr.withdrawTokens(_to, _amount);

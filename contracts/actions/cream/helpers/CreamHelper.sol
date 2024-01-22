@@ -16,7 +16,7 @@ contract CreamHelper is MainnetCreamAddresses{
     // @notice Returns the underlying token address of the given cToken
     function getUnderlyingAddr(address _cTokenAddr) internal returns (address tokenAddr) {
         // cEth has no .underlying() method
-        if (_cTokenAddr == crBNB ) return TokenUtils.WBNB_ADDR;
+        if (_cTokenAddr == crBNB ) return TokenUtils.BNB_ADDR;
 
         tokenAddr = ICToken(_cTokenAddr).underlying();
     }
