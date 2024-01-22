@@ -96,6 +96,12 @@ contract VenusSupplyGateWay is ActionBase, VenusHelper {
             _amount = address(this).balance;
         }
 
+
+        // enter the market if needed
+        if (_enableAsColl) {
+            enterMarket(_vTokenAddr);
+        }
+        
         IVToken(_vTokenAddr).mint{value: _amount}(); // reverts on fail
 
         bytes memory logData = abi.encode(
