@@ -8,7 +8,7 @@ import "../ActionBase.sol";
 import "./helpers/VenusHelper.sol";
 
 /// @title Supply a token to Venus
-contract VenusSupply is ActionBase, VenusHelper {
+contract VenusSupplyGateWay is ActionBase, VenusHelper {
     using TokenUtilsVenus for address;
     struct Params {
         address vTokenAddr;
@@ -17,7 +17,7 @@ contract VenusSupply is ActionBase, VenusHelper {
         bool enableAsColl;
     }
 
-    error VenusSupplyError();
+    error VenusSupplyGateWayError();
 
     /// @inheritdoc ActionBase
     function executeAction(
@@ -47,13 +47,13 @@ contract VenusSupply is ActionBase, VenusHelper {
             _returnValues
         );
 
-        (uint256 supplyAmount, bytes memory logData) = _supply(
+        (uint256 supplyAmount, bytes memory logData) = _supplyGateway(
             params.vTokenAddr,
             params.amount,
             params.from,
             params.enableAsColl
         );
-        emit ActionEvent("VenusSupply", logData);
+        emit ActionEvent("VenusSupplyGateWay", logData);
         return bytes32(supplyAmount);
     }
 
@@ -62,13 +62,13 @@ contract VenusSupply is ActionBase, VenusHelper {
         bytes memory _callData
     ) public payable override {
         Params memory params = parseInputs(_callData);
-        (, bytes memory logData) = _supply(
+        (, bytes memory logData) = _supplyGateway(
             params.vTokenAddr,
             params.amount,
             params.from,
             params.enableAsColl
         );
-        logger.logActionDirectEvent("VenusSupply", logData);
+        logger.logActionDirectEvent("VenusSupplyGateWay", logData);
     }
 
     /// @inheritdoc ActionBase
@@ -84,40 +84,19 @@ contract VenusSupply is ActionBase, VenusHelper {
     /// @param _amount Amount of the underlying token we are supplying
     /// @param _from Address where we are pulling the underlying tokens from
     /// @param _enableAsColl If the supply asset should be collateral
-    function _supply(
+    function _supplyGateway(
         address _vTokenAddr,
         uint256 _amount,
         address _from,
         bool _enableAsColl
     ) internal returns (uint256, bytes memory) {
         address tokenAddr = getUnderlyingAddr(_vTokenAddr);
-
-        // if amount type(uint256).max, pull current _from balance
+        
         if (_amount == type(uint256).max) {
-            _amount = tokenAddr.getBalance(_from);
+            _amount = address(this).balance;
         }
 
-        // pull the tokens _from to the proxy
-        tokenAddr.pullTokensIfNeeded(_from, _amount);
-
-        // enter the market if needed
-        if (_enableAsColl) {
-            enterMarket(_vTokenAddr);
-        }
-
-        // we always expect actions to deal with WETH never Eth
-        // supply WBNB in proxy and change to active BNB to supply in protocol
-        if ( tokenAddr != TokenUtilsVenus.WBNB_ADDR ) {
-            tokenAddr.approveToken(_vTokenAddr, _amount);
-
-            if (IVToken(_vTokenAddr).mint(_amount) != NO_ERROR) {
-                revert VenusSupplyError();
-            }
-        } 
-        else {
-            TokenUtilsVenus.withdrawWbnb(_amount); // change from Wbnb to BNB
-            IVToken(_vTokenAddr).mint{value: _amount}(); // reverts on fail
-        }
+        IVToken(_vTokenAddr).mint{value: _amount}(); // reverts on fail
 
         bytes memory logData = abi.encode(
             tokenAddr,
