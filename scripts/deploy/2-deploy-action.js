@@ -900,8 +900,11 @@ async function main() {
   // );
   // writeToEnvFile("VENUS_REPAY_ADDRESS", venusRepay.address);
 
-  const venusSupply = await redeploy('VenusSupply', process.env.DFS_REGISTRY_ADDRESS);
-  writeToEnvFile("VENUS_SUPPLY_ADDRESS", venusSupply.address)
+  // const venusSupply = await redeploy('VenusSupply', process.env.DFS_REGISTRY_ADDRESS);
+  // writeToEnvFile("VENUS_SUPPLY_ADDRESS", venusSupply.address)
+
+  const venusSupply = await redeploy('VenusSupplyGateWay', process.env.DFS_REGISTRY_ADDRESS);
+  writeToEnvFile("VENUS_SUPPLY_GATEWAY_ADDRESS", venusSupply.address)
 
   // const venusWithdraw = await redeploy('VenusWithdraw', process.env.DFS_REGISTRY_ADDRESS);
   // writeToEnvFile("VENUS_WITHDRAW_ADDRESS", venusWithdraw.address)
