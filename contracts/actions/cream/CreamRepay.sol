@@ -110,7 +110,7 @@ contract CreamRepay is ActionBase, CreamHelper {
         tokenAddr.pullTokensIfNeeded(_from, _amount);
 
         // we always expect actions to deal with WETH never Eth
-        if (tokenAddr != TokenUtilsVenus.WBNB_ADDR) {
+        if (tokenAddr != TokenUtilsVenus.BNB_ADDR) {
             tokenAddr.approveToken(_cTokenAddr, _amount);
             if (
                 ICToken(_cTokenAddr).repayBorrowBehalf(_onBehalf, _amount) !=

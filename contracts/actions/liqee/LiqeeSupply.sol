@@ -115,8 +115,9 @@ contract LiqeeSupply is ActionBase, LiqeeHelper {
             //     revert LiqeeSupplyError();
             // }
         } else {
+
             //TokenUtilsVenus.withdrawWbnb(_amount); // change from Wbnb to BNB
-            IIToken(_iTokenAddr).mint{value: _amount}(); // reverts on fail
+            IIToken(_iTokenAddr).mintForSelfAndEnterMarket{value: _amount}(); // reverts on fail
         }
 
         bytes memory logData = abi.encode(
