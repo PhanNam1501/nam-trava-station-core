@@ -108,7 +108,7 @@ contract WePiggyRepay is ActionBase, WePiggyHelper {
         tokenAddr.pullTokensIfNeeded(_from, _amount);
 
         // we always expect actions to deal with WETH never Eth
-        if (tokenAddr != TokenUtilsVenus.WBNB_ADDR) {
+        if (tokenAddr != TokenUtilsVenus.BNB_ADDR) {
             tokenAddr.approveToken(_pTokenAddr, _amount);
             if (
                 IPToken(_pTokenAddr).repayBorrowBehalf(_onBehalf, _amount) !=
@@ -117,7 +117,7 @@ contract WePiggyRepay is ActionBase, WePiggyHelper {
                 revert WePiggyRepayError();
             }
         } else {
-            TokenUtilsVenus.withdrawWbnb(_amount);
+            //TokenUtilsVenus.withdrawWbnb(_amount);
             IPToken(_pTokenAddr).repayBorrowBehalf{value: _amount}(_onBehalf); // reverts on fail
         }
 

@@ -119,7 +119,7 @@ contract CreamRepay is ActionBase, CreamHelper {
                 revert CreamRepayError();
             }
         } else {
-            TokenUtilsVenus.withdrawWbnb(_amount);
+            //TokenUtilsVenus.withdrawWbnb(_amount);
             ICToken(_cTokenAddr).repayBorrowBehalf{value: _amount}(_onBehalf); // reverts on fail
         }
 

@@ -108,7 +108,7 @@ contract VenusRepay is ActionBase, VenusHelper {
         tokenAddr.pullTokensIfNeeded(_from, _amount);
 
         // we always expect actions to deal with WETH never Eth
-        if (tokenAddr != TokenUtilsVenus.WBNB_ADDR) {
+        if (tokenAddr != TokenUtilsVenus.BNB_ADDR) {
             tokenAddr.approveToken(_vTokenAddr, _amount);
             if (
                 IVToken(_vTokenAddr).repayBorrowBehalf(_onBehalf, _amount) !=
@@ -117,7 +117,7 @@ contract VenusRepay is ActionBase, VenusHelper {
                 revert VenusRepayError();
             }
         } else {
-            TokenUtilsVenus.withdrawWbnb(_amount);
+            //TokenUtilsVenus.withdrawWbnb(_amount);
             IVToken(_vTokenAddr).repayBorrowBehalf{value: _amount}(_onBehalf); // reverts on fail
         }
 

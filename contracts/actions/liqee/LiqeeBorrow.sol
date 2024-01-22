@@ -90,17 +90,14 @@ contract LiqeeBorrow is ActionBase, LiqeeHelper {
         // if the tokens are borrowed we need to enter the market
         enterMarket(_iTokenAddr);
 
-        // if (ICToken(_cTokenAddr).borrow(_amount) != NO_ERROR) {
-        //     revert CreamBorrowError();
-        // }
-
         IIToken(_iTokenAddr).borrow(_amount);
 
         // always return WETH, never native Eth
         // receive borrow BNB and change it to wBNB
-        if (tokenAddr == TokenUtilsVenus.WBNB_ADDR) {
-            TokenUtilsVenus.depositWbnb(_amount);
-        }
+        // if (tokenAddr == TokenUtilsVenus.WBNB_ADDR) {
+        //     TokenUtilsVenus.depositWbnb(_amount);
+        // }
+        
         tokenAddr.withdrawTokens(_to, _amount);
 
         bytes memory logData = abi.encode(tokenAddr, _amount, _to);

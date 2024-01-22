@@ -18,7 +18,7 @@ contract LiqeeHelper is MainnetLiqeeAddresses {
         address _iTokenAddr
     ) internal returns (address tokenAddr) {
         // cEth has no .underlying() method
-        if (_iTokenAddr == iBNB) return TokenUtils.WBNB_ADDR;
+        if (_iTokenAddr == iBNB) return TokenUtils.BNB_ADDR;
 
         tokenAddr = address(IIToken(_iTokenAddr).underlying());
     }

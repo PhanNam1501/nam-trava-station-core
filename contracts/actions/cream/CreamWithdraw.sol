@@ -89,11 +89,6 @@ contract CreamWithdraw is ActionBase, CreamHelper {
     ) internal returns (uint256, bytes memory) {
         address tokenAddr = getUnderlyingAddr(_cTokenAddr);
 
-        // because comp returns native eth we need to check the balance of that
-        if (tokenAddr == TokenUtilsVenus.WBNB_ADDR) {
-            tokenAddr = TokenUtilsVenus.BNB_ADDR;
-        }
-
         uint256 tokenBalanceBefore = tokenAddr.getBalance(address(this));
 
         // if _amount type(uint).max that means take out proxy whole balance
@@ -115,10 +110,10 @@ contract CreamWithdraw is ActionBase, CreamHelper {
         _amount = tokenBalanceAfter - tokenBalanceBefore;
 
         // always return WETH, never native Eth
-        if (tokenAddr == TokenUtilsVenus.WBNB_ADDR) {
-            TokenUtilsVenus.depositWbnb(_amount);
-            tokenAddr = TokenUtilsVenus.BNB_ADDR; // switch back to weth
-        }
+        // if (tokenAddr == TokenUtilsVenus.WBNB_ADDR) {
+        //     TokenUtilsVenus.depositWbnb(_amount);
+        //     tokenAddr = TokenUtilsVenus.BNB_ADDR; // switch back to weth
+        // }
 
         // If tokens needs to be send to the _to address
         tokenAddr.withdrawTokens(_to, _amount);
