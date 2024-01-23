@@ -1034,8 +1034,8 @@ async function main() {
   // const liqeeRepay = await redeploy("LiqeeRepay", process.env.DFS_REGISTRY_ADDRESS);
   // writeToEnvFile("LIQEE_REPAY_ADDRESS", liqeeRepay.address);
 
-  // const liqeeSupply = await redeploy('LiqeeSupply', process.env.DFS_REGISTRY_ADDRESS);
-  // writeToEnvFile("LIQEE_SUPPLY_ADDRESS", liqeeSupply.address)
+  const liqeeSupply = await redeploy('LiqeeSupply', process.env.DFS_REGISTRY_ADDRESS);
+  writeToEnvFile("LIQEE_SUPPLY_ADDRESS", liqeeSupply.address)
 
   // const liqeeWithdraw = await redeploy('LiqeeWithdraw', process.env.DFS_REGISTRY_ADDRESS);
   // writeToEnvFile("LIQEE_WITHDRAW_ADDRESS", liqeeWithdraw.address)
