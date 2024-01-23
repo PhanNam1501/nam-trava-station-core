@@ -14,10 +14,10 @@ interface IIToken is IERC20{
     //********* User Interface *********
     //----------------------------------
     function mint(address recipient, uint256 mintAmount) external;
-
-    function mint() external payable;
     
     function mintForSelfAndEnterMarket(uint256 mintAmount) external;
+
+    function mintForSelfAndEnterMarket() external payable;
 
     function redeem(address from, uint256 redeemTokens) external;
 
