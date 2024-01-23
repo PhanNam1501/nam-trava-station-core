@@ -5,19 +5,19 @@ pragma solidity 0.8.4;
 import "../../interfaces/IWBNB.sol";
 import "../../utils/TokenUtilsVenus.sol";
 import "../ActionBase.sol";
-import "./helpers/LiqeeHelper.sol";
+import "./helpers/VenusHelper.sol";
 
-/// @title Supply a token to Liqee
-contract LiqeeSupply is ActionBase, LiqeeHelper {
+/// @title Supply a token to Venus
+contract VenusSupplyGateWay is ActionBase, VenusHelper {
     using TokenUtilsVenus for address;
     struct Params {
-        address iTokenAddr;
+        address vTokenAddr;
         uint256 amount;
         address from;
         bool enableAsColl;
     }
 
-    error LiqeeSupplyError();
+    error VenusSupplyGateWayError();
 
     /// @inheritdoc ActionBase
     function executeAction(
@@ -28,8 +28,8 @@ contract LiqeeSupply is ActionBase, LiqeeHelper {
     ) public payable virtual override returns (bytes32) {
         Params memory params = parseInputs(_callData);
 
-        params.iTokenAddr = _parseParamAddr(
-            params.iTokenAddr,
+        params.vTokenAddr = _parseParamAddr(
+            params.vTokenAddr,
             _paramMapping[0],
             _subData,
             _returnValues
@@ -47,13 +47,13 @@ contract LiqeeSupply is ActionBase, LiqeeHelper {
             _returnValues
         );
 
-        (uint256 supplyAmount, bytes memory logData) = _supply(
-            params.iTokenAddr,
+        (uint256 supplyAmount, bytes memory logData) = _supplyGateway(
+            params.vTokenAddr,
             params.amount,
             params.from,
             params.enableAsColl
         );
-        emit ActionEvent("LiqeeSupply", logData);
+        emit ActionEvent("VenusSupplyGateWay", logData);
         return bytes32(supplyAmount);
     }
 
@@ -62,13 +62,13 @@ contract LiqeeSupply is ActionBase, LiqeeHelper {
         bytes memory _callData
     ) public payable override {
         Params memory params = parseInputs(_callData);
-        (, bytes memory logData) = _supply(
-            params.iTokenAddr,
+        (, bytes memory logData) = _supplyGateway(
+            params.vTokenAddr,
             params.amount,
             params.from,
             params.enableAsColl
         );
-        logger.logActionDirectEvent("LiqeeSupply", logData);
+        logger.logActionDirectEvent("VenusSupplyGateWay", logData);
     }
 
     /// @inheritdoc ActionBase
@@ -78,47 +78,29 @@ contract LiqeeSupply is ActionBase, LiqeeHelper {
 
     //////////////////////////// ACTION LOGIC ////////////////////////////
 
-    /// @notice Supplies a token to the Liqee finance
+    /// @notice Supplies a token to the Venusound protocol
     /// @dev If amount == type(uint256).max we are getting the whole balance of the proxy
-    /// @param _iTokenAddr Address of the cToken we'll get when supplying
+    /// @param _vTokenAddr Address of the vToken we'll get when supplying
     /// @param _amount Amount of the underlying token we are supplying
     /// @param _from Address where we are pulling the underlying tokens from
     /// @param _enableAsColl If the supply asset should be collateral
-    function _supply(
-        address _iTokenAddr,
+    function _supplyGateway(
+        address _vTokenAddr,
         uint256 _amount,
         address _from,
         bool _enableAsColl
     ) internal returns (uint256, bytes memory) {
-        address tokenAddr = getUnderlyingAddr(_iTokenAddr);
+        address tokenAddr = getUnderlyingAddr(_vTokenAddr);
 
-        // if amount type(uint256).max, pull current _from balance
         if (_amount == type(uint256).max) {
-            _amount = tokenAddr.getBalance(_from);
-        }
-        // pull the tokens _from to the proxy
-        //tokenAddr.pullTokensIfNeeded(_from, _amount);
-
-        // enter the market if needed
-        if (_enableAsColl) {
-            enterMarket(_iTokenAddr);
+            _amount = address(this).balance;
         }
 
-        // we always expect actions to deal with WETH never Eth
-        // supply WBNB in proxy and change to active BNB to supply in protocol
-        if (tokenAddr != TokenUtilsVenus.BNB_ADDR) {
-            tokenAddr.approveToken(_iTokenAddr, _amount);
-
-            IIToken(_iTokenAddr).mintForSelfAndEnterMarket(_amount);
-
-            // if (!IIToken(_iTokenAddr).mintForSelfAndEnterMarket(_amount)) {
-            //     revert LiqeeSupplyError();
-            // }
-        } else {
-
-            //TokenUtilsVenus.withdrawWbnb(_amount); // change from Wbnb to BNB
-            IIToken(_iTokenAddr).mintForSelfAndEnterMarket{value: _amount}(); // reverts on fail
+        if(_enableAsColl){
+            enterMarket(_vTokenAddr);
         }
+
+        IVToken(_vTokenAddr).mint{value: _amount}(); // reverts on fail
 
         bytes memory logData = abi.encode(
             tokenAddr,

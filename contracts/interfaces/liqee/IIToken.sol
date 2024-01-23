@@ -15,7 +15,7 @@ interface IIToken is IERC20{
     //----------------------------------
     function mint(address recipient, uint256 mintAmount) external;
 
-    function mint() external payable;
+    function mintForSelfAndEnterMarket() external payable;
     
     function mintForSelfAndEnterMarket(uint256 mintAmount) external;
 
