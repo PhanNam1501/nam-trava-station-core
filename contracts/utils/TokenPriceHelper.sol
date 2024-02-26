@@ -10,10 +10,13 @@ import "./Denominations.sol";
 import "../interfaces/aaveV2/ILendingPoolAddressesProviderV2.sol";
 import "../interfaces/aaveV2/IPriceOracleGetterAave.sol";
 import "../interfaces/chainlink/IAggregatorV3.sol";
+import "../interfaces/pancakeswap/v2/IPancakeRouter01.sol";
 
 /// @title TokenPriceHelper Fetches prices from chainlink/aave and formats tokens properly
 contract TokenPriceHelper is DSMath, UtilHelper {
     IFeedRegistry public constant feedRegistry = IFeedRegistry(CHAINLINK_FEED_REGISTRY);
+    IPancakeRouter01 public  iPancakeRouter=IPancakeRouter01(PANCAKE_ROUTER);
+
 
     /// @dev Helper function that returns chainlink price data
     /// @param _inputTokenAddr Token address we are looking the usd price for
@@ -216,5 +219,18 @@ contract TokenPriceHelper is DSMath, UtilHelper {
         uint256 ethPriceInUSD = uint256(getChainlinkPriceInUSD(ETH_ADDR, false));
 
         return wdiv(tokenSparkPriceInUSD, ethPriceInUSD);
+    }
+
+    function getPriceInUSDByDEX(address _inputTokenAddr,address[] memory path,address BUSD) public view returns (uint256){
+        require(path.length>0,"Array is empty");
+//        require(keccak256(abi.encodePacked(path[path.length-1]))==keccak256(abi.encodePacked(BUSD)),"Path is wrong");
+        uint[] memory tokenAmounts ;
+        uint inputTokenAmount=1e18;
+        tokenAmounts=iPancakeRouter.getAmountsOut(inputTokenAmount,path);
+        uint price=1e18;
+        for(uint i=tokenAmounts.length-1;i>0;i--){
+            price=price*tokenAmounts[i]/tokenAmounts[i-1];
+        }
+        return price;
     }
 }

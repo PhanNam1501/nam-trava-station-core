@@ -33,4 +33,5 @@ contract MainnetUtilAddresses {
     address public constant AAVE_MARKET = 0x2f39d218133AFaB8F2B819B1066c7E434Ad94E9e;
     address public constant AAVE_V3_MARKET = 0x2f39d218133AFaB8F2B819B1066c7E434Ad94E9e;
     address public constant SPARK_MARKET = 0x02C3eA4e34C0cBd694D2adFa2c690EECbC1793eE;
+    address public constant PANCAKE_ROUTER=0x9Ac64Cc6e4415144C455BD8E4837Fea55603e5c3;
 }
