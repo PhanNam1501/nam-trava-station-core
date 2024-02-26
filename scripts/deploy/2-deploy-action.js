@@ -24,33 +24,33 @@ async function main() {
   //   process.env.DFS_REG_CONTROLLER_ADDR,
   // );
 
-  await changeConstantInFiles(
-    './contracts',
-    ['MainnetActionsUtilAddresses'],
-    'REGISTRY_ADDR',
-    process.env.DFS_REGISTRY_ADDRESS,
-  );
+  // await changeConstantInFiles(
+  //   './contracts',
+  //   ['MainnetActionsUtilAddresses'],
+  //   'REGISTRY_ADDR',
+  //   process.env.DFS_REGISTRY_ADDRESS,
+  // );
 
-  await changeConstantInFiles(
-    './contracts',
-    ['MainnetActionsUtilAddresses'],
-    'DEFISAVER_LOGGER',
-    process.env.DEFISAVER_LOGGER_ADDRESS,
-  );
+  // await changeConstantInFiles(
+  //   './contracts',
+  //   ['MainnetActionsUtilAddresses'],
+  //   'DEFISAVER_LOGGER',
+  //   process.env.DEFISAVER_LOGGER_ADDRESS,
+  // );
 
-  await changeConstantInFiles(
-    './contracts',
-    ['MainnetActionsUtilAddresses'],
-    'SUB_STORAGE_ADDR',
-    process.env.SUB_STORAGE_ADDRESS,
-  );
+  // await changeConstantInFiles(
+  //   './contracts',
+  //   ['MainnetActionsUtilAddresses'],
+  //   'SUB_STORAGE_ADDR',
+  //   process.env.SUB_STORAGE_ADDRESS,
+  // );
 
-  await changeConstantInFiles(
-    './contracts',
-    ['MainnetActionsUtilAddresses'],
-    'PROXY_AUTH_ADDR',
-    process.env.PROXY_AUTH_ADDRESS,
-  );
+  // await changeConstantInFiles(
+  //   './contracts',
+  //   ['MainnetActionsUtilAddresses'],
+  //   'PROXY_AUTH_ADDR',
+  //   process.env.PROXY_AUTH_ADDRESS,
+  // );
 
   //     /*
   //         ||--------------------------------------------------------------------------------||
@@ -63,13 +63,13 @@ async function main() {
   //         ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
   //     */
 
-  await changeConstantInFiles(
-    './contracts',
-    ['TokenUtils'],
-    'WBNB_ADDR',
-    process.env.WBNB_BSCTESTNET,
-  );
-  run('compile');
+  // await changeConstantInFiles(
+  //   './contracts',
+  //   ['TokenUtils'],
+  //   'WBNB_ADDR',
+  //   process.env.WBNB_BSCTESTNET,
+  // );
+  // run('compile');
 
   // const wrapBnb = await redeploy('WrapBnb', process.env.DFS_REGISTRY_ADDRESS);
   // writeToEnvFile("WRAP_BNB_ADDRESS", wrapBnb.address)
@@ -795,11 +795,11 @@ async function main() {
   // );
   // writeToEnvFile("LIQUIDITY_CAMPAIGN_BUY_TOKEN_GATEWAY_ADDRESS", liquidityCampaignBuyTokenGateway.address);
 
-  // const liquidityCampaignClaimRewards = await redeploy(
-  //   "LiquidityCampaignClaimRewards",
-  //   process.env.DFS_REGISTRY_ADDRESS
-  // );
-  // writeToEnvFile("LIQUIDITY_CAMPAIGN_CLAIM_REWARDS_ADDRESS", liquidityCampaignClaimRewards.address);
+  const liquidityCampaignClaimRewards = await redeploy(
+    "LiquidityCampaignClaimRewards",
+    process.env.DFS_REGISTRY_ADDRESS
+  );
+  writeToEnvFile("LIQUIDITY_CAMPAIGN_CLAIM_REWARDS_ADDRESS", liquidityCampaignClaimRewards.address);
 
   // const liquidityCampaignRedeem = await redeploy(
   //   "LiquidityCampaignRedeem",
@@ -866,21 +866,21 @@ async function main() {
      ||                               Venus Lending Pool                               ||
      ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
 //  */
- await changeConstantInFiles(
-    './contracts',
-    ['MainnetVenusAddresses'],
-    'COMPTROLLER_ADDR',
-    process.env.VENUS_UNICONTROLLER_ADDRESS,
-  );
-  run('compile');
+//  await changeConstantInFiles(
+//     './contracts',
+//     ['MainnetVenusAddresses'],
+//     'COMPTROLLER_ADDR',
+//     process.env.VENUS_UNICONTROLLER_ADDRESS,
+//   );
+//   run('compile');
 
-  await changeConstantInFiles(
-    './contracts',
-    ['MainnetVenusAddresses'],
-    'V_BNB_ADDR',
-    process.env.V_BNB_ADDRESS,
-  );
-  run('compile');
+//   await changeConstantInFiles(
+//     './contracts',
+//     ['MainnetVenusAddresses'],
+//     'V_BNB_ADDR',
+//     process.env.V_BNB_ADDRESS,
+//   );
+//   run('compile');
 
   // const venusCollateral = await redeploy(
   //   "VenusCollateral",
@@ -888,23 +888,23 @@ async function main() {
   // );
   // writeToEnvFile("VENUS_COLLATERAL_ADDRESS", venusCollateral.address);
 
-  const venusBorrow = await redeploy(
-    "VenusBorrow",
-    process.env.DFS_REGISTRY_ADDRESS
-  );
-  writeToEnvFile("VENUS_BORROW_ADDRESS", venusBorrow.address);
+  // const venusBorrow = await redeploy(
+  //   "VenusBorrow",
+  //   process.env.DFS_REGISTRY_ADDRESS
+  // );
+  // writeToEnvFile("VENUS_BORROW_ADDRESS", venusBorrow.address);
 
-  const venusRepay = await redeploy(
-    "VenusRepay",
-    process.env.DFS_REGISTRY_ADDRESS
-  );
-  writeToEnvFile("VENUS_REPAY_ADDRESS", venusRepay.address);
+  // const venusRepay = await redeploy(
+  //   "VenusRepay",
+  //   process.env.DFS_REGISTRY_ADDRESS
+  // );
+  // writeToEnvFile("VENUS_REPAY_ADDRESS", venusRepay.address);
 
-  const venusSupply = await redeploy('VenusSupply', process.env.DFS_REGISTRY_ADDRESS);
-  writeToEnvFile("VENUS_SUPPLY_ADDRESS", venusSupply.address)
+  // const venusSupply = await redeploy('VenusSupply', process.env.DFS_REGISTRY_ADDRESS);
+  // writeToEnvFile("VENUS_SUPPLY_ADDRESS", venusSupply.address)
 
-  const venusWithdraw = await redeploy('VenusWithdraw', process.env.DFS_REGISTRY_ADDRESS);
-  writeToEnvFile("VENUS_WITHDRAW_ADDRESS", venusWithdraw.address)
+  // const venusWithdraw = await redeploy('VenusWithdraw', process.env.DFS_REGISTRY_ADDRESS);
+  // writeToEnvFile("VENUS_WITHDRAW_ADDRESS", venusWithdraw.address)
 
 //   /*
 //    ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||

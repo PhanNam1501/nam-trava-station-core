@@ -85,19 +85,23 @@ contract LiquidityCampaignClaimRewards is ActionBase, LiquidityCampaignHelper {
             _to = address(this);
         }
 
+        uint256 amountBefore = _rewardToken.getBalance(_to);
+
         // deposit in behalf of the proxy
         IVault(_stakingPool).claimRewards(
             _to,
             _amount
         );
 
+        uint256 amountAfter = _rewardToken.getBalance(_to);
 
         bytes memory logData = abi.encode(
             _rewardToken,
             _to,
             _amount
         );
-        return (_amount, logData);
+        
+        return (amountAfter - amountBefore, logData);
     }
 
     function parseInputs(

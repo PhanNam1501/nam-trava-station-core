@@ -135,7 +135,7 @@ module.exports = {
       },
     },
   },
-  defaultNetwork: "mainnet",
+  defaultNetwork: "bscTestnet",
   networks: {
     hardhat: {
       forking: {

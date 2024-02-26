@@ -24,15 +24,15 @@ async function main() {
         ||                              TestStrategy Contract                             || 
         ||--------------------------------------------------------------------------------||
     */
-    const testStrategy = await deployAsOwner('TestStrategy', signer);
-    await changeConstantInFiles(
-        './contracts',
-        ['MainnetTestStrategyAddresses'],
-        'TEST_STRATEGY_ADDRESS',
-        testStrategy.address,
-    );
-    await run('compile');
-    writeToEnvFile("TEST_STRATEGY_ADDRESS", testStrategy.address)
+    // const testStrategy = await deployAsOwner('TestStrategy', signer);
+    // await changeConstantInFiles(
+    //     './contracts',
+    //     ['MainnetTestStrategyAddresses'],
+    //     'TEST_STRATEGY_ADDRESS',
+    //     testStrategy.address,
+    // );
+    // await run('compile');
+    // writeToEnvFile("TEST_STRATEGY_ADDRESS", testStrategy.address)
     /*
         ||--------------------------------------------------------------------------------||
         ||                                 Action Contract                                || 
@@ -44,16 +44,19 @@ async function main() {
         ||                           TestStratage Contract                                ||
         ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
     */
-    const testStrategyIncrease = await redeploy('TestStrategyIncrease', process.env.DFS_REGISTRY_ADDRESS);
-    writeToEnvFile("TEST_STRATEGY_INCREASE_ADDRESS", testStrategyIncrease.address)
+    // const testStrategyIncrease = await redeploy('TestStrategyIncrease', process.env.DFS_REGISTRY_ADDRESS);
+    // writeToEnvFile("TEST_STRATEGY_INCREASE_ADDRESS", testStrategyIncrease.address)
 
     /*
         ||--------------------------------------------------------------------------------||
         ||                                Trigger Contract                                || 
         ||--------------------------------------------------------------------------------||
     */
-    const testStrategyTrigger = await redeploy('TestStrategyTrigger', process.env.DFS_REGISTRY_ADDRESS);
-    writeToEnvFile("TEST_STRATEGY_TRIGGER_ADDRESS", testStrategyTrigger.address)
+    // const testStrategyTrigger = await redeploy('TestStrategyTrigger', process.env.DFS_REGISTRY_ADDRESS);
+    // writeToEnvFile("TEST_STRATEGY_TRIGGER_ADDRESS", testStrategyTrigger.address)
+
+    const timeTrigger = await redeploy('TimeTrigger', process.env.DFS_REGISTRY_ADDRESS);
+    writeToEnvFile("TIME_TRIGGER", timeTrigger.address)
 }
 
 start(main);
