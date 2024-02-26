@@ -124,6 +124,15 @@ async function main() {
   // const travaSupply = await redeploy('TravaSupply', process.env.DFS_REGISTRY_ADDRESS);
   // writeToEnvFile("TRAVA_SUPPLY_ADDRESS", travaSupply.address)
 
+  // const OraiStake = await redeploy('OraiStake', process.env.DFS_REGISTRY_ADDRESS);
+  // writeToEnvFile("ORAI_STAKE_ADDRESS", OraiStake.address)
+
+  // const OraiUnstake = await redeploy('OraiUnstake', process.env.DFS_REGISTRY_ADDRESS);
+  // writeToEnvFile("ORAI_UNSTAKE_ADDRESS", OraiUnstake.address)
+
+  // const OraiWithdrawUnstaked = await redeploy('OraiWithdrawUnstaked', process.env.DFS_REGISTRY_ADDRESS);
+  // writeToEnvFile("ORAI_WITHDRAWSTAKE_ADDRESS", OraiWithdrawUnstaked.address)
+
   // const travaWithdraw = await redeploy('TravaWithdraw', process.env.DFS_REGISTRY_ADDRESS);
   // writeToEnvFile("TRAVA_WITHDRAW_ADDRESS", travaWithdraw.address)
 
@@ -135,6 +144,10 @@ async function main() {
 
   // const travaConvertRewards = await redeploy('TravaConvertRewards', process.env.DFS_REGISTRY_ADDRESS);
   // writeToEnvFile("TRAVA_CONVERT_REWARDS_ADDRESS", travaConvertRewards.address)
+
+  const gasFeeTaker = await redeploy('GasFeeTaker', process.env.GAS_FEE_TAKER_ADDRESS);
+  writeToEnvFile("TRAVA_GAS_FEE_TAKER_ADDRESS", gasFeeTaker.address)
+
   //        ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
   //        ||                               Trava Governance Contract                                   ||
   //        ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||

@@ -7,10 +7,11 @@ import "./SafeBEP20.sol";
 
 library TokenUtils {
     using SafeBEP20 for IBEP20;
-    // address public constant WBNB_ADDR = 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c;
+    // address public constant WBNB_ADDR = 0x910CB19698Eac48a6AB7Ccc9542B756f2Bdd67C6;
     // address public constant BNB_ADDR = 0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE;
-    address public constant WBNB_ADDR = 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c;
+    address public constant WBNB_ADDR = 0x910CB19698Eac48a6AB7Ccc9542B756f2Bdd67C6;
     address public constant BNB_ADDR = 0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE;
+    address public constant WETH_ADDR = 0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2;
 
     function approveToken(
         address _tokenAddr,

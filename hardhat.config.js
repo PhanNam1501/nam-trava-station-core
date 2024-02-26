@@ -171,9 +171,9 @@ module.exports = {
       // gas: 25e6,
     },
     bscTestnet: {
-      url: "https://bsc-testnet.publicnode.com",
+      url: "https://nd-741-200-374.p2pify.com/e47c8aefbd713f6684e9ee1a095c1052",
       chainId: 97,
-      gasPrice: 20e9,
+      gasPrice: 1e10,
       // gas: 2e7,
       // gas: 1e7,
       accounts: [
