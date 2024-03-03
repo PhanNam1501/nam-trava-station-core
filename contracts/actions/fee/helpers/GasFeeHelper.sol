@@ -17,7 +17,7 @@ contract GasFeeHelper is DSMath, TokenPriceHelper {
     /// @dev Divider for input amount, 5 bps
     uint256 public constant MAX_DFS_FEE = 2000;
 
-    function calcGasCost(uint256 _gasUsed, address _feeToken, uint256 _l1GasCostInEth) public view returns (uint256 txCost) {
+    function calcGasCost(uint256 _gasUsed, address _feeToken, address[] memory path, uint256 _l1GasCostInEth) public view returns (uint256 txCost) {
         uint256 gasPrice = tx.gasprice;
 
         // gas price must be in a reasonable range
@@ -35,7 +35,7 @@ contract GasFeeHelper is DSMath, TokenPriceHelper {
 
         // convert to token amount
         if (_feeToken != TokenUtils.WETH_ADDR) {
-            uint256 price = getPriceInETH(_feeToken);
+            uint256 price = getPriceInUSDByDEX(path);
             uint256 tokenDecimals = _feeToken.getTokenDecimals();
 
             require(tokenDecimals <= 18, "Token decimal too big");

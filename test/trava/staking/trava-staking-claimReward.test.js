@@ -216,16 +216,12 @@ describe("Test Staking Claim Reward", async function () {
     );
 
     let stakedTokenAddress= await vaultTokenContract.STAKED_TOKEN();
+
     let rewardVault = await vaultTokenContract.REWARDS_VAULT();
 
     const stakeTokenContract = await ethers.getContractAt(
       "ERC20Mock",
       stakedTokenAddress
-    );
-
-    await stakeTokenContract.approve(
-      proxy.address,
-      MAX_UINT256
     );
 
     await stakeTokenContract.approve(

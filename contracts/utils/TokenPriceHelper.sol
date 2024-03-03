@@ -15,7 +15,7 @@ import "../interfaces/pancakeswap/v2/IPancakeRouter01.sol";
 /// @title TokenPriceHelper Fetches prices from chainlink/aave and formats tokens properly
 contract TokenPriceHelper is DSMath, UtilHelper {
     IFeedRegistry public constant feedRegistry = IFeedRegistry(CHAINLINK_FEED_REGISTRY);
-    IPancakeRouter01 public  iPancakeRouter=IPancakeRouter01(PANCAKE_ROUTER);
+    IPancakeRouter01 public constant iPancakeRouter= IPancakeRouter01(PANCAKE_ROUTER);
 
 
     /// @dev Helper function that returns chainlink price data
@@ -221,16 +221,27 @@ contract TokenPriceHelper is DSMath, UtilHelper {
         return wdiv(tokenSparkPriceInUSD, ethPriceInUSD);
     }
 
-    function getPriceInUSDByDEX(address _inputTokenAddr,address[] memory path,address BUSD) public view returns (uint256){
+//path: từ tokenaddr cần lấy giá -> tokenaddr giá ngang USD
+    function getPriceInUSDByDEX(address[] memory path) public view returns (uint256){
         require(path.length>0,"Array is empty");
 //        require(keccak256(abi.encodePacked(path[path.length-1]))==keccak256(abi.encodePacked(BUSD)),"Path is wrong");
         uint[] memory tokenAmounts ;
         uint inputTokenAmount=1e18;
-        tokenAmounts=iPancakeRouter.getAmountsOut(inputTokenAmount,path);
+        tokenAmounts=iPancakeRouter.getAmountsOut(inputTokenAmount, path);
         uint price=1e18;
         for(uint i=tokenAmounts.length-1;i>0;i--){
             price=price*tokenAmounts[i]/tokenAmounts[i-1];
         }
         return price;
     }
+
+    // function getPriceInUSD(address[] memory path,uint256 inputDecimal,uint256 quoteDecimal) public view returns (uint256){
+    //     require(path.length>0,"Array is empty");
+    //     uint[] memory tokenAmounts ;
+    //     uint inputTokenAmount=1;
+    //     uint quotePrice=1e18;
+    //     tokenAmounts=iPancakeRouter.getAmountsOut(inputTokenAmount,path);
+    //     uint price= (pricetokenAmounts[tokenAmounts.length-1]quoteDecimal)/(tokenAmounts[0]*inputDecimal);
+    //     return price;
+    // }
 }

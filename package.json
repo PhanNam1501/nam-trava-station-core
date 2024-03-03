@@ -40,7 +40,7 @@
     "i": "^0.3.7",
     "mocha": "^10.2.0",
     "npm": "^9.7.1",
-    "phuong-trava-station-sdk": "^3.0.0",
+    "phuong-trava-station-sdk": "^3.0.6",
     "readline-sync": "^1.4.10",
     "trava-simulation-route": "1.0.81",
     "trava-station-sdk": "^1.0.42"

@@ -229,7 +229,6 @@ describe("Test Staking Stake", async function () {
 
     let stakedTokenAddress= await vaultTokenContract.STAKED_TOKEN();
 
-
     const stakeTokenContract = await ethers.getContractAt(
       "ERC20Mock",
       stakedTokenAddress
@@ -237,7 +236,7 @@ describe("Test Staking Stake", async function () {
 
     await stakeTokenContract.approve(
       proxy.address,
-      MAX_UINT256
+      1e7
     );
 
     const stakingAction = new Action(
@@ -247,8 +246,8 @@ describe("Test Staking Stake", async function () {
       [
         process.env.TRAVA_STAKING_POOL,
         proxy.address,
-        MAX_UINT256,
-        "0x595622cBd0Fc4727DF476a1172AdA30A9dDf8F43",
+        1e7,
+        process.env.PUBLIC_KEY,
       ]
     );
 

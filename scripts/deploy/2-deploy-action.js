@@ -145,8 +145,26 @@ async function main() {
   // const travaConvertRewards = await redeploy('TravaConvertRewards', process.env.DFS_REGISTRY_ADDRESS);
   // writeToEnvFile("TRAVA_CONVERT_REWARDS_ADDRESS", travaConvertRewards.address)
 
-  const gasFeeTaker = await redeploy('GasFeeTaker', process.env.GAS_FEE_TAKER_ADDRESS);
-  writeToEnvFile("TRAVA_GAS_FEE_TAKER_ADDRESS", gasFeeTaker.address)
+  //        ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
+  //        ||                               FeeContract                                   ||
+  //        ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
+   await changeConstantInFiles(
+    './contracts',
+    ['MainnetUtilAddresses'],
+    'FEE_RECIPIENT',
+    process.env.FEE_RECIPIENT,
+  );
+  run('compile');
+
+  // const TokenPriceHelper = await redeploy('TokenPriceHelper', process.env.DFS_REGISTRY_ADDRESS);
+  // writeToEnvFile("TOKEN_PRICE_HELPER", TokenPriceHelper.address)
+
+  // const GasFeeHelper = await redeploy('GasFeeHelper', process.env.DFS_REGISTRY_ADDRESS);
+  // writeToEnvFile("GAS_FEE_HELPER", GasFeeHelper.address)
+
+  const gasFeeTaker = await redeploy('GasFeeTaker', process.env.DFS_REGISTRY_ADDRESS);
+  writeToEnvFile("GAS_FEE_TAKER", gasFeeTaker.address)
+
 
   //        ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
   //        ||                               Trava Governance Contract                                   ||
