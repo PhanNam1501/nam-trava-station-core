@@ -99,7 +99,7 @@ contract VenusSupplyGateWay is ActionBase, VenusHelper {
         if(_enableAsColl){
             enterMarket(_vTokenAddr);
         }
-        
+
         IVToken(_vTokenAddr).mint{value: _amount}(); // reverts on fail
 
         bytes memory logData = abi.encode(
