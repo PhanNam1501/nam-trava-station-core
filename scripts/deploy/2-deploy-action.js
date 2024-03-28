@@ -24,33 +24,33 @@ async function main() {
   //   process.env.DFS_REG_CONTROLLER_ADDR,
   // );
 
-  await changeConstantInFiles(
-    './contracts',
-    ['MainnetActionsUtilAddresses'],
-    'REGISTRY_ADDR',
-    process.env.DFS_REGISTRY_ADDRESS,
-  );
+  // await changeConstantInFiles(
+  //   './contracts',
+  //   ['MainnetActionsUtilAddresses'],
+  //   'REGISTRY_ADDR',
+  //   process.env.DFS_REGISTRY_ADDRESS,
+  // );
 
-  await changeConstantInFiles(
-    './contracts',
-    ['MainnetActionsUtilAddresses'],
-    'DEFISAVER_LOGGER',
-    process.env.DEFISAVER_LOGGER_ADDRESS,
-  );
+  // await changeConstantInFiles(
+  //   './contracts',
+  //   ['MainnetActionsUtilAddresses'],
+  //   'DEFISAVER_LOGGER',
+  //   process.env.DEFISAVER_LOGGER_ADDRESS,
+  // );
 
-  await changeConstantInFiles(
-    './contracts',
-    ['MainnetActionsUtilAddresses'],
-    'SUB_STORAGE_ADDR',
-    process.env.SUB_STORAGE_ADDRESS,
-  );
+  // await changeConstantInFiles(
+  //   './contracts',
+  //   ['MainnetActionsUtilAddresses'],
+  //   'SUB_STORAGE_ADDR',
+  //   process.env.SUB_STORAGE_ADDRESS,
+  // );
 
-  await changeConstantInFiles(
-    './contracts',
-    ['MainnetActionsUtilAddresses'],
-    'PROXY_AUTH_ADDR',
-    process.env.PROXY_AUTH_ADDRESS,
-  );
+  // await changeConstantInFiles(
+  //   './contracts',
+  //   ['MainnetActionsUtilAddresses'],
+  //   'PROXY_AUTH_ADDR',
+  //   process.env.PROXY_AUTH_ADDRESS,
+  // );
 
   //     /*
   //         ||--------------------------------------------------------------------------------||
@@ -63,13 +63,13 @@ async function main() {
   //         ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
   //     */
 
-  await changeConstantInFiles(
-    './contracts',
-    ['TokenUtils'],
-    'WBNB_ADDR',
-    process.env.WBNB_BSCTESTNET,
-  );
-  run('compile');
+  // await changeConstantInFiles(
+  //   './contracts',
+  //   ['TokenUtils'],
+  //   'WBNB_ADDR',
+  //   process.env.WBNB_BSCTESTNET,
+  // );
+  // run('compile');
 
   // const wrapBnb = await redeploy('WrapBnb', process.env.DFS_REGISTRY_ADDRESS);
   // writeToEnvFile("WRAP_BNB_ADDRESS", wrapBnb.address)
@@ -125,6 +125,15 @@ async function main() {
   // const travaSupply = await redeploy('TravaSupply', process.env.DFS_REGISTRY_ADDRESS);
   // writeToEnvFile("TRAVA_SUPPLY_ADDRESS", travaSupply.address)
 
+  // const OraiStake = await redeploy('OraiStake', process.env.DFS_REGISTRY_ADDRESS);
+  // writeToEnvFile("ORAI_STAKE_ADDRESS", OraiStake.address)
+
+  // const OraiUnstake = await redeploy('OraiUnstake', process.env.DFS_REGISTRY_ADDRESS);
+  // writeToEnvFile("ORAI_UNSTAKE_ADDRESS", OraiUnstake.address)
+
+  // const OraiWithdrawUnstaked = await redeploy('OraiWithdrawUnstaked', process.env.DFS_REGISTRY_ADDRESS);
+  // writeToEnvFile("ORAI_WITHDRAWSTAKE_ADDRESS", OraiWithdrawUnstaked.address)
+
   // const travaWithdraw = await redeploy('TravaWithdraw', process.env.DFS_REGISTRY_ADDRESS);
   // writeToEnvFile("TRAVA_WITHDRAW_ADDRESS", travaWithdraw.address)
 
@@ -136,6 +145,28 @@ async function main() {
 
   // const travaConvertRewards = await redeploy('TravaConvertRewards', process.env.DFS_REGISTRY_ADDRESS);
   // writeToEnvFile("TRAVA_CONVERT_REWARDS_ADDRESS", travaConvertRewards.address)
+
+  //        ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
+  //        ||                               FeeContract                                   ||
+  //        ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
+   await changeConstantInFiles(
+    './contracts',
+    ['MainnetUtilAddresses'],
+    'FEE_RECIPIENT',
+    process.env.FEE_RECIPIENT,
+  );
+  run('compile');
+
+  // const TokenPriceHelper = await redeploy('TokenPriceHelper', process.env.DFS_REGISTRY_ADDRESS);
+  // writeToEnvFile("TOKEN_PRICE_HELPER", TokenPriceHelper.address)
+
+  // const GasFeeHelper = await redeploy('GasFeeHelper', process.env.DFS_REGISTRY_ADDRESS);
+  // writeToEnvFile("GAS_FEE_HELPER", GasFeeHelper.address)
+
+  const gasFeeTaker = await redeploy('GasFeeTaker', process.env.DFS_REGISTRY_ADDRESS);
+  writeToEnvFile("GAS_FEE_TAKER", gasFeeTaker.address)
+
+
   //        ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
   //        ||                               Trava Governance Contract                                   ||
   //        ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
@@ -795,11 +826,11 @@ async function main() {
   // );
   // writeToEnvFile("LIQUIDITY_CAMPAIGN_BUY_TOKEN_GATEWAY_ADDRESS", liquidityCampaignBuyTokenGateway.address);
 
-  // const liquidityCampaignClaimRewards = await redeploy(
-  //   "LiquidityCampaignClaimRewards",
-  //   process.env.DFS_REGISTRY_ADDRESS
-  // );
-  // writeToEnvFile("LIQUIDITY_CAMPAIGN_CLAIM_REWARDS_ADDRESS", liquidityCampaignClaimRewards.address);
+  const liquidityCampaignClaimRewards = await redeploy(
+    "LiquidityCampaignClaimRewards",
+    process.env.DFS_REGISTRY_ADDRESS
+  );
+  writeToEnvFile("LIQUIDITY_CAMPAIGN_CLAIM_REWARDS_ADDRESS", liquidityCampaignClaimRewards.address);
 
   // const liquidityCampaignRedeem = await redeploy(
   //   "LiquidityCampaignRedeem",
@@ -919,6 +950,7 @@ async function main() {
   //   ['MainnetCreamAddresses'],
   //   'COMPTROLLER_ADDR_CREAM',
   //   process.env.CREAM_COMPTROLLER_ADDRESS,
+
   // );
   // run('compile');
 

@@ -1,0 +1,558 @@
+{
+	"contractName": "GasFeeHelper",
+	"abi": [
+		{
+			"inputs": [],
+			"name": "AAVE_MARKET",
+			"outputs": [
+				{
+					"internalType": "address",
+					"name": "",
+					"type": "address"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [],
+			"name": "AAVE_V3_MARKET",
+			"outputs": [
+				{
+					"internalType": "address",
+					"name": "",
+					"type": "address"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [],
+			"name": "CHAINLINK_FEED_REGISTRY",
+			"outputs": [
+				{
+					"internalType": "address",
+					"name": "",
+					"type": "address"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [],
+			"name": "ETH_ADDR",
+			"outputs": [
+				{
+					"internalType": "address",
+					"name": "",
+					"type": "address"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [],
+			"name": "MAX_DFS_FEE",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [],
+			"name": "PANCAKE_ROUTER",
+			"outputs": [
+				{
+					"internalType": "address",
+					"name": "",
+					"type": "address"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [],
+			"name": "SANITY_GAS_PRICE",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [],
+			"name": "SPARK_MARKET",
+			"outputs": [
+				{
+					"internalType": "address",
+					"name": "",
+					"type": "address"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [],
+			"name": "STETH_ADDR",
+			"outputs": [
+				{
+					"internalType": "address",
+					"name": "",
+					"type": "address"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [],
+			"name": "WETH_ADDR",
+			"outputs": [
+				{
+					"internalType": "address",
+					"name": "",
+					"type": "address"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [],
+			"name": "WSTETH_ADDR",
+			"outputs": [
+				{
+					"internalType": "address",
+					"name": "",
+					"type": "address"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "uint256",
+					"name": "_gasUsed",
+					"type": "uint256"
+				},
+				{
+					"internalType": "address",
+					"name": "_feeToken",
+					"type": "address"
+				},
+				{
+					"internalType": "address[]",
+					"name": "path",
+					"type": "address[]"
+				},
+				{
+					"internalType": "uint256",
+					"name": "_l1GasCostInEth",
+					"type": "uint256"
+				}
+			],
+			"name": "calcGasCost",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "txCost",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [],
+			"name": "feeRecipient",
+			"outputs": [
+				{
+					"internalType": "contract FeeRecipient",
+					"name": "",
+					"type": "address"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [],
+			"name": "feedRegistry",
+			"outputs": [
+				{
+					"internalType": "contract IFeedRegistry",
+					"name": "",
+					"type": "address"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "address",
+					"name": "_tokenAddr",
+					"type": "address"
+				}
+			],
+			"name": "getAaveTokenPriceInETH",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "price",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "address",
+					"name": "_tokenAddr",
+					"type": "address"
+				}
+			],
+			"name": "getAaveTokenPriceInUSD",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "address",
+					"name": "_tokenAddr",
+					"type": "address"
+				}
+			],
+			"name": "getAaveV3TokenPriceInETH",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "address",
+					"name": "_tokenAddr",
+					"type": "address"
+				}
+			],
+			"name": "getAaveV3TokenPriceInUSD",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "price",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "address",
+					"name": "_inputTokenAddr",
+					"type": "address"
+				}
+			],
+			"name": "getAddrForChainlinkOracle",
+			"outputs": [
+				{
+					"internalType": "address",
+					"name": "tokenAddrForChainlinkUsage",
+					"type": "address"
+				}
+			],
+			"stateMutability": "pure",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "address",
+					"name": "_inputTokenAddr",
+					"type": "address"
+				}
+			],
+			"name": "getChainlinkPriceInETH",
+			"outputs": [
+				{
+					"internalType": "int256",
+					"name": "chainlinkPriceInETH",
+					"type": "int256"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "address",
+					"name": "_inputTokenAddr",
+					"type": "address"
+				},
+				{
+					"internalType": "bool",
+					"name": "_useFallback",
+					"type": "bool"
+				}
+			],
+			"name": "getChainlinkPriceInUSD",
+			"outputs": [
+				{
+					"internalType": "int256",
+					"name": "chainlinkPriceInUSD",
+					"type": "int256"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "address",
+					"name": "_inputTokenAddr",
+					"type": "address"
+				}
+			],
+			"name": "getPriceInETH",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "address",
+					"name": "_inputTokenAddr",
+					"type": "address"
+				}
+			],
+			"name": "getPriceInUSD",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "address[]",
+					"name": "path",
+					"type": "address[]"
+				}
+			],
+			"name": "getPriceInUSDByDEX",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "address",
+					"name": "_inputTokenAddr",
+					"type": "address"
+				},
+				{
+					"internalType": "uint80",
+					"name": "_roundId",
+					"type": "uint80"
+				},
+				{
+					"internalType": "contract IAggregatorV3",
+					"name": "aggregator",
+					"type": "address"
+				}
+			],
+			"name": "getRoundInfo",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "",
+					"type": "uint256"
+				},
+				{
+					"internalType": "uint256",
+					"name": "updateTimestamp",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "address",
+					"name": "_inputTokenAddr",
+					"type": "address"
+				},
+				{
+					"internalType": "uint80",
+					"name": "_roundId",
+					"type": "uint80"
+				}
+			],
+			"name": "getRoundInfo",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "",
+					"type": "uint256"
+				},
+				{
+					"internalType": "uint256",
+					"name": "updateTimestamp",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "address",
+					"name": "_tokenAddr",
+					"type": "address"
+				}
+			],
+			"name": "getSparkTokenPriceInETH",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "address",
+					"name": "_tokenAddr",
+					"type": "address"
+				}
+			],
+			"name": "getSparkTokenPriceInUSD",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "price",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "int256",
+					"name": "_btcPrice",
+					"type": "int256"
+				}
+			],
+			"name": "getWBtcPrice",
+			"outputs": [
+				{
+					"internalType": "int256",
+					"name": "wBtcPrice",
+					"type": "int256"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "int256",
+					"name": "_stEthPrice",
+					"type": "int256"
+				}
+			],
+			"name": "getWStEthPrice",
+			"outputs": [
+				{
+					"internalType": "int256",
+					"name": "wStEthPrice",
+					"type": "int256"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [],
+			"name": "iPancakeRouter",
+			"outputs": [
+				{
+					"internalType": "contract IPancakeRouter01",
+					"name": "",
+					"type": "address"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		}
+	],
+	"networks": {
+		"bscTestnet": {}
+	}
+}

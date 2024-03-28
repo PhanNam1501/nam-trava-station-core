@@ -1,5 +1,5 @@
 {
-	"contractName": "TravaClaimRewards",
+	"contractName": "OraiWithdrawUnstaked",
 	"abi": [
 		{
 			"inputs": [],
@@ -112,19 +112,6 @@
 		},
 		{
 			"inputs": [],
-			"name": "TRAVA_REFERRAL_CODE",
-			"outputs": [
-				{
-					"internalType": "uint16",
-					"name": "",
-					"type": "uint16"
-				}
-			],
-			"stateMutability": "view",
-			"type": "function"
-		},
-		{
-			"inputs": [],
 			"name": "actionType",
 			"outputs": [
 				{
@@ -229,22 +216,12 @@
 				{
 					"components": [
 						{
-							"internalType": "address[]",
-							"name": "assets",
-							"type": "address[]"
-						},
-						{
-							"internalType": "uint256",
-							"name": "amount",
-							"type": "uint256"
-						},
-						{
 							"internalType": "address",
-							"name": "to",
+							"name": "oraiStakingContract",
 							"type": "address"
 						}
 					],
-					"internalType": "struct TravaClaimRewards.Params",
+					"internalType": "struct OraiWithdrawUnstaked.Params",
 					"name": "params",
 					"type": "tuple"
 				}
