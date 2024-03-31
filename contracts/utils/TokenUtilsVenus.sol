@@ -8,15 +8,8 @@ import "./SafeERC20.sol";
 library TokenUtilsVenus {
     using SafeERC20 for IERC20;
 
-    address public constant WSTBNB_ADDR =
-        0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0;
-    address public constant STBNB_ADDR =
-        0xae7ab96520DE3A18E5e111B5EaAb095312D7fE84;
-
-    address public constant WBNB_ADDR =
-        0xae13d989daC2f0dEbFf460aC112a837C89BAa7cd;
-    address public constant BNB_ADDR =
-        0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE;
+    address public constant WBNB_ADDR = 0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c;
+    address public constant BNB_ADDR = 0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE;
 
     function approveToken(
         address _tokenAddr,

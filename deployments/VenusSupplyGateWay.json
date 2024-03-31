@@ -1,21 +1,6 @@
 {
-	"contractName": "LiqeeSupply",
+	"contractName": "VenusSupplyGateWay",
 	"abi": [
-		{
-			"inputs": [],
-			"name": "LiqeeEnterMarketError",
-			"type": "error"
-		},
-		{
-			"inputs": [],
-			"name": "LiqeeExitMarketError",
-			"type": "error"
-		},
-		{
-			"inputs": [],
-			"name": "LiqeeSupplyError",
-			"type": "error"
-		},
 		{
 			"inputs": [],
 			"name": "NonContractCall",
@@ -39,6 +24,21 @@
 		{
 			"inputs": [],
 			"name": "SubIndexValueError",
+			"type": "error"
+		},
+		{
+			"inputs": [],
+			"name": "VenusEnterMarketError",
+			"type": "error"
+		},
+		{
+			"inputs": [],
+			"name": "VenusExitMarketError",
+			"type": "error"
+		},
+		{
+			"inputs": [],
+			"name": "VenusSupplyGateWayError",
 			"type": "error"
 		},
 		{
@@ -155,7 +155,7 @@
 			"inputs": [
 				{
 					"internalType": "address",
-					"name": "_iTokenAddr",
+					"name": "_cTokenAddr",
 					"type": "address"
 				}
 			],
@@ -215,7 +215,7 @@
 			"inputs": [
 				{
 					"internalType": "address",
-					"name": "_iTokenAddr",
+					"name": "_cTokenAddr",
 					"type": "address"
 				}
 			],
@@ -258,7 +258,7 @@
 					"components": [
 						{
 							"internalType": "address",
-							"name": "iTokenAddr",
+							"name": "vTokenAddr",
 							"type": "address"
 						},
 						{
@@ -277,7 +277,7 @@
 							"type": "bool"
 						}
 					],
-					"internalType": "struct LiqeeSupply.Params",
+					"internalType": "struct VenusSupplyGateWay.Params",
 					"name": "params",
 					"type": "tuple"
 				}
@@ -324,7 +324,7 @@
 	],
 	"networks": {
 		"mainnet": {
-			"address": "0x722B338A5b3e2A2847b8aF48D1AA03e6AEA67962",
+			"address": "0xca0b00dD1C7c1ae34eA693000758e6Ab009ED0c3",
 			"args": []
 		}
 	}

@@ -897,21 +897,29 @@ async function main() {
      ||                               Venus Lending Pool                               ||
      ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
 //  */
-//  await changeConstantInFiles(
-//     './contracts',
-//     ['MainnetVenusAddresses'],
-//     'COMPTROLLER_ADDR',
-//     process.env.VENUS_UNICONTROLLER_ADDRESS,
-//   );
-//   run('compile');
+  //  await changeConstantInFiles(
+  //     './contracts',
+  //     ['MainnetVenusAddresses'],
+  //     'COMPTROLLER_ADDR',
+  //     process.env.VENUS_UNICONTROLLER_ADDRESS,
+  //   );
+  //   run('compile');
 
-//   await changeConstantInFiles(
-//     './contracts',
-//     ['MainnetVenusAddresses'],
-//     'V_BNB_ADDR',
-//     process.env.V_BNB_ADDRESS,
-//   );
-//   run('compile');
+  //   await changeConstantInFiles(
+  //     './contracts',
+  //     ['MainnetVenusAddresses'],
+  //     'V_BNB_ADDR',
+  //     process.env.V_BNB_ADDRESS,
+  //   );
+  //   run('compile');
+
+  //   await changeConstantInFiles(
+  //     './contracts',
+  //     ['TokenUtilsVenus'],
+  //     'WBNB_ADDR',
+  //     process.env.WBNB_BSCTESTNET,
+  //   );
+  //   run('compile');
 
   // const venusCollateral = await redeploy(
   //   "VenusCollateral",
@@ -919,16 +927,10 @@ async function main() {
   // );
   // writeToEnvFile("VENUS_COLLATERAL_ADDRESS", venusCollateral.address);
 
-  // const venusBorrow = await redeploy(
-  //   "VenusBorrow",
-  //   process.env.DFS_REGISTRY_ADDRESS
-  // );
+  // const venusBorrow = await redeploy("VenusBorrow", process.env.DFS_REGISTRY_ADDRESS);
   // writeToEnvFile("VENUS_BORROW_ADDRESS", venusBorrow.address);
 
-  // const venusRepay = await redeploy(
-  //   "VenusRepay",
-  //   process.env.DFS_REGISTRY_ADDRESS
-  // );
+  // const venusRepay = await redeploy("VenusRepay", process.env.DFS_REGISTRY_ADDRESS);
   // writeToEnvFile("VENUS_REPAY_ADDRESS", venusRepay.address);
 
   // const venusSupply = await redeploy('VenusSupply', process.env.DFS_REGISTRY_ADDRESS);
@@ -937,43 +939,44 @@ async function main() {
   // const venusWithdraw = await redeploy('VenusWithdraw', process.env.DFS_REGISTRY_ADDRESS);
   // writeToEnvFile("VENUS_WITHDRAW_ADDRESS", venusWithdraw.address)
 
-//   /*
-//    ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
-//    ||                               Cream Lending Pool                               ||
-//    ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
-// //  */
+  //   /*
+  //    ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
+  //    ||                               Cream Lending Pool                               ||
+  //    ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
+  // //  */
 
-// await changeConstantInFiles(
-//   './contracts',
-//   ['MainnetCreamAddresses'],
-//   'COMPTROLLER_ADDR_CREAM',
-//   process.env.CREAM_COMPTROLLER_ADDRESS,
-// );
-// run('compile');
+  // await changeConstantInFiles(
+  //   './contracts',
+  //   ['MainnetCreamAddresses'],
+  //   'COMPTROLLER_ADDR_CREAM',
+  //   process.env.CREAM_COMPTROLLER_ADDRESS,
 
-// await changeConstantInFiles(
-//   './contracts',
-//   ['MainnetVenusAddresses'],
-//   'crBNB',
-//   process.env.CR_BNB_ADDRESS,
-// );
-// run('compile');
-//   // const creamCollateral = await redeploy(
-  //   "CreamCollateral",
-  //   process.env.DFS_REGISTRY_ADDRESS
   // );
+  // run('compile');
+
+  // await changeConstantInFiles(
+  //   './contracts',
+  //   ['MainnetVenusAddresses'],
+  //   'crBNB',
+  //   process.env.CR_BNB_ADDRESS,
+  // );
+  // run('compile');
+
+  // await changeConstantInFiles(
+  //   './contracts',
+  //   ['TokenUtilsVenus'],
+  //   'WBNB_ADDR',
+  //   process.env.WBNB_BSCTESTNET,
+  // );
+  // run('compile');
+
+  // const creamCollateral = await redeploy("CreamCollateral", process.env.DFS_REGISTRY_ADDRESS);
   // writeToEnvFile("CREAM_COLLATERAL_ADDRESS", creamCollateral.address);
 
-  // const creamBorrow = await redeploy(
-  //   "CreamBorrow",
-  //   process.env.DFS_REGISTRY_ADDRESS
-  // );
+  // const creamBorrow = await redeploy("CreamBorrow", process.env.DFS_REGISTRY_ADDRESS);
   // writeToEnvFile("CREAM_BORROW_ADDRESS", creamBorrow.address);
 
-  // const creamRepay = await redeploy(
-  //   "CreamRepay",
-  //   process.env.DFS_REGISTRY_ADDRESS
-  // );
+  // const creamRepay = await redeploy("CreamRepay", process.env.DFS_REGISTRY_ADDRESS);
   // writeToEnvFile("CREAM_REPAY_ADDRESS", creamRepay.address);
 
   // const creamSupply = await redeploy('CreamSupply', process.env.DFS_REGISTRY_ADDRESS);
@@ -982,44 +985,43 @@ async function main() {
   // const creamWithdraw = await redeploy('CreamWithdraw', process.env.DFS_REGISTRY_ADDRESS);
   // writeToEnvFile("CREAM_WITHDRAW_ADDRESS", creamWithdraw.address)
 
-//   /*
-//    ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
-//    ||                               WePiggy Lending Pool                               ||
-//    ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
-// //  */
+  //   /*
+  //    ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
+  //    ||                               WePiggy Lending Pool                               ||
+  //    ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
+  // //  */
 
-// await changeConstantInFiles(
-//   './contracts',
-//   ['MainnetLieeAddresses'],
-//   'COMPTROLLER_ADDR_WEPIGGY',
-//   process.env.WEPIGGY_COMPTROLLER_ADDRESS,
-// );
-// run('compile');
-
-// await changeConstantInFiles(
-//   './contracts',
-//   ['MainnetLiqeeAddresses'],
-//   'P_BNB_ADDR',
-//   process.env.P_BNB_ADDRESS,
-// );
-// run('compile');
-
-  // const wePiggyCollateral = await redeploy(
-  //   "WePiggyCollateral",
-  //   process.env.DFS_REGISTRY_ADDRESS
+  // await changeConstantInFiles(
+  //   './contracts',
+  //   ['MainnetWePiggyAddresses'],
+  //   'COMPTROLLER_ADDR_WEPIGGY',
+  //   process.env.WEPIGGY_COMPTROLLER_ADDRESS,
   // );
+  // run('compile');
+
+  // await changeConstantInFiles(
+  //   './contracts',
+  //   ['MainnetWePiggyAddresses'],
+  //   'P_BNB_ADDR',
+  //   process.env.P_BNB_ADDRESS,
+  // );
+  // run('compile');
+
+  // await changeConstantInFiles(
+  //   './contracts',
+  //   ['TokenUtilsVenus'],
+  //   'WBNB_ADDR',
+  //   process.env.WBNB_BSCTESTNET,
+  // );
+  // run('compile');
+
+  // const wePiggyCollateral = await redeploy("WePiggyCollateral", process.env.DFS_REGISTRY_ADDRESS);
   // writeToEnvFile("WEPIGGY_COLLATERAL_ADDRESS", wePiggyCollateral.address);
 
-  // const wePiggyBorrow = await redeploy(
-  //   "WePiggyBorrow",
-  //   process.env.DFS_REGISTRY_ADDRESS
-  // );
+  // const wePiggyBorrow = await redeploy("WePiggyBorrow", process.env.DFS_REGISTRY_ADDRESS);
   // writeToEnvFile("WEPIGGY_BORROW_ADDRESS", wePiggyBorrow.address);
 
-  // const wePiggyRepay = await redeploy(
-  //   "WePiggyRepay",
-  //   process.env.DFS_REGISTRY_ADDRESS
-  // );
+  // const wePiggyRepay = await redeploy("WePiggyRepay", process.env.DFS_REGISTRY_ADDRESS);
   // writeToEnvFile("WEPIGGY_REPAY_ADDRESS", wePiggyRepay.address);
 
   // const wePiggySupply = await redeploy('WePiggySupply', process.env.DFS_REGISTRY_ADDRESS);
@@ -1028,38 +1030,40 @@ async function main() {
   // const wePiggyWithdraw = await redeploy('WePiggyWithdraw', process.env.DFS_REGISTRY_ADDRESS);
   // writeToEnvFile("WEPIGGY_WITHDRAW_ADDRESS", wePiggyWithdraw.address)
 
-//   /*
-//    ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
-//    ||                               Liqee Lending Pool                               ||
-//    ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
-// //  */
+  //   /*
+  //    ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
+  //    ||                               Liqee Lending Pool                               ||
+  //    ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
+  // //  */
 
-// await changeConstantInFiles(
-//   './contracts',
-//   ['MainnetLieeAddresses'],
-//   'COMPTROLLER_ADDR_LIQEE',
-//   process.env.LIQEE_COMPTROLLER_ADDRESS,
-// );
-// run('compile');
-
-// await changeConstantInFiles(
-//   './contracts',
-//   ['MainnetLiqeeAddresses'],
-//   'iBNB',
-//   process.env.I_BNB_ADDRESS,
-// );
-// run('compile');
-
-  // const liqeeBorrow = await redeploy(
-  //   "LiqeeBorrow",
-  //   process.env.DFS_REGISTRY_ADDRESS
+  // await changeConstantInFiles(
+  //   './contracts',
+  //   ['MainnetLiqeeAddresses'],
+  //   'COMPTROLLER_ADDR_LIQEE',
+  //   process.env.LIQEE_COMPTROLLER_ADDRESS,
   // );
+  // run('compile');
+
+  // await changeConstantInFiles(
+  //   './contracts',
+  //   ['MainnetLiqeeAddresses'],
+  //   'iBNB',
+  //   process.env.I_BNB_ADDRESS,
+  // );
+  // run('compile');
+
+  // await changeConstantInFiles(
+  //   './contracts',
+  //   ['TokenUtilsVenus'],
+  //   'WBNB_ADDR',
+  //   process.env.WBNB_BSCTESTNET,
+  // );
+  // run('compile');
+
+  // const liqeeBorrow = await redeploy("LiqeeBorrow", process.env.DFS_REGISTRY_ADDRESS);
   // writeToEnvFile("LIQEE_BORROW_ADDRESS", liqeeBorrow.address);
 
-  // const liqeeRepay = await redeploy(
-  //   "LiqeeRepay",
-  //   process.env.DFS_REGISTRY_ADDRESS
-  // );
+  // const liqeeRepay = await redeploy("LiqeeRepay", process.env.DFS_REGISTRY_ADDRESS);
   // writeToEnvFile("LIQEE_REPAY_ADDRESS", liqeeRepay.address);
 
   // const liqeeSupply = await redeploy('LiqeeSupply', process.env.DFS_REGISTRY_ADDRESS);
