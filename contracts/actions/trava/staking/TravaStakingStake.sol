@@ -25,7 +25,7 @@ contract TravaStakingStake is ActionBase, TravaStakingHelper {
         bytes32[] memory _returnValues
     ) public payable virtual override returns (bytes32) {
         Params memory params = parseInputs(_callData);
-        
+
         params.stakingPool = _parseParamAddr(
             params.stakingPool,
             _paramMapping[0],
@@ -112,17 +112,10 @@ contract TravaStakingStake is ActionBase, TravaStakingHelper {
         IBEP20(_stakedToken).approve(_stakingPool, _amount);
 
         // deposit in behalf of the proxy
-        IStakedToken(_stakingPool).stake(
-            _onBehalfOf,
-            _amount
-        );
+        // if (_amount != 0)
+        IStakedToken(_stakingPool).stake(_onBehalfOf, _amount);
 
-
-        bytes memory logData = abi.encode(
-            _stakedToken,
-            _onBehalfOf,
-            _amount
-        );
+        bytes memory logData = abi.encode(_stakedToken, _onBehalfOf, _amount);
         return (_amount, logData);
     }
 
@@ -131,5 +124,4 @@ contract TravaStakingStake is ActionBase, TravaStakingHelper {
     ) public pure returns (Params memory params) {
         params = abi.decode(_callData, (Params));
     }
-
 }

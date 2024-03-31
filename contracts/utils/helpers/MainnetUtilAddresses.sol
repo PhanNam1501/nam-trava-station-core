@@ -21,7 +21,7 @@ contract MainnetUtilAddresses {
     address internal constant FEE_RECEIVER_ADMIN_ADDR = 0x9e47969Dc2e13b46575AD9663646a0214a13F880;
     address internal constant UNI_V3_ROUTER = 0xE592427A0AEce92De3Edee1F18E0157C05861564;
     address internal constant UNI_V3_QUOTER = 0xb27308f9F90D607463bb33eA1BeBb41C27CE5AB6;
-    address internal constant FEE_RECIPIENT = 0x93075F9ae88630F32b43128834636758e6ecA2e0;
+    address internal constant FEE_RECIPIENT = 0x1BAca990D798dE346D303bf47754a2c6aE600858;
     // not needed on mainnet
     address internal constant DEFAULT_BOT = 0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE;
     address public constant CHAINLINK_FEED_REGISTRY = 0x1647a10D50e1Ebf84FF6E38e4c8dd1298E0E69cC;
