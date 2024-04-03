@@ -4,7 +4,7 @@ pragma solidity 0.8.4;
 
 contract MainnetUtilAddresses {
     address internal refillCaller = 0x33fDb79aFB4456B604f376A45A546e7ae700e880;
-    address internal feeAddr = 0x76720aC2574631530eC8163e4085d6F98513fb27;
+    address internal feeAddr = 0x41254C567d69172Ae0b2C4cB8372DF75AEFa0C37;
 
     address internal constant BOT_REGISTRY_ADDRESS = 0x637726f8b08a7ABE3aE3aCaB01A80E2d8ddeF77B;
     address internal constant UNI_V2_ROUTER = 0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D;
@@ -21,7 +21,7 @@ contract MainnetUtilAddresses {
     address internal constant FEE_RECEIVER_ADMIN_ADDR = 0x9e47969Dc2e13b46575AD9663646a0214a13F880;
     address internal constant UNI_V3_ROUTER = 0xE592427A0AEce92De3Edee1F18E0157C05861564;
     address internal constant UNI_V3_QUOTER = 0xb27308f9F90D607463bb33eA1BeBb41C27CE5AB6;
-    address internal constant FEE_RECIPIENT = 0x93075F9ae88630F32b43128834636758e6ecA2e0;
+    address internal constant FEE_RECIPIENT = 0xd710897eF172aB84f4d8a8514BB4898181C71818;
     // not needed on mainnet
     address internal constant DEFAULT_BOT = 0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE;
     address public constant CHAINLINK_FEED_REGISTRY = 0x1647a10D50e1Ebf84FF6E38e4c8dd1298E0E69cC;
@@ -33,5 +33,5 @@ contract MainnetUtilAddresses {
     address public constant AAVE_MARKET = 0x2f39d218133AFaB8F2B819B1066c7E434Ad94E9e;
     address public constant AAVE_V3_MARKET = 0x2f39d218133AFaB8F2B819B1066c7E434Ad94E9e;
     address public constant SPARK_MARKET = 0x02C3eA4e34C0cBd694D2adFa2c690EECbC1793eE;
-    address public constant PANCAKE_ROUTER=0x9Ac64Cc6e4415144C455BD8E4837Fea55603e5c3;
+    address public constant PANCAKE_ROUTER = 0x10ED43C718714eb63d5aA57B78B54704E256024E;
 }

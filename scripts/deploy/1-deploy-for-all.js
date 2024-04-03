@@ -262,8 +262,8 @@ async function main() {
     //  * !!!    * NEED DEPLOY Logger CONTRACT                   !!!
     //  * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     //  */
-    const strategyExecutor = await redeploy('StrategyExecutor', process.env.DFS_REGISTRY_ADDRESS);
-    writeToEnvFile("STRATEGY_EXECUTOR_ADDRESS", strategyExecutor.address)
+    // const strategyExecutor = await redeploy('StrategyExecutor', process.env.DFS_REGISTRY_ADDRESS);
+    // writeToEnvFile("STRATEGY_EXECUTOR_ADDRESS", strategyExecutor.address)
     /*
         ||--------------------------------------------------------------------------------||
         ||                                 Utils Contract                                 || 
@@ -285,14 +285,72 @@ async function main() {
     // );
     // run('compile');
     // writeToEnvFile("DFS_REG_CONTROLLER_ADDR", dfsProxyRegistryController.address)
+  
+    // await changeConstantInFiles(
+    //     './contracts',
+    //     ['MainnetUtilAddresses'],
+    //     'FEE_RECEIVER_ADMIN_ADDR',
+    //     process.env.PUBLIC_KEY,
+    // );
+    // run('compile');
+
+    // const feeReceiverFactory  = await ethers.getContractFactory("FeeReceiver");
+    // const feeReceiverContract = await feeReceiverFactory.deploy();
+    
+    // await changeConstantInFiles(
+    //     './contracts',
+    //     ['MainnetUtilAddresses'],
+    //     'feeAddr',
+    //     feeReceiverContract.address,
+    //     );
+    // run('compile');
+    // writeToEnvFile("FEE_RECEIVER", feeReceiverContract.address);
+
+    // await changeConstantInFiles(
+    //     './contracts',
+    //     ['MainnetAuthAddresses'],
+    //     'ADMIN_ADDR',
+    //     process.env.PUBLIC_KEY,
+    // );
+    // run('compile');
+
+    // await changeConstantInFiles(
+    //     './contracts',
+    //     ['MainnetAuthAddresses'],
+    //     'ADMIN_VAULT_ADDR',
+    //     process.env.ADMIN_VAULT_ADDRESS,
+    // );
+    // run('compile');
+
+    // await changeConstantInFiles(
+    //     './contracts',
+    //     ['MainnetAuthAddresses'],
+    //     'FACTORY_ADDRESS',
+    //     process.env.DS_GUARD_FACTORY_ADDRESS,
+    // );
+    // run('compile');
+    
+    // const feeRecipientFactory  = await ethers.getContractFactory("FeeRecipient");
+    // const feeRecipientContract = await feeRecipientFactory.deploy(process.env.FEE_RECEIVER);
+    
+    // await changeConstantInFiles(
+    //     './contracts',
+    //     ['MainnetUtilAddresses'],
+    //     'FEE_RECIPIENT',
+    //     feeRecipientContract.address,
+    //     );
+    // run('compile');  
+    // writeToEnvFile("FEE_RECIPIENT", feeRecipientContract.address);
 
     // // mcd actions
+    // const bothAuth = await redeploy('BotAuth', process.env.DFS_REGISTRY_ADDRESS);
+    // writeToEnvFile("BOTH_AUTH_ADDRESS", bothAuth.address);
+
     // await redeploy('McdSupply', process.env.DFS_REGISTRY_ADDRESS);
     // await redeploy('McdWithdraw', process.env.DFS_REGISTRY_ADDRESS);
     // await redeploy('McdGenerate', process.env.DFS_REGISTRY_ADDRESS);
     // await redeploy('McdPayback', process.env.DFS_REGISTRY_ADDRESS);
     // await redeploy('McdOpen', process.env.DFS_REGISTRY_ADDRESS);
-    // await redeploy('BotAuth', process.env.DFS_REGISTRY_ADDRESS);
     // await redeploy('GasFeeTaker', process.env.DFS_REGISTRY_ADDRESS);
 
     // await addBotCaller('0x61fe1bdcd91E8612a916f86bA50a3EDF3E5654c4', process.env.DFS_REGISTRY_ADDRESS);

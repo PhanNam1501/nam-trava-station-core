@@ -157,14 +157,16 @@ async function main() {
   );
   run('compile');
 
-  // const TokenPriceHelper = await redeploy('TokenPriceHelper', process.env.DFS_REGISTRY_ADDRESS);
-  // writeToEnvFile("TOKEN_PRICE_HELPER", TokenPriceHelper.address)
-
-  // const GasFeeHelper = await redeploy('GasFeeHelper', process.env.DFS_REGISTRY_ADDRESS);
-  // writeToEnvFile("GAS_FEE_HELPER", GasFeeHelper.address)
+  await changeConstantInFiles(
+    './contracts',
+    ['MainnetUtilAddresses'],
+    'PANCAKE_ROUTER',
+    process.env.PANCAKE_ROUTER_ADDRESS,
+  );
+  run('compile');
 
   const gasFeeTaker = await redeploy('GasFeeTaker', process.env.DFS_REGISTRY_ADDRESS);
-  writeToEnvFile("GAS_FEE_TAKER", gasFeeTaker.address)
+  writeToEnvFile("GAS_FEE_TAKER_ADDRESS", gasFeeTaker.address)
 
 
   //        ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
@@ -826,11 +828,11 @@ async function main() {
   // );
   // writeToEnvFile("LIQUIDITY_CAMPAIGN_BUY_TOKEN_GATEWAY_ADDRESS", liquidityCampaignBuyTokenGateway.address);
 
-  const liquidityCampaignClaimRewards = await redeploy(
-    "LiquidityCampaignClaimRewards",
-    process.env.DFS_REGISTRY_ADDRESS
-  );
-  writeToEnvFile("LIQUIDITY_CAMPAIGN_CLAIM_REWARDS_ADDRESS", liquidityCampaignClaimRewards.address);
+  // const liquidityCampaignClaimRewards = await redeploy(
+  //   "LiquidityCampaignClaimRewards",
+  //   process.env.DFS_REGISTRY_ADDRESS
+  // );
+  // writeToEnvFile("LIQUIDITY_CAMPAIGN_CLAIM_REWARDS_ADDRESS", liquidityCampaignClaimRewards.address);
 
   // const liquidityCampaignRedeem = await redeploy(
   //   "LiquidityCampaignRedeem",
