@@ -183,7 +183,7 @@ module.exports = {
     mainnet: {
       url: "https://bsc.publicnode.com",
       chainId: 56,
-      gasPrice: 3e9,
+      gasPrice: 1e9,
       // gas: 2e7,
       // gas: 1e5,
       accounts: [

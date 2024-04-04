@@ -837,6 +837,9 @@
 		}
 	],
 	"networks": {
-		"bscTestnet": {}
+		"mainnet": {
+			"address": "0x8dBD1c3866ECD8caEf04D5d2B266e1b9ae12106C",
+			"args": []
+		}
 	}
 }

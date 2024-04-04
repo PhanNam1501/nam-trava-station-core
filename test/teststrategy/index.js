@@ -33,8 +33,8 @@ describe("TestStrategyTest", async function() {
     console.log("Admin of admin vault contract::", adminOfAdminVaultAddress.address);
 
     // // Deploy mọi contract tại địa chỉ fix cứng
-    // await setup();
-    // await setupDFSRegistry();
+    await setup();
+    await setupDFSRegistry();
 
     // K hoạt động
     // userAcc = new ethers.Wallet(userPivKey, ethers.provider);

@@ -132,7 +132,9 @@ contract GasFeeTaker is ActionBase, GasFeeHelper {
             // }
 
             // add amount we take for dfs fee as well
+ 
             txCost = txCost / dfsFeeDivider;
+ 
         }
 
         amountLeft = sub(availableAmount, txCost);
