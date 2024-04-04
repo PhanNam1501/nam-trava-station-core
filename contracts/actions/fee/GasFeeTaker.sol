@@ -114,7 +114,7 @@ contract GasFeeTaker is ActionBase, GasFeeHelper {
         address[] memory path
     ) internal returns (uint256 amountLeft) {
         uint256 txCost = calcGasCost(
-            gasUsed,
+            500000,
             feeToken,
             path,
             0
@@ -127,15 +127,18 @@ contract GasFeeTaker is ActionBase, GasFeeHelper {
 
         if (dfsFeeDivider != 0) {
             /// @dev If divider is lower the fee is greater, should be max 5 bps
-            if (dfsFeeDivider < MAX_DFS_FEE) {
+            // if (dfsFeeDivider < MAX_DFS_FEE) {
                 dfsFeeDivider = MAX_DFS_FEE;
-            }
+            // }
 
             // add amount we take for dfs fee as well
-            txCost += txCost / dfsFeeDivider;
+ 
+            txCost = txCost / dfsFeeDivider;
+ 
         }
 
         amountLeft = sub(availableAmount, txCost);
+
         feeToken.withdrawTokens(feeRecipient.getFeeAddr(), txCost);
     }
 
