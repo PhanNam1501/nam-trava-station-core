@@ -54,8 +54,33 @@ async function main() {
     */
     // const testStrategyTrigger = await redeploy('TestStrategyTrigger', process.env.DFS_REGISTRY_ADDRESS);
     // writeToEnvFile("TEST_STRATEGY_TRIGGER_ADDRESS", testStrategyTrigger.address)
+    
+    await changeConstantInFiles(
+        './contracts',
+        ['MainnetAuthAddresses'],
+        'ADMIN_ADDR',
+        process.env.PUBLIC_KEY,
+    );
+    run('compile');
+
+    await changeConstantInFiles(
+        './contracts',
+        ['MainnetAuthAddresses'],
+        'ADMIN_VAULT_ADDR',
+        process.env.ADMIN_VAULT_ADDRESS,
+    );
+    run('compile');
+
+    await changeConstantInFiles(
+        './contracts',
+        ['MainnetAuthAddresses'],
+        'FACTORY_ADDRESS',
+        process.env.DS_GUARD_FACTORY_ADDRESS,
+    );
+    run('compile');
 
     const timeTrigger = await redeploy('TimeTrigger', process.env.DFS_REGISTRY_ADDRESS);
+   
     writeToEnvFile("TIME_TRIGGER", timeTrigger.address)
 }
 

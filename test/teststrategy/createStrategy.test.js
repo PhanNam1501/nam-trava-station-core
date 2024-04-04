@@ -80,6 +80,7 @@ describe("Test strategy", function () {
     );
 
     await receipt.wait();
+    console.log("create strategy successed", receipt)
     let strategyId = await strategyStorage.getStrategyCount();
 
     strategyId = (strategyId-1).toString();
