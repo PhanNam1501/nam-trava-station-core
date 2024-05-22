@@ -149,24 +149,24 @@ async function main() {
   //        ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
   //        ||                               FeeContract                                   ||
   //        ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
-   await changeConstantInFiles(
-    './contracts',
-    ['MainnetUtilAddresses'],
-    'FEE_RECIPIENT',
-    process.env.FEE_RECIPIENT,
-  );
-  run('compile');
+  //  await changeConstantInFiles(
+  //   './contracts',
+  //   ['MainnetUtilAddresses'],
+  //   'FEE_RECIPIENT',
+  //   process.env.FEE_RECIPIENT,
+  // );
+  // run('compile');
 
-  await changeConstantInFiles(
-    './contracts',
-    ['MainnetUtilAddresses'],
-    'PANCAKE_ROUTER',
-    process.env.PANCAKE_ROUTER_ADDRESS,
-  );
-  run('compile');
+  // await changeConstantInFiles(
+  //   './contracts',
+  //   ['MainnetUtilAddresses'],
+  //   'PANCAKE_ROUTER',
+  //   process.env.PANCAKE_ROUTER_ADDRESS,
+  // );
+  // run('compile');
 
-  const gasFeeTaker = await redeploy('GasFeeTaker', process.env.DFS_REGISTRY_ADDRESS);
-  writeToEnvFile("GAS_FEE_TAKER_ADDRESS", gasFeeTaker.address)
+  // const gasFeeTaker = await redeploy('GasFeeTaker', process.env.DFS_REGISTRY_ADDRESS);
+  // writeToEnvFile("GAS_FEE_TAKER_ADDRESS", gasFeeTaker.address)
 
 
   //        ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
@@ -580,14 +580,14 @@ async function main() {
   // );
   // writeToEnvFile("PANCAKE_SWAP_V2_ADDRESS", pancakeSwapV2.address);
 
-  // const pancakeRemoveLiquidityV2 = await redeploy(
-  //   "PancakeRemoveLiquidityV2",
-  //   process.env.DFS_REGISTRY_ADDRESS
-  // );
-  // writeToEnvFile(
-  //   "PANCAKE_REMOVE_LIQUIDITY_V2_ADDRESS",
-  //   pancakeRemoveLiquidityV2.address
-  // );
+  const pancakeRemoveLiquidityV2 = await redeploy(
+    "PancakeRemoveLiquidityV2",
+    process.env.DFS_REGISTRY_ADDRESS
+  );
+  writeToEnvFile(
+    "PANCAKE_REMOVE_LIQUIDITY_V2_ADDRESS",
+    pancakeRemoveLiquidityV2.address
+  );
 
   /*
        ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||

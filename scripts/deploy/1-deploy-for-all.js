@@ -25,13 +25,13 @@ async function main() {
 //         ||--------------------------------------------------------------------------------||
 //     */
 
-//     await changeConstantInFiles(
-//         './contracts',
-//         ['MainnetAuthAddresses'],
-//         'ADMIN_ADDR',
-//         await owner.getAddress()
-//         );
-//     run('compile');
+    // await changeConstantInFiles(
+    //     './contracts',
+    //     ['MainnetAuthAddresses'],
+    //     'ADMIN_ADDR',
+    //     await owner.getAddress()
+    //     );
+    // run('compile');
 
 //     const defiSaverLogger = await deployAsOwner('DefisaverLogger', signer);
 //     await changeConstantInFiles(
@@ -251,8 +251,8 @@ async function main() {
     //  * !!!    * NEED DEPLOY AdminVault CONTRACT               !!!
     //  * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     //  */
-    // const botAuth = await redeploy('BotAuth', process.env.DFS_REGISTRY_ADDRESS);
-    // writeToEnvFile("BOT_AUTH_ADDRESS", botAuth.address)
+    const botAuth = await redeploy('BotAuth', process.env.DFS_REGISTRY_ADDRESS);
+    writeToEnvFile("BOT_AUTH_ADDRESS", botAuth.address)
 
     // // StrategyExecutor
     // /* !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -344,7 +344,7 @@ async function main() {
 
     // // mcd actions
     // const bothAuth = await redeploy('BotAuth', process.env.DFS_REGISTRY_ADDRESS);
-    // writeToEnvFile("BOTH_AUTH_ADDRESS", bothAuth.address);
+    writeToEnvFile("BOTH_AUTH_ADDRESS", bothAuth.address);
 
     // await redeploy('McdSupply', process.env.DFS_REGISTRY_ADDRESS);
     // await redeploy('McdWithdraw', process.env.DFS_REGISTRY_ADDRESS);
