@@ -5,10 +5,12 @@ pragma solidity 0.8.4;
 import "../../ActionBase.sol";
 import "../../../utils/TokenUtils.sol";
 import "./helpers/PancakeV2Helper.sol";
+import "../../../utils/SafeBEP20.sol";
 
 /// @title Supplies liquidity to a PancakeswapV3 position represented by TokenId
 contract PancakeAddLiquidityV2 is ActionBase,  PancakeV2Helper{
     using TokenUtils for address;
+    using SafeBEP20 for IBEP20;
 
     struct Params {
         address tokenA;
@@ -118,6 +120,9 @@ contract PancakeAddLiquidityV2 is ActionBase,  PancakeV2Helper{
             _pancakeData.from,
             _pancakeData.amountBDesired
         );
+        //approve zero
+        IBEP20(_pancakeData.tokenA).safeApprove(address(pancakeRouter), 0);
+        IBEP20(_pancakeData.tokenB).safeApprove(address(pancakeRouter), 0);
 
         // approve positionManager so it can pull tokens
         _pancakeData.tokenA.approveToken(address(pancakeRouter), amountAPulled);
