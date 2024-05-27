@@ -121,8 +121,8 @@ contract PancakeAddLiquidityV2 is ActionBase,  PancakeV2Helper{
             _pancakeData.amountBDesired
         );
         //approve zero
-        IBEP20(_pancakeData.tokenA).safeApprove(address(pancakeRouter), 0);
-        IBEP20(_pancakeData.tokenB).safeApprove(address(pancakeRouter), 0);
+        IBEP20(_pancakeData.tokenA).approve(address(pancakeRouter), 0);
+        IBEP20(_pancakeData.tokenB).approve(address(pancakeRouter), 0);
 
         // approve positionManager so it can pull tokens
         _pancakeData.tokenA.approveToken(address(pancakeRouter), amountAPulled);
