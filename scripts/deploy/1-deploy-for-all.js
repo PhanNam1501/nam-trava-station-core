@@ -141,7 +141,7 @@ async function main() {
      * !!!    * NEED DEPLOY AdminVault CONTRACT               !!!
      * !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
      */
-    // const strategyStorage = await redeploy('StrategyStorage', reg.address);
+    const strategyStorage = await redeploy('StrategyStorage', process.env.DFS_REGISTRY_ADDRESS);
     // await changeConstantInFiles(
     //     './contracts',
     //     ['MainnetCoreAddresses'],

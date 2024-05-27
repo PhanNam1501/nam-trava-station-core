@@ -118,6 +118,8 @@ contract PancakeAddLiquidityV2 is ActionBase,  PancakeV2Helper{
             _pancakeData.from,
             _pancakeData.amountBDesired
         );
+        _pancakeData.tokenA.approveToken(address(pancakeRouter), 0);
+        _pancakeData.tokenB.approveToken(address(pancakeRouter), 0);
 
         // approve positionManager so it can pull tokens
         _pancakeData.tokenA.approveToken(address(pancakeRouter), amountAPulled);
