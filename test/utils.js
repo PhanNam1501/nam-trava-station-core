@@ -528,15 +528,16 @@ const redeploy = async (name, regAddr = addrs[getNetwork()].REGISTRY_ADDR, saveO
         console.log("nonce", nonce)
         await (await registry.addNewContract(id, c.address, 0, {nonce: nonce})).wait();
     } else {
-        await (await registry.startContractChange(id, c.address)).wait();
-
+        let nonce = await signer.getTransactionCount(  );
+        await (await registry.startContractChange(id, c.address, {nonce: nonce})).wait();
+        
         const entryData = await registry.entries(id);
 
         if (parseInt(entryData.waitPeriod, 10) > 0) {
             await timeTravel(parseInt(entryData.waitPeriod, 10) + 10);
         }
-
-        await (await registry.approveContractChange(id)).wait();
+        nonce++;
+        await (await registry.approveContractChange(id, {nonce: nonce})).wait();
     }
 
     // for strategy deployment set open to public for easier testing

@@ -557,22 +557,22 @@ async function main() {
        ||                               PancakeV2 Contract                               ||
        ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
    */
-  // await changeConstantInFiles(
-  //   './contracts',
-  //   ['MainnetPancakeV2Addresses'],
-  //   'PANCAKE_ROUTER',
-  //   process.env.PANCAKE_ROUTER_ADDRESS,
-  // );
-  // run('compile');
+  await changeConstantInFiles(
+    './contracts',
+    ['MainnetPancakeV2Addresses'],
+    'PANCAKE_ROUTER',
+    process.env.PANCAKE_ROUTER_ADDRESS,
+  );
+  run('compile');
 
-  // const pancakeAddLiquidityV2 = await redeploy(
-  //   "PancakeAddLiquidityV2",
-  //   process.env.DFS_REGISTRY_ADDRESS
-  // );
-  // writeToEnvFile(
-  //   "PANCAKE_ADD_LIQUIDITY_V2_ADDRESS",
-  //   pancakeAddLiquidityV2.address
-  // );
+  const pancakeAddLiquidityV2 = await redeploy(
+    "PancakeAddLiquidityV2",
+    process.env.DFS_REGISTRY_ADDRESS
+  );
+  writeToEnvFile(
+    "PANCAKE_ADD_LIQUIDITY_V2_ADDRESS",
+    pancakeAddLiquidityV2.address
+  );
 
   // const pancakeSwapV2 = await redeploy(
   //   "PancakeSwapV2",
