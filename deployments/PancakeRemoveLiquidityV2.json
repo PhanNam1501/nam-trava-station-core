@@ -239,6 +239,11 @@
 							"type": "address"
 						},
 						{
+							"internalType": "address",
+							"name": "tokenPair",
+							"type": "address"
+						},
+						{
 							"internalType": "uint256",
 							"name": "liquidity",
 							"type": "uint256"
@@ -311,7 +316,7 @@
 	],
 	"networks": {
 		"mainnet": {
-			"address": "0x1fbd027e5a94dcfCDD2156C7e5b9e72cbFc559AB",
+			"address": "0x2b354Fe874E9b44cd480A0C0F4Effb4097681290",
 			"args": []
 		}
 	}
