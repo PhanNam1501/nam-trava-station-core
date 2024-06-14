@@ -177,7 +177,7 @@ async function main() {
   //   './contracts',
   //   ['MainnetTravaGovernanceAddresses'],
   //   'VE_TRAVA',
-  //   process.env.VE_TRAVA,
+  //   process.env.VE_TRAVA_ADDRESS,
   // );
   // run('compile');
 
@@ -517,7 +517,7 @@ async function main() {
   //   "./contracts",
   //   ["MainnetTravaNFTVeTravaAddresses"],
   //   "VE_TRAVA_ADDRESS",
-  //   process.env.VE_TRAVA
+  //   process.env.VE_TRAVA_ADDRESS
   // );
   // run("compile");
 
@@ -557,13 +557,13 @@ async function main() {
        ||                               PancakeV2 Contract                               ||
        ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
    */
-  await changeConstantInFiles(
-    './contracts',
-    ['MainnetPancakeV2Addresses'],
-    'PANCAKE_ROUTER',
-    process.env.PANCAKE_ROUTER_ADDRESS,
-  );
-  run('compile');
+  // await changeConstantInFiles(
+  //   './contracts',
+  //   ['MainnetPancakeV2Addresses'],
+  //   'PANCAKE_ROUTER',
+  //   process.env.PANCAKE_ROUTER_ADDRESS,
+  // );
+  // run('compile');
 
   // const pancakeAddLiquidityV2 = await redeploy(
   //   "PancakeAddLiquidityV2",
@@ -580,14 +580,14 @@ async function main() {
   // );
   // writeToEnvFile("PANCAKE_SWAP_V2_ADDRESS", pancakeSwapV2.address);
 
-  const pancakeRemoveLiquidityV2 = await redeploy(
-    "PancakeRemoveLiquidityV2",
-    process.env.DFS_REGISTRY_ADDRESS
-  );
-  writeToEnvFile(
-    "PANCAKE_REMOVE_LIQUIDITY_V2_ADDRESS",
-    pancakeRemoveLiquidityV2.address
-  );
+  // const pancakeRemoveLiquidityV2 = await redeploy(
+  //   "PancakeRemoveLiquidityV2",
+  //   process.env.DFS_REGISTRY_ADDRESS
+  // );
+  // writeToEnvFile(
+  //   "PANCAKE_REMOVE_LIQUIDITY_V2_ADDRESS",
+  //   pancakeRemoveLiquidityV2.address
+  // );
 
   /*
        ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||

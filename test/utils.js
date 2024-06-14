@@ -508,11 +508,14 @@ const redeploy = async (name, regAddr = addrs[getNetwork()].REGISTRY_ADDR, saveO
     registry = registry.connect(signer);
     console.log("Registry")
     const c = await deployContract(name, ...args);
-    
-    if (name === 'StrategyExecutor' || name === 'StrategyExecutorL2') {
-        // eslint-disable-next-line no-param-reassign
-        name = 'StrategyExecutorID';
-    }
+    // console.log(c)
+    // const c  = {
+    //     address: "0xa2d3f269d9b56dfee0162093ce75f557c3e6a02c"
+    // }
+    // if (name === 'StrategyExecutor' || name === 'StrategyExecutorL2') {
+    //     // eslint-disable-next-line no-param-reassign
+    //     name = 'StrategyExecutorID';
+    // }
 
     // if (name === 'FLAaveV3') {
     //     // eslint-disable-next-line no-param-reassign

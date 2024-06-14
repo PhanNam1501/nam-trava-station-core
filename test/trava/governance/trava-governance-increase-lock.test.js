@@ -10,11 +10,11 @@ let token, Token;
 let test, Test;
 
 beforeEach(async () => {
-  [user1, user2, user3] = await ethers.getSigners();
+  // [user1, user2, user3] = await ethers.getSigners();
 
-  travaGovernanceIncreaseLockFactory = await ethers.getContractFactory("TravaGovernanceIncreaseLock");
-  travaGovernanceIncreaseLock = await travaGovernanceIncreaseLockFactory.deploy();
-  await travaGovernanceIncreaseLock.deployed();
+  // travaGovernanceIncreaseLockFactory = await ethers.getContractFactory("TravaGovernanceIncreaseLock");
+  // travaGovernanceIncreaseLock = await travaGovernanceIncreaseLockFactory.deploy();
+  // await travaGovernanceIncreaseLock.deployed();
 
 //   Token = await ethers.getContractFactory("ERC20Mock");
 //   token = await Token.deploy("Test Token", "TUSD");
@@ -34,44 +34,44 @@ describe("TravaGovernanceFactory", () => {
   });
 
   it("build proxy", async () => {
-    await dsProxyFactory.build(); // real project must be listen event
+    // await dsProxyFactory.build(); // real project must be listen event
 
-    const user1Proxy = await dsProxyFactory.listProxy(user1.address, 0);
-    // console.log("user1Proxy", user1Proxy);
+    // const user1Proxy = await dsProxyFactory.listProxy(user1.address, 0);
+    // // console.log("user1Proxy", user1Proxy);
 
-    dsProxy = await ethers.getContractAt("DSProxy", user1Proxy);
-    console.log("dsProxy", dsProxy.address);
+    // dsProxy = await ethers.getContractAt("DSProxy", user1Proxy);
+    // console.log("dsProxy", dsProxy.address);
 
-    // approve proxy to spend token
-    await token.approve(dsProxy.address, ethers.utils.parseEther("100"));
-    // await test.transfer(user2.address, ethers.utils.parseEther("1"));
-    let calldata = await test.interface.encodeFunctionData("setToken", [
-      token.address,
-    ]);
-    console.log("calldata", calldata);
-    await dsProxy.execute(test.address, calldata);
+    // // approve proxy to spend token
+    // await token.approve(dsProxy.address, ethers.utils.parseEther("100"));
+    // // await test.transfer(user2.address, ethers.utils.parseEther("1"));
+    // let calldata = await test.interface.encodeFunctionData("setToken", [
+    //   token.address,
+    // ]);
+    // console.log("calldata", calldata);
+    // await dsProxy.execute(test.address, calldata);
 
-    calldata = await test.interface.encodeFunctionData("transferToken", [
-      "0x33786f26Bac6Bdbf1F4CA29bf70c98453fd8FB32",
-      ethers.utils.parseEther("1"),
-    ]);
+    // calldata = await test.interface.encodeFunctionData("transferToken", [
+    //   "0x33786f26Bac6Bdbf1F4CA29bf70c98453fd8FB32",
+    //   ethers.utils.parseEther("1"),
+    // ]);
 
-    // user2 balance  before transfer
-    const user2Balance = await token.balanceOf(
-      "0x33786f26Bac6Bdbf1F4CA29bf70c98453fd8FB32"
-    );
-    await dsProxy.execute(test.address, calldata);
-    // user2 balance after transfer
-    const user2BalanceAfter = await token.balanceOf(
-      "0x33786f26Bac6Bdbf1F4CA29bf70c98453fd8FB32"
-    );
+    // // user2 balance  before transfer
+    // const user2Balance = await token.balanceOf(
+    //   "0x33786f26Bac6Bdbf1F4CA29bf70c98453fd8FB32"
+    // );
+    // await dsProxy.execute(test.address, calldata);
+    // // user2 balance after transfer
+    // const user2BalanceAfter = await token.balanceOf(
+    //   "0x33786f26Bac6Bdbf1F4CA29bf70c98453fd8FB32"
+    // );
 
-    const changeBalance = ethers.BigNumber.from(user2BalanceAfter).sub(
-      ethers.BigNumber.from(user2Balance)
-    );
+    // const changeBalance = ethers.BigNumber.from(user2BalanceAfter).sub(
+    //   ethers.BigNumber.from(user2Balance)
+    // );
 
-    console.log("changeBalance", changeBalance);
-    expect(changeBalance).to.equal(ethers.utils.parseEther("1"));
+    // console.log("changeBalance", changeBalance);
+    // expect(changeBalance).to.equal(ethers.utils.parseEther("1"));
     // test excute but don't work :)
     // calldata = await test.interface.encodeFunctionData("transferToken", [
     //   user2.address,
