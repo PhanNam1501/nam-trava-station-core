@@ -116,8 +116,8 @@ contract PancakeRemoveLiquidityV2 is ActionBase, PancakeV2Helper {
         internal
         returns (uint256 amountA, uint256 amountB, bytes memory logData)
     {
-        IBEP20(_pancakeData.tokenPair).approve(address(pancakeRouter), 0);
-        _pancakeData.tokenPair.approveToken(address(pancakeRouter), _pancakeData.liquidity);
+        IBEP20(_pancakeData.tokenPair).approve(address(pancakeRouter), _pancakeData.liquidity);
+
         (amountA, amountB) = pancakeRouter.removeLiquidity(
             _pancakeData.tokenA,
             _pancakeData.tokenB,

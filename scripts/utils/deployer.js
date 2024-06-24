@@ -6,7 +6,7 @@ const hre = require('hardhat');
 const ethers = require('ethers');
 const { write } = require('./writer');
 
-const DEPLOYMENT_GAS_LIMIT = 2e7;
+const DEPLOYMENT_GAS_LIMIT = 2e6;
 
 const getGasPrice = async (exGasPrice) => {
     let defaultGasPrice = 0;
@@ -33,14 +33,14 @@ const deploy = async (contractName, signer, action, gasPrice, nonce, ...args) =>
 
         const Contract = await hre.ethers.getContractFactory(contractName, signer);
 
-        let options = { 
-            gasPrice, 
-            nonce
-            // gasLimit: DEPLOYMENT_GAS_LIMIT 
-        };
+        // let options = { 
+        //     gasPrice: 11e8, 
+        //     nonce
+        //     // gasLimit: DEPLOYMENT_GAS_LIMIT 
+        // };
         
         // if (nonce === -1) {
-        //     options = { gasPrice, gasLimit: DEPLOYMENT_GAS_LIMIT };
+            options = { gasPrice, gasLimit: DEPLOYMENT_GAS_LIMIT, gasPrice: 1e9 };
         // }
         console.log(options)
         let contract;

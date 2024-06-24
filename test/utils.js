@@ -508,11 +508,14 @@ const redeploy = async (name, regAddr = addrs[getNetwork()].REGISTRY_ADDR, saveO
     registry = registry.connect(signer);
     console.log("Registry")
     const c = await deployContract(name, ...args);
-    
-    if (name === 'StrategyExecutor' || name === 'StrategyExecutorL2') {
-        // eslint-disable-next-line no-param-reassign
-        name = 'StrategyExecutorID';
-    }
+    // console.log(c)
+    // const c  = {
+    //     address: "0xa2d3f269d9b56dfee0162093ce75f557c3e6a02c"
+    // }
+    // if (name === 'StrategyExecutor' || name === 'StrategyExecutorL2') {
+    //     // eslint-disable-next-line no-param-reassign
+    //     name = 'StrategyExecutorID';
+    // }
 
     // if (name === 'FLAaveV3') {
     //     // eslint-disable-next-line no-param-reassign
@@ -528,15 +531,16 @@ const redeploy = async (name, regAddr = addrs[getNetwork()].REGISTRY_ADDR, saveO
         console.log("nonce", nonce)
         await (await registry.addNewContract(id, c.address, 0, {nonce: nonce})).wait();
     } else {
-        await (await registry.startContractChange(id, c.address)).wait();
-
+        let nonce = await signer.getTransactionCount(  );
+        await (await registry.startContractChange(id, c.address, {nonce: nonce})).wait();
+        
         const entryData = await registry.entries(id);
 
         if (parseInt(entryData.waitPeriod, 10) > 0) {
             await timeTravel(parseInt(entryData.waitPeriod, 10) + 10);
         }
-
-        await (await registry.approveContractChange(id)).wait();
+        nonce++;
+        await (await registry.approveContractChange(id, {nonce: nonce})).wait();
     }
 
     // for strategy deployment set open to public for easier testing

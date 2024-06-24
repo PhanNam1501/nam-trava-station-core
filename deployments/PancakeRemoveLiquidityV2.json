@@ -239,11 +239,6 @@
 							"type": "address"
 						},
 						{
-							"internalType": "address",
-							"name": "tokenPair",
-							"type": "address"
-						},
-						{
 							"internalType": "uint256",
 							"name": "liquidity",
 							"type": "uint256"
