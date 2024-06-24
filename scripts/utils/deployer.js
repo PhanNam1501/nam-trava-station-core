@@ -20,9 +20,9 @@ const getGasPrice = async (exGasPrice) => {
         newGasPrice = defaultGasPrice.gt('0') ? defaultGasPrice : await hre.ethers.provider.getGasPrice();
     }
 
-    if (exGasPrice.gte(newGasPrice)) {
-        newGasPrice = exGasPrice.add('10000000000');
-    }
+    // if (exGasPrice.gte(newGasPrice)) {
+    //     newGasPrice = exGasPrice.add('10000000000');
+    // }
 
     return newGasPrice;
 };
