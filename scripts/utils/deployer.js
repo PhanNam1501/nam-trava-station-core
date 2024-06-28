@@ -18,11 +18,14 @@ const getGasPrice = async (exGasPrice) => {
     } else if (hre.network.name === 'mainnet') {
         defaultGasPrice = ethers.BigNumber.from(hre.network.config.gasPrice);
         newGasPrice = defaultGasPrice.gt('0') ? defaultGasPrice : await hre.ethers.provider.getGasPrice();
+    } else if (hre.network.name === 'bscTestnet') {
+        defaultGasPrice = ethers.BigNumber.from(hre.network.config.gasPrice);
+        newGasPrice = defaultGasPrice.gt('0') ? defaultGasPrice : await hre.ethers.provider.getGasPrice();
     }
 
-    if (exGasPrice.gte(newGasPrice)) {
-        newGasPrice = exGasPrice.add('10000000000');
-    }
+    // if (exGasPrice.gte(newGasPrice)) {
+    //     newGasPrice = exGasPrice.add('10000000000');
+    // }
 
     return newGasPrice;
 };
@@ -40,7 +43,7 @@ const deploy = async (contractName, signer, action, gasPrice, nonce, ...args) =>
         // };
         
         // if (nonce === -1) {
-            options = { gasPrice, gasLimit: DEPLOYMENT_GAS_LIMIT, gasPrice: 1e9 };
+            options = { gasLimit: DEPLOYMENT_GAS_LIMIT, gasPrice: gasPrice };
         // }
         console.log(options)
         let contract;

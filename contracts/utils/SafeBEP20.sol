@@ -19,65 +19,53 @@ library SafeBEP20 {
     using SafeMath for uint256;
     using Address for address;
 
-    function safeTransfer(
-        IBEP20 token,
-        address to,
-        uint256 value
-    ) internal {
-        callOptionalReturn(
-            token,
-            abi.encodeWithSelector(token.transfer.selector, to, value)
-        );
+     function safeTransfer(IBEP20 token, address to, uint256 value) internal {
+        IBEP20(token).transfer(to, value);
     }
 
-    /**
-     * @dev Invoked to execute actions on the tToken side after a repayment.
-     * @param token The asset that is going to be transfered
-     * @param from The address that transfer the token
-     * @param to The address that receive the token
-     * @param value The amount getting transfer
-     **/
     function safeTransferFrom(
         IBEP20 token,
         address from,
         address to,
         uint256 value
     ) internal {
-        callOptionalReturn(
-            token,
-            abi.encodeWithSelector(token.transferFrom.selector, from, to, value)
-        );
+        IBEP20(token).transferFrom(from, to, value);
     }
 
+    /// @dev Edited so it always first approves 0 and then the value, because of non standard tokens
     function safeApprove(
         IBEP20 token,
         address spender,
         uint256 value
     ) internal {
-        require(
-            (value == 0) || (token.allowance(address(this), spender) == 0),
-            "SafeBEP20: approve from non-zero to non-zero allowance"
-        );
-        callOptionalReturn(
-            token,
-            abi.encodeWithSelector(token.approve.selector, spender, value)
-        );
+        // _callOptionalReturn(
+        //     token,
+        //     abi.encodeWithSelector(token.approve.selector, spender, 0)
+        // );
+        token.approve(spender, 0);
+        token.approve(spender, value);
     }
 
-    function callOptionalReturn(IBEP20 token, bytes memory data) private {
-        require(address(token).isContract(), "SafeBEP20: call to non-contract");
+    function safeIncreaseAllowance(
+        IBEP20 token,
+        address spender,
+        uint256 value
+    ) internal {
+        uint256 newAllowance = token.allowance(address(this), spender).add(
+            value
+        );
+        token.approve(spender, newAllowance);
+    }
 
-        // solhint-disable-next-line avoid-low-level-calls
-        (bool success, bytes memory returndata) = address(token).call(data);
-        require(success, "SafeBEP20: low-level call failed");
-
-        if (returndata.length > 0) {
-            // Return data is optional
-            // solhint-disable-next-line max-line-length
-            require(
-                abi.decode(returndata, (bool)),
-                "SafeBEP20: BEP20 operation did not succeed"
-            );
-        }
+    function safeDecreaseAllowance(
+        IBEP20 token,
+        address spender,
+        uint256 value
+    ) internal {
+        uint256 newAllowance = token.allowance(address(this), spender).sub(
+            value,
+            "SafeBEP20: decreased allowance below zero"
+        );
+        token.approve(spender, newAllowance);
     }
 }

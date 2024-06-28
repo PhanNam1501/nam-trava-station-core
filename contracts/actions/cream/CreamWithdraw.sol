@@ -94,11 +94,10 @@ contract CreamWithdraw is ActionBase, CreamHelper {
         // if _amount type(uint).max that means take out proxy whole balance
         if (_amount == type(uint256).max) {
             _amount = _cTokenAddr.getBalance(address(this));
-        }
             if (ICToken(_cTokenAddr).redeem(_amount) != NO_ERROR) {
                 revert CreamRedeemError();
             }
-        else {
+        } else {
             // Sender redeems vTokens in exchange for a specified amount of underlying asset
             if (ICToken(_cTokenAddr).redeemUnderlying(_amount) != NO_ERROR) {
                 revert CreampUnderlyingRedeemError();

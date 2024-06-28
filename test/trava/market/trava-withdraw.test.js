@@ -4,18 +4,16 @@ require("dotenv").config();
 
 const { Action } = require("../../teststrategy/Action");
 const { getProxy } = require("../../utils");
+const { MAX_UINT256 } = require("trava-simulation-route");
 
 describe("Trava-Withdraw", function () {
   this.timeout(150000);
 
   it("Test trava withdraw", async () => {
     const market = "0x6df52f798740504c24ccd374cf7ce81b28ce8330";
-    const tokenAddress = process.env.WBNB_BSCTESTNET;
-    const amount = hre.ethers.utils.parseEther("1");
+    const amount = MAX_UINT256
     const to = process.env.PUBLIC_KEY;
     const proxy = await getProxy(process.env.PUBLIC_KEY);
-    const onBehalf = proxy.address;
-    const enableAsColl = false;
     const trava = "0xE1F005623934D3D8C724EC68Cc9bFD95498D4435";
 
     console.log("prepare withdraw");

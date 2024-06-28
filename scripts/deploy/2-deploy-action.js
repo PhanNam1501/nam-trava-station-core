@@ -63,13 +63,13 @@ async function main() {
   //         ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
   //     */
 
-  // await changeConstantInFiles(
-  //   './contracts',
-  //   ['TokenUtils'],
-  //   'WBNB_ADDR',
-  //   process.env.WBNB_BSCTESTNET,
-  // );
-  // run('compile');
+  await changeConstantInFiles(
+    './contracts',
+    ['TokenUtils'],
+    'WBNB_ADDR',
+    process.env.WBNB_BSCTESTNET,
+  );
+  run('compile');
 
   // const wrapBnb = await redeploy('WrapBnb', process.env.DFS_REGISTRY_ADDRESS);
   // writeToEnvFile("WRAP_BNB_ADDRESS", wrapBnb.address)
@@ -94,21 +94,21 @@ async function main() {
   //        ||                               Trava Market Contract                                   ||
   //        ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
   //    */
-  // await changeConstantInFiles(
-  //   './contracts',
-  //   ['MainnetTravaAddresses'],
-  //   'STAKED_TRAVA_TOKEN_ADDRESS',
-  //   process.env.STAKED_TRAVA_TOKEN_ADDRESS,
-  // );
-  // run('compile');
+  await changeConstantInFiles(
+    './contracts',
+    ['MainnetTravaAddresses'],
+    'STAKED_TRAVA_TOKEN_ADDRESS',
+    process.env.STAKED_TRAVA_TOKEN_ADDRESS,
+  );
+  run('compile');
 
-  // await changeConstantInFiles(
-  //   './contracts',
-  //   ['MainnetTravaAddresses'],
-  //   'INCENTIVES_ADDRESS',
-  //   process.env.INCENTIVES_ADDRESS,
-  // );
-  // run('compile');
+  await changeConstantInFiles(
+    './contracts',
+    ['MainnetTravaAddresses'],
+    'INCENTIVES_ADDRESS',
+    process.env.INCENTIVES_ADDRESS,
+  );
+  run('compile');
 
   // const travaBorrow = await redeploy(
   //   "TravaBorrow",
@@ -122,8 +122,8 @@ async function main() {
   // );
   // writeToEnvFile("TRAVA_REPAY_ADDRESS", travaRepay.address);
 
-  // const travaSupply = await redeploy('TravaSupply', process.env.DFS_REGISTRY_ADDRESS);
-  // writeToEnvFile("TRAVA_SUPPLY_ADDRESS", travaSupply.address)
+  const travaSupply = await redeploy('TravaSupply', process.env.DFS_REGISTRY_ADDRESS);
+  writeToEnvFile("TRAVA_SUPPLY_ADDRESS", travaSupply.address)
 
   // const OraiStake = await redeploy('OraiStake', process.env.DFS_REGISTRY_ADDRESS);
   // writeToEnvFile("ORAI_STAKE_ADDRESS", OraiStake.address)
