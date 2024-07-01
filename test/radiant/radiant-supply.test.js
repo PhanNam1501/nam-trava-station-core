@@ -18,7 +18,7 @@ describe("Radiant-Supply", function () {
     const proxy = await getProxy(process.env.PUBLIC_KEY);
     const smartWalletAddress = proxy.address;
     const onBehalf = proxy.address;
-    const tokenAddress = process.env.WBNB_BSCTESTNET;
+    const tokenAddress = process.env.WBNB_ADDRESS;
     const rateMode = 2;
     
 

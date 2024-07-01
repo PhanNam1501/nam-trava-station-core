@@ -1,7 +1,7 @@
 // script test from another repo
 const { ethers } = require("hardhat");
 const { MAX_UINT256 } = require("trava-simulation-route");
-const { getProxy } = require("../utils");
+const { getProxy } = require("../../utils");
 
 const {Strategy, actions, triggers } = require("phuong-trava-station-sdk");
 
@@ -25,7 +25,7 @@ describe("Test strategy", function () {
     const feeTakerStation = process.env.GAS_FEE_TAKER;
 
     const gasUsed = 50000;
-    const feeToken = process.env.TRAVA_BSCTESTNET; //WBNB
+    const feeToken = process.env.TRAVA_ADDRESS; //WBNB
     const availableAmount = 1000;
     const dfsFeeDivider = 100;
     const BUSD = process.env.BUSD_TOKEN_ADDRESS;

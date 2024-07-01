@@ -70,7 +70,7 @@ describe("TestWrapBNB", async function() {
   });
   it("Trigger strategy", async() => {
     console.log("Before calling strategy::");
-    const wbnbContract = (await hre.ethers.getContractAt('IWBNB', process.env.WBNB_BSCTESTNET));
+    const wbnbContract = (await hre.ethers.getContractAt('IWBNB', process.env.WBNB_ADDRESS));
     console.log("Balance of receiver:: ", await wbnbContract.balanceOf(receiverAcc.address));
 
     await callStrategy(proxy.address, botAcc, subId, params, receiverAcc.address, ownerAcc, strategyId);

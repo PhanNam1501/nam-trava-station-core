@@ -11,7 +11,7 @@ describe("Send Token Action", function () {
     const onBehalf = proxy.address;
 
     const tokenAddress = process.env.USDT_TRON;
-    // const tokenAddress = process.env.TRAVA_BSCTESTNET
+    // const tokenAddress = process.env.TRAVA_ADDRESS
 
     const ERC20Mock = (await ethers.getContractFactory("TetherToken")).attach(tokenAddress)
 

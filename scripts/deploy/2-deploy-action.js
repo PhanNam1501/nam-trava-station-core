@@ -67,7 +67,7 @@ async function main() {
     './contracts',
     ['TokenUtils'],
     'WBNB_ADDR',
-    process.env.WBNB_BSCTESTNET,
+    process.env.WBNB_ADDRESS,
   );
   run('compile');
 
@@ -812,7 +812,7 @@ async function main() {
   //   './contracts',
   //   ['TokenUtils'],
   //   'WBNB_ADDR',
-  //   process.env.WBNB_BSCTESTNET,
+  //   process.env.WBNB_ADDRESS,
   // );
   // run('compile');
 
@@ -919,7 +919,7 @@ async function main() {
   //     './contracts',
   //     ['TokenUtilsVenus'],
   //     'WBNB_ADDR',
-  //     process.env.WBNB_BSCTESTNET,
+  //     process.env.WBNB_ADDRESS,
   //   );
   //   run('compile');
 
@@ -968,7 +968,7 @@ async function main() {
   //   './contracts',
   //   ['TokenUtilsVenus'],
   //   'WBNB_ADDR',
-  //   process.env.WBNB_BSCTESTNET,
+  //   process.env.WBNB_ADDRESS,
   // );
   // run('compile');
 
@@ -1013,7 +1013,7 @@ async function main() {
   //   './contracts',
   //   ['TokenUtilsVenus'],
   //   'WBNB_ADDR',
-  //   process.env.WBNB_BSCTESTNET,
+  //   process.env.WBNB_ADDRESS,
   // );
   // run('compile');
 
@@ -1058,7 +1058,7 @@ async function main() {
   //   './contracts',
   //   ['TokenUtilsVenus'],
   //   'WBNB_ADDR',
-  //   process.env.WBNB_BSCTESTNET,
+  //   process.env.WBNB_ADDRESS,
   // );
   // run('compile');
 

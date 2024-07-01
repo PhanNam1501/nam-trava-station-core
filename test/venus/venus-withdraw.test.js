@@ -10,7 +10,7 @@ describe("Venus-Withdraw", function () {
 
   it("Test venus withdraw", async () => {
     const market = "0x6df52f798740504c24ccd374cf7ce81b28ce8330";
-    const tokenAddress = process.env.WBNB_BSCTESTNET;
+    const tokenAddress = process.env.WBNB_ADDRESS;
     const amount = hre.ethers.utils.parseEther("1");
     const venusAddress = process.env.VENUS_TOKEN_ADDRESS;
     const xvenusAddress = "0x6d6F697e34145Bb95c54E77482d97cc261Dc237E";

@@ -89,7 +89,7 @@ const WSTETH_ADDRESS = '0x7f39C581F595B53c5cb19bD0b3f8dA6c935E2Ca0';
 // // Dfs sdk won't accept 0x0 and we need some rand addr for testing
 const placeHolderAddr = '0x0000000000000000000000000000000000000001';
 // const AUNI_ADDR = '0xb9d7cb55f463405cdfbe4e90a6d2df01c2b92bf1';
-const WETH_ADDR = process.env.WETH_BSCTESTNET;
+const WETH_ADDR = process.env.WETH_ADDRESS;
 // const AWBTC_ADDR = '0x9ff58f4ffb29fa2266ab25e75e2a8b3503311656';
 // const ALINK_ADDR = '0xa06bc25b5805d5f8d82847d191cb4af5a3e873e0';
 // const ADAI_ADDR = '0x028171bca77440897b824ca71d1c56cac55b68a3';
@@ -97,10 +97,10 @@ const WETH_ADDR = process.env.WETH_BSCTESTNET;
 // const LINK_ADDR = '0x514910771af9ca656af840dff83e8264ecf986ca';
 // const WBTC_ADDR = '0x2260fac5e5542a773aa44fbcfedf7c193bc2c599';
 // const LUSD_ADDR = '0x5f98805A4E8be255a32880FDeC7F6728C6568bA0';
-const WBNB_ADDR = process.env.WBNB_BSCTESTNET;
+const WBNB_ADDR = process.env.WBNB_ADDRESS;
 
-const USDC_ADDR =  process.env.USDC_BSCTESTNET;
-const TRAVA_ADDR =  process.env.TRAVA_BSCTESTNET;
+const USDC_ADDR =  process.env.USDC_ADDRESS;
+const TRAVA_ADDR =  process.env.TRAVA_ADDRESS;
 
 // const BUSD_ADDR = '0x4fabb145d64652a948d72533023f6e7a623c7c53';
 

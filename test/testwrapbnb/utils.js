@@ -106,7 +106,7 @@ const subTestStrategy = async (proxy, value, receiverAddress, strategyId, ownerA
   const valueToUnwrap = value.sub(value.div(2)).toString();
   const triggerData = await createBNBBalanceTrigger(ownerAddress, value);
   const wrapBNB1Encoded = abiCoder.encode(['uint256'], [value.toString()]);
-  const sendToken1Encoded = abiCoder.encode(['address'], [process.env.WBNB_BSCTESTNET]);
+  const sendToken1Encoded = abiCoder.encode(['address'], [process.env.WBNB_ADDRESS]);
   const sendToken2Encoded = abiCoder.encode(['address'], [receiverAddress]);
   const sendToken3Encoded = abiCoder.encode(['uint256'], [valueToSend]);
   const unwrapBNB1Encoded = abiCoder.encode(['uint256'], [valueToUnwrap]);
@@ -159,7 +159,7 @@ const getStrategySub = async (value, ownerAddress, receiverAddress, strategyId) 
   const valueToUnwrap = value.sub(value.div(2)).toString();
   const triggerData = await createBNBBalanceTrigger(ownerAddress, value);
   const wrapBNB1Encoded = abiCoder.encode(['uint256'], [value.toString()]);
-  const sendToken1Encoded = abiCoder.encode(['address'], [process.env.WBNB_BSCTESTNET]);
+  const sendToken1Encoded = abiCoder.encode(['address'], [process.env.WBNB_ADDRESS]);
   const sendToken2Encoded = abiCoder.encode(['address'], [receiverAddress]);
   const sendToken3Encoded = abiCoder.encode(['uint256'], [valueToSend]);
   const unwrapBNB1Encoded = abiCoder.encode(['uint256'], [valueToUnwrap]);
@@ -179,7 +179,7 @@ const callStrategy = async (addressProxy, botAcc, subId, val, receiverAddress, o
   const valueToUnwrap = val.sub(val.div(2)).toString();
   
   const wrapBNBAction = new Action("WrapBnb", process.env.WRAP_BNB_ADDRESS, ['uint256'], [val.toString()]);
-  const sendTokenAction = new Action("SendToken", process.env.SEND_TOKEN_ADDRESS, ["address", "address", "uint256"], [process.env.WBNB_BSCTESTNET, receiverAddress, valueToSend]);
+  const sendTokenAction = new Action("SendToken", process.env.SEND_TOKEN_ADDRESS, ["address", "address", "uint256"], [process.env.WBNB_ADDRESS, receiverAddress, valueToSend]);
   const unwrapBNBAction = new Action("UnwrapBnb", process.env.UNWRAP_BNB_ADDRESS, ["uint256", "address"], [valueToUnwrap, ownerAcc.address]);
   
   actionsCallData.push(wrapBNBAction.encodeForRecipe()[0]);
@@ -198,7 +198,7 @@ const callStrategy = async (addressProxy, botAcc, subId, val, receiverAddress, o
   // console.log("ZZZ");
 
   console.log("After calling strategy::");
-  const wbnbContract = (await hre.ethers.getContractAt('IWBNB', process.env.WBNB_BSCTESTNET));
+  const wbnbContract = (await hre.ethers.getContractAt('IWBNB', process.env.WBNB_ADDRESS));
   console.log("Balance of receiver:: ", await wbnbContract.balanceOf(receiverAddress));
 };
 

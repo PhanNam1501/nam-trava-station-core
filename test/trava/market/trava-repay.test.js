@@ -10,7 +10,7 @@ describe("Trava-Repay", function () {
 
   it("Test trava repay", async () => {
     const market = "0x6df52f798740504c24ccd374cf7ce81b28ce8330";
-    const tokenAddress = process.env.WBNB_BSCTESTNET;
+    const tokenAddress = process.env.WBNB_ADDRESS;
     const amount = 1e14;
     const from = process.env.PUBLIC_KEY;
     const proxy = await getProxy(process.env.PUBLIC_KEY);

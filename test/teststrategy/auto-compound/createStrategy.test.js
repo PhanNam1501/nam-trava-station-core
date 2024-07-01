@@ -1,7 +1,7 @@
 // script test from another repo
 const { ethers } = require("hardhat");
 const { MAX_UINT256 } = require("trava-simulation-route");
-const { getProxy } = require("../utils");
+const { getProxy } = require("../../utils");
 
 const {
   Strategy,
@@ -34,7 +34,7 @@ describe("Test strategy", function () {
         "%amount",
         "%contractAddress"
     )
-
+    console.log("claim_reward", claim_reward)
     const stake = new actions.trava.TravaStakingStake(
         "%stakingPool",
         "%onBehalfOf",
@@ -68,23 +68,23 @@ describe("Test strategy", function () {
     const encoded = autoCompound.encodeForDsProxyCall();
     let [strategyName, triggerIds, actionIds, paramMapping] = encoded;
 
-    console.log(encoded);
+    // console.log(encoded);
 
     // ----------- Create strategy -----------------
 
-    const strategy_storage_address = process.env.STRATEGY_STORAGE_ADDRESS;
+    // const strategy_storage_address = process.env.STRATEGY_STORAGE_ADDRESS;
 
-    const strategyStorage = await ethers.getContractAt("StrategyStorage", strategy_storage_address);
-    const receipt = await strategyStorage.createStrategy(
-        strategyName, triggerIds, actionIds, paramMapping, true
-    );
+    // const strategyStorage = await ethers.getContractAt("StrategyStorage", strategy_storage_address);
+    // const receipt = await strategyStorage.createStrategy(
+    //     strategyName, triggerIds, actionIds, paramMapping, true
+    // );
 
-    await receipt.wait();
-    console.log("create strategy successed", receipt)
-    let strategyId = await strategyStorage.getStrategyCount();
+    // await receipt.wait();
+    // console.log("create strategy successed", receipt)
+    // let strategyId = await strategyStorage.getStrategyCount();
 
-    strategyId = (strategyId-1).toString();
-    console.log("Startegy id " , strategyId.toString());
+    // strategyId = (strategyId-1).toString();
+    // console.log("Startegy id " , strategyId.toString());
     
   });
 });

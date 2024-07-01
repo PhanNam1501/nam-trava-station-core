@@ -194,7 +194,7 @@ describe("Test Staking Redeem", async function () {
     //   accA,
     //   proxyA,
     //   process.env.TOKEN_B_TEST2,
-    //   process.env.TRAVA_BSCTESTNET,
+    //   process.env.TRAVA_ADDRESS,
     //   "2500",
     //   accA.address,
     //   "1000000000000000",
