@@ -18,7 +18,7 @@ describe("Test AutoSwapStrategy", function () {
         const pancakeSwapV2 = process.env.PANCAKE_SWAP_V2_ADDRESS;
         const amountIn = BigNumber(1000).multipliedBy(BigNumber(10).pow(18)).toFixed(0) 
         const amountOutMin = BigNumber(900).multipliedBy(BigNumber(10).pow(18)).toFixed(0) 
-        const pathSwap = [process.env.TRAVA_ADDRESS, process.env.USDT_ADDRESS];
+        const pathSwap = [process.env.TRAVA_ADDRESS, process.env.WBNB_ADDRESS];
         const to = proxy.address
         const deadline = Math.floor(Date.now() / 1000) + 100 * 365 * 24 * 3600; // 20 minutes from now
         const from = proxy.address
@@ -27,19 +27,17 @@ describe("Test AutoSwapStrategy", function () {
         const feeToken = "0xEeeeeEeeeEeEeeEeEeEeeEEEeeeeEeeeeeeeEEeE"
         const availableAmount = 1000;
         const dfsFeeDivider = 100;
-        const path = [process.env.WBNB_ADDRESS, process.env.USDT_ADDRESS];
+        const path = [process.env.WBNB_ADDRESS, process.env.TRAVA_ADDRESS];
 
         const startTime = "0";
         const endTime = Math.floor(Date.now() / 1000) + 100 * 365 * 24 * 3600; // 20 minutes from now
 
         const pancakeFactoryContract = await ethers.getContractAt("IPancakeFactory", process.env.PANCAKE_FACTORY_ADDRESS);
-        const pairSwap = (String(await pancakeFactoryContract.getPair(path[0], path[1])))
+        const pairSwap = (String(await pancakeFactoryContract.getPair(pathSwap[0], pathSwap[1])))
         const pair = process.env.TRAVA_WBNB_PAIR; // Trava-WBNB pair
         const tokenIn = process.env.TRAVA_TOKEN_ADDRESS;
         const triggerPrice = BigNumber(0.00012).multipliedBy(BigNumber(10).pow(18)).toFixed(0)
-        const state = "1";
-
-        const startegyIdOrBundle = 1;
+        const state = "0";
         const strategy_storage_address = process.env.STRATEGY_STORAGE_ADDRESS;
 
         const strategyStorage = await ethers.getContractAt("StrategyStorage", strategy_storage_address);
@@ -102,31 +100,31 @@ describe("Test AutoSwapStrategy", function () {
             dfsFeeDividerEncode,
             ...pathEncode
         )
-        // const subProxyAddress = process.env.SUB_PROXY_ADDRESS;
-        // const SubProxy = await ethers.getContractAt("SubProxy", subProxyAddress);
-        // const functionData = SubProxy.interface.encodeFunctionData(
-        //     'subscribeToStrategy',
-        //     [strategySub]
-        // );
+        const subProxyAddress = process.env.SUB_PROXY_ADDRESS;
+        const SubProxy = await ethers.getContractAt("SubProxy", subProxyAddress);
+        const functionData = SubProxy.interface.encodeFunctionData(
+            'subscribeToStrategy',
+            [strategySub]
+        );
 
-        // console.log("Function data after encode:", functionData);
+        console.log("Function data after encode:", functionData);
 
-        // const receipt_sub = await proxy['execute(address,bytes)'](subProxyAddress, functionData, {
-        //     gasLimit: 1e7,
-        // });
-        // let tx_sub = await receipt_sub.wait();
-        // console.log(tx_sub)
+        const receipt_sub = await proxy['execute(address,bytes)'](subProxyAddress, functionData, {
+            gasLimit: 1e7,
+        });
+        let tx_sub = await receipt_sub.wait();
+        console.log(tx_sub)
 
-        // const subStorageAddress = process.env.SUB_STORAGE_ADDRESS;
-        // const subStorage = await ethers.getContractAt("SubStorage", subStorageAddress);
-        // let latestSubId = await subStorage.getSubsCount();
-        // latestSubId = (latestSubId - 1).toString();
+        const subStorageAddress = process.env.SUB_STORAGE_ADDRESS;
+        const subStorage = await ethers.getContractAt("SubStorage", subStorageAddress);
+        let latestSubId = await subStorage.getSubsCount();
+        latestSubId = (latestSubId - 1).toString();
 
-        // console.log("subId:", latestSubId);
+        console.log("subId:", latestSubId);
 
-        // let tx_stored_data = await subStorage.getSub(latestSubId);
-        // console.log("Stored Sub Data:", tx_stored_data.toString());
-
+        let tx_stored_data = await subStorage.getSub(latestSubId);
+        console.log("Stored Sub Data:", tx_stored_data.toString());
+        console.log("struct StoredSubData {bytes20 userProxy;bool isEnabled; bytes32 strategySubHash;}")
 
 
         // ------------- Call test for strategy -------------
