@@ -17,10 +17,10 @@ describe("Test AutoSwapStrategy", function () {
 
         const pancakeSwapV2 = process.env.PANCAKE_SWAP_V2_ADDRESS;
         const amountIn = BigNumber(1000).multipliedBy(BigNumber(10).pow(18)).toFixed(0) 
-        const amountOutMin = BigNumber(900).multipliedBy(BigNumber(10).pow(18)).toFixed(0) 
+        const amountOutMin = BigNumber(0).multipliedBy(BigNumber(10).pow(18)).toFixed(0) 
         const pathSwap = [process.env.TRAVA_ADDRESS, process.env.WBNB_ADDRESS];
         const to = proxy.address
-        const deadline = Math.floor(Date.now() / 1000) + 100 * 365 * 24 * 3600; // 20 minutes from now
+        const deadline = (Math.floor(Date.now()) + 100 * 365 * 24 * 3600 * 1000).toString(); // 20 minutes from now
         const from = proxy.address
 
         const gasUsed = 50000;
@@ -29,14 +29,12 @@ describe("Test AutoSwapStrategy", function () {
         const dfsFeeDivider = 100;
         const path = [process.env.WBNB_ADDRESS, process.env.TRAVA_ADDRESS];
 
-        const startTime = "0";
-        const endTime = Math.floor(Date.now() / 1000) + 100 * 365 * 24 * 3600; // 20 minutes from now
 
         const pancakeFactoryContract = await ethers.getContractAt("IPancakeFactory", process.env.PANCAKE_FACTORY_ADDRESS);
         const pairSwap = (String(await pancakeFactoryContract.getPair(pathSwap[0], pathSwap[1])))
         const pair = process.env.TRAVA_WBNB_PAIR; // Trava-WBNB pair
         const tokenIn = process.env.TRAVA_TOKEN_ADDRESS;
-        const triggerPrice = BigNumber(0.00012).multipliedBy(BigNumber(10).pow(18)).toFixed(0)
+        const triggerPrice = BigNumber(0).multipliedBy(BigNumber(10).pow(18)).toFixed(0)
         const state = "0";
         const strategy_storage_address = process.env.STRATEGY_STORAGE_ADDRESS;
 
@@ -45,7 +43,7 @@ describe("Test AutoSwapStrategy", function () {
         // let strategyId = await strategyStorage.getStrategyCount();
         // console.log("Strategy count:", strategyId.toString());
 
-        const strategyId = "2";
+        const strategyId = "3";
         const strategyData = await strategyStorage.getStrategy(strategyId);
         console.log("Strategy Data:", strategyData);
 
@@ -64,16 +62,15 @@ describe("Test AutoSwapStrategy", function () {
         const dfsFeeDividerEncode = abiCoder.encode(['uint256'], [dfsFeeDivider]);
         const pathEncode = path.map(e => abiCoder.encode(['address'], [e]))
 
-        const timeTriggerData = abiCoder.encode(['uint256', 'uint256'], [startTime, endTime]);
         const priceTrigger = abiCoder.encode(['address', 'address', 'uint256', 'uint8'], [pairSwap, pathSwap[0], triggerPrice, state]);
-        // console.log("timeTriggerData, priceTrigger", timeTriggerData, priceTrigger)
+        console.log("priceTrigger", priceTrigger)
         const strategySub = [
             strategyId,
             isBundle,
-            [timeTriggerData, priceTrigger],
+            [priceTrigger],
             [
                 amountInEncode,
-                amountInEncode,
+                amountOutMinEncode,
                 ...pathSwapEncode,
                 toEncode,
                 deadlineEncode,
@@ -89,7 +86,7 @@ describe("Test AutoSwapStrategy", function () {
         console.log(
             "subData",
             amountInEncode,
-            amountInEncode,
+            amountOutMinEncode,
             ...pathSwapEncode,
             toEncode,
             deadlineEncode,
@@ -119,7 +116,7 @@ describe("Test AutoSwapStrategy", function () {
         const subStorage = await ethers.getContractAt("SubStorage", subStorageAddress);
         let latestSubId = await subStorage.getSubsCount();
         latestSubId = (latestSubId - 1).toString();
-
+        // latestSubId = "18";
         console.log("subId:", latestSubId);
 
         let tx_stored_data = await subStorage.getSub(latestSubId);

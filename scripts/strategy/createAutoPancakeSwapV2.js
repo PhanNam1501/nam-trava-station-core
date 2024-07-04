@@ -19,6 +19,7 @@ async function main() {
       "%amountIn",
       "%amountOutMin",
       "%path",
+      "%path",
       "%to",
       "%deadline",
       "%from",

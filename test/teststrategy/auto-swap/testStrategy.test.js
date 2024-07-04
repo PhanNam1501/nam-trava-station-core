@@ -22,12 +22,18 @@ describe("Test strategy", function () {
     const actionsCallData = [];
     
     const feeTakerStation = process.env.GAS_FEE_TAKER_ADDRESS;
-    const pancakeSwapV2 = process.env.PANCAKE_SWAP_V2_ADDRESS;
+    const pancakeSwapV2Address = process.env.PANCAKE_SWAP_V2_ADDRESS;
     const amountIn = BigNumber(1000).multipliedBy(BigNumber(10).pow(18)).toFixed(0) 
-    const amountOutMin = BigNumber(900).multipliedBy(BigNumber(10).pow(18)).toFixed(0) 
+    const amountOutMin = BigNumber(0).multipliedBy(BigNumber(10).pow(18)).toFixed(0) 
     const pathSwap = [process.env.TRAVA_ADDRESS, process.env.WBNB_ADDRESS];
     const to = "0x8E79c4f9c4D71aecd0B00a755Bcfe0b86A5d181E"
-    const deadline = Math.floor(Date.now() / 1000) + 100 * 365 * 24 * 3600; // 20 minutes from now
+    const deadline = (Math.floor(Date.now())+ 100 * 365 * 24 * 3600 * 1000).toString(); // 20 minutes from now
+    console.log(amountIn)
+    console.log(amountOutMin)
+    console.log(BigNumber(1e21).toFixed())
+    console.log("pathSwap: ", pathSwap)
+    console.log("to: ", to)
+    console.log("deadline: ", deadline)
     const from = "0x8E79c4f9c4D71aecd0B00a755Bcfe0b86A5d181E"
 
     const gasUsed = 50000;
@@ -36,8 +42,6 @@ describe("Test strategy", function () {
     const dfsFeeDivider = 100;
     const path = [process.env.WBNB_ADDRESS, process.env.TRAVA_ADDRESS];
 
-    const startTime = "0";
-    const endTime = Math.floor(Date.now() / 1000) + 100 * 365 * 24 * 3600; // 20 minutes from now
 
     const pancakeFactoryContract = await ethers.getContractAt("IPancakeFactory", process.env.PANCAKE_FACTORY_ADDRESS);
     const pairSwap = (String(await pancakeFactoryContract.getPair(pathSwap[0], pathSwap[1])))
@@ -46,7 +50,7 @@ describe("Test strategy", function () {
     const triggerPrice = BigNumber(0.00012).multipliedBy(BigNumber(10).pow(18)).toFixed(0)
     const state = "1";
     const onchainPriceTriggerAddress = process.env.ONCHAIN_PRICE_TRIGGER;
-    const startegyIdOrBundle = 2;
+    const startegyIdOrBundle = 3;
 
     const pancake_swap = new actions.pancake.PancakeSwapV2(
         amountIn,
@@ -55,7 +59,7 @@ describe("Test strategy", function () {
         to,
         deadline,
         from,
-        pancakeSwapV2
+        process.env.PANCAKE_SWAP_V2_ADDRESS
     )
 
     const take_gas_fee = new actions.fee.GasFeeTaker(
@@ -71,16 +75,13 @@ describe("Test strategy", function () {
         pairSwap,
         tokenIn,
         triggerPrice,
-        state,
-        onchainPriceTriggerAddress
+        state
     )
 
     actionsCallData.push(pancake_swap.encodeForRecipe()[0]);
     actionsCallData.push(take_gas_fee.encodeForRecipe()[0]);
-
+    // triggerCallData.push(abiCoder.encode(['address', 'address', 'uint256', 'uint8'], [pairSwap, pathSwap[0], triggerPrice, state]));
     console.log("actionsCallData: ", actionsCallData)
     console.log("Test strategy auto compound success");
     });
 });
-
-
