@@ -37,7 +37,7 @@ describe("Test AutoSwapStrategy", function () {
         const pair = process.env.TRAVA_WBNB_PAIR; // Trava-WBNB pair
         const tokenIn = process.env.TRAVA_TOKEN_ADDRESS;
         const triggerPrice = BigNumber(0.00012).multipliedBy(BigNumber(10).pow(18)).toFixed(0)
-        const state = "1";
+        const state = "0";
 
         const startegyIdOrBundle = 1;
         const strategy_storage_address = process.env.STRATEGY_STORAGE_ADDRESS;
@@ -66,13 +66,13 @@ describe("Test AutoSwapStrategy", function () {
         const dfsFeeDividerEncode = abiCoder.encode(['uint256'], [dfsFeeDivider]);
         const pathEncode = path.map(e => abiCoder.encode(['address'], [e]))
 
-        const timeTriggerData = abiCoder.encode(['uint256', 'uint256'], [startTime, endTime]);
+        // const timeTriggerData = abiCoder.encode(['uint256', 'uint256'], [startTime, endTime]);
         const priceTrigger = abiCoder.encode(['address', 'address', 'uint256', 'uint8'], [pairSwap, pathSwap[0], triggerPrice, state]);
-        // console.log("timeTriggerData, priceTrigger", timeTriggerData, priceTrigger)
+        console.log("priceTrigger", priceTrigger)
         const strategySub = [
             strategyId,
             isBundle,
-            [timeTriggerData, priceTrigger],
+            [priceTrigger],
             [
                 amountInEncode,
                 amountInEncode,
@@ -117,15 +117,15 @@ describe("Test AutoSwapStrategy", function () {
         // let tx_sub = await receipt_sub.wait();
         // console.log(tx_sub)
 
-        // const subStorageAddress = process.env.SUB_STORAGE_ADDRESS;
-        // const subStorage = await ethers.getContractAt("SubStorage", subStorageAddress);
-        // let latestSubId = await subStorage.getSubsCount();
-        // latestSubId = (latestSubId - 1).toString();
+        const subStorageAddress = process.env.SUB_STORAGE_ADDRESS;
+        const subStorage = await ethers.getContractAt("SubStorage", subStorageAddress);
+        let latestSubId = await subStorage.getSubsCount();
+        latestSubId = (latestSubId - 1).toString();
 
-        // console.log("subId:", latestSubId);
+        console.log("subId:", latestSubId);
 
-        // let tx_stored_data = await subStorage.getSub(latestSubId);
-        // console.log("Stored Sub Data:", tx_stored_data.toString());
+        let tx_stored_data = await subStorage.getSub(latestSubId);
+        console.log("Stored Sub Data:", tx_stored_data.toString());
 
 
 
