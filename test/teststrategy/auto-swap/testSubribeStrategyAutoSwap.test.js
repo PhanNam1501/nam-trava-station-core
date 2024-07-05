@@ -43,7 +43,7 @@ describe("Test AutoSwapStrategy", function () {
         // let strategyId = await strategyStorage.getStrategyCount();
         // console.log("Strategy count:", strategyId.toString());
 
-        const strategyId = "3";
+        const strategyId = "6";
         const strategyData = await strategyStorage.getStrategy(strategyId);
         console.log("Strategy Data:", strategyData);
 

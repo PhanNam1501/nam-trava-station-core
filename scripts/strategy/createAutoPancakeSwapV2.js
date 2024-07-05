@@ -18,8 +18,8 @@ async function main() {
  const swap = new actions.pancake.PancakeSwapV2(
       "%amountIn",
       "%amountOutMin",
-      "%path",
-      "%path",
+      ["%path",
+      "%path"],
       "%to",
       "%deadline",
       "%from",
@@ -31,8 +31,8 @@ async function main() {
      '%feeToken',
      '%availableAmount',
      '%dfsFeeDivider',
-     '%path',
-     '%path',
+     ['%path',
+     '%path'],
      '%feeTakerStation'
  );
 
