@@ -50,7 +50,7 @@ describe("Test strategy", function () {
     const triggerPrice = BigNumber(0.00012).multipliedBy(BigNumber(10).pow(18)).toFixed(0)
     const state = "1";
     const onchainPriceTriggerAddress = process.env.ONCHAIN_PRICE_TRIGGER;
-    const startegyIdOrBundle = 3;
+    const startegyIdOrBundle = 6;
 
     const pancake_swap = new actions.pancake.PancakeSwapV2(
         amountIn,
