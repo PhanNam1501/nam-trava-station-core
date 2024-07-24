@@ -40,8 +40,8 @@ describe("Pancake-Swap-V2", function () {
 
         // let listToken = getListTDTokenRewardsAddress(oldState);
         let listToken = [
-            convertHexStringToAddress("0x0E09FaBB73Bd3Ade0a17ECC321fD13a19e81cE82"),
-            convertHexStringToAddress("0x0391bE54E72F7e001f6BBc331777710b4f2999Ef")
+            convertHexStringToAddress("0x0391bE54E72F7e001f6BBc331777710b4f2999Ef"),
+            convertHexStringToAddress("0xbb4CdB9CBd36B01bD1cBaEBF2De08d9173bc095c")
         ]
 
         let swapUtil = new SwapUtil("https://bsc.publicnode.com", 56);
@@ -50,16 +50,19 @@ describe("Pancake-Swap-V2", function () {
             listToken[0],
             listToken[1],
             1/100,
-            BigNumber(1e17).toFixed()
+            BigNumber(1e21).toFixed()
         )
+        console.log("swapInfo", swapInfo.path)
+        console.log("swapInfo", swapInfo.amountIn)
+        console.log("swapInfo", swapInfo.amountOut)
 
         let PancakeSwapV2Action = new actions.pancake.PancakeSwapV2(
             swapInfo.amountIn,
-            swapInfo.amountOut,
+            "0",
             swapInfo.path,
             proxy.address,
             "1797097461644",
-            userAddress,
+            proxy.address,
             process.env.PANCAKE_SWAP_V2_ADDRESS
         )
         console.log("e", PancakeSwapV2Action.encodeForRecipe())
