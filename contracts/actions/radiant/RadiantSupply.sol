@@ -142,7 +142,7 @@ contract RadiantSupply is ActionBase, RadiantHelper {
         lendingPool.deposit(_tokenAddr, _amount, _onBehalf, RADIANT_REFERRAL_CODE);
 
         if (_enableAsColl) {
-            enableAsCollateral(_market, _tokenAddr, true);
+            enableAsCollateral(RADIANT_POOL_ADDRESS_PROVIDER, _tokenAddr, true);
         }
 
         bytes memory logData = abi.encode(

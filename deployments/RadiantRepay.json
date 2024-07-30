@@ -166,7 +166,7 @@
 			"inputs": [
 				{
 					"internalType": "address",
-					"name": "_market",
+					"name": "_pool_market_provider",
 					"type": "address"
 				},
 				{
@@ -342,7 +342,7 @@
 	],
 	"networks": {
 		"mainnet": {
-			"address": "0x8FFA62586B97182a48C3D428552F8cd1f7985788",
+			"address": "0x3225116CDFa87979Ba6473b34D6F8a2524c5D13c",
 			"args": []
 		}
 	}

@@ -12,7 +12,8 @@ describe("Venus-Supply", function () {
   it("Test venus supply", async () => {
     const market = "0x6df52f798740504c24ccd374cf7ce81b28ce8330";
     const venusAddress = process.env.VENUS_TOKEN_ADDRESS;
-    const xvenusAddress = "0x6d6F697e34145Bb95c54E77482d97cc261Dc237E";
+    const xvenusAddress = "0x33a32f0ad4aa704e28c93ed8ffa61d50d51622a7"; //cBNB
+    ///0x6d6F697e34145Bb95c54E77482d97cc261Dc237E
     const amount = hre.ethers.utils.parseEther("1");
     const from = process.env.PUBLIC_KEY;
     const proxy = await getProxy(process.env.PUBLIC_KEY);
@@ -47,7 +48,7 @@ describe("Venus-Supply", function () {
         gasLimit: 20000000,
       }
     );
-
+    await tx.wait();
     console.log("tx", tx);
     // );
     // const IERC20 = await hre.ethers.getContractAt("IERC20Test", trava);

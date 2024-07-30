@@ -124,7 +124,7 @@ contract RadiantRepay is ActionBase, RadiantHelper {
         IRadiantLendingPool lendingPool = IRadiantLendingPool(_market);
 
         uint256 maxDebt = getWholeDebt(
-            _market,
+            RADIANT_POOL_ADDRESS_PROVIDER,
             _tokenAddr,
             _rateMode,
             _onBehalf

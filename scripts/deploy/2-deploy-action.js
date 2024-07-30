@@ -24,33 +24,33 @@ async function main() {
   //   process.env.DFS_REG_CONTROLLER_ADDR,
   // );
 
-  // await changeConstantInFiles(
-  //   './contracts',
-  //   ['MainnetActionsUtilAddresses'],
-  //   'REGISTRY_ADDR',
-  //   process.env.DFS_REGISTRY_ADDRESS,
-  // );
+  await changeConstantInFiles(
+    './contracts',
+    ['MainnetActionsUtilAddresses'],
+    'REGISTRY_ADDR',
+    process.env.DFS_REGISTRY_ADDRESS,
+  );
 
-  // await changeConstantInFiles(
-  //   './contracts',
-  //   ['MainnetActionsUtilAddresses'],
-  //   'DEFISAVER_LOGGER',
-  //   process.env.DEFISAVER_LOGGER_ADDRESS,
-  // );
+  await changeConstantInFiles(
+    './contracts',
+    ['MainnetActionsUtilAddresses'],
+    'DEFISAVER_LOGGER',
+    process.env.DEFISAVER_LOGGER_ADDRESS,
+  );
 
-  // await changeConstantInFiles(
-  //   './contracts',
-  //   ['MainnetActionsUtilAddresses'],
-  //   'SUB_STORAGE_ADDR',
-  //   process.env.SUB_STORAGE_ADDRESS,
-  // );
+  await changeConstantInFiles(
+    './contracts',
+    ['MainnetActionsUtilAddresses'],
+    'SUB_STORAGE_ADDR',
+    process.env.SUB_STORAGE_ADDRESS,
+  );
 
-  // await changeConstantInFiles(
-  //   './contracts',
-  //   ['MainnetActionsUtilAddresses'],
-  //   'PROXY_AUTH_ADDR',
-  //   process.env.PROXY_AUTH_ADDRESS,
-  // );
+  await changeConstantInFiles(
+    './contracts',
+    ['MainnetActionsUtilAddresses'],
+    'PROXY_AUTH_ADDR',
+    process.env.PROXY_AUTH_ADDRESS,
+  );
 
   //     /*
   //         ||--------------------------------------------------------------------------------||
@@ -122,8 +122,8 @@ async function main() {
   // );
   // writeToEnvFile("TRAVA_REPAY_ADDRESS", travaRepay.address);
 
-  const travaSupply = await redeploy('TravaSupply', process.env.DFS_REGISTRY_ADDRESS);
-  writeToEnvFile("TRAVA_SUPPLY_ADDRESS", travaSupply.address)
+  // const travaSupply = await redeploy('TravaSupply', process.env.DFS_REGISTRY_ADDRESS);
+  // writeToEnvFile("TRAVA_SUPPLY_ADDRESS", travaSupply.address)
 
   // const OraiStake = await redeploy('OraiStake', process.env.DFS_REGISTRY_ADDRESS);
   // writeToEnvFile("ORAI_STAKE_ADDRESS", OraiStake.address)
@@ -755,11 +755,11 @@ async function main() {
   // );
   // writeToEnvFile("RADIANT_BORROW_ADDRESS", radiantBorrow.address);
 
-  // const radiantRepay = await redeploy(
-  //   "RadiantRepay",
-  //   process.env.DFS_REGISTRY_ADDRESS
-  // );
-  // writeToEnvFile("RADIANT_REPAY_ADDRESS", radiantRepay.address);
+  const radiantRepay = await redeploy(
+    "RadiantRepay",
+    process.env.DFS_REGISTRY_ADDRESS
+  );
+  writeToEnvFile("RADIANT_REPAY_ADDRESS", radiantRepay.address);
 
   // const radiantSupply = await redeploy(
   //   "RadiantSupply",

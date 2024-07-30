@@ -15,33 +15,33 @@ contract RadiantHelper is MainnetRadiantAddresses {
 
     /// @notice Enable/Disable a token as collateral for the specified Radiant market
     function enableAsCollateral(
-        address _market,
+        address _pool_market_provider,
         address _tokenAddr,
         bool _useAsCollateral
     ) public {
-        address lendingPool = IRadiantLendingPoolAddressesProvider(_market).getLendingPool();
+        address lendingPool = IRadiantLendingPoolAddressesProvider(_pool_market_provider).getLendingPool();
 
         IRadiantLendingPool(lendingPool).setUserUseReserveAsCollateral(_tokenAddr, _useAsCollateral);
     }
 
     /// @notice Fetch the data provider for the specified market
-    function getDataProvider(address _market) internal view returns (IRadiantProtocolDataProvider) {
+    function getDataProvider(address _pool_market_provider) internal view returns (IRadiantProtocolDataProvider) {
         return
             IRadiantProtocolDataProvider(
-                IRadiantLendingPoolAddressesProvider(_market).getAddress(DATA_PROVIDER_ID)
+                IRadiantLendingPoolAddressesProvider(_pool_market_provider).getAddress(DATA_PROVIDER_ID)
             );
     }
 
     /// @notice Returns the lending pool contract of the specified market
-    function getLendingPool(address _market) internal view returns (IRadiantLendingPool) {
-        return IRadiantLendingPool(IRadiantLendingPoolAddressesProvider(_market).getLendingPool());
+    function getLendingPool(address _pool_market_provider) internal view returns (IRadiantLendingPool) {
+        return IRadiantLendingPool(IRadiantLendingPoolAddressesProvider(_pool_market_provider).getLendingPool());
     }
 
-    function getWholeDebt(address _market, address _tokenAddr, uint _borrowType, address _debtOwner) internal view returns (uint256 debt) {
+    function getWholeDebt(address _pool_market_provider, address _tokenAddr, uint _borrowType, address _debtOwner) internal view returns (uint256 debt) {
         uint256 STABLE_ID = 1;
         uint256 VARIABLE_ID = 2;
 
-        IRadiantProtocolDataProvider dataProvider = getDataProvider(_market);
+        IRadiantProtocolDataProvider dataProvider = getDataProvider(_pool_market_provider);
         (, uint256 borrowsStable, uint256 borrowsVariable, , , , , , ) =
             dataProvider.getUserReserveData(_tokenAddr, _debtOwner);
 
