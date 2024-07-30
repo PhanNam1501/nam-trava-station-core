@@ -57,19 +57,19 @@ async function main() {
 
  // ----------- Create strategy -----------------
 
- const strategy_storage_address = process.env.STRATEGY_STORAGE_ADDRESS;
+//  const strategy_storage_address = process.env.STRATEGY_STORAGE_ADDRESS;
 
- const strategyStorage = await ethers.getContractAt("StrategyStorage", strategy_storage_address);
- const receipt = await strategyStorage.createStrategy(
-     strategyName, triggerIds, actionIds, paramMapping, true
- );
+//  const strategyStorage = await ethers.getContractAt("StrategyStorage", strategy_storage_address);
+//  const receipt = await strategyStorage.createStrategy(
+//      strategyName, triggerIds, actionIds, paramMapping, true
+//  );
 
- await receipt.wait();
- console.log("create strategy successed", receipt)
- let strategyId = await strategyStorage.getStrategyCount();
+//  await receipt.wait();
+//  console.log("create strategy successed", receipt)
+//  let strategyId = await strategyStorage.getStrategyCount();
 
- strategyId = (strategyId-1).toString();
- console.log("Startegy id " , strategyId.toString());
+//  strategyId = (strategyId-1).toString();
+//  console.log("Startegy id " , strategyId.toString());
 }
 
 main()
