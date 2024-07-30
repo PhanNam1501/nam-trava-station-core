@@ -30,6 +30,7 @@ async function main() {
     'REGISTRY_ADDR',
     process.env.DFS_REGISTRY_ADDRESS,
   );
+  run('compile');
 
   await changeConstantInFiles(
     './contracts',
@@ -37,6 +38,7 @@ async function main() {
     'DEFISAVER_LOGGER',
     process.env.DEFISAVER_LOGGER_ADDRESS,
   );
+  run('compile');
 
   await changeConstantInFiles(
     './contracts',
@@ -44,6 +46,7 @@ async function main() {
     'SUB_STORAGE_ADDR',
     process.env.SUB_STORAGE_ADDRESS,
   );
+  run('compile');
 
   await changeConstantInFiles(
     './contracts',
@@ -51,6 +54,7 @@ async function main() {
     'PROXY_AUTH_ADDR',
     process.env.PROXY_AUTH_ADDRESS,
   );
+  run('compile');
 
   //     /*
   //         ||--------------------------------------------------------------------------------||
@@ -755,11 +759,11 @@ async function main() {
   // );
   // writeToEnvFile("RADIANT_BORROW_ADDRESS", radiantBorrow.address);
 
-  const radiantRepay = await redeploy(
-    "RadiantRepay",
-    process.env.DFS_REGISTRY_ADDRESS
-  );
-  writeToEnvFile("RADIANT_REPAY_ADDRESS", radiantRepay.address);
+  // const radiantRepay = await redeploy(
+  //   "RadiantRepay",
+  //   process.env.DFS_REGISTRY_ADDRESS
+  // );
+  // writeToEnvFile("RADIANT_REPAY_ADDRESS", radiantRepay.address);
 
   // const radiantSupply = await redeploy(
   //   "RadiantSupply",
@@ -858,11 +862,11 @@ async function main() {
   //   );
   //   writeToEnvFile("GRANARY_BORROW_ADDRESS", granaryBorrow.address);
 
-  // const granaryRepay = await redeploy(
-  //   "GranaryRepay",
-  //   process.env.DFS_REGISTRY_ADDRESS
-  // );
-  // writeToEnvFile("GRANARY_REPAY_ADDRESS", granaryRepay.address);
+  const granaryRepay = await redeploy(
+    "GranaryRepay",
+    process.env.DFS_REGISTRY_ADDRESS
+  );
+  writeToEnvFile("GRANARY_REPAY_ADDRESS", granaryRepay.address);
 
   // const granarySupply = await redeploy('GranarySupply', process.env.DFS_REGISTRY_ADDRESS);
   // writeToEnvFile("GRANARY_SUPPLY_ADDRESS", granarySupply.address)

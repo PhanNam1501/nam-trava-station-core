@@ -124,7 +124,7 @@ contract GranaryRepay is ActionBase, GranaryHelper {
         IGranaryLendingPool lendingPool = IGranaryLendingPool(_market);
 
         uint256 maxDebt = getWholeDebt(
-            _market,
+            GRANARY_POOL_ADDRESS_PROVIDER,
             _tokenAddr,
             _rateMode,
             _onBehalf
