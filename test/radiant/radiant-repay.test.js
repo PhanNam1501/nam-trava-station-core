@@ -10,24 +10,28 @@ describe("Radiant-Repay", function () {
   this.timeout(150000);
 
   it("Test radiant repay", async () => {
-    const market = "0xd50cf00b6e600dd036ba8ef475677d816d6c4281";
-    const amount = "10000000000001";
+    // const market = "0xd50cf00b6e600dd036ba8ef475677d816d6c4281";
+    //0x9c3B4DC4512e78F9E5a847bBB074D1b86FcC0961
+    const market = "0x7171054f8d148fe1097948923c91a6596fc29032";
+    const amount = "1000000000000";
     const from = process.env.PUBLIC_KEY;
     const proxy = await getProxy(process.env.PUBLIC_KEY);
     const onBehalf = proxy.address;
-    const wbnb = "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c";
+    // const wbnb = "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c";
+    const usdc = "0x8ac76a51cc950d9822d68b83fe1ad97b32cd580d";
     const rateMode = 2;
 
 
-    const _contractAddress = "0x8FFA62586B97182a48C3D428552F8cd1f7985788";
-    const tokenAddr = wbnb;
+    // const _contractAddress = "0x8FFA62586B97182a48C3D428552F8cd1f7985788";
+    const _contractAddress = "0x9c3B4DC4512e78F9E5a847bBB074D1b86FcC0961";
+    const tokenAddr = usdc;
     console.log("prepare repay");
 
     const radiantRepay = new Action(
-        "RadiantRepay",
-        _contractAddress, //getAddr("RadiantRepay"),
+        "GranaryRepay",
+        _contractAddress, //getAddr("GranaryRepay"),
         ["address", "address", "uint256", "uint256", "address", "address"],
-        [market, tokenAddr, amount, rateMode, from, onBehalf]
+        [market, tokenAddr, amount, rateMode, onBehalf, onBehalf]
     );
 
     const calldata = radiantRepay.encodeForDsProxyCall()[1];
@@ -38,8 +42,8 @@ describe("Radiant-Repay", function () {
     // await IERC20.approve(proxy.address, amount);
 
     const repayContract = await hre.ethers.getContractAt(
-      "RadiantRepay",
-      process.env.RADIANT_REPAY_ADDRESS
+      "GranaryRepay",
+      process.env.GRANARY_REPAY_ADDRESS
     );
 
 
