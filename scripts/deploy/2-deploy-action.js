@@ -862,17 +862,42 @@ async function main() {
   //   );
   //   writeToEnvFile("GRANARY_BORROW_ADDRESS", granaryBorrow.address);
 
-  const granaryRepay = await redeploy(
-    "GranaryRepay",
-    process.env.DFS_REGISTRY_ADDRESS
-  );
-  writeToEnvFile("GRANARY_REPAY_ADDRESS", granaryRepay.address);
+  // const granaryRepay = await redeploy(
+  //   "GranaryRepay",
+  //   process.env.DFS_REGISTRY_ADDRESS
+  // );
+  // writeToEnvFile("GRANARY_REPAY_ADDRESS", granaryRepay.address);
 
   // const granarySupply = await redeploy('GranarySupply', process.env.DFS_REGISTRY_ADDRESS);
   // writeToEnvFile("GRANARY_SUPPLY_ADDRESS", granarySupply.address)
 
   // const granaryWithdraw = await redeploy('GranaryWithdraw', process.env.DFS_REGISTRY_ADDRESS);
   // writeToEnvFile("GRANARY_WITHDRAW_ADDRESS", granaryWithdraw.address)
+
+    /*
+     ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
+     ||                               Valas Lending Pool                             ||
+     ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
+ */
+
+    const valasBorrow = await redeploy(
+      "ValasBorrow",
+      process.env.DFS_REGISTRY_ADDRESS
+    );
+    writeToEnvFile("VALAS_BORROW_ADDRESS", valasBorrow.address);
+
+  const valasRepay = await redeploy(
+    "ValasRepay",
+    process.env.DFS_REGISTRY_ADDRESS
+  );
+  writeToEnvFile("VALAS_REPAY_ADDRESS", valasRepay.address);
+
+  // const valasSupply = await redeploy('ValasSupply', process.env.DFS_REGISTRY_ADDRESS);
+  // writeToEnvFile("VALAS_SUPPLY_ADDRESS", valasSupply.address)
+
+  const valasWithdraw = await redeploy('ValasWithdraw', process.env.DFS_REGISTRY_ADDRESS);
+  writeToEnvFile("VALAS_WITHDRAW_ADDRESS", valasWithdraw.address)
+
 
   /*
      ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
