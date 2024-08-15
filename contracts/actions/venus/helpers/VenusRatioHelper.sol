@@ -12,7 +12,7 @@ import "../../../utils/Exponential.sol";
 // this is alculated the ratio of debt / adjusted collateral of compound
 contract VenusRatioHelper is Exponential, DSMath {
     // solhint-disable-next-line const-name-snakecase
-    IVenusController public constant venus = IVenusController(0x3d9819210A31b4961b30EF54bE2aeD79B9c9Cd3B);
+    IVenusController public constant venus = IVenusController(0xfD36E2c2a6789Db23113685031d7F16329158384);
 
     /// @notice Calculated the ratio of debt / adjusted collateral
     /// @param _user Address of the user

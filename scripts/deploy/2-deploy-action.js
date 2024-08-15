@@ -880,23 +880,23 @@ async function main() {
      ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
  */
 
-    const valasBorrow = await redeploy(
-      "ValasBorrow",
-      process.env.DFS_REGISTRY_ADDRESS
-    );
-    writeToEnvFile("VALAS_BORROW_ADDRESS", valasBorrow.address);
+  //   const valasBorrow = await redeploy(
+  //     "ValasBorrow",
+  //     process.env.DFS_REGISTRY_ADDRESS
+  //   );
+  //   writeToEnvFile("VALAS_BORROW_ADDRESS", valasBorrow.address);
 
-  const valasRepay = await redeploy(
-    "ValasRepay",
-    process.env.DFS_REGISTRY_ADDRESS
-  );
-  writeToEnvFile("VALAS_REPAY_ADDRESS", valasRepay.address);
+  // const valasRepay = await redeploy(
+  //   "ValasRepay",
+  //   process.env.DFS_REGISTRY_ADDRESS
+  // );
+  // writeToEnvFile("VALAS_REPAY_ADDRESS", valasRepay.address);
 
-  // const valasSupply = await redeploy('ValasSupply', process.env.DFS_REGISTRY_ADDRESS);
-  // writeToEnvFile("VALAS_SUPPLY_ADDRESS", valasSupply.address)
+  // // const valasSupply = await redeploy('ValasSupply', process.env.DFS_REGISTRY_ADDRESS);
+  // // writeToEnvFile("VALAS_SUPPLY_ADDRESS", valasSupply.address)
 
-  const valasWithdraw = await redeploy('ValasWithdraw', process.env.DFS_REGISTRY_ADDRESS);
-  writeToEnvFile("VALAS_WITHDRAW_ADDRESS", valasWithdraw.address)
+  // const valasWithdraw = await redeploy('ValasWithdraw', process.env.DFS_REGISTRY_ADDRESS);
+  // writeToEnvFile("VALAS_WITHDRAW_ADDRESS", valasWithdraw.address)
 
 
   /*
@@ -1102,6 +1102,54 @@ async function main() {
 
   // const liqeeWithdraw = await redeploy('LiqeeWithdraw', process.env.DFS_REGISTRY_ADDRESS);
   // writeToEnvFile("LIQEE_WITHDRAW_ADDRESS", liqeeWithdraw.address)
+
+
+    /*
+     ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
+     ||                               Apeswap Lending Pool                               ||
+     ||++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++||
+//  */
+  //  await changeConstantInFiles(
+  //     './contracts',
+  //     ['MainnetApeswapAddresses'],
+  //     'COMPTROLLER_ADDR',
+  //     process.env.APESWAP_UNICONTROLLER_ADDRESS,
+  //   );
+  //   run('compile');
+
+  //   await changeConstantInFiles(
+  //     './contracts',
+  //     ['MainnetApeswapAddresses'],
+  //     'A_BNB_ADDR',
+  //     process.env.A_BNB_ADDRESS,
+  //   );
+  //   run('compile');
+
+  //   await changeConstantInFiles(
+  //     './contracts',
+  //     ['TokenUtils'],
+  //     'WBNB_ADDR',
+  //     process.env.WBNB_ADDRESS,
+  //   );
+  //   run('compile');
+
+  // const apeswapCollateral = await redeploy(
+  //   "ApeswapCollateral",
+  //   process.env.DFS_REGISTRY_ADDRESS
+  // );
+  // writeToEnvFile("APESWAP_COLLATERAL_ADDRESS", apeswapCollateral.address);
+
+  // const apeswapBorrow = await redeploy("ApeswapBorrow", process.env.DFS_REGISTRY_ADDRESS);
+  // writeToEnvFile("APESWAP_BORROW_ADDRESS", apeswapBorrow.address);
+
+  // const apeswapRepay = await redeploy("ApeswapRepay", process.env.DFS_REGISTRY_ADDRESS);
+  // writeToEnvFile("APESWAP_REPAY_ADDRESS", apeswapRepay.address);
+
+  // const apeswapSupply = await redeploy('ApeswapSupply', process.env.DFS_REGISTRY_ADDRESS);
+  // writeToEnvFile("APESWAP_SUPPLY_ADDRESS", apeswapSupply.address)
+
+  // const apeswapWithdraw = await redeploy('ApeswapWithdraw', process.env.DFS_REGISTRY_ADDRESS);
+  // writeToEnvFile("APESWAP_WITHDRAW_ADDRESS", apeswapWithdraw.address)
 
 
 }
