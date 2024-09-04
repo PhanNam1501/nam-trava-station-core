@@ -507,11 +507,12 @@ const redeploy = async (name, regAddr = addrs[getNetwork()].REGISTRY_ADDR, saveO
 
     registry = registry.connect(signer);
     console.log("Registry")
-    const c = await deployContract(name, ...args);
-    // console.log(c)
-    // const c  = {
-    //     address: "0xa2d3f269d9b56dfee0162093ce75f557c3e6a02c"
-    // }
+    // const c = await deployContract(name, ...args);
+    // console.log(" end ");
+    
+    const c  = {
+        address: "0x88a9A655c28a2D9763ca6C20529B25C70C3e2cE0"
+    }
     // if (name === 'StrategyExecutor' || name === 'StrategyExecutorL2') {
     //     // eslint-disable-next-line no-param-reassign
     //     name = 'StrategyExecutorID';
@@ -541,6 +542,7 @@ const redeploy = async (name, regAddr = addrs[getNetwork()].REGISTRY_ADDR, saveO
         }
         nonce++;
         await (await registry.approveContractChange(id, {nonce: nonce})).wait();
+        console.log("redploy succes");
     }
 
     // for strategy deployment set open to public for easier testing

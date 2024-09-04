@@ -1,4 +1,5 @@
 const { writeToEnvFile } = require("../utils/helper");
+const { redeploy } = require("../../test/utils");
 require("dotenv").config();
 
 async function main() {
@@ -11,7 +12,7 @@ async function main() {
         recipeExecutor.address,
     );
     await run('compile');
-    
+    console.log(recipeExecutor.address);
     writeToEnvFile("RECIPE_EXECUTOR_ADDRESS", recipeExecutor.address)
 }
 

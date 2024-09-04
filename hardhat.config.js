@@ -26,7 +26,7 @@ require("dotenv").config();
 /**
  * @type import('hardhat/config').HardhatUserConfig
  */
-const GOERLI = "https://goerli.infura.io/v3/ba63b223746842d89619ef053b179319";
+
 const PRIVATE_KEY = process.env.PRIVATE_KEY;
 
 module.exports = {
@@ -180,27 +180,5 @@ module.exports = {
         `0x${PRIVATE_KEY}`,
       ],
     },
-    mainnet: {
-      url: "https://bsc-rpc.publicnode.com",
-      chainId: 56,
-      gasPrice: 11e8,
-      gas: 2e6,
-      // gas: 1e5,
-      accounts: [
-        `0x${PRIVATE_KEY}`,
-      ],
-    },
-    goerli: {
-      url: GOERLI,
-      chainId: 5,
-      accounts: [`0x${PRIVATE_KEY}`],
-      gas: 1e7,
-    },
-  },
-  wbnbAddress: {
-    Mainnet: "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-    Testnet: process.env.WBNB_ADDRESS,
-    Arbitrum: "0x82aF49447D8a07e3bd95BD0d56f35241523fBab1",
-    Optimism: "0x00000000000000000000000000000000000006",
   },
 };
