@@ -13,7 +13,8 @@ contract swapLiquidity is ActionBase {
 		address exchange;
 		address tokenAddr;
 		address from;
-    uint256 maxSlippage;
+		address to;
+    	uint256 maxSlippage;
 		uint256 amount;
     bool checkETH;
 	}
@@ -48,16 +49,23 @@ contract swapLiquidity is ActionBase {
 			_returnValues
 		);
 
+		params.to = _parseParamAddr(
+			params.to,
+			_paramMapping[3],
+			_subData,
+			_returnValues
+		);
+
     params.maxSlippage = _parseParamUint(
 			params.maxSlippage,
-			_paramMapping[3],
+			_paramMapping[4],
 			_subData,
 			_returnValues
 		);
 
 		params.amount = _parseParamUint(
 			params.amount,
-			_paramMapping[4],
+			_paramMapping[5],
 			_subData,
 			_returnValues
 		);
@@ -67,6 +75,7 @@ contract swapLiquidity is ActionBase {
             params.exchange,
             params.tokenAddr,
             params.from,
+			params.to,
             params.maxSlippage,
             params.amount,
             params.checkETH
@@ -84,9 +93,10 @@ contract swapLiquidity is ActionBase {
 			params.exchange,
 			params.tokenAddr,
 			params.from,
-      params.maxSlippage,
+			params.to,
+      		params.maxSlippage,
 			params.amount,
-      params.checkETH
+      		params.checkETH
 		);
 		logger.logActionDirectEvent(
 			"swapLiquidity",
@@ -104,24 +114,38 @@ contract swapLiquidity is ActionBase {
         address _exchange,
 		address _tokenAddr,
 		address _from,
-    uint256 _maxSlippage,
+		address _to,
+    	uint256 _maxSlippage,
 		uint256 _amount,
-    bool _checkETH
+    	bool _checkETH
     ) internal returns (uint256) {
         
 
         IExchange exchange = IExchange(_exchange);
+		uint256 total_shares = exchange.getTotalShares();
+        
+        (uint256 token_reverse, uint256 eth_reverse) = exchange.getLiquidity();
+
+        
 
         if(_checkETH) {
           uint256 tokenBefore = _tokenAddr.getBalance(address(this));
+		  if (_amount == type(uint256).max) {
+			uint256 lps = exchange.getlps();
+			_amount = lps * eth_reverse / total_shares;
+			}
           exchange.swapETHForTokens{value:_amount}(_maxSlippage);
-          _tokenAddr.withdrawTokens(_from, _tokenAddr.getBalance(address(this)) - tokenBefore);
+          _tokenAddr.withdrawTokens(_to, _tokenAddr.getBalance(address(this)) - tokenBefore);
         } else {
           uint256 ethBefore = TokenUtils.BNB_ADDR.getBalance(address(this));
+		  if (_amount == type(uint256).max) {
+            uint256 lps = exchange.getlps();
+            _amount = lps * token_reverse / total_shares;
+       	 }
           _tokenAddr.pullTokensIfNeeded(_from, _amount);
           _tokenAddr.approveToken(_exchange, _amount);
           exchange.swapTokensForETH(_amount, _maxSlippage);
-          TokenUtils.BNB_ADDR.withdrawTokens(_from, TokenUtils.BNB_ADDR.getBalance(address(this)) - ethBefore);
+          TokenUtils.BNB_ADDR.withdrawTokens(_to, TokenUtils.BNB_ADDR.getBalance(address(this)) - ethBefore);
         }
 
 		return _amount;

@@ -30,6 +30,7 @@
     "@openzeppelin/contracts-upgradeable": "^4.7.3",
     "@openzeppelin/hardhat-upgrades": "^1.28.0",
     "@truffle/hdwallet-provider": "^2.0.14",
+    "@uniswap/lib": "^4.0.1-alpha",
     "@zennomi/tokens": "^1.0.1",
     "crypto": "^1.0.1",
     "dotenv": "^16.0.1",

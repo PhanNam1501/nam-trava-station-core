@@ -7,49 +7,46 @@ const { getProxy } = require("../utils");
 const { ethers } = require("ethers");
 const { keccak256 } = require("web3-utils");
 
-describe("swapLiquidity", function () {
+describe("addLiquidity", function () {
     this.timeout(150000);
     console.log("hello");
-    it("Test swapLiquidity", async () => {
+    it("Test addLiquidity", async () => {
       const proxy = await getProxy(process.env.PUBLIC_KEY);
       const exchange = process.env.TOKEN_EXCHANGE;
       const tokenAddr = process.env.TOKEN;
       const from = process.env.PUBLIC_KEY;
-      const maxSlippage = hre.ethers.utils.parseEther("0.11");
-      const amount = hre.ethers.BigNumber.from("10");
+      const amountETH = hre.ethers.BigNumber.from("100");
       const token = await hre.ethers.getContractAt("IERC20Test",tokenAddr);
-      const checkETH = true;
       console.log("Token: ", token.address);
       const tx1 = await token.approve(proxy.address, 10**11);
       await tx1.wait();
-   
    
 
       const tokenexchange = await hre.ethers.getContractAt("TokenExchange", exchange);
       const tx2 = await tokenexchange.getLiquidity();
       console.log(tx2);
-      console.log("Remove Liquidity");
+      console.log("Add Liquidity");
 
       
   
-      const swapLiquidity = new Action(
-        "swapLiquidity",
-        process.env.SWAPLIQUIDITY,
-        ["address", "address", "address", "uint256", "uint256", "bool"],
-        [exchange, tokenAddr, from, maxSlippage, amount, checkETH]
+      const addLiquidity = new Action(
+        "addLiquidity",
+        process.env.ADDLIQUIDITY,
+        ["address", "address", "address","uint256"],
+        [exchange, tokenAddr, from, amountETH]
       );
   
       // const calldata = traveSupply.encodeForRecipe()[0];
-      const callData = swapLiquidity.encodeForDsProxyCall()[1];
+      const callData = addLiquidity.encodeForDsProxyCall()[1];
   
       console.log("callData", callData);
   
-      const swapLiquidityContract = await hre.ethers.getContractAt(
-        "swapLiquidity",
-        process.env.SWAPLIQUIDITY
+      const addLiquidityContract = await hre.ethers.getContractAt(
+        "addLiquidity",
+        process.env.ADDLIQUIDITY
       );
 
-      console.log("swapliquidity_address",swapLiquidityContract.address);
+      console.log("addliquidity_address",addLiquidityContract.address);
   
       // call receive function in proxy contract to send BNB to proxy
       // const ownerAcc = (await hre.ethers.getSigners())[0];
@@ -61,11 +58,11 @@ describe("swapLiquidity", function () {
     
   
       let tx = await proxy["execute(address,bytes)"](
-        swapLiquidityContract.address,
+        addLiquidityContract.address,
         callData,
         {
           gasLimit: 20000000,
-          value: checkETH ? amount : 0
+          value:amountETH
         }
       );
       console.log("wait");

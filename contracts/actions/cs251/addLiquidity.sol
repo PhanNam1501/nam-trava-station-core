@@ -12,7 +12,6 @@ contract addLiquidity is ActionBase {
     struct Params {
 		address exchange;
 		address tokenAddr;
-        uint256 maxSlippage;
 		address from;
 		uint256 amountETH;
         
@@ -41,22 +40,15 @@ contract addLiquidity is ActionBase {
 			_returnValues
 		);
 
-        params.maxSlippage = _parseParamUint(
-			params.maxSlippage,
-			_paramMapping[2],
-			_subData,
-			_returnValues
-		);
-
         params.from = _parseParamAddr(
 			params.from,
-			_paramMapping[3],
+			_paramMapping[2],
 			_subData,
 			_returnValues
 		);
 		params.amountETH = _parseParamUint(
 			params.amountETH,
-			_paramMapping[4],
+			_paramMapping[3],
 			_subData,
 			_returnValues
 		);
@@ -64,7 +56,6 @@ contract addLiquidity is ActionBase {
         uint256 result = _addLiquidity(
             params.exchange,
             params.tokenAddr,
-            params.maxSlippage,
             params.from,
             params.amountETH
         );
@@ -80,7 +71,6 @@ contract addLiquidity is ActionBase {
 		uint256 ethAmount = _addLiquidity(
 			params.exchange,
 			params.tokenAddr,
-			params.maxSlippage,
 			params.from,
 			params.amountETH
 		);
@@ -99,7 +89,6 @@ contract addLiquidity is ActionBase {
     function _addLiquidity(
         address _exchange,
 		address _tokenAddr,
-        uint256 _maxSlippage,
 		address _from,
 		uint256 _amountETH
     ) internal returns (uint256) {

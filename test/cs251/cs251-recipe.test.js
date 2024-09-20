@@ -26,7 +26,6 @@ describe("Send Token Action", function () {
     const addLiquidityAction = new actions.cs251.addLiquidity(
         exchange, 
         tokenAddr, 
-        maxSlippage, 
         from, 
         amountETH_add,
         process.env.ADDLIQUIDITY
@@ -39,7 +38,7 @@ describe("Send Token Action", function () {
     console.log("remove:", removeLiquidityAction.address);
 
     const swapAction = new actions.cs251.swapLiquidity(
-        exchange, tokenAddr, from, maxSlippage, amount_swap, checkETH,
+        exchange, tokenAddr, from, to, maxSlippage, amount_swap, checkETH,
         process.env.SWAPLIQUIDITY
     )
 
@@ -49,8 +48,9 @@ describe("Send Token Action", function () {
         "hill",
         97,
         [
-            //addLiquidityAction,
-            removeLiquidityAction
+            addLiquidityAction,
+            removeLiquidityAction,
+            swapAction
         ]
     )
 
